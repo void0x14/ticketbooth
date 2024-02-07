@@ -2,207 +2,215 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the ticketbooth package.
 # Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+# Nitin Khalia <weblate.scrambled777@simplelogin.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-02-08 17:01+0000\n"
+"Last-Translator: Nitin Khalia <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/ticket-booth/"
+"ticket-booth/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
 msgid "@app_name@"
-msgstr ""
+msgstr "@app_name@"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
-msgstr ""
+msgstr "विंडो चौड़ाई"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
-msgstr ""
+msgstr "विंडो ऊंचाई"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
-msgstr ""
+msgstr "विंडो अधिकतम हो गई"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
-msgstr ""
+msgstr "सक्रिय टैब"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
-msgstr ""
+msgstr "निर्दिष्ट करता है कि क्या ऐप पहली बार चलाया गया है"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the app downloaded the required data"
-msgstr ""
+msgstr "निर्दिष्ट करता है कि क्या ऐप ने आवश्यक डेटा डाउनलोड किया है"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:51
 msgid "View sorting style"
-msgstr ""
+msgstr "श्रेणीकरण शैली देखें"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:62
 msgid "App color scheme"
-msgstr ""
+msgstr "ऐप रंग योजना"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:66
 msgid "Language used by TMDB results"
-msgstr ""
+msgstr "TMDB परिणामों द्वारा प्रयुक्त भाषा"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:79
 msgid "Frequency to check for new data on TMDB"
-msgstr ""
+msgstr "TMBD पर नए डेटा की जांच करने की आवृत्ति"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:83
 msgid "Last autoupdate date"
-msgstr ""
+msgstr "अंतिम ऑटो अपडेट तिथि"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:87
 msgid "Clear cache on exit"
-msgstr ""
+msgstr "बाहर निकलने पर कैशे साफ़ करें"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15
 msgid "Keep track of your favorite shows"
-msgstr ""
+msgstr "अपने पसंदीदा शो पर नज़र रखें"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:18
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
+"Ticket Booth आपको फिल्मों और TV शो की अपनी निगरानी सूची बनाने, देखे गए "
+"शीर्षकों पर नज़र रखने और नवीनतम रिलीज़ के बारे में जानकारी प्राप्त करने की "
+"अनुमति देता है।"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
+"Ticket Booth आपको सामग्री देखने या डाउनलोड करने की अनुमति नहीं देता है। यह "
+"ऐप TMBD API का उपयोग करता है लेकिन TMDB द्वारा समर्थित या प्रमाणित नहीं है।"
 
 #: src/dialogs/add_manual_dialog.py:89
 msgid "Edit Movie"
-msgstr ""
+msgstr "फ़िल्म संपादित करें"
 
 #: src/dialogs/add_manual_dialog.py:92
 msgid "Edit TV Series"
-msgstr ""
+msgstr "टीवी श्रृंखला संपादित करें"
 
 #: src/dialogs/add_manual_dialog.py:294
 #, python-brace-format
 msgid "Season {num}"
-msgstr ""
+msgstr "सीज़न {num}"
 
 #: src/dialogs/add_manual_dialog.py:334 src/widgets/search_result_row.py:165
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Add {title}"
-msgstr ""
+msgstr "जोडें {title}"
 
 #: src/dialogs/add_manual_dialog.py:340
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Update {title}"
-msgstr ""
+msgstr "{title} अपडेट करें"
 
 #: src/dialogs/edit_season_dialog.py:44 src/widgets/season_expander.py:43
 msgid "Season"
-msgstr ""
+msgstr "सीज़न"
 
 #: src/pages/details_page.py:155 src/pages/details_page.py:229
 #: src/pages/details_page.py:277 src/pages/details_page.py:326
 #: src/pages/details_page.py:447 src/widgets/episode_row.py:114
 #: src/widgets/episode_row.py:137 src/widgets/episode_row.py:291
 msgid "Watched"
-msgstr ""
+msgstr "देखे गये"
 
 #: src/pages/details_page.py:158 src/pages/details_page.py:232
 #: src/pages/details_page.py:280 src/pages/details_page.py:329
 #: src/pages/details_page.py:450 src/widgets/episode_row.py:117
 #: src/widgets/episode_row.py:140 src/widgets/episode_row.py:294
 msgid "Mark as Watched"
-msgstr ""
+msgstr "देखे गए के रूप में चिह्नित करें"
 
 #. TRANSLATORS: {num} is the total number of seasons
 #: src/pages/details_page.py:171
 #, python-brace-format
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{num} सीज़न"
+msgstr[1] "{num} सीजंस"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:179 src/pages/details_page.py:211
 #, python-brace-format
 msgid "{num} Episode"
 msgid_plural "{num} Episodes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{num} एपिसोड"
+msgstr[1] "{num} एपिसोडस"
 
 #: src/pages/details_page.py:349 src/ui/dialogs/add_manual.blp:188
 msgid "Status"
-msgstr ""
+msgstr "स्थिति"
 
 #: src/pages/details_page.py:357 src/ui/dialogs/add_manual.blp:192
 msgid "Original Language"
-msgstr ""
+msgstr "मूल भाषा"
 
 #: src/pages/details_page.py:366 src/ui/dialogs/add_manual.blp:197
 msgid "Original Title"
-msgstr ""
+msgstr "मूल शीर्षक"
 
 #: src/pages/details_page.py:378
 msgid "Budget"
-msgstr ""
+msgstr "बजट"
 
 #: src/pages/details_page.py:388
 msgid "Revenue"
-msgstr ""
+msgstr "राजस्व"
 
 #: src/pages/details_page.py:398
 msgid "In Production"
-msgstr ""
+msgstr "उत्पादन में"
 
 #: src/pages/details_page.py:401
 msgid "Yes"
-msgstr ""
+msgstr "हाँ"
 
 #: src/pages/details_page.py:402
 msgid "No"
-msgstr ""
+msgstr "नहीं"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
 #: src/pages/details_page.py:423 src/widgets/episode_row.py:161
 #, python-brace-format
 msgid "{h}h {m}min"
-msgstr ""
+msgstr "{h}h {m}min"
 
 #. TRANSLATORS: {m} is the runtime minutes
 #: src/pages/details_page.py:426 src/widgets/episode_row.py:165
 #, python-brace-format
 msgid "{m}min"
-msgstr ""
+msgstr "{m}min"
 
 #. TRANSLATORS: {title} is the showed content's title
 #: src/pages/details_page.py:508
 #, python-brace-format
 msgid "Updating {title}"
-msgstr ""
+msgstr "{title} अपडेट किया जा रहा है"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:515
 #, python-brace-format
 msgid "Update {title}"
-msgstr ""
+msgstr "{title} अपडेट करें"
 
 #: src/pages/details_page.py:550
 msgid "Loading Metadata…"
-msgstr ""
+msgstr "मेटाडेटा लोड हो रहा है…"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:569 src/widgets/episode_row.py:240
@@ -210,66 +218,66 @@ msgstr ""
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
-msgstr ""
+msgstr "हटाएं {title}?"
 
 #: src/pages/details_page.py:571
 msgctxt "message dialog body"
 msgid "This title will be deleted from your watchlist."
-msgstr ""
+msgstr "यह शीर्षक आपकी निगरानी सूची से हटा दिया जाएगा।"
 
 #: src/pages/details_page.py:572 src/widgets/episode_row.py:244
 #: src/widgets/season_expander.py:143
 msgctxt "message dialog action"
 msgid "_Cancel"
-msgstr ""
+msgstr "_रद्द करें"
 
 #: src/pages/details_page.py:573 src/widgets/episode_row.py:245
 #: src/widgets/season_expander.py:144
 msgctxt "message dialog action"
 msgid "_Delete"
-msgstr ""
+msgstr "_हटाएं"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:603
 #, python-brace-format
 msgid "Delete {title}"
-msgstr ""
+msgstr "हटाएं {title}"
 
 #: src/preferences.py:238
 msgctxt "message dialog heading"
 msgid "No Network"
-msgstr ""
+msgstr "कोई नेटवर्क नहीं"
 
 #: src/preferences.py:239
 msgctxt "message dialog body"
 msgid "Connect to the Internet to complete the setup."
-msgstr ""
+msgstr "सेटअप पूरा करने के लिए इंटरनेट से कनेक्ट करें।"
 
 #: src/preferences.py:240 src/window.py:163
 msgctxt "message dialog action"
 msgid "OK"
-msgstr ""
+msgstr "ठीक है"
 
 #: src/preferences.py:306
 msgctxt "Background activity title"
 msgid "Clear cache"
-msgstr ""
+msgstr "कैशे साफ करें"
 
 #. TRANSLATORS: {number} is the number of titles
 #: src/preferences.py:358 src/preferences.py:360
 #, python-brace-format
 msgid "{number} Titles"
-msgstr ""
+msgstr "{number} टाइटलस"
 
 #: src/preferences.py:398
 msgctxt "Background activity title"
 msgid "Delete all movies"
-msgstr ""
+msgstr "सभी फ़िल्में हटाएँ"
 
 #: src/preferences.py:409
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr ""
+msgstr "सभी TV श्रृंखला हटाएं"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:484
@@ -278,225 +286,229 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
+"Ticket Booth वर्तमान में {total_space:.2f}MB का उपयोग कर रहा है। कुछ स्थान "
+"खाली करने के लिए नीचे दिए गए विकल्पों का उपयोग करें।"
 
 #: src/preferences.py:488 src/preferences.py:490
 #, python-brace-format
 msgid "{space:.2f} MB occupied"
-msgstr ""
+msgstr "{space:.2f} MB घेरी गई"
 
 #. TRANSLATORS: replace with your name (and an optional email or website)
 #: src/ui/about_window.blp:16
 msgid "translator-credits"
-msgstr ""
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
 #: src/ui/dialogs/add_manual.blp:47 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
-msgstr ""
+msgstr "फ़िल्म"
 
 #: src/ui/dialogs/add_manual.blp:53 src/views/main_view.py:57
 #: src/widgets/search_result_row.py:82
 msgctxt "Category"
 msgid "TV Series"
-msgstr ""
+msgstr "TV श्रृंखला"
 
 #: src/ui/dialogs/add_manual.blp:61 src/ui/dialogs/edit_season.blp:35
 msgid "Cancel"
-msgstr ""
+msgstr "रद्द करें"
 
 #: src/ui/dialogs/add_manual.blp:67 src/ui/dialogs/edit_season.blp:41
 #: src/ui/pages/edit_episode_page.blp:22
 msgid "Save"
-msgstr ""
+msgstr "सहेजें"
 
 #: src/ui/dialogs/add_manual.blp:101 src/ui/dialogs/edit_season.blp:69
 #: src/ui/pages/edit_episode_page.blp:58
 msgid "General"
-msgstr ""
+msgstr "सामान्य"
 
 #: src/ui/dialogs/add_manual.blp:104 src/ui/dialogs/edit_season.blp:72
 #: src/ui/pages/edit_episode_page.blp:70
 msgid "Title (required)"
-msgstr ""
+msgstr "शीर्षक (आवश्यक)"
 
 #: src/ui/dialogs/add_manual.blp:110
 msgid "Release Date"
-msgstr ""
+msgstr "रिलीज़ की तारीख"
 
 #: src/ui/dialogs/add_manual.blp:126
 msgid "Genres (comma separated)"
-msgstr ""
+msgstr "शैलियाँ (अल्पविराम से अलग)"
 
 #: src/ui/dialogs/add_manual.blp:131 src/ui/pages/edit_episode_page.blp:75
 msgid "Runtime (minutes)"
-msgstr ""
+msgstr "कार्यावधि (मिनट)"
 
 #: src/ui/dialogs/add_manual.blp:140
 msgid "Tagline"
-msgstr ""
+msgstr "टैगलाइन"
 
 #: src/ui/dialogs/add_manual.blp:145 src/ui/pages/details_page.blp:188
 msgid "Created by"
-msgstr ""
+msgstr "के द्वारा बनाई गई"
 
 #: src/ui/dialogs/add_manual.blp:153 src/ui/pages/edit_episode_page.blp:87
 msgid "Overview"
-msgstr ""
+msgstr "अवलोकन"
 
 #: src/ui/dialogs/add_manual.blp:170
 msgid "Seasons (required)"
-msgstr ""
+msgstr "सीजंस (required)"
 
 #: src/ui/dialogs/add_manual.blp:171
 msgid "Use the + button to add seasons"
-msgstr ""
+msgstr "सीज़न जोड़ने के लिए + बटन का उपयोग करें"
 
 #: src/ui/dialogs/add_manual.blp:176 src/ui/dialogs/edit_season.blp:86
 msgid "Add"
-msgstr ""
+msgstr "जोड़ें"
 
 #: src/ui/dialogs/add_manual.blp:185 src/ui/pages/details_page.blp:240
 msgid "Additional Information"
-msgstr ""
+msgstr "अतिरिक्त जानकारी"
 
 #: src/ui/dialogs/add_manual.blp:202
 msgid "Budget (US$)"
-msgstr ""
+msgstr "बजट (US$)"
 
 #: src/ui/dialogs/add_manual.blp:212
 msgid "Revenue (US$)"
-msgstr ""
+msgstr "राजस्व (US$)"
 
 #: src/ui/dialogs/add_manual.blp:221
 msgid "In production"
-msgstr ""
+msgstr "उत्पादन में"
 
 #: src/ui/dialogs/add_tmdb.blp:30
 msgid "Search The Movie Database…"
-msgstr ""
+msgstr "मूवी डेटाबेस खोजें…"
 
 #: src/ui/dialogs/add_tmdb.blp:40
 msgid "Search For a Title"
-msgstr ""
+msgstr "शीर्षक खोजें"
 
 #: src/ui/dialogs/add_tmdb.blp:42
 msgid ""
 "Start typing in the search bar to see a list of matching movies and TV series"
 msgstr ""
+"मेल खाने वाली फिल्मों और TV श्रृंखलाओं की सूची देखने के लिए खोज बार में टाइप "
+"करना प्रारंभ करें"
 
 #: src/ui/dialogs/add_tmdb.blp:49
 msgid "No Results Found"
-msgstr ""
+msgstr "कोई परिणाम नहीं मिला"
 
 #: src/ui/dialogs/add_tmdb.blp:51
 msgid "Try a different search"
-msgstr ""
+msgstr "भिन्न खोज का प्रयास करें"
 
 #: src/ui/dialogs/edit_season.blp:24
 msgid "Edit Season"
-msgstr ""
+msgstr "सीज़न संपादित करें"
 
 #: src/ui/dialogs/edit_season.blp:80
 msgid "Episodes (required)"
-msgstr ""
+msgstr "एपिसोड (आवश्यक)"
 
 #: src/ui/dialogs/edit_season.blp:81
 msgid "Use the + button to add episodes"
-msgstr ""
+msgstr "एपिसोड जोड़ने के लिए + बटन का उपयोग करें"
 
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "सामान्य"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "शॉर्टकट दिखाएँ"
 
 #: src/ui/gtk/help-overlay.blp:23
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "प्राथमिकताएँ दिखाएँ"
 
 #: src/ui/gtk/help-overlay.blp:28
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "छोड़ें"
 
 #: src/ui/gtk/help-overlay.blp:34
 msgctxt "shortcut window"
 msgid "Library management"
-msgstr ""
+msgstr "लाइब्रेरी प्रबंधन"
 
 #: src/ui/gtk/help-overlay.blp:37
 msgctxt "shortcut window"
 msgid "Add title from TMDB"
-msgstr ""
+msgstr "TMDB से शीर्षक जोड़ें"
 
 #: src/ui/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Add title manually"
-msgstr ""
+msgstr "शीर्षक मैन्युअल रूप से जोड़ें"
 
 #: src/ui/gtk/help-overlay.blp:46
 msgctxt "shortcut window"
 msgid "Refresh library"
-msgstr ""
+msgstr "लाइब्रेरी ताज़ा करें"
 
 #: src/ui/pages/details_page.blp:29 src/ui/views/main_view.blp:71
 msgid "Main Menu"
-msgstr ""
+msgstr "मुख्य मेन्यू"
 
 #: src/ui/pages/details_page.blp:126
 msgid "Update Metadata"
-msgstr ""
+msgstr "मेटाडेटा अपडेट करें"
 
 #: src/ui/pages/details_page.blp:136 src/ui/widgets/episode_row.blp:88
 #: src/ui/widgets/season_expander.blp:42
 msgid "Edit"
-msgstr ""
+msgstr "संपादित करें"
 
 #: src/ui/pages/details_page.blp:146
 msgid "Delete"
-msgstr ""
+msgstr "हटाएं"
 
 #: src/ui/pages/details_page.blp:166
 msgid "Description"
-msgstr ""
+msgstr "विवरण"
 
 #: src/ui/pages/details_page.blp:215
 msgid "Seasons"
-msgstr ""
+msgstr "सीजंस"
 
 #: src/ui/pages/details_page.blp:314 src/ui/views/main_view.blp:162
 msgid "_Preferences"
-msgstr ""
+msgstr "_प्राथमिकताएँ"
 
 #: src/ui/pages/details_page.blp:319 src/ui/views/main_view.blp:167
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_कीबोर्ड शॉर्टकट"
 
 #: src/ui/pages/details_page.blp:324 src/ui/views/main_view.blp:172
 msgid "_About Ticket Booth"
-msgstr ""
+msgstr "_Ticket Booth के बारे में"
 
 #: src/ui/pages/edit_episode_page.blp:12
 msgid "Edit Episode"
-msgstr ""
+msgstr "एपिसोड संपादित करें"
 
 #: src/ui/pages/edit_episode_page.blp:61
 msgid "Episode Number (required)"
-msgstr ""
+msgstr "एपिसोड नंबर (आवश्यक)"
 
 #: src/ui/preferences.blp:16 src/ui/views/main_view.blp:85
 msgid "Preferences"
-msgstr ""
+msgstr "प्राथमिकताएँ"
 
 #: src/ui/preferences.blp:19
 msgctxt "preferences"
 msgid "Optional Download"
-msgstr ""
+msgstr "वैकल्पिक डाउनलोड"
 
 #: src/ui/preferences.blp:20
 msgctxt "preferences"
@@ -505,17 +517,20 @@ msgid ""
 "setup could not retrieve the data automatically and thus offline mode has "
 "been activated. It will remain active until the setup is completed."
 msgstr ""
+"संपूर्ण अनुभव के लिए, 15KB का डाउनलोड आवश्यक है। प्रारंभिक सेटअप स्वचालित रू"
+"प से डेटा पुनर्प्राप्त नहीं कर सका और इस प्रकार ऑफ़लाइन मोड सक्रिय हो गया है।"
+" सेटअप पूरा होने तक यह सक्रिय रहेगा।"
 
 #. TRANSLATORS: When clicked, it completes the initial setup by downloading the optional data.
 #: src/ui/preferences.blp:24
 msgctxt "preferences"
 msgid "Complete Setup"
-msgstr ""
+msgstr "सेटअप पूरा करें"
 
 #: src/ui/preferences.blp:35
 msgctxt "preferences"
 msgid "Offline Mode"
-msgstr ""
+msgstr "ऑफ़लाइन मोड"
 
 #: src/ui/preferences.blp:36
 msgctxt "preferences"
@@ -524,16 +539,19 @@ msgid ""
 "some features that require the Internet and/or access to third party APIs "
 "will not be available."
 msgstr ""
+"Ticket Booth पूरी तरह से ऑफ़लाइन काम कर सकता है। यदि आप इस मोड में चलना चुनते"
+" हैं, तो कुछ सुविधाएँ जिनके लिए इंटरनेट और/या तृतीय पक्ष API तक पहुंच की "
+"आवश्यकता होती है, उपलब्ध नहीं होंगी।"
 
 #: src/ui/preferences.blp:39
 msgctxt "preferences"
 msgid "Enable Offline Mode"
-msgstr ""
+msgstr "ऑफ़लाइन मोड सक्षम करें"
 
 #: src/ui/preferences.blp:44
 msgctxt "preferences"
 msgid "The Movie Database (TMDB)"
-msgstr ""
+msgstr "The Movie Database (TMDB)"
 
 #: src/ui/preferences.blp:45
 msgctxt "preferences"
@@ -546,165 +564,172 @@ msgid ""
 "to TMDB</a>. Additionally, an automatic update is performed on a frequency "
 "of your choosing."
 msgstr ""
+"TMDB अधिकांश सामग्री के लिए स्थानीयकृत मेटाडेटा प्रदान करता है। Ticket Booth "
+"इसे आपकी पसंदीदा भाषा में डाउनलोड करेगा, जिसे नीचे चुना जा सकता है। यदि यह "
+"उपलब्ध नहीं है, तो यह अंग्रेजी US और फिर सामग्री की मूल भाषा में वापस आ "
+"जाएगा। यदि इनमें से कोई भी उपलब्ध नहीं है, तो इसका परिणाम एक रिक्त स्ट्रिंग "
+"होगा। कृपया <a href='https://www.themoviedb.org/bible/new_content'>TMDB में "
+"योगदान करने</a> पर विचार करें। इसके अतिरिक्त, आपके द्वारा चुनी गई आवृत्ति पर "
+"एक स्वचालित अपडेट किया जाता है।"
 
 #: src/ui/preferences.blp:48
 msgctxt "preferences"
 msgid "TMDB Results Language"
-msgstr ""
+msgstr "TMDB परिणाम भाषा"
 
 #: src/ui/preferences.blp:53
 msgctxt "preferences"
 msgid "Update Frequency"
-msgstr ""
+msgstr "अपडेट आवृत्ति"
 
 #: src/ui/preferences.blp:54
 msgctxt "preferences"
 msgid "Restart Ticket Booth after changing"
-msgstr ""
+msgstr "बदलने के बाद Ticket Booth पुनः प्रारंभ करें"
 
 #: src/ui/preferences.blp:57
 msgctxt "preferences"
 msgid "Never"
-msgstr ""
+msgstr "कभी नहीं"
 
 #: src/ui/preferences.blp:58
 msgctxt "preferences"
 msgid "Daily"
-msgstr ""
+msgstr "दैनिक"
 
 #: src/ui/preferences.blp:59
 msgctxt "preferences"
 msgid "Weekly"
-msgstr ""
+msgstr "साप्ताहिक"
 
 #: src/ui/preferences.blp:60
 msgctxt "preferences"
 msgid "Monthly"
-msgstr ""
+msgstr "मासिक"
 
 #: src/ui/preferences.blp:67
 msgctxt "preferences"
 msgid "Housekeeping"
-msgstr ""
+msgstr "हाउसकीपिंग"
 
 #: src/ui/preferences.blp:71
 msgctxt "preferences"
 msgid "Clear Cache on Exit"
-msgstr ""
+msgstr "बाहर निकलने पर कैशे साफ़ करें"
 
 #: src/ui/preferences.blp:75
 msgctxt "preferences"
 msgid "Clear Cached Search Data"
-msgstr ""
+msgstr "कैश्ड खोज डेटा साफ़ करें"
 
 #: src/ui/preferences.blp:85
 msgctxt "preferences"
 msgid "Clear Data"
-msgstr ""
+msgstr "डेटा साफ़ करें"
 
 #: src/ui/views/content_view.blp:14
 msgid "Your Watchlist Is Empty"
-msgstr ""
+msgstr "आपकी निगरानी सूची खाली है"
 
 #: src/ui/views/content_view.blp:15
 msgid "Add content with the + button."
-msgstr ""
+msgstr "+ बटन के साथ सामग्री जोड़ें।"
 
 #: src/ui/views/content_view.blp:98
 msgid "Your Watchlist"
-msgstr ""
+msgstr "आपकी निगरानी सूची"
 
 #: src/ui/views/first_run_view.blp:56
 msgid "Use Offline Mode"
-msgstr ""
+msgstr "ऑफ़लाइन मोड का उपयोग करें"
 
 #: src/ui/views/first_run_view.blp:62
 msgid "Try again on next run"
-msgstr ""
+msgstr "अगली बार पुनः प्रयास करें"
 
 #: src/ui/views/main_view.blp:63
 msgid "Add a title to your library"
-msgstr ""
+msgstr "अपनी लाइब्रेरी में एक शीर्षक जोड़ें"
 
 #: src/ui/views/main_view.blp:84
 msgid "Offline Mode Enabled"
-msgstr ""
+msgstr "ऑफ़लाइन मोड सक्षम"
 
 #: src/ui/views/main_view.blp:115
 msgid "_Sorting"
-msgstr ""
+msgstr "_छँटाई"
 
 #: src/ui/views/main_view.blp:118
 msgid "A-Z"
-msgstr ""
+msgstr "A-Z"
 
 #: src/ui/views/main_view.blp:124
 msgid "Z-A"
-msgstr ""
+msgstr "Z-A"
 
 #: src/ui/views/main_view.blp:130
 msgid "Date added (newest first)"
-msgstr ""
+msgstr "तिथि जोड़ी गई (नवीनतम पहले)"
 
 #: src/ui/views/main_view.blp:136
 msgid "Date added (oldest first)"
-msgstr ""
+msgstr "तिथि जोड़ी गई (सबसे पुरानी पहले)"
 
 #: src/ui/views/main_view.blp:142
 msgid "Release date (newest first)"
-msgstr ""
+msgstr "रिलीज की तारीख (नवीनतम पहले)"
 
 #: src/ui/views/main_view.blp:148
 msgid "Release date (oldest first)"
-msgstr ""
+msgstr "रिलीज की तारीख (सबसे पुरानी पहले)"
 
 #: src/ui/views/main_view.blp:155
 msgid "_Refresh"
-msgstr ""
+msgstr "_ताज़ा करें"
 
 #: src/ui/views/main_view.blp:180
 msgid "From The Movie Database (TMDB)"
-msgstr ""
+msgstr "The Movie Database (TMDB) से"
 
 #: src/ui/views/main_view.blp:185
 msgid "Manually"
-msgstr ""
+msgstr "मैन्युअल"
 
 #: src/ui/widgets/background_indicator.blp:13
 msgid "Background Activities"
-msgstr ""
+msgstr "पृष्ठभूमि गतिविधियाँ"
 
 #: src/ui/widgets/background_indicator.blp:37
 msgid "No Background Activities"
-msgstr ""
+msgstr "कोई पृष्ठभूमि गतिविधियाँ नहीं"
 
 #: src/ui/widgets/image_selector.blp:26
 msgid "Edit poster"
-msgstr ""
+msgstr "पोस्टर संपादित करें"
 
 #: src/ui/widgets/image_selector.blp:44
 msgid "Delete poster"
-msgstr ""
+msgstr "पोस्टर हटाएं"
 
 #: src/ui/widgets/search_result_row.blp:90
 msgid "Add to watchlist"
-msgstr ""
+msgstr "निगरानी सूची में जोड़ें"
 
 #: src/ui/widgets/theme_switcher.blp:29
 msgid "Follow system style"
-msgstr ""
+msgstr "सिस्टम शैली का पालन करें"
 
 #: src/ui/widgets/theme_switcher.blp:43
 msgid "Light style"
-msgstr ""
+msgstr "हल्की शैली"
 
 #: src/ui/widgets/theme_switcher.blp:57
 msgid "Dark style"
-msgstr ""
+msgstr "डार्क शैली"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
-msgstr ""
+msgstr "नेटवर्क की प्रतीक्षा में…"
 
 #: src/views/first_run_view.py:103
 msgid ""
@@ -712,44 +737,47 @@ msgid ""
 "are not connected to the Internet or don't want to wait, you can skip this "
 "step and continue offline without some features."
 msgstr ""
+"संपूर्ण अनुभव के लिए, 15KB का डाउनलोड आवश्यक है। हालाँकि, यदि आप इंटरनेट से "
+"कनेक्ट नहीं हैं या प्रतीक्षा नहीं करना चाहते हैं, तो आप इस चरण को छोड़ सकते "
+"हैं और कुछ सुविधाओं के बिना ऑफ़लाइन जारी रख सकते हैं।"
 
 #: src/views/first_run_view.py:107
 msgid "Getting things ready…"
-msgstr ""
+msgstr "चीजें तैयार हो रही हैं…"
 
 #: src/views/first_run_view.py:108
 msgid "Downloading data"
-msgstr ""
+msgstr "डेटा डाउनलोड हो रहा है"
 
 #: src/views/main_view.py:51
 msgctxt "Category"
 msgid "Movies"
-msgstr ""
+msgstr "फ़िल्में"
 
 #: src/views/main_view.py:135 src/views/main_view.py:145
 #: src/views/main_view.py:155
 msgctxt "Background activity title"
 msgid "Automatic update"
-msgstr ""
+msgstr "स्वचालित अपडेट"
 
 #: src/widgets/episode_row.py:242
 msgctxt "message dialog body"
 msgid "All changes to this episode will be lost."
-msgstr ""
+msgstr "इस एपिसोड में सभी परिवर्तन खो जाएंगे।"
 
 #: src/widgets/search_result_row.py:100 src/widgets/search_result_row.py:192
 msgid "Already in your watchlist"
-msgstr ""
+msgstr "पहले से ही आपकी निगरानी सूची में है"
 
 #: src/widgets/season_expander.py:141
 msgctxt "message dialog body"
 msgid "This season contains unsaved metadata."
-msgstr ""
+msgstr "इस सीज़न में सहेजा न गया मेटाडेटा शामिल है।"
 
 #: src/window.py:161
 msgctxt "message dialog heading"
 msgid "Background Activies Running"
-msgstr ""
+msgstr "पृष्ठभूमि गतिविधियाँ चल रही हैं"
 
 #: src/window.py:162
 msgctxt "message dialog body"
@@ -758,3 +786,6 @@ msgid ""
 "before exiting. Look for the indicator in the header bar to check when they "
 "are finished."
 msgstr ""
+"कुछ गतिविधियाँ पृष्ठभूमि में चल रही हैं और बाहर निकलने से पहले उन्हें पूरा "
+"करना आवश्यक है। यह जांचने के लिए कि वे कब समाप्त हो गए हैं, हेडर बार में संके"
+"तक देखें।"
