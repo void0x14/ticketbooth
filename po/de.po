@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the ticketbooth package.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2023.
 # Nitin Khalia <weblate.scrambled777@simplelogin.com>, 2024.
+# Traladarer <Traladarer@users.noreply.hosted.weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
 "PO-Revision-Date: 2024-02-08 17:01+0000\n"
-"Last-Translator: Nitin Khalia <weblate.scrambled777@simplelogin.com>\n"
+"Last-Translator: Traladarer <Traladarer@users.noreply.hosted.weblate.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/de/>\n"
 "Language: de\n"
@@ -351,7 +352,7 @@ msgstr "Schlagwort"
 
 #: src/ui/dialogs/add_manual.blp:145 src/ui/pages/details_page.blp:188
 msgid "Created by"
-msgstr ""
+msgstr "Erstellt von"
 
 #: src/ui/dialogs/add_manual.blp:153 src/ui/pages/edit_episode_page.blp:87
 msgid "Overview"
