@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
-"PO-Revision-Date: 2024-02-08 17:01+0000\n"
+"PO-Revision-Date: 2024-02-11 09:01+0000\n"
 "Last-Translator: Nitin Khalia <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/hi/>\n"
@@ -66,7 +66,7 @@ msgstr "TMBD पर नए डेटा की जांच करने की 
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:83
 msgid "Last autoupdate date"
-msgstr "अंतिम ऑटो अपडेट तिथि"
+msgstr "अंतिम ऑटो-अपडेट तिथि"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:87
 msgid "Clear cache on exit"
@@ -81,17 +81,17 @@ msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
-"Ticket Booth आपको फिल्मों और TV शो की अपनी निगरानी सूची बनाने, देखे गए "
-"शीर्षकों पर नज़र रखने और नवीनतम रिलीज़ के बारे में जानकारी प्राप्त करने की "
-"अनुमति देता है।"
+"Ticket Booth आपको फिल्में और TV शो की अपनी निगरानी सूची बनाने, देखे गए "
+"शीर्षकों पर नज़र रखने और नवीनतम रिलीज़ के बारे में जानकारी प्राप्त करने देता "
+"है।"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
-"Ticket Booth आपको सामग्री देखने या डाउनलोड करने की अनुमति नहीं देता है। यह "
-"ऐप TMBD API का उपयोग करता है लेकिन TMDB द्वारा समर्थित या प्रमाणित नहीं है।"
+"Ticket Booth आपको सामग्री देखने या डाउनलोड करने नहीं देता है। यह ऐप TMBD API "
+"का उपयोग करता है लेकिन TMDB द्वारा समर्थित या प्रमाणित नहीं है।"
 
 #: src/dialogs/add_manual_dialog.py:89
 msgid "Edit Movie"
@@ -99,7 +99,7 @@ msgstr "फ़िल्म संपादित करें"
 
 #: src/dialogs/add_manual_dialog.py:92
 msgid "Edit TV Series"
-msgstr "टीवी श्रृंखला संपादित करें"
+msgstr "TV श्रृंखला संपादित करें"
 
 #: src/dialogs/add_manual_dialog.py:294
 #, python-brace-format
@@ -218,7 +218,7 @@ msgstr "मेटाडेटा लोड हो रहा है…"
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
-msgstr "हटाएं {title}?"
+msgstr "{title} हटाएं?"
 
 #: src/pages/details_page.py:571
 msgctxt "message dialog body"
@@ -241,12 +241,12 @@ msgstr "_हटाएं"
 #: src/pages/details_page.py:603
 #, python-brace-format
 msgid "Delete {title}"
-msgstr "हटाएं {title}"
+msgstr "{title} हटाएं"
 
 #: src/preferences.py:238
 msgctxt "message dialog heading"
 msgid "No Network"
-msgstr "कोई नेटवर्क नहीं"
+msgstr "नेटवर्क नहीं"
 
 #: src/preferences.py:239
 msgctxt "message dialog body"
@@ -267,7 +267,7 @@ msgstr "कैशे साफ करें"
 #: src/preferences.py:358 src/preferences.py:360
 #, python-brace-format
 msgid "{number} Titles"
-msgstr "{number} टाइटलस"
+msgstr "{number} शीर्षक"
 
 #: src/preferences.py:398
 msgctxt "Background activity title"
@@ -277,7 +277,7 @@ msgstr "सभी फ़िल्में हटाएँ"
 #: src/preferences.py:409
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr "सभी TV श्रृंखला हटाएं"
+msgstr "सभी TV श्रंखलायें हटाएं"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:484
@@ -286,7 +286,7 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
-"Ticket Booth वर्तमान में {total_space:.2f}MB का उपयोग कर रहा है। कुछ स्थान "
+"Ticket Booth वर्तमान में {total_space:.2f} MB का उपयोग कर रहा है। कुछ स्थान "
 "खाली करने के लिए नीचे दिए गए विकल्पों का उपयोग करें।"
 
 #: src/preferences.py:488 src/preferences.py:490
@@ -322,7 +322,7 @@ msgstr "सहेजें"
 #: src/ui/dialogs/add_manual.blp:101 src/ui/dialogs/edit_season.blp:69
 #: src/ui/pages/edit_episode_page.blp:58
 msgid "General"
-msgstr "सामान्य"
+msgstr "जनरल"
 
 #: src/ui/dialogs/add_manual.blp:104 src/ui/dialogs/edit_season.blp:72
 #: src/ui/pages/edit_episode_page.blp:70
@@ -331,7 +331,7 @@ msgstr "शीर्षक (आवश्यक)"
 
 #: src/ui/dialogs/add_manual.blp:110
 msgid "Release Date"
-msgstr "रिलीज़ की तारीख"
+msgstr "रिलीज़ दिनांक"
 
 #: src/ui/dialogs/add_manual.blp:126
 msgid "Genres (comma separated)"
@@ -339,7 +339,7 @@ msgstr "शैलियाँ (अल्पविराम से अलग)"
 
 #: src/ui/dialogs/add_manual.blp:131 src/ui/pages/edit_episode_page.blp:75
 msgid "Runtime (minutes)"
-msgstr "कार्यावधि (मिनट)"
+msgstr "रनटाइम (मिनट)"
 
 #: src/ui/dialogs/add_manual.blp:140
 msgid "Tagline"
@@ -347,7 +347,7 @@ msgstr "टैगलाइन"
 
 #: src/ui/dialogs/add_manual.blp:145 src/ui/pages/details_page.blp:188
 msgid "Created by"
-msgstr "के द्वारा बनाई गई"
+msgstr "द्वारा बनाई गई"
 
 #: src/ui/dialogs/add_manual.blp:153 src/ui/pages/edit_episode_page.blp:87
 msgid "Overview"
@@ -383,7 +383,7 @@ msgstr "उत्पादन में"
 
 #: src/ui/dialogs/add_tmdb.blp:30
 msgid "Search The Movie Database…"
-msgstr "मूवी डेटाबेस खोजें…"
+msgstr "The Movie Database खोजें…"
 
 #: src/ui/dialogs/add_tmdb.blp:40
 msgid "Search For a Title"
@@ -419,7 +419,7 @@ msgstr "एपिसोड जोड़ने के लिए + बटन क�
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr "सामान्य"
+msgstr "जनरल"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
@@ -725,7 +725,7 @@ msgstr "हल्की शैली"
 
 #: src/ui/widgets/theme_switcher.blp:57
 msgid "Dark style"
-msgstr "डार्क शैली"
+msgstr "गहरी शैली"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
@@ -763,7 +763,7 @@ msgstr "स्वचालित अपडेट"
 #: src/widgets/episode_row.py:242
 msgctxt "message dialog body"
 msgid "All changes to this episode will be lost."
-msgstr "इस एपिसोड में सभी परिवर्तन खो जाएंगे।"
+msgstr "इस एपिसोड के सभी परिवर्तन खो जाएंगे।"
 
 #: src/widgets/search_result_row.py:100 src/widgets/search_result_row.py:192
 msgid "Already in your watchlist"
@@ -772,7 +772,7 @@ msgstr "पहले से ही आपकी निगरानी सूच�
 #: src/widgets/season_expander.py:141
 msgctxt "message dialog body"
 msgid "This season contains unsaved metadata."
-msgstr "इस सीज़न में सहेजा न गया मेटाडेटा शामिल है।"
+msgstr "इस सीज़न में न सहेजा गया मेटाडेटा शामिल है।"
 
 #: src/window.py:161
 msgctxt "message dialog heading"
