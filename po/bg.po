@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
-"PO-Revision-Date: 2024-03-24 12:33+0000\n"
+"PO-Revision-Date: 2024-03-31 11:14+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/bg/>\n"
@@ -49,7 +49,7 @@ msgstr "Дали приложението е свалило необходими
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:51
 msgid "View sorting style"
-msgstr "Вижте стила на сортиране"
+msgstr "Показване на стила на сортиране"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:62
 msgid "App color scheme"
