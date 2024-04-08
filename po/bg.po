@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
-"PO-Revision-Date: 2024-03-31 11:14+0000\n"
+"PO-Revision-Date: 2024-04-08 20:35+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/bg/>\n"
@@ -326,7 +326,7 @@ msgstr "Общи"
 #: src/ui/dialogs/add_manual.blp:104 src/ui/dialogs/edit_season.blp:72
 #: src/ui/pages/edit_episode_page.blp:70
 msgid "Title (required)"
-msgstr "Заглавие (задължително)"
+msgstr "Заглавие (задължителен)"
 
 #: src/ui/dialogs/add_manual.blp:110
 msgid "Release Date"
@@ -354,7 +354,7 @@ msgstr "Преглед"
 
 #: src/ui/dialogs/add_manual.blp:170
 msgid "Seasons (required)"
-msgstr "Сезони (задължително)"
+msgstr "Сезони (задължителен)"
 
 #: src/ui/dialogs/add_manual.blp:171
 msgid "Use the + button to add seasons"
@@ -409,7 +409,7 @@ msgstr "Редактиране на сезона"
 
 #: src/ui/dialogs/edit_season.blp:80
 msgid "Episodes (required)"
-msgstr "Епизоди (задължително)"
+msgstr "Епизоди (задължителен)"
 
 #: src/ui/dialogs/edit_season.blp:81
 msgid "Use the + button to add episodes"
@@ -498,7 +498,7 @@ msgstr "Редактиране на епизода"
 
 #: src/ui/pages/edit_episode_page.blp:61
 msgid "Episode Number (required)"
-msgstr "Номер на епизода (задължително)"
+msgstr "Номер на епизода (задължителен)"
 
 #: src/ui/preferences.blp:16 src/ui/views/main_view.blp:85
 msgid "Preferences"
