@@ -7,202 +7,209 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-04-09 15:54+0000\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/ticket-booth/"
+"ticket-booth/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
 msgid "@app_name@"
-msgstr ""
+msgstr "@app_name@"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
-msgstr ""
+msgstr "Pencere genişliği"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
-msgstr ""
+msgstr "Pencere yüksekliği"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
-msgstr ""
+msgstr "Pencere büyültüldü"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
-msgstr ""
+msgstr "Etkin sekme"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
-msgstr ""
+msgstr "Uygulamanın ilk kez çalıştırılma durumunu belirtir"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the app downloaded the required data"
-msgstr ""
+msgstr "Uygulamanın gerekli verileri indirme durumunu belirtir"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:51
 msgid "View sorting style"
-msgstr ""
+msgstr "Sıralama biçemini görüntüle"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:62
 msgid "App color scheme"
-msgstr ""
+msgstr "Uygulama renk şeması"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:66
 msgid "Language used by TMDB results"
-msgstr ""
+msgstr "TMDB sonuçları için kullanılan dil"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:79
 msgid "Frequency to check for new data on TMDB"
-msgstr ""
+msgstr "TMDB yeni verilerini denetleme sıklığı"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:83
 msgid "Last autoupdate date"
-msgstr ""
+msgstr "Son kendiliğinden güncelleme tarihi"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:87
 msgid "Clear cache on exit"
-msgstr ""
+msgstr "Çıkışta önbelleği temizle"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15
 msgid "Keep track of your favorite shows"
-msgstr ""
+msgstr "Gözde programlarınızı takip edin"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:18
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
+"Bilet Gişesi, film ve TV Şovları izleme listesi oluşturmanızı, izlenen "
+"başlıkları takip etmenizi ve en son yayınlar hakkında bilgi bulmanızı sağlar."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
+"Bilet Gişesi içerik izlemenizi ya da indirmenizi sağlamaz. Bu uygulama TMDB "
+"API'sini kullanır ancak TMDB tarafından onaylanmamış veya "
+"sertifikalandırılmamıştır."
 
 #: src/dialogs/add_manual_dialog.py:89
 msgid "Edit Movie"
-msgstr ""
+msgstr "Filmi Düzenle"
 
 #: src/dialogs/add_manual_dialog.py:92
 msgid "Edit TV Series"
-msgstr ""
+msgstr "TV Dizilerini Düzenle"
 
 #: src/dialogs/add_manual_dialog.py:294
 #, python-brace-format
 msgid "Season {num}"
-msgstr ""
+msgstr "{num}. Sezon"
 
 #: src/dialogs/add_manual_dialog.py:334 src/widgets/search_result_row.py:165
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Add {title}"
-msgstr ""
+msgstr "{title} Ekle"
 
 #: src/dialogs/add_manual_dialog.py:340
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Update {title}"
-msgstr ""
+msgstr "{title} Güncelle"
 
 #: src/dialogs/edit_season_dialog.py:44 src/widgets/season_expander.py:43
 msgid "Season"
-msgstr ""
+msgstr "Sezon"
 
 #: src/pages/details_page.py:155 src/pages/details_page.py:229
 #: src/pages/details_page.py:277 src/pages/details_page.py:326
 #: src/pages/details_page.py:447 src/widgets/episode_row.py:114
 #: src/widgets/episode_row.py:137 src/widgets/episode_row.py:291
 msgid "Watched"
-msgstr ""
+msgstr "İzlendi"
 
 #: src/pages/details_page.py:158 src/pages/details_page.py:232
 #: src/pages/details_page.py:280 src/pages/details_page.py:329
 #: src/pages/details_page.py:450 src/widgets/episode_row.py:117
 #: src/widgets/episode_row.py:140 src/widgets/episode_row.py:294
 msgid "Mark as Watched"
-msgstr ""
+msgstr "İzlendi Olarak İmle"
 
 #. TRANSLATORS: {num} is the total number of seasons
 #: src/pages/details_page.py:171
 #, python-brace-format
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{num} Sezon"
+msgstr[1] "{num} Sezon"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:179 src/pages/details_page.py:211
 #, python-brace-format
 msgid "{num} Episode"
 msgid_plural "{num} Episodes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{num} Bölüm"
+msgstr[1] "{num} Bölüm"
 
 #: src/pages/details_page.py:349 src/ui/dialogs/add_manual.blp:188
 msgid "Status"
-msgstr ""
+msgstr "Durum"
 
 #: src/pages/details_page.py:357 src/ui/dialogs/add_manual.blp:192
 msgid "Original Language"
-msgstr ""
+msgstr "Özgün Dil"
 
 #: src/pages/details_page.py:366 src/ui/dialogs/add_manual.blp:197
 msgid "Original Title"
-msgstr ""
+msgstr "Özgün Başlık"
 
 #: src/pages/details_page.py:378
 msgid "Budget"
-msgstr ""
+msgstr "Bütçe"
 
 #: src/pages/details_page.py:388
 msgid "Revenue"
-msgstr ""
+msgstr "Gelir"
 
 #: src/pages/details_page.py:398
 msgid "In Production"
-msgstr ""
+msgstr "Yapım Aşamasında"
 
 #: src/pages/details_page.py:401
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #: src/pages/details_page.py:402
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
 #: src/pages/details_page.py:423 src/widgets/episode_row.py:161
 #, python-brace-format
 msgid "{h}h {m}min"
-msgstr ""
+msgstr "{h}sa {m}dk"
 
 #. TRANSLATORS: {m} is the runtime minutes
 #: src/pages/details_page.py:426 src/widgets/episode_row.py:165
 #, python-brace-format
 msgid "{m}min"
-msgstr ""
+msgstr "{m}dk"
 
 #. TRANSLATORS: {title} is the showed content's title
 #: src/pages/details_page.py:508
 #, python-brace-format
 msgid "Updating {title}"
-msgstr ""
+msgstr "{title} Güncelleniyor"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:515
 #, python-brace-format
 msgid "Update {title}"
-msgstr ""
+msgstr "{title} Güncelle"
 
 #: src/pages/details_page.py:550
 msgid "Loading Metadata…"
-msgstr ""
+msgstr "Üst Veriler Yükleniyor…"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:569 src/widgets/episode_row.py:240
@@ -210,66 +217,66 @@ msgstr ""
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
-msgstr ""
+msgstr "{title} Silinsin Mi?"
 
 #: src/pages/details_page.py:571
 msgctxt "message dialog body"
 msgid "This title will be deleted from your watchlist."
-msgstr ""
+msgstr "Bu başlık izleme listenizden silinecek."
 
 #: src/pages/details_page.py:572 src/widgets/episode_row.py:244
 #: src/widgets/season_expander.py:143
 msgctxt "message dialog action"
 msgid "_Cancel"
-msgstr ""
+msgstr "İ_ptal"
 
 #: src/pages/details_page.py:573 src/widgets/episode_row.py:245
 #: src/widgets/season_expander.py:144
 msgctxt "message dialog action"
 msgid "_Delete"
-msgstr ""
+msgstr "_Sil"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:603
 #, python-brace-format
 msgid "Delete {title}"
-msgstr ""
+msgstr "{title} Sil"
 
 #: src/preferences.py:238
 msgctxt "message dialog heading"
 msgid "No Network"
-msgstr ""
+msgstr "Ağ Yok"
 
 #: src/preferences.py:239
 msgctxt "message dialog body"
 msgid "Connect to the Internet to complete the setup."
-msgstr ""
+msgstr "Kurulumu tamamlamak için İnternete bağlan."
 
 #: src/preferences.py:240 src/window.py:163
 msgctxt "message dialog action"
 msgid "OK"
-msgstr ""
+msgstr "Tamam"
 
 #: src/preferences.py:306
 msgctxt "Background activity title"
 msgid "Clear cache"
-msgstr ""
+msgstr "Önbelleği temizle"
 
 #. TRANSLATORS: {number} is the number of titles
 #: src/preferences.py:358 src/preferences.py:360
 #, python-brace-format
 msgid "{number} Titles"
-msgstr ""
+msgstr "{number} Başlık"
 
 #: src/preferences.py:398
 msgctxt "Background activity title"
 msgid "Delete all movies"
-msgstr ""
+msgstr "Tüm filmleri sil"
 
 #: src/preferences.py:409
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr ""
+msgstr "Tüm TV Dizilerini Sil"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:484
@@ -278,225 +285,227 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
+"Bilet gişesi {total_space:.2f} MB kullanıyor. Biraz yer açmak için aşağıdaki "
+"seçenekleri kullanın."
 
 #: src/preferences.py:488 src/preferences.py:490
 #, python-brace-format
 msgid "{space:.2f} MB occupied"
-msgstr ""
+msgstr "{space:.2f} MB dolu"
 
 #. TRANSLATORS: replace with your name (and an optional email or website)
 #: src/ui/about_window.blp:16
 msgid "translator-credits"
-msgstr ""
+msgstr "Sabri Ünal <yakushabb@gmail.com>"
 
 #: src/ui/dialogs/add_manual.blp:47 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
-msgstr ""
+msgstr "Film"
 
 #: src/ui/dialogs/add_manual.blp:53 src/views/main_view.py:57
 #: src/widgets/search_result_row.py:82
 msgctxt "Category"
 msgid "TV Series"
-msgstr ""
+msgstr "Diziler"
 
 #: src/ui/dialogs/add_manual.blp:61 src/ui/dialogs/edit_season.blp:35
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: src/ui/dialogs/add_manual.blp:67 src/ui/dialogs/edit_season.blp:41
 #: src/ui/pages/edit_episode_page.blp:22
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: src/ui/dialogs/add_manual.blp:101 src/ui/dialogs/edit_season.blp:69
 #: src/ui/pages/edit_episode_page.blp:58
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: src/ui/dialogs/add_manual.blp:104 src/ui/dialogs/edit_season.blp:72
 #: src/ui/pages/edit_episode_page.blp:70
 msgid "Title (required)"
-msgstr ""
+msgstr "Başlık (gerekli)"
 
 #: src/ui/dialogs/add_manual.blp:110
 msgid "Release Date"
-msgstr ""
+msgstr "Yayınlanma Tarihi"
 
 #: src/ui/dialogs/add_manual.blp:126
 msgid "Genres (comma separated)"
-msgstr ""
+msgstr "Türler (virgülle ayrılmış)"
 
 #: src/ui/dialogs/add_manual.blp:131 src/ui/pages/edit_episode_page.blp:75
 msgid "Runtime (minutes)"
-msgstr ""
+msgstr "Yayın Süresi (dakika)"
 
 #: src/ui/dialogs/add_manual.blp:140
 msgid "Tagline"
-msgstr ""
+msgstr "Etiket Satırı"
 
 #: src/ui/dialogs/add_manual.blp:145 src/ui/pages/details_page.blp:188
 msgid "Created by"
-msgstr ""
+msgstr "Oluşturan"
 
 #: src/ui/dialogs/add_manual.blp:153 src/ui/pages/edit_episode_page.blp:87
 msgid "Overview"
-msgstr ""
+msgstr "Genel Görünüm"
 
 #: src/ui/dialogs/add_manual.blp:170
 msgid "Seasons (required)"
-msgstr ""
+msgstr "Sezon (gerekli)"
 
 #: src/ui/dialogs/add_manual.blp:171
 msgid "Use the + button to add seasons"
-msgstr ""
+msgstr "Sezon eklemek için + düğmesini kullanın"
 
 #: src/ui/dialogs/add_manual.blp:176 src/ui/dialogs/edit_season.blp:86
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: src/ui/dialogs/add_manual.blp:185 src/ui/pages/details_page.blp:240
 msgid "Additional Information"
-msgstr ""
+msgstr "Ek Bilgi"
 
 #: src/ui/dialogs/add_manual.blp:202
 msgid "Budget (US$)"
-msgstr ""
+msgstr "Budget (ABD Doları)"
 
 #: src/ui/dialogs/add_manual.blp:212
 msgid "Revenue (US$)"
-msgstr ""
+msgstr "Gelir (ABD Doları)"
 
 #: src/ui/dialogs/add_manual.blp:221
 msgid "In production"
-msgstr ""
+msgstr "Yapım aşamasında"
 
 #: src/ui/dialogs/add_tmdb.blp:30
 msgid "Search The Movie Database…"
-msgstr ""
+msgstr "Film Veritabanında Ara…"
 
 #: src/ui/dialogs/add_tmdb.blp:40
 msgid "Search For a Title"
-msgstr ""
+msgstr "Başlık Ara"
 
 #: src/ui/dialogs/add_tmdb.blp:42
 msgid ""
 "Start typing in the search bar to see a list of matching movies and TV series"
-msgstr ""
+msgstr "Eşleşen film ve dizilerin listesini görmek için arama çubuğuna yazın"
 
 #: src/ui/dialogs/add_tmdb.blp:49
 msgid "No Results Found"
-msgstr ""
+msgstr "Sonuç Bulunamadı"
 
 #: src/ui/dialogs/add_tmdb.blp:51
 msgid "Try a different search"
-msgstr ""
+msgstr "Başka arama deneyin"
 
 #: src/ui/dialogs/edit_season.blp:24
 msgid "Edit Season"
-msgstr ""
+msgstr "Sezonu Düzenle"
 
 #: src/ui/dialogs/edit_season.blp:80
 msgid "Episodes (required)"
-msgstr ""
+msgstr "Bölümler (gerekli)"
 
 #: src/ui/dialogs/edit_season.blp:81
 msgid "Use the + button to add episodes"
-msgstr ""
+msgstr "Bölüm eklemek için + düğmesini kullanın"
 
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Kısayolları Göster"
 
 #: src/ui/gtk/help-overlay.blp:23
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Tercihleri Göster"
 
 #: src/ui/gtk/help-overlay.blp:28
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Çık"
 
 #: src/ui/gtk/help-overlay.blp:34
 msgctxt "shortcut window"
 msgid "Library management"
-msgstr ""
+msgstr "Kitaplık yönetimi"
 
 #: src/ui/gtk/help-overlay.blp:37
 msgctxt "shortcut window"
 msgid "Add title from TMDB"
-msgstr ""
+msgstr "TMDB'den başlık ekle"
 
 #: src/ui/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Add title manually"
-msgstr ""
+msgstr "Başlığı elle ekle"
 
 #: src/ui/gtk/help-overlay.blp:46
 msgctxt "shortcut window"
 msgid "Refresh library"
-msgstr ""
+msgstr "Kütüphaneyi yenile"
 
 #: src/ui/pages/details_page.blp:29 src/ui/views/main_view.blp:71
 msgid "Main Menu"
-msgstr ""
+msgstr "Ana Menü"
 
 #: src/ui/pages/details_page.blp:126
 msgid "Update Metadata"
-msgstr ""
+msgstr "Meta Verileri Güncelle"
 
 #: src/ui/pages/details_page.blp:136 src/ui/widgets/episode_row.blp:88
 #: src/ui/widgets/season_expander.blp:42
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: src/ui/pages/details_page.blp:146
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: src/ui/pages/details_page.blp:166
 msgid "Description"
-msgstr ""
+msgstr "Açıklama"
 
 #: src/ui/pages/details_page.blp:215
 msgid "Seasons"
-msgstr ""
+msgstr "Sezon"
 
 #: src/ui/pages/details_page.blp:314 src/ui/views/main_view.blp:162
 msgid "_Preferences"
-msgstr ""
+msgstr "_Tercihler"
 
 #: src/ui/pages/details_page.blp:319 src/ui/views/main_view.blp:167
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klavye Kısayolları"
 
 #: src/ui/pages/details_page.blp:324 src/ui/views/main_view.blp:172
 msgid "_About Ticket Booth"
-msgstr ""
+msgstr "Bilet Gişesi _Hakkında"
 
 #: src/ui/pages/edit_episode_page.blp:12
 msgid "Edit Episode"
-msgstr ""
+msgstr "Bölümü Düzenle"
 
 #: src/ui/pages/edit_episode_page.blp:61
 msgid "Episode Number (required)"
-msgstr ""
+msgstr "Bölüm Numarası (gerekli)"
 
 #: src/ui/preferences.blp:16 src/ui/views/main_view.blp:85
 msgid "Preferences"
-msgstr ""
+msgstr "Tercihler"
 
 #: src/ui/preferences.blp:19
 msgctxt "preferences"
 msgid "Optional Download"
-msgstr ""
+msgstr "İsteğe Bağlı İndirme"
 
 #: src/ui/preferences.blp:20
 msgctxt "preferences"
@@ -505,17 +514,20 @@ msgid ""
 "setup could not retrieve the data automatically and thus offline mode has "
 "been activated. It will remain active until the setup is completed."
 msgstr ""
+"Tam deneyim için 15 KB'lık bir indirme gerekli. İlk kurulum verileri "
+"kendiliğinden alamadı ve bu nedenle çevrim dışı kip etkinleştirildi. Bu kip, "
+"kurulum tamamlanana kadar etkin olacak."
 
 #. TRANSLATORS: When clicked, it completes the initial setup by downloading the optional data.
 #: src/ui/preferences.blp:24
 msgctxt "preferences"
 msgid "Complete Setup"
-msgstr ""
+msgstr "Kurulumu Tamamla"
 
 #: src/ui/preferences.blp:35
 msgctxt "preferences"
 msgid "Offline Mode"
-msgstr ""
+msgstr "Çevrim Dışı Kip"
 
 #: src/ui/preferences.blp:36
 msgctxt "preferences"
@@ -524,16 +536,19 @@ msgid ""
 "some features that require the Internet and/or access to third party APIs "
 "will not be available."
 msgstr ""
+"Bilet Gişesi tamamen çevrim dışı çalışabilir. Bu kipte çalıştırmayı "
+"seçerseniz, İnternet ve/veya üçüncü taraf API'lerine erişim gerektiren "
+"özellikler kullanılamaz."
 
 #: src/ui/preferences.blp:39
 msgctxt "preferences"
 msgid "Enable Offline Mode"
-msgstr ""
+msgstr "Çevrim Dışı Kipi Etkinleştir"
 
 #: src/ui/preferences.blp:44
 msgctxt "preferences"
 msgid "The Movie Database (TMDB)"
-msgstr ""
+msgstr "Film Veritabanı (TMDB)"
 
 #: src/ui/preferences.blp:45
 msgctxt "preferences"
@@ -546,165 +561,171 @@ msgid ""
 "to TMDB</a>. Additionally, an automatic update is performed on a frequency "
 "of your choosing."
 msgstr ""
+"TMDB çoğu içerik için yerelleştirilmiş üst veri sağlar. Bilet Gişesi bu "
+"verileri tercih ettiğiniz dilde indirir. Olmaması durumunda, ABD İngilizcesi "
+"kullanılır, o da olmazsa içeriğin özgün diline geri dönülür. Her ikisi de "
+"yoksa boş dize döner. Lütfen <a href='https://www.themoviedb.org/bible/"
+"new_content'>TMDB'ye katkıda</a> bulunmayı ihmal etmeyin. Ek olarak, "
+"seçtiğiniz sıklıkta kendiliğinden güncellenir."
 
 #: src/ui/preferences.blp:48
 msgctxt "preferences"
 msgid "TMDB Results Language"
-msgstr ""
+msgstr "TMDB Sonuç Dili"
 
 #: src/ui/preferences.blp:53
 msgctxt "preferences"
 msgid "Update Frequency"
-msgstr ""
+msgstr "Güncelleme Sıklığı"
 
 #: src/ui/preferences.blp:54
 msgctxt "preferences"
 msgid "Restart Ticket Booth after changing"
-msgstr ""
+msgstr "Değiştirdikten sonra Bilet Gişesini yeniden başlat"
 
 #: src/ui/preferences.blp:57
 msgctxt "preferences"
 msgid "Never"
-msgstr ""
+msgstr "Asla"
 
 #: src/ui/preferences.blp:58
 msgctxt "preferences"
 msgid "Daily"
-msgstr ""
+msgstr "Günlük"
 
 #: src/ui/preferences.blp:59
 msgctxt "preferences"
 msgid "Weekly"
-msgstr ""
+msgstr "Haftalık"
 
 #: src/ui/preferences.blp:60
 msgctxt "preferences"
 msgid "Monthly"
-msgstr ""
+msgstr "Aylık"
 
 #: src/ui/preferences.blp:67
 msgctxt "preferences"
 msgid "Housekeeping"
-msgstr ""
+msgstr "Temizlik"
 
 #: src/ui/preferences.blp:71
 msgctxt "preferences"
 msgid "Clear Cache on Exit"
-msgstr ""
+msgstr "Çıkışta Önbelleği Temizle"
 
 #: src/ui/preferences.blp:75
 msgctxt "preferences"
 msgid "Clear Cached Search Data"
-msgstr ""
+msgstr "Önbelleklenmiş Arama Verilerini Temizle"
 
 #: src/ui/preferences.blp:85
 msgctxt "preferences"
 msgid "Clear Data"
-msgstr ""
+msgstr "Verileri Temizle"
 
 #: src/ui/views/content_view.blp:14
 msgid "Your Watchlist Is Empty"
-msgstr ""
+msgstr "İzleme Listeniz Boş"
 
 #: src/ui/views/content_view.blp:15
 msgid "Add content with the + button."
-msgstr ""
+msgstr "+ düğmesi ile içerik ekleyin."
 
 #: src/ui/views/content_view.blp:98
 msgid "Your Watchlist"
-msgstr ""
+msgstr "İzleme Listeniz"
 
 #: src/ui/views/first_run_view.blp:56
 msgid "Use Offline Mode"
-msgstr ""
+msgstr "Çevrim Dışı Kipi Kullan"
 
 #: src/ui/views/first_run_view.blp:62
 msgid "Try again on next run"
-msgstr ""
+msgstr "Sonraki çalıştırmada tekrar dene"
 
 #: src/ui/views/main_view.blp:63
 msgid "Add a title to your library"
-msgstr ""
+msgstr "Kitaplığınıza başlık ekleyin"
 
 #: src/ui/views/main_view.blp:84
 msgid "Offline Mode Enabled"
-msgstr ""
+msgstr "Çevrim Dışı Kip Etkin"
 
 #: src/ui/views/main_view.blp:115
 msgid "_Sorting"
-msgstr ""
+msgstr "_Sıralama"
 
 #: src/ui/views/main_view.blp:118
 msgid "A-Z"
-msgstr ""
+msgstr "A-Z"
 
 #: src/ui/views/main_view.blp:124
 msgid "Z-A"
-msgstr ""
+msgstr "Z-A"
 
 #: src/ui/views/main_view.blp:130
 msgid "Date added (newest first)"
-msgstr ""
+msgstr "Eklenme tarihi (yeniden > eskiye)"
 
 #: src/ui/views/main_view.blp:136
 msgid "Date added (oldest first)"
-msgstr ""
+msgstr "Eklenme tarihi (eskiden > yeniye)"
 
 #: src/ui/views/main_view.blp:142
 msgid "Release date (newest first)"
-msgstr ""
+msgstr "Yayın tarihi (yeniden > eskiye)"
 
 #: src/ui/views/main_view.blp:148
 msgid "Release date (oldest first)"
-msgstr ""
+msgstr "Yayın tarihi (eskiden > yeniye)"
 
 #: src/ui/views/main_view.blp:155
 msgid "_Refresh"
-msgstr ""
+msgstr "_Yenile"
 
 #: src/ui/views/main_view.blp:180
 msgid "From The Movie Database (TMDB)"
-msgstr ""
+msgstr "Film Veritabanından (TMDB)"
 
 #: src/ui/views/main_view.blp:185
 msgid "Manually"
-msgstr ""
+msgstr "Elle"
 
 #: src/ui/widgets/background_indicator.blp:13
 msgid "Background Activities"
-msgstr ""
+msgstr "Arka Plan Etkinlikleri"
 
 #: src/ui/widgets/background_indicator.blp:37
 msgid "No Background Activities"
-msgstr ""
+msgstr "Arka Plan Etkinliği Yok"
 
 #: src/ui/widgets/image_selector.blp:26
 msgid "Edit poster"
-msgstr ""
+msgstr "Posteri düzenle"
 
 #: src/ui/widgets/image_selector.blp:44
 msgid "Delete poster"
-msgstr ""
+msgstr "Posteri sil"
 
 #: src/ui/widgets/search_result_row.blp:90
 msgid "Add to watchlist"
-msgstr ""
+msgstr "İzleme listesine ekle"
 
 #: src/ui/widgets/theme_switcher.blp:29
 msgid "Follow system style"
-msgstr ""
+msgstr "Sistem biçemini izle"
 
 #: src/ui/widgets/theme_switcher.blp:43
 msgid "Light style"
-msgstr ""
+msgstr "Açık biçem"
 
 #: src/ui/widgets/theme_switcher.blp:57
 msgid "Dark style"
-msgstr ""
+msgstr "Koyu biçem"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
-msgstr ""
+msgstr "Ağ Bekleniyor…"
 
 #: src/views/first_run_view.py:103
 msgid ""
@@ -712,44 +733,47 @@ msgid ""
 "are not connected to the Internet or don't want to wait, you can skip this "
 "step and continue offline without some features."
 msgstr ""
+"Tam bir deneyim için 15 KB'lık bir indirme gerekli. Ancak, internete bağlı "
+"değilseniz ya da beklemek istemiyorsanız, bu adımı atlayabilir ve bazı "
+"özellikler olmadan çevrim dışı olarak devam edebilirsiniz."
 
 #: src/views/first_run_view.py:107
 msgid "Getting things ready…"
-msgstr ""
+msgstr "Her şey hazırlanıyor…"
 
 #: src/views/first_run_view.py:108
 msgid "Downloading data"
-msgstr ""
+msgstr "Veriler indiriliyor"
 
 #: src/views/main_view.py:51
 msgctxt "Category"
 msgid "Movies"
-msgstr ""
+msgstr "Filmler"
 
 #: src/views/main_view.py:135 src/views/main_view.py:145
 #: src/views/main_view.py:155
 msgctxt "Background activity title"
 msgid "Automatic update"
-msgstr ""
+msgstr "Kendiliğinden Güncelle"
 
 #: src/widgets/episode_row.py:242
 msgctxt "message dialog body"
 msgid "All changes to this episode will be lost."
-msgstr ""
+msgstr "Bu bölümdeki tüm değişiklikler kaybolacak."
 
 #: src/widgets/search_result_row.py:100 src/widgets/search_result_row.py:192
 msgid "Already in your watchlist"
-msgstr ""
+msgstr "Zaten izleme listenizde"
 
 #: src/widgets/season_expander.py:141
 msgctxt "message dialog body"
 msgid "This season contains unsaved metadata."
-msgstr ""
+msgstr "Bu sezon kaydedilmemiş üst veriler içerir."
 
 #: src/window.py:161
 msgctxt "message dialog heading"
 msgid "Background Activies Running"
-msgstr ""
+msgstr "Arka Plan Etkinlikleri Çalışıyor"
 
 #: src/window.py:162
 msgctxt "message dialog body"
@@ -758,3 +782,6 @@ msgid ""
 "before exiting. Look for the indicator in the header bar to check when they "
 "are finished."
 msgstr ""
+"Kimi etkinlikler arka planda çalışır ve çıkmadan önce tamamlanması "
+"gerekiyor. Ne zaman bittiklerini denetlemek için başlık çubuğundaki "
+"göstergeye bakın."
