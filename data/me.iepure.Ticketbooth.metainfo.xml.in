@@ -14,6 +14,9 @@ SPDX-License-Identifier: CC0-1.0
 	<launchable type="desktop-id">@app_id@.desktop</launchable>
 	<summary>Keep track of your favorite shows</summary>
 	<developer_name translate="no">Alessandro Iepure</developer_name>
+	<developer id="me.iepure">
+		<name translate="no">Alessandro Iepure</name>
+	</developer>
 	<description>
 		<p>Ticket Booth allows you to build your watchlist of movies and TV Shows, keep track of
 			watched titles, and find information about the latest releases.</p>
