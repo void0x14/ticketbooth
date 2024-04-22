@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
-"PO-Revision-Date: 2024-03-28 20:01+0000\n"
+"PO-Revision-Date: 2024-04-23 06:07+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/hi/>\n"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: src/dialogs/add_manual_dialog.py:89
 msgid "Edit Movie"
-msgstr "फ़िल्म संपादित करें"
+msgstr "फिल्म संपादित करें"
 
 #: src/dialogs/add_manual_dialog.py:92
 msgid "Edit TV Series"
@@ -218,12 +218,12 @@ msgstr "मेटाडेटा लोड हो रहा है…"
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
-msgstr "{title} हटाएं?"
+msgstr "{title} मिटाएं?"
 
 #: src/pages/details_page.py:571
 msgctxt "message dialog body"
 msgid "This title will be deleted from your watchlist."
-msgstr "यह शीर्षक आपकी निगरानी सूची से हटा दिया जाएगा।"
+msgstr "यह शीर्षक आपकी निगरानी सूची से मिटा दिया जाएगा।"
 
 #: src/pages/details_page.py:572 src/widgets/episode_row.py:244
 #: src/widgets/season_expander.py:143
@@ -235,13 +235,13 @@ msgstr "रद्द (_C)"
 #: src/widgets/season_expander.py:144
 msgctxt "message dialog action"
 msgid "_Delete"
-msgstr "हटाएं (_D)"
+msgstr "मिटाएं (_D)"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:603
 #, python-brace-format
 msgid "Delete {title}"
-msgstr "{title} हटाएं"
+msgstr "{title} मिटाएं"
 
 #: src/preferences.py:238
 msgctxt "message dialog heading"
@@ -272,12 +272,12 @@ msgstr "{number} शीर्षक"
 #: src/preferences.py:398
 msgctxt "Background activity title"
 msgid "Delete all movies"
-msgstr "सभी फ़िल्में हटाएँ"
+msgstr "सभी फिल्में मिटाएं"
 
 #: src/preferences.py:409
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr "सभी TV श्रंखलायें हटाएं"
+msgstr "सभी TV श्रंखलायें मिटाएं"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:484
@@ -302,7 +302,7 @@ msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 #: src/ui/dialogs/add_manual.blp:47 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
-msgstr "फ़िल्म"
+msgstr "फिल्म"
 
 #: src/ui/dialogs/add_manual.blp:53 src/views/main_view.py:57
 #: src/widgets/search_result_row.py:82
@@ -312,7 +312,7 @@ msgstr "TV श्रृंखला"
 
 #: src/ui/dialogs/add_manual.blp:61 src/ui/dialogs/edit_season.blp:35
 msgid "Cancel"
-msgstr "रद्द"
+msgstr "रद्द करें"
 
 #: src/ui/dialogs/add_manual.blp:67 src/ui/dialogs/edit_season.blp:41
 #: src/ui/pages/edit_episode_page.blp:22
@@ -322,7 +322,7 @@ msgstr "सहेजें"
 #: src/ui/dialogs/add_manual.blp:101 src/ui/dialogs/edit_season.blp:69
 #: src/ui/pages/edit_episode_page.blp:58
 msgid "General"
-msgstr "जनरल"
+msgstr "सामान्य"
 
 #: src/ui/dialogs/add_manual.blp:104 src/ui/dialogs/edit_season.blp:72
 #: src/ui/pages/edit_episode_page.blp:70
@@ -335,7 +335,7 @@ msgstr "रिलीज़ दिनांक"
 
 #: src/ui/dialogs/add_manual.blp:126
 msgid "Genres (comma separated)"
-msgstr "शैलियाँ (अल्पविराम से अलग)"
+msgstr "शैलियां (अल्पविराम से अलग)"
 
 #: src/ui/dialogs/add_manual.blp:131 src/ui/pages/edit_episode_page.blp:75
 msgid "Runtime (minutes)"
@@ -347,7 +347,7 @@ msgstr "टैगलाइन"
 
 #: src/ui/dialogs/add_manual.blp:145 src/ui/pages/details_page.blp:188
 msgid "Created by"
-msgstr "द्वारा बनाई गई"
+msgstr "इनके द्वारा बनाई गई"
 
 #: src/ui/dialogs/add_manual.blp:153 src/ui/pages/edit_episode_page.blp:87
 msgid "Overview"
@@ -419,17 +419,17 @@ msgstr "एपिसोड जोड़ने के लिए + बटन क�
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr "जनरल"
+msgstr "सामान्य"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "शॉर्टकट दिखाएँ"
+msgstr "शॉर्टकट दिखाएं"
 
 #: src/ui/gtk/help-overlay.blp:23
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "प्राथमिकताएँ दिखाएँ"
+msgstr "प्राथमिकताएं दिखाएं"
 
 #: src/ui/gtk/help-overlay.blp:28
 msgctxt "shortcut window"
@@ -458,7 +458,7 @@ msgstr "लाइब्रेरी ताज़ा करें"
 
 #: src/ui/pages/details_page.blp:29 src/ui/views/main_view.blp:71
 msgid "Main Menu"
-msgstr "मुख्य मेन्यू"
+msgstr "मुख्य मेनू"
 
 #: src/ui/pages/details_page.blp:126
 msgid "Update Metadata"
@@ -471,7 +471,7 @@ msgstr "संपादित करें"
 
 #: src/ui/pages/details_page.blp:146
 msgid "Delete"
-msgstr "हटाएं"
+msgstr "मिटाएं"
 
 #: src/ui/pages/details_page.blp:166
 msgid "Description"
@@ -483,7 +483,7 @@ msgstr "सीजंस"
 
 #: src/ui/pages/details_page.blp:314 src/ui/views/main_view.blp:162
 msgid "_Preferences"
-msgstr "प्राथमिकताएँ (_P)"
+msgstr "प्राथमिकताएं (_P)"
 
 #: src/ui/pages/details_page.blp:319 src/ui/views/main_view.blp:167
 msgid "_Keyboard Shortcuts"
@@ -503,7 +503,7 @@ msgstr "एपिसोड नंबर (आवश्यक)"
 
 #: src/ui/preferences.blp:16 src/ui/views/main_view.blp:85
 msgid "Preferences"
-msgstr "प्राथमिकताएँ"
+msgstr "प्राथमिकताएं"
 
 #: src/ui/preferences.blp:19
 msgctxt "preferences"
@@ -540,7 +540,7 @@ msgid ""
 "will not be available."
 msgstr ""
 "Ticket Booth पूरी तरह से ऑफ़लाइन काम कर सकता है। यदि आप इस मोड में चलना चुनते"
-" हैं, तो कुछ सुविधाएँ जिनके लिए इंटरनेट और/या तृतीय पक्ष API तक पहुंच की "
+" हैं, तो कुछ सुविधाएं जिनके लिए इंटरनेट और/या तृतीय पक्ष API तक पहुंच की "
 "आवश्यकता होती है, उपलब्ध नहीं होंगी।"
 
 #: src/ui/preferences.blp:39
@@ -610,7 +610,7 @@ msgstr "मासिक"
 #: src/ui/preferences.blp:67
 msgctxt "preferences"
 msgid "Housekeeping"
-msgstr "हाउसकीपिंग"
+msgstr "गृह व्यवस्था"
 
 #: src/ui/preferences.blp:71
 msgctxt "preferences"
@@ -657,7 +657,7 @@ msgstr "ऑफ़लाइन मोड सक्षम"
 
 #: src/ui/views/main_view.blp:115
 msgid "_Sorting"
-msgstr "छँटाई (_S)"
+msgstr "छंटाई (_S)"
 
 #: src/ui/views/main_view.blp:118
 msgid "A-Z"
@@ -697,11 +697,11 @@ msgstr "मैन्युअल"
 
 #: src/ui/widgets/background_indicator.blp:13
 msgid "Background Activities"
-msgstr "पृष्ठभूमि गतिविधियाँ"
+msgstr "पृष्ठभूमि गतिविधियां"
 
 #: src/ui/widgets/background_indicator.blp:37
 msgid "No Background Activities"
-msgstr "कोई पृष्ठभूमि गतिविधियाँ नहीं"
+msgstr "कोई पृष्ठभूमि गतिविधियां नहीं"
 
 #: src/ui/widgets/image_selector.blp:26
 msgid "Edit poster"
@@ -709,7 +709,7 @@ msgstr "पोस्टर संपादन"
 
 #: src/ui/widgets/image_selector.blp:44
 msgid "Delete poster"
-msgstr "पोस्टर हटाएं"
+msgstr "पोस्टर मिटाएं"
 
 #: src/ui/widgets/search_result_row.blp:90
 msgid "Add to watchlist"
@@ -752,7 +752,7 @@ msgstr "डेटा डाउनलोड हो रहा है"
 #: src/views/main_view.py:51
 msgctxt "Category"
 msgid "Movies"
-msgstr "फ़िल्में"
+msgstr "फिल्में"
 
 #: src/views/main_view.py:135 src/views/main_view.py:145
 #: src/views/main_view.py:155
@@ -777,7 +777,7 @@ msgstr "इस सीज़न में न सहेजा गया मेट
 #: src/window.py:161
 msgctxt "message dialog heading"
 msgid "Background Activies Running"
-msgstr "पृष्ठभूमि गतिविधियाँ चल रही हैं"
+msgstr "पृष्ठभूमि गतिविधियां चल रही हैं"
 
 #: src/window.py:162
 msgctxt "message dialog body"
@@ -786,6 +786,6 @@ msgid ""
 "before exiting. Look for the indicator in the header bar to check when they "
 "are finished."
 msgstr ""
-"कुछ गतिविधियाँ पृष्ठभूमि में चल रही हैं और बाहर निकलने से पहले उन्हें पूरा "
+"कुछ गतिविधियां पृष्ठभूमि में चल रही हैं और बाहर निकलने से पहले उन्हें पूरा "
 "करना आवश्यक है। यह जांचने के लिए कि वे कब समाप्त हो गए हैं, हेडर बार में संके"
 "तक देखें।"
