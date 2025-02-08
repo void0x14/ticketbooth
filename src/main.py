@@ -23,7 +23,7 @@ from gi.repository import Adw, Gio, GObject, Gtk
 
 from . import shared  # type: ignore
 from .models.search_result_model import SearchResultModel
-from .preferences import PreferencesWindow
+from .preferences import PreferencesDialog
 from .views.content_view import ContentView
 from .views.first_run_view import FirstRunView
 from .views.main_view import MainView
@@ -98,27 +98,25 @@ class TicketboothApplication(Adw.Application):
     def on_about_action(self, widget: Gtk.Widget, user_data: object | None):
         """Callback for the app.about action."""
 
-        builder = Gtk.Builder.new_from_resource(shared.PREFIX + '/ui/about_window.ui')
-        about_window = builder.get_object('about_window')
-        about_window.set_application_name(shared.APP_NAME)
-        about_window.set_application_icon(shared.APP_ID)
-        about_window.set_version(shared.VERSION)
-        about_window.set_transient_for(self.props.active_window)
-        about_window.add_credit_section('Contributors', [
+        builder = Gtk.Builder.new_from_resource(shared.PREFIX + '/ui/about_dialog.ui')
+        about_dialog = builder.get_object('about_dialog')
+        about_dialog.set_application_name(shared.APP_NAME)
+        about_dialog.set_application_icon(shared.APP_ID)
+        about_dialog.set_version(shared.VERSION)
+        about_dialog.add_credit_section('Contributors', [
             # your name <your email>
             # your name website
         ])
-        about_window.add_legal_section('Movie and TV Series Metadata', 'This product uses the TMDB API but is not endorsed or certified by TMDB.', Gtk.License.CUSTOM, 'All rights belong to their respective owners.')
+        about_dialog.add_legal_section('Movie and TV Series Metadata', 'This product uses the TMDB API but is not endorsed or certified by TMDB.', Gtk.License.CUSTOM, 'All rights belong to their respective owners.')
         logging.debug('About window open')
-        about_window.present()
+        about_dialog.present(self.props.active_window)
 
     def on_preferences_action(self, widget: Gtk.Widget, user_data: object | None):
         """Callback for the app.preferences action."""
 
-        pref_window = PreferencesWindow()
-        pref_window.set_transient_for(self.props.active_window)
-        logging.debug('Preferences window open')
-        pref_window.present()
+        pref_dialog = PreferencesDialog()
+        logging.debug('Preferences dialog open')
+        pref_dialog.present(self.props.active_window)
 
     def create_action(self, name: Gtk.Widget, callback: Callable, shortcuts=None):
         """
