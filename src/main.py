@@ -104,7 +104,10 @@ class TicketboothApplication(Adw.Application):
         about_window.set_application_icon(shared.APP_ID)
         about_window.set_version(shared.VERSION)
         about_window.set_transient_for(self.props.active_window)
-        about_window.add_credit_section('Contributors', [])
+        about_window.add_credit_section('Contributors', [
+            # your name <your email>
+            # your name website
+        ])
         about_window.add_legal_section('Movie and TV Series Metadata', 'This product uses the TMDB API but is not endorsed or certified by TMDB.', Gtk.License.CUSTOM, 'All rights belong to their respective owners.')
         logging.debug('About window open')
         about_window.present()
