@@ -1,17 +1,14 @@
 // Copyright (C) 2022 - 2023 Alessandro Iepure
-//
+// 
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
 template $EditEpisodeNavigationPage: Adw.NavigationPage {
-
   map => $_on_map();
-
   title: _("Edit Episode");
-  child: Adw.ToolbarView {
 
+  child: Adw.ToolbarView {
     [top]
     Adw.HeaderBar {
       show-end-title-buttons: false;
@@ -20,66 +17,53 @@ template $EditEpisodeNavigationPage: Adw.NavigationPage {
       [end]
       Button _save_btn {
         label: _("Save");
-        sensitive: bind $_enable_save(_title_entry.text, (_episode_spin_row.value) as <int>) as <bool>;
+        sensitive: bind $_enable_save(_title_entry.text,(_episode_spin_row.value) as <int>) as <bool>;
         clicked => $_on_save_btn_clicked();
 
-        styles ["suggested-action"]
+        styles [
+          "suggested-action"
+        ]
       }
     }
 
     content: ScrolledWindow {
-      vexpand: true;
-      propagate-natural-width: true;
-
       Box {
         orientation: vertical;
-        vexpand: true;
         margin-start: 20;
         margin-end: 20;
         margin-bottom: 20;
 
-        Box {
-          orientation: horizontal;
-          margin-top: 20;
-          margin-bottom: 20;
-          spacing: 20;
+        $ImageSelector _still {
+          content-fit: cover;
+        }
 
-          $ImageSelector _still {
-            content-fit: cover;
+        Adw.PreferencesGroup {
+          title: _("General");
+          margin-bottom: 20;
+
+          Adw.SpinRow _episode_spin_row {
+            title: _("Episode Number (required)");
+
+            adjustment: Adjustment {
+              lower: 0;
+              upper: 900;
+              step-increment: 1;
+            };
           }
 
-          Box {
-            orientation: vertical;
-            spacing: 6;
-            valign: start;
-            width-request: 300;
+          Adw.EntryRow _title_entry {
+            title: _("Title (required)");
+            use-markup: true;
+          }
 
-            Adw.PreferencesGroup {
-              title: _("General");
+          Adw.SpinRow _runtime_spin_row {
+            title: _("Runtime (minutes)");
 
-              Adw.SpinRow _episode_spin_row {
-                title: _("Episode Number (required)");
-                adjustment: Adjustment {
-                  lower: 0;
-                  upper: 900;
-                  step-increment: 1;
-                };
-              }
-
-              Adw.EntryRow _title_entry {
-                title: _("Title (required)");
-                use-markup: true;
-              }
-
-              Adw.SpinRow _runtime_spin_row {
-                title: _("Runtime (minutes)");
-                adjustment: Adjustment {
-                  lower: 0;
-                  upper: 900;
-                  step-increment: 1;
-                };
-              }
-            }
+            adjustment: Adjustment {
+              lower: 0;
+              upper: 900;
+              step-increment: 1;
+            };
           }
         }
 
@@ -94,7 +78,9 @@ template $EditEpisodeNavigationPage: Adw.NavigationPage {
             left-margin: 12;
             wrap-mode: word;
 
-            styles ["card"]
+            styles [
+              "card"
+            ]
           }
         }
       }

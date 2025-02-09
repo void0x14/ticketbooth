@@ -13,7 +13,7 @@ from ..widgets.episode_row import EpisodeRow
 
 
 @Gtk.Template(resource_path=shared.PREFIX + '/ui/dialogs/edit_season.ui')
-class EditSeasonDialog(Adw.Window):
+class EditSeasonDialog(Adw.Dialog):
     """
     This class represents the window to edit a season.
 
@@ -46,7 +46,7 @@ class EditSeasonDialog(Adw.Window):
                  episodes: List[tuple] | None = None):
 
         super().__init__()
-        self.set_transient_for(parent)
+        self.parent = parent
 
         self._title = title
         self._poster_uri = poster_uri

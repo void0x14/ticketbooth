@@ -12,9 +12,9 @@ from ..providers.tmdb_provider import TMDBProvider
 
 
 @Gtk.Template(resource_path=shared.PREFIX + '/ui/dialogs/add_tmdb.ui')
-class AddTMDBDialog(Adw.Window):
+class AddTMDBDialog(Adw.Dialog):
     """
-    This class represents the window used to search for movies and tv-series on TMDB.
+    This class represents the dialog used to search for movies and tv-series on TMDB.
 
     Properties:
         None
@@ -32,9 +32,8 @@ class AddTMDBDialog(Adw.Window):
     _stack = Gtk.Template.Child()
     _model = Gtk.Template.Child()
 
-    def __init__(self, parent: Gtk.Window):
+    def __init__(self):
         super().__init__()
-        self.set_transient_for(parent)
 
     @Gtk.Template.Callback('_on_searchentry_search_changed')
     def _on_searchentry_search_changed(self, user_data: object | None) -> None:

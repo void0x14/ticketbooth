@@ -6,14 +6,18 @@ using Gtk 4.0;
 using Adw 1;
 
 template $ImageSelector: Adw.Bin {
+  halign: center;
 
   map => $_on_map();
 
   Overlay {
+    height-request: 250;
+    valign: center;
+    halign: center;
+
     [overlay]
-    Spinner _spinner {
-      margin-start: 72;
-      margin-end: 72;
+    Adw.Spinner _spinner {
+      visible: false;
     }
 
     Overlay {
@@ -53,7 +57,6 @@ template $ImageSelector: Adw.Bin {
       }
 
       Picture _poster_picture {
-        height-request: 200;
         content-fit: bind template.content-fit;
 
         styles ["poster"]

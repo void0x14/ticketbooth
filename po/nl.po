@@ -1,216 +1,215 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the ticketbooth package.
-# Juliano Dorigão <jdorigao@gmail.com>, 2023.
-# ssantos <ssantos@web.de>, 2023.
+# Heimen Stoffels <vistausss@fastmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-02 19:11+0200\n"
-"PO-Revision-Date: 2023-12-19 16:08+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/ticket-booth/"
-"ticket-booth/pt/>\n"
-"Language: pt\n"
+"PO-Revision-Date: 2024-04-28 18:07+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/ticket-booth/"
+"ticket-booth/nl/>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
 msgid "@app_name@"
-msgstr "@app_name@"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
-msgstr "Largura da janela"
+msgstr "Vensterbreedte"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
-msgstr "Altura da janela"
+msgstr "Vensterhoogte"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
-msgstr "Janela maximizada"
+msgstr "Venster maximaliseren"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
-msgstr "Guia ativa"
+msgstr "Actief tabblad"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
-msgstr "Especifica se o aplicativo é executado pela primeira vez"
+msgstr "Geef aan of de toepassing voor de eerste keer opstart"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the app downloaded the required data"
-msgstr "Especifica se o aplicativo baixou os dados necessários"
+msgstr "Geef aan of de toepassing de vereiste gegevens heeft opgehaald"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:51
 msgid "View sorting style"
-msgstr "Ver estilo de classificação"
+msgstr "Sorteervolgorde"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:62
 msgid "App color scheme"
-msgstr "Esquema de cores do aplicativo"
+msgstr "Thema"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:66
 msgid "Language used by TMDB results"
-msgstr "Linguagem usada pelos resultados do TMDB"
+msgstr "Taal van TMDB-resultaten"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:79
 msgid "Frequency to check for new data on TMDB"
-msgstr "Frequência para verificar novos dados no TMDB"
+msgstr "Hoe vaak de TMDB-gegevens moeten worden vernieuwd"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:83
 msgid "Last autoupdate date"
-msgstr "Data da última atualização automática"
+msgstr "Recentste automatische bijwerking"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:87
 msgid "Clear cache on exit"
-msgstr "Limpar cache ao sair"
+msgstr "Cache wissen na afsluiten"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15
 msgid "Keep track of your favorite shows"
-msgstr "Acompanhe seus programas favoritos"
+msgstr "Houd je favoriete series in de gaten"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:18
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
-"O Ticket Booth permite que você crie sua lista de filmes e programas de TV, "
-"acompanhe os títulos assistidos e encontre informações sobre os últimos "
-"lançamentos."
+"Met Ticket Booth kun je een kijklijst met series en films aanleggen, ze "
+"volgen en meer informatie zoeken over de nieuwste afleveringen."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
-"O Ticket Booth não permite que você assista ou baixe conteúdo. Este "
-"aplicativo usa a API TMDB, mas não é endossado ou certificado pelo TMDB."
+"Let op: met Ticket Booth kun je geen inhoud bekijken of downloaden. Deze "
+"toepassing maakt gebruik van de TMDB-api, maar wordt niet gemaakt of erkend "
+"door TMDB."
 
 #: src/dialogs/add_manual_dialog.py:89
 msgid "Edit Movie"
-msgstr "Editar filme"
+msgstr "Film bewerken"
 
 #: src/dialogs/add_manual_dialog.py:92
 msgid "Edit TV Series"
-msgstr "Editar série de TV"
+msgstr "Tv-serie bewerken"
 
 #: src/dialogs/add_manual_dialog.py:294
 #, python-brace-format
 msgid "Season {num}"
-msgstr "Temporada {num}"
+msgstr "Seizoen {num}"
 
 #: src/dialogs/add_manual_dialog.py:334 src/widgets/search_result_row.py:165
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Add {title}"
-msgstr "Adicionar {title}"
+msgstr "{title} toevoegen"
 
 #: src/dialogs/add_manual_dialog.py:340
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Update {title}"
-msgstr "Atualizar {title}"
+msgstr "{title} bijwerken"
 
 #: src/dialogs/edit_season_dialog.py:44 src/widgets/season_expander.py:43
 msgid "Season"
-msgstr "Temporada"
+msgstr "Seizoen"
 
 #: src/pages/details_page.py:155 src/pages/details_page.py:229
 #: src/pages/details_page.py:277 src/pages/details_page.py:326
 #: src/pages/details_page.py:447 src/widgets/episode_row.py:114
 #: src/widgets/episode_row.py:137 src/widgets/episode_row.py:291
 msgid "Watched"
-msgstr "Assistido"
+msgstr "Bekeken"
 
 #: src/pages/details_page.py:158 src/pages/details_page.py:232
 #: src/pages/details_page.py:280 src/pages/details_page.py:329
 #: src/pages/details_page.py:450 src/widgets/episode_row.py:117
 #: src/widgets/episode_row.py:140 src/widgets/episode_row.py:294
 msgid "Mark as Watched"
-msgstr "Marcar como assistido"
+msgstr "Markeren als bekeken"
 
 #. TRANSLATORS: {num} is the total number of seasons
 #: src/pages/details_page.py:171
 #, python-brace-format
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
-msgstr[0] "{num} Temporada"
-msgstr[1] "{num} Temporadas"
+msgstr[0] "{num} seizoen"
+msgstr[1] "{num} seizoenen"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:179 src/pages/details_page.py:211
 #, python-brace-format
 msgid "{num} Episode"
 msgid_plural "{num} Episodes"
-msgstr[0] "{num} Episódio"
-msgstr[1] "{num} Episódios"
+msgstr[0] "{num} aflevering"
+msgstr[1] "{num} afleveringen"
 
 #: src/pages/details_page.py:349 src/ui/dialogs/add_manual.blp:188
 msgid "Status"
-msgstr "Estado"
+msgstr "Status"
 
 #: src/pages/details_page.py:357 src/ui/dialogs/add_manual.blp:192
 msgid "Original Language"
-msgstr "Idioma Original"
+msgstr "Oorspronkelijke taal"
 
 #: src/pages/details_page.py:366 src/ui/dialogs/add_manual.blp:197
 msgid "Original Title"
-msgstr "Título original"
+msgstr "Oorspronkelijke titel"
 
 #: src/pages/details_page.py:378
 msgid "Budget"
-msgstr "Orçamento"
+msgstr "Budget"
 
 #: src/pages/details_page.py:388
 msgid "Revenue"
-msgstr "Receita"
+msgstr "Opbrengst"
 
 #: src/pages/details_page.py:398
 msgid "In Production"
-msgstr "Em Produção"
+msgstr "In productie"
 
 #: src/pages/details_page.py:401
 msgid "Yes"
-msgstr "Sim"
+msgstr "Ja"
 
 #: src/pages/details_page.py:402
 msgid "No"
-msgstr "Não"
+msgstr "Nee"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
 #: src/pages/details_page.py:423 src/widgets/episode_row.py:161
 #, python-brace-format
 msgid "{h}h {m}min"
-msgstr "{h}h {m}min"
+msgstr "{h} uur, {m} min."
 
 #. TRANSLATORS: {m} is the runtime minutes
 #: src/pages/details_page.py:426 src/widgets/episode_row.py:165
 #, python-brace-format
 msgid "{m}min"
-msgstr "{m}min"
+msgstr "{m} min."
 
 #. TRANSLATORS: {title} is the showed content's title
 #: src/pages/details_page.py:508
 #, python-brace-format
 msgid "Updating {title}"
-msgstr "A atualizar {title}"
+msgstr "{title} bijwerken"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:515
 #, python-brace-format
 msgid "Update {title}"
-msgstr "Atualizar {title}"
+msgstr "{title} bijwerken"
 
 #: src/pages/details_page.py:550
 msgid "Loading Metadata…"
-msgstr "A carregar metadados…"
+msgstr "Bezig met laden van gegevens…"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:569 src/widgets/episode_row.py:240
@@ -218,66 +217,66 @@ msgstr "A carregar metadados…"
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
-msgstr "Apagar {title}?"
+msgstr "Wil je “{title}” verwijderen?"
 
 #: src/pages/details_page.py:571
 msgctxt "message dialog body"
 msgid "This title will be deleted from your watchlist."
-msgstr "Este título será apagado da sua lista de observação."
+msgstr "Hierdoor wordt het item van je kijklijst gehaald."
 
 #: src/pages/details_page.py:572 src/widgets/episode_row.py:244
 #: src/widgets/season_expander.py:143
 msgctxt "message dialog action"
 msgid "_Cancel"
-msgstr "_Cancelar"
+msgstr "_Annuleren"
 
 #: src/pages/details_page.py:573 src/widgets/episode_row.py:245
 #: src/widgets/season_expander.py:144
 msgctxt "message dialog action"
 msgid "_Delete"
-msgstr "_Excluir"
+msgstr "Verwij_deren"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:603
 #, python-brace-format
 msgid "Delete {title}"
-msgstr "Apagar {title}"
+msgstr "“{title}” verwijderen"
 
 #: src/preferences.py:238
 msgctxt "message dialog heading"
 msgid "No Network"
-msgstr "Sem rede"
+msgstr "Geen internetverbinding"
 
 #: src/preferences.py:239
 msgctxt "message dialog body"
 msgid "Connect to the Internet to complete the setup."
-msgstr "Conecte-se à Internet para concluir a configuração."
+msgstr "Maak verbinding met het internet om de instelhulp te voltooien."
 
 #: src/preferences.py:240 src/window.py:163
 msgctxt "message dialog action"
 msgid "OK"
-msgstr "OK"
+msgstr "Oké"
 
 #: src/preferences.py:306
 msgctxt "Background activity title"
 msgid "Clear cache"
-msgstr "Limpar cache"
+msgstr "Cache wissen"
 
 #. TRANSLATORS: {number} is the number of titles
 #: src/preferences.py:358 src/preferences.py:360
 #, python-brace-format
 msgid "{number} Titles"
-msgstr "{number} Títulos"
+msgstr "{number} items"
 
 #: src/preferences.py:398
 msgctxt "Background activity title"
 msgid "Delete all movies"
-msgstr "Apagar todos os filmes"
+msgstr "Alle films verwijderen"
 
 #: src/preferences.py:409
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr "Apagar todas as séries de TV"
+msgstr "Alle tv-series verwijderen"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:484
@@ -286,229 +285,229 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
-"Ticket Booth usa atualmente {total_space:.2f} MB. Use as opções abaixo para "
-"liberar espaço."
+"Ticket Booth gebruikt momenteel {total_space:.2f} MB. Gebruik onderstaande "
+"opties om ruimte vrij te maken."
 
 #: src/preferences.py:488 src/preferences.py:490
 #, python-brace-format
 msgid "{space:.2f} MB occupied"
-msgstr "{space:.2f} MB ocupado"
+msgstr "{space:.2f} mb in gebruik"
 
 #. TRANSLATORS: replace with your name (and an optional email or website)
 #: src/ui/about_window.blp:16
 msgid "translator-credits"
-msgstr "Juliano Dorigão <jdorigao@gmail.com>"
+msgstr "Heimen Stoffels <vistausss@fastmail.com>"
 
 #: src/ui/dialogs/add_manual.blp:47 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
-msgstr "Filme"
+msgstr "Film"
 
 #: src/ui/dialogs/add_manual.blp:53 src/views/main_view.py:57
 #: src/widgets/search_result_row.py:82
 msgctxt "Category"
 msgid "TV Series"
-msgstr "Série de TV"
+msgstr "Tv-serie"
 
 #: src/ui/dialogs/add_manual.blp:61 src/ui/dialogs/edit_season.blp:35
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Annuleren"
 
 #: src/ui/dialogs/add_manual.blp:67 src/ui/dialogs/edit_season.blp:41
 #: src/ui/pages/edit_episode_page.blp:22
 msgid "Save"
-msgstr "Gravar"
+msgstr "Opslaan"
 
 #: src/ui/dialogs/add_manual.blp:101 src/ui/dialogs/edit_season.blp:69
 #: src/ui/pages/edit_episode_page.blp:58
 msgid "General"
-msgstr "Geral"
+msgstr "Algemeen"
 
 #: src/ui/dialogs/add_manual.blp:104 src/ui/dialogs/edit_season.blp:72
 #: src/ui/pages/edit_episode_page.blp:70
 msgid "Title (required)"
-msgstr "Título (obrigatório)"
+msgstr "Titel (vereist)"
 
 #: src/ui/dialogs/add_manual.blp:110
 msgid "Release Date"
-msgstr "Data de lançamento"
+msgstr "Verschenen op"
 
 #: src/ui/dialogs/add_manual.blp:126
 msgid "Genres (comma separated)"
-msgstr "Gêneros (separados por vírgula)"
+msgstr "Genres (kommagescheiden)"
 
 #: src/ui/dialogs/add_manual.blp:131 src/ui/pages/edit_episode_page.blp:75
 msgid "Runtime (minutes)"
-msgstr "Duração (minutos)"
+msgstr "Duur (in minuten)"
 
 #: src/ui/dialogs/add_manual.blp:140
 msgid "Tagline"
-msgstr "Slogan"
+msgstr "Slagzin"
 
 #: src/ui/dialogs/add_manual.blp:145 src/ui/pages/details_page.blp:188
 msgid "Created by"
-msgstr "Criado por"
+msgstr "Gemaakt door"
 
 #: src/ui/dialogs/add_manual.blp:153 src/ui/pages/edit_episode_page.blp:87
 msgid "Overview"
-msgstr "Visão geral"
+msgstr "Overzicht"
 
 #: src/ui/dialogs/add_manual.blp:170
 msgid "Seasons (required)"
-msgstr "Temporadas (obrigatório)"
+msgstr "Aantal seizoenen (vereist)"
 
 #: src/ui/dialogs/add_manual.blp:171
 msgid "Use the + button to add seasons"
-msgstr "Use o botão + para adicionar temporadas"
+msgstr "Klik op de ‘+’-knop om seizoenen toe te voegen"
 
 #: src/ui/dialogs/add_manual.blp:176 src/ui/dialogs/edit_season.blp:86
 msgid "Add"
-msgstr "Adicionar"
+msgstr "Toevoegen"
 
 #: src/ui/dialogs/add_manual.blp:185 src/ui/pages/details_page.blp:240
 msgid "Additional Information"
-msgstr "Informações adicionais"
+msgstr "Aanvullende informatie"
 
 #: src/ui/dialogs/add_manual.blp:202
 msgid "Budget (US$)"
-msgstr "Orçamento (US$)"
+msgstr "Budget (in VS$)"
 
 #: src/ui/dialogs/add_manual.blp:212
 msgid "Revenue (US$)"
-msgstr "Receita (US$)"
+msgstr "Opbrengst (in VS$)"
 
 #: src/ui/dialogs/add_manual.blp:221
 msgid "In production"
-msgstr "Em produção"
+msgstr "In productie"
 
 #: src/ui/dialogs/add_tmdb.blp:30
 msgid "Search The Movie Database…"
-msgstr "Buscar no banco de dados de filmes…"
+msgstr "Doorzoek The Movie Database…"
 
 #: src/ui/dialogs/add_tmdb.blp:40
 msgid "Search For a Title"
-msgstr "Pesquisar por Título"
+msgstr "Zoeken naar titel"
 
 #: src/ui/dialogs/add_tmdb.blp:42
 msgid ""
 "Start typing in the search bar to see a list of matching movies and TV series"
 msgstr ""
-"Comece a digitar na barra de pesquisa para ver uma lista de filmes e séries "
-"de TV correspondentes"
+"Typ een zoekopdracht in het zoekvak om een lijst met films en tv-series op "
+"te halen"
 
 #: src/ui/dialogs/add_tmdb.blp:49
 msgid "No Results Found"
-msgstr "Nenhum resultado encontrado"
+msgstr "Er zijn geen zoekresultaten"
 
 #: src/ui/dialogs/add_tmdb.blp:51
 msgid "Try a different search"
-msgstr "Tente uma pesquisa diferente"
+msgstr "Probeer een andere zoekopdracht"
 
 #: src/ui/dialogs/edit_season.blp:24
 msgid "Edit Season"
-msgstr "Editar temporada"
+msgstr "Seizoen bewerken"
 
 #: src/ui/dialogs/edit_season.blp:80
 msgid "Episodes (required)"
-msgstr "Episódios (obrigatório)"
+msgstr "Aantal afleveringen (vereist)"
 
 #: src/ui/dialogs/edit_season.blp:81
 msgid "Use the + button to add episodes"
-msgstr "Use o botão + para adicionar episódios"
+msgstr "Klik op de ‘+’-knop om afleveringen toe te voegen"
 
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Geral"
+msgstr "Algemeen"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Mostrar atalhos"
+msgstr "Sneltoetsen tonen"
 
 #: src/ui/gtk/help-overlay.blp:23
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Mostrar preferências"
+msgstr "Voorkeuren openen"
 
 #: src/ui/gtk/help-overlay.blp:28
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Sair"
+msgstr "Afsluiten"
 
 #: src/ui/gtk/help-overlay.blp:34
 msgctxt "shortcut window"
 msgid "Library management"
-msgstr "Gestão de biblioteca"
+msgstr "Verzamelingsbeheer"
 
 #: src/ui/gtk/help-overlay.blp:37
 msgctxt "shortcut window"
 msgid "Add title from TMDB"
-msgstr "Adicionar título do TMDB"
+msgstr "TMDB-item toevoegen"
 
 #: src/ui/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Add title manually"
-msgstr "Adicionar título manualmente"
+msgstr "Eigen item toevoegen"
 
 #: src/ui/gtk/help-overlay.blp:46
 msgctxt "shortcut window"
 msgid "Refresh library"
-msgstr "Atualizar biblioteca"
+msgstr "Verzameling herladen"
 
 #: src/ui/pages/details_page.blp:29 src/ui/views/main_view.blp:71
 msgid "Main Menu"
-msgstr "Menu principal"
+msgstr "Hoofdmenu"
 
 #: src/ui/pages/details_page.blp:126
 msgid "Update Metadata"
-msgstr "Atualizar metadados"
+msgstr "Gegevens bijwerken"
 
 #: src/ui/pages/details_page.blp:136 src/ui/widgets/episode_row.blp:88
 #: src/ui/widgets/season_expander.blp:42
 msgid "Edit"
-msgstr "Editar"
+msgstr "Bewerken"
 
 #: src/ui/pages/details_page.blp:146
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Verwijderen"
 
 #: src/ui/pages/details_page.blp:166
 msgid "Description"
-msgstr "Descrição"
+msgstr "Omschrijving"
 
 #: src/ui/pages/details_page.blp:215
 msgid "Seasons"
-msgstr "Temporadas"
+msgstr "Aantal seizoenen"
 
 #: src/ui/pages/details_page.blp:314 src/ui/views/main_view.blp:162
 msgid "_Preferences"
-msgstr "_Preferências"
+msgstr "_Voorkeuren"
 
 #: src/ui/pages/details_page.blp:319 src/ui/views/main_view.blp:167
 msgid "_Keyboard Shortcuts"
-msgstr "_Atalhos do teclado"
+msgstr "_Sneltoetsen"
 
 #: src/ui/pages/details_page.blp:324 src/ui/views/main_view.blp:172
 msgid "_About Ticket Booth"
-msgstr "_Sobre Ticket Booth"
+msgstr "_Over Ticket Booth"
 
 #: src/ui/pages/edit_episode_page.blp:12
 msgid "Edit Episode"
-msgstr "Editar episódio"
+msgstr "Aflevering bewerken"
 
 #: src/ui/pages/edit_episode_page.blp:61
 msgid "Episode Number (required)"
-msgstr "Número do episódio (obrigatório)"
+msgstr "Afleveringsnummer (vereist)"
 
 #: src/ui/preferences.blp:16 src/ui/views/main_view.blp:85
 msgid "Preferences"
-msgstr "Preferências"
+msgstr "Voorkeuren"
 
 #: src/ui/preferences.blp:19
 msgctxt "preferences"
 msgid "Optional Download"
-msgstr "Descarregar opcional"
+msgstr "Optionele download"
 
 #: src/ui/preferences.blp:20
 msgctxt "preferences"
@@ -517,21 +516,21 @@ msgid ""
 "setup could not retrieve the data automatically and thus offline mode has "
 "been activated. It will remain active until the setup is completed."
 msgstr ""
-"Para uma experiência completa uma descarga de 15 KB é necessária. A "
-"configuração inicial não conseguiu recuperar os dados automaticamente e, "
-"portanto, o modo offline foi ativado. Permanecerá ativo até que a "
-"configuração seja concluída."
+"Als je gebruik wilt maken van alle functies van Ticket Booth, dan is een "
+"aanvullende download van 15 KB vereist. Tijdens het instellen konden deze "
+"gegevens niet worden opgehaald. De offline-modus is ingeschakeld en blijft "
+"actief totdat je de functies downloadt."
 
 #. TRANSLATORS: When clicked, it completes the initial setup by downloading the optional data.
 #: src/ui/preferences.blp:24
 msgctxt "preferences"
 msgid "Complete Setup"
-msgstr "Configuração completa"
+msgstr "Alle functies inschakelen"
 
 #: src/ui/preferences.blp:35
 msgctxt "preferences"
 msgid "Offline Mode"
-msgstr "Modo offline"
+msgstr "Offline-modus"
 
 #: src/ui/preferences.blp:36
 msgctxt "preferences"
@@ -540,19 +539,19 @@ msgid ""
 "some features that require the Internet and/or access to third party APIs "
 "will not be available."
 msgstr ""
-"O Ticket Booth pode funcionar totalmente offline. Se optar por executar "
-"neste modo, alguns recursos que exigem Internet e/ou acesso a APIs de "
-"terceiros não estarão disponíveis."
+"Ticket Booth kan geheel offline werken. Als je deze modus inschakelt, kun je "
+"geen functies gebruiken die een internetverbinding en/of toegang tot "
+"bepaalde api's vereisen."
 
 #: src/ui/preferences.blp:39
 msgctxt "preferences"
 msgid "Enable Offline Mode"
-msgstr "Ativar modo offline"
+msgstr "Offline-modus inschakelen"
 
 #: src/ui/preferences.blp:44
 msgctxt "preferences"
 msgid "The Movie Database (TMDB)"
-msgstr "O banco de dados de filmes (TMDB)"
+msgstr "The Movie Database (TMDB)"
 
 #: src/ui/preferences.blp:45
 msgctxt "preferences"
@@ -565,100 +564,100 @@ msgid ""
 "to TMDB</a>. Additionally, an automatic update is performed on a frequency "
 "of your choosing."
 msgstr ""
-"O TMDB fornece metadados localizados para a maioria dos conteúdos. O Ticket "
-"Booth descarguerá no idioma de sua preferência, selecionável abaixo. Caso "
-"não esteja disponível, o inglês dos EUA será usado e depois o idioma "
-"original do conteúdo. Se nenhum estiver disponível, resultará numa linha em "
-"branco. Por favor, considere <a href='https://www.themoviedb.org/bible/"
-"new_content'>contribuir para o TMDB</a>. Além disso, uma atualização "
-"automática é realizada na frequência da sua escolha."
+"TMDB heeft van de meeste items vertalingen. Ticket Booth kan deze in een "
+"taal naar keuze tonen. Als de taal in kwestie niet beschikbaar is, wordt "
+"terugvallen op Amerikaans Engels of de oorspronkelijke taal van het item. "
+"Als geen van allen beschikbaar is, wordt een blanco veld getoond. Overweeg "
+"<a href='https://www.themoviedb.org/bible/new_content'>bij te dragen aan "
+"TMDB</a>. Aanvullend kan naar eigen inzicht de inhoud automatisch worden "
+"bijgewerkt."
 
 #: src/ui/preferences.blp:48
 msgctxt "preferences"
 msgid "TMDB Results Language"
-msgstr "Idioma dos resultados TMDB"
+msgstr "Taal van TMDB-resultaten"
 
 #: src/ui/preferences.blp:53
 msgctxt "preferences"
 msgid "Update Frequency"
-msgstr "Frequência de atualização"
+msgstr "Bijwerken, iedere"
 
 #: src/ui/preferences.blp:54
 msgctxt "preferences"
 msgid "Restart Ticket Booth after changing"
-msgstr "Reinicie Ticket Booth após alterar"
+msgstr "Herstart Ticket Booth om de wijziging toe te passen"
 
 #: src/ui/preferences.blp:57
 msgctxt "preferences"
 msgid "Never"
-msgstr "Nunca"
+msgstr "Nooit"
 
 #: src/ui/preferences.blp:58
 msgctxt "preferences"
 msgid "Daily"
-msgstr "Diário"
+msgstr "Iedere dag"
 
 #: src/ui/preferences.blp:59
 msgctxt "preferences"
 msgid "Weekly"
-msgstr "Semanalmente"
+msgstr "Iedere week"
 
 #: src/ui/preferences.blp:60
 msgctxt "preferences"
 msgid "Monthly"
-msgstr "Mensal"
+msgstr "Iedere maand"
 
 #: src/ui/preferences.blp:67
 msgctxt "preferences"
 msgid "Housekeeping"
-msgstr "Serviço de limpeza"
+msgstr "Opruiming"
 
 #: src/ui/preferences.blp:71
 msgctxt "preferences"
 msgid "Clear Cache on Exit"
-msgstr "Limpar Cache ao Sair"
+msgstr "Cache wissen na afsluiten"
 
 #: src/ui/preferences.blp:75
 msgctxt "preferences"
 msgid "Clear Cached Search Data"
-msgstr "Limpar dados de pesquisa em cache"
+msgstr "Zoekgeschiedenis wissen"
 
 #: src/ui/preferences.blp:85
 msgctxt "preferences"
 msgid "Clear Data"
-msgstr "Apagar os dados"
+msgstr "Gegevens wissen"
 
 #: src/ui/views/content_view.blp:14
 msgid "Your Watchlist Is Empty"
-msgstr "A sua lista está vazia"
+msgstr "Je kijklijst is leeg"
 
 #: src/ui/views/content_view.blp:15
 msgid "Add content with the + button."
-msgstr "Adicione conteúdo com o botão +."
+msgstr "Klik op de ‘+’-knop om items toe te voegen."
 
 #: src/ui/views/content_view.blp:98
 msgid "Your Watchlist"
-msgstr "A sua lista"
+msgstr "Mijn kijklijst"
 
 #: src/ui/views/first_run_view.blp:56
 msgid "Use Offline Mode"
-msgstr "Usar o modo offline"
+msgstr "Offline-modus inschakelen"
 
 #: src/ui/views/first_run_view.blp:62
 msgid "Try again on next run"
-msgstr "Tente novamente na próxima execução"
+msgstr "Opnieuw proberen na volgende opstart"
 
 #: src/ui/views/main_view.blp:63
 msgid "Add a title to your library"
-msgstr "Adicione um título à sua biblioteca"
+msgstr "Voeg een item toe aan je verzameling"
 
 #: src/ui/views/main_view.blp:84
 msgid "Offline Mode Enabled"
-msgstr "Modo offline ativado"
+msgstr "De offline-modus is ingeschakeld"
 
 #: src/ui/views/main_view.blp:115
 msgid "_Sorting"
-msgstr "_Ordenação"
+msgstr "_Sorteren"
 
 #: src/ui/views/main_view.blp:118
 msgid "A-Z"
@@ -670,67 +669,67 @@ msgstr "Z-A"
 
 #: src/ui/views/main_view.blp:130
 msgid "Date added (newest first)"
-msgstr "Data adicionada (mais recente primeiro)"
+msgstr "Datum van toevoegen (nieuwste eerst)"
 
 #: src/ui/views/main_view.blp:136
 msgid "Date added (oldest first)"
-msgstr "Data adicionada (o mais antigo primeiro)"
+msgstr "Datum van toevoegen (oudste eerst)"
 
 #: src/ui/views/main_view.blp:142
 msgid "Release date (newest first)"
-msgstr "Data de lançamento (mais recente primeiro)"
+msgstr "Datum van verschijnen (nieuwste eerst)"
 
 #: src/ui/views/main_view.blp:148
 msgid "Release date (oldest first)"
-msgstr "Data de lançamento (mais antigo primeiro)"
+msgstr "Datum van verschijnen (oudste eerst)"
 
 #: src/ui/views/main_view.blp:155
 msgid "_Refresh"
-msgstr "_Atualizar"
+msgstr "He_rladen"
 
 #: src/ui/views/main_view.blp:180
 msgid "From The Movie Database (TMDB)"
-msgstr "Do banco de dados de filmes (TMDB)"
+msgstr "Van The Movie Database (TMDB)"
 
 #: src/ui/views/main_view.blp:185
 msgid "Manually"
-msgstr "Manualmente"
+msgstr "Handmatig"
 
 #: src/ui/widgets/background_indicator.blp:13
 msgid "Background Activities"
-msgstr "Atividades em segundo plano"
+msgstr "Achtergrondactiviteiten"
 
 #: src/ui/widgets/background_indicator.blp:37
 msgid "No Background Activities"
-msgstr "Sem atividades em segundo plano"
+msgstr "Geen achtergrondactiviteiten"
 
 #: src/ui/widgets/image_selector.blp:26
 msgid "Edit poster"
-msgstr "Editar pôster"
+msgstr "Poster bewerken"
 
 #: src/ui/widgets/image_selector.blp:44
 msgid "Delete poster"
-msgstr "Apagar pôster"
+msgstr "Poster verwijderen"
 
 #: src/ui/widgets/search_result_row.blp:90
 msgid "Add to watchlist"
-msgstr "Adicionar à lista"
+msgstr "Toevoegen aan kijklijst"
 
 #: src/ui/widgets/theme_switcher.blp:29
 msgid "Follow system style"
-msgstr "Seguir o estilo do sistema"
+msgstr "Systeemthema"
 
 #: src/ui/widgets/theme_switcher.blp:43
 msgid "Light style"
-msgstr "Estilo claro"
+msgstr "Licht thema"
 
 #: src/ui/widgets/theme_switcher.blp:57
 msgid "Dark style"
-msgstr "Estilo escuro"
+msgstr "Donker thema"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
-msgstr "A aguardar rede…"
+msgstr "Bezig met wachten op internetverbinding…"
 
 #: src/views/first_run_view.py:103
 msgid ""
@@ -738,47 +737,48 @@ msgid ""
 "are not connected to the Internet or don't want to wait, you can skip this "
 "step and continue offline without some features."
 msgstr ""
-"Para uma experiência completa é necessária uma descarga de 15 KB. Porém, se "
-"não estiver conectado à Internet ou não quiser esperar, pode pular esta "
-"etapa e continuar offline sem alguns recursos."
+"Om gebruik te kunnen maken van alle functies is een aanvullende download van "
+"15 KB vereist. Als je niet verbonden bent met het internet of niet wilt "
+"wachten, dan kun je deze stap overslaan en de beperktere offline-modus "
+"gebruiken."
 
 #: src/views/first_run_view.py:107
 msgid "Getting things ready…"
-msgstr "A preparar…"
+msgstr "Bezig met afstellen…"
 
 #: src/views/first_run_view.py:108
 msgid "Downloading data"
-msgstr "A descarregar dados"
+msgstr "Bezig met ophalen van gegevens…"
 
 #: src/views/main_view.py:51
 msgctxt "Category"
 msgid "Movies"
-msgstr "Filmes"
+msgstr "Films"
 
 #: src/views/main_view.py:135 src/views/main_view.py:145
 #: src/views/main_view.py:155
 msgctxt "Background activity title"
 msgid "Automatic update"
-msgstr "Atualização automática"
+msgstr "Automatisch bijwerken"
 
 #: src/widgets/episode_row.py:242
 msgctxt "message dialog body"
 msgid "All changes to this episode will be lost."
-msgstr "Todas as alterações neste episódio serão perdidas."
+msgstr "Alle aanpassingen aan deze aflevering worden gewist."
 
 #: src/widgets/search_result_row.py:100 src/widgets/search_result_row.py:192
 msgid "Already in your watchlist"
-msgstr "Já está na sua lista"
+msgstr "Dit staat al op je kijklijst"
 
 #: src/widgets/season_expander.py:141
 msgctxt "message dialog body"
 msgid "This season contains unsaved metadata."
-msgstr "Esta temporada contém metadados não gravados."
+msgstr "Dit seizoen bevat niet-opgeslagen gegevens."
 
 #: src/window.py:161
 msgctxt "message dialog heading"
 msgid "Background Activies Running"
-msgstr "Atividades em segundo plano em execução"
+msgstr "Achtergrondactiviteiten actief"
 
 #: src/window.py:162
 msgctxt "message dialog body"
@@ -787,6 +787,6 @@ msgid ""
 "before exiting. Look for the indicator in the header bar to check when they "
 "are finished."
 msgstr ""
-"Algumas atividades estão sendo executadas em segundo plano e precisam ser "
-"concluídas antes de sair. Procure o indicador na barra de cabeçalho para "
-"verificar quando terminar."
+"Enkele activiteiten worden op de achtergrond voortgezet en dienen te worden "
+"voltooid alvorens af te sluiten. Zoek de indicator op de bovenbalk en "
+"controleer of alles is afgerond."
