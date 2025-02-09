@@ -10,10 +10,13 @@ SPDX-License-Identifier: CC0-1.0
 	<id>@app_id@</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
-	<name translatable="no">Ticket Booth</name>
+	<name translate="no">Ticket Booth</name>
 	<launchable type="desktop-id">@app_id@.desktop</launchable>
 	<summary>Keep track of your favorite shows</summary>
-	<developer_name translatable="no">Alessandro Iepure</developer_name>
+	<developer_name translate="no">Alessandro Iepure</developer_name>
+	<developer id="me.iepure">
+		<name translate="no">Alessandro Iepure</name>
+	</developer>
 	<description>
 		<p>Ticket Booth allows you to build your watchlist of movies and TV Shows, keep track of
 			watched titles, and find information about the latest releases.</p>
@@ -42,17 +45,17 @@ SPDX-License-Identifier: CC0-1.0
 	<content_rating type="oars-1.1" />
 	<releases>
 		<release version="1.0.3.1" date="2023-10-02">
-			<description translatable="no">
+			<description translate="no">
 				<p>Fixed issue that prevented application start with version 1.0.3</p>
 			</description>
 		</release>
 		<release version="1.0.3" date="2023-10-02">
-			<description translatable="no">
+			<description translate="no">
 				<p>Stability improvements: fixed high peaks utilization and crashing. </p>
 			</description>
 		</release>
 		<release version="1.0.2" date="2023-09-27">
-			<description translatable="no">
+			<description translate="no">
 				<p>What's Changed</p>
 				<ul>
 					<li>Stability improvements</li>
@@ -62,12 +65,12 @@ SPDX-License-Identifier: CC0-1.0
 			</description>
 		</release>
 		<release version="1.0.1" date="2023-09-25">
-			<description translatable="no">
+			<description translate="no">
 				<p>Fixes issue that prevented the addition of movies with large budgets and revenues.</p>
 			</description>
 		</release>
 		<release version="1.0" date="2023-09-21">
-			<description translatable="no">
+			<description translate="no">
 				<p>First release</p>
 			</description>
 		</release>
