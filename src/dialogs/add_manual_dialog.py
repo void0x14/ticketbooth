@@ -27,9 +27,9 @@ from ..widgets.season_expander import SeasonExpander
 
 
 @Gtk.Template(resource_path=shared.PREFIX + '/ui/dialogs/add_manual.ui')
-class AddManualDialog(Adw.Window):
+class AddManualDialog(Adw.Dialog):
     """
-    This class represents the window to manually add content to the db.
+    This class represents the dialog to manually add content to the db.
 
     Properties:
         edit_mode (bool): whether or not the window is in add/edit mode
@@ -39,7 +39,7 @@ class AddManualDialog(Adw.Window):
         get_season(title: str, poster: str, episodes: list): returns the tuple with the provided data or an empty tuple
 
     Signals:
-        edit-saved(SeriesModel or MovieMovel): emited when the user clicks the save button
+        edit-saved(SeriesModel or MovieModel): emited when the user clicks the save button
     """
 
     __gtype_name__ = 'AddManualDialog'
@@ -74,12 +74,10 @@ class AddManualDialog(Adw.Window):
     seasons: list = []
 
     def __init__(self,
-                 parent: Gtk.Window,
                  edit_mode: bool = False,
                  content: MovieModel | SeasonModel | None = None
                  ):
         super().__init__()
-        self.set_transient_for(parent)
 
         self.edit_mode = edit_mode
         self._content = content
@@ -293,7 +291,7 @@ class AddManualDialog(Adw.Window):
         dialog = EditSeasonDialog(self, title=_(
             'Season {num}').format(num=len(self.seasons)+1))
         dialog.connect('edit-saved', self._on_edit_saved)
-        dialog.present()
+        dialog.present(dialog.parent)
 
     def _on_edit_saved(self, source: Gtk.Widget, title: str, poster_uri: str, episodes: List[tuple]) -> None:
         """
@@ -370,8 +368,7 @@ class AddManualDialog(Adw.Window):
                      activity: BackgroundActivity):
         """Callback to complete async activity"""
 
-        self.get_ancestor(Adw.Window).get_transient_for(
-        ).activate_action('win.refresh', None)
+        self.get_ancestor(Adw.ApplicationWindow).activate_action('win.refresh', None)
         activity.end()
 
     def _save_movie(self, poster_uri: str) -> None:

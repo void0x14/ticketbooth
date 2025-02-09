@@ -1,7 +1,6 @@
 // Copyright (C) 2023 Alessandro Iepure
-//
+// 
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
@@ -9,6 +8,7 @@ template $ContentView: Adw.Bin {
   Adw.ViewStack _stack {
     Adw.ViewStackPage {
       name: "empty";
+
       child: Adw.StatusPage {
         icon-name: bind template.icon-name;
         title: _("Your Watchlist Is Empty");
@@ -18,11 +18,12 @@ template $ContentView: Adw.Bin {
 
     Adw.ViewStackPage {
       name: "updating";
+
       child: Adw.StatusPage {
         child: Box {
           orientation: vertical;
-          Spinner {
-            spinning: true;
+
+          Adw.Spinner {
             height-request: 64;
           }
 
@@ -36,7 +37,10 @@ template $ContentView: Adw.Bin {
               wrap: true;
               halign: center;
               justify: center;
-              styles ["title-1"]
+
+              styles [
+                "title-1"
+              ]
             }
 
             Label _updating_status_lbl {
@@ -51,11 +55,12 @@ template $ContentView: Adw.Bin {
 
     Adw.ViewStackPage {
       name: "loading";
+
       child: Adw.StatusPage {
         child: Box {
           orientation: vertical;
-          Spinner {
-            spinning: true;
+
+          Adw.Spinner {
             height-request: 64;
           }
 
@@ -69,7 +74,10 @@ template $ContentView: Adw.Bin {
               wrap: true;
               halign: center;
               justify: center;
-              styles ["title-1"]
+
+              styles [
+                "title-1"
+              ]
             }
 
             Label _status_lbl {
@@ -85,6 +93,7 @@ template $ContentView: Adw.Bin {
 
     Adw.ViewStackPage {
       name: "filled";
+
       child: ScrolledWindow {
         Box {
           orientation: vertical;
@@ -100,13 +109,16 @@ template $ContentView: Adw.Bin {
               margin-start: 12;
               margin-top: 12;
               label: _("Your Watchlist");
-              styles ["title-1"]
+
+              styles [
+                "title-1"
+              ]
             }
 
             FlowBox _flow_box {
               orientation: horizontal;
               min-children-per-line: 2;
-              max-children-per-line: 11;
+              max-children-per-line: 15;
               selection-mode: none;
               halign: start;
             }
@@ -126,13 +138,16 @@ template $ContentView: Adw.Bin {
                 margin-start: 12;
                 margin-top: 12;
                 label: _("Unwatched");
-                styles ["title-1"]
+
+                styles [
+                  "title-1"
+                ]
               }
 
               FlowBox _unwatched_flow_box {
                 orientation: horizontal;
                 min-children-per-line: 2;
-                max-children-per-line: 11;
+                max-children-per-line: 15;
                 selection-mode: none;
                 halign: start;
               }
@@ -146,18 +161,20 @@ template $ContentView: Adw.Bin {
                 margin-start: 12;
                 margin-top: 12;
                 label: _("Watched");
-                styles ["title-1"]
+
+                styles [
+                  "title-1"
+                ]
               }
 
               FlowBox _watched_flow_box {
                 orientation: horizontal;
                 min-children-per-line: 2;
-                max-children-per-line: 11;
+                max-children-per-line: 15;
                 selection-mode: none;
                 halign: start;
               }
             }
-
           }
         }
       };
