@@ -6,13 +6,10 @@ using Gtk 4.0;
 using Gio 2.0;
 using Adw 1;
 
-template $AddTMDBDialog: Adw.Window {
-  modal: true;
+template $AddTMDBDialog: Adw.Dialog {
   focus-widget: _search_entry;
-  width-request: 350;
-  height-request: 550;
-  default-width: 700;
-  default-height: 550;
+  content-width: 700;
+  content-height: 550;
 
   ShortcutController {
     Shortcut {

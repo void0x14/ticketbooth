@@ -11,7 +11,7 @@ blueprints = custom_target('blueprints',
   input: files(
     'ui/gtk/help-overlay.blp',
     'ui/window.blp',
-    'ui/about_window.blp',
+    'ui/about_dialog.blp',
     'ui/preferences.blp',
 
     'ui/views/main_view.blp',

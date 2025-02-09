@@ -24,10 +24,9 @@ template $SearchResultRow: ListBoxRow {
     Overlay {
 
       [overlay]
-      Spinner _poster_spinner {
+      Adw.Spinner _poster_spinner {
         height-request: 32;
         width-request: 32;
-        spinning: true;
         valign: center;
       }
 
@@ -99,8 +98,7 @@ template $SearchResultRow: ListBoxRow {
           styles ["suggested-action"]
         }
 
-        Spinner _add_spinner {
-          spinning: true;
+        Adw.Spinner _add_spinner {
           height-request: 16;
           visible: false;
         }

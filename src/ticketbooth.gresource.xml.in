@@ -35,7 +35,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <!-- Views -->
     <file preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/gtk/help-overlay.ui</file>
     <file preprocess="xml-stripblanks">ui/window.ui</file>
-    <file preprocess="xml-stripblanks">ui/about_window.ui</file>
+    <file preprocess="xml-stripblanks">ui/about_dialog.ui</file>
     <file preprocess="xml-stripblanks">ui/preferences.ui</file>
     <file preprocess="xml-stripblanks">ui/views/first_run_view.ui</file>
     <file preprocess="xml-stripblanks">ui/views/main_view.ui</file>

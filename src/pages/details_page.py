@@ -73,6 +73,8 @@ class DetailsView(Adw.NavigationPage):
     _additional_info_box = Gtk.Template.Child()
     _flow_box = Gtk.Template.Child()
     _loading_lbl = Gtk.Template.Child()
+    
+    mobile = True
 
     def __init__(self, content: MovieModel | SeriesModel):
         super().__init__()
@@ -88,11 +90,49 @@ class DetailsView(Adw.NavigationPage):
         else:
             self.content = local.get_series_by_id(content.id)
         logging.info(
-            f'Loading info [{"movie" if type(content) is MovieModel else "TV Serie"}] {self.content.title}')
+            f'Loading info [{"movie" if type(content) is MovieModel else "TV Serie"}] {self.content.title}') # type: ignore
 
         self.set_title(self.content.title)  # type: ignore
         self._view_stack.set_visible_child_name('loading')
+        
+        if shared.schema.get_int('win-width') >= 550:
+            self.mobile = False
+        else:
+            self.mobile = True
+        
         self._populate_data()
+        
+    @Gtk.Template.Callback()
+    def _on_breakpoint_applied(self, breakpoint: Adw.Breakpoint) -> None:
+        """
+        Callback for the "applied" signal.
+        Sets the orientation of the page based on the breakpoint.
+
+        Args:
+            breakpoint (Adw.Breakpoint): the breakpoint that was applied
+
+        Returns:
+            None
+        """
+
+        self.mobile = True
+        self._build_seasons_group()
+        
+    @Gtk.Template.Callback()
+    def _on_breakpoint_unapplied(self, breakpoint: Adw.Breakpoint) -> None:
+        """
+        Callback for the "unapplied" signal.
+        Sets the orientation of the page based on the breakpoint.
+
+        Args:
+            breakpoint (Adw.Breakpoint): the breakpoint that was unapplied
+
+        Returns:
+            None
+        """
+
+        self.mobile = False
+        self._build_seasons_group()
 
     def _populate_data(self) -> None:
         """
@@ -111,8 +151,7 @@ class DetailsView(Adw.NavigationPage):
             if not Adw.StyleManager.get_default().get_high_contrast():
                 self._background_picture.set_file(Gio.File.new_for_uri(
                     self.content.backdrop_path))  # type: ignore
-                # type: ignore
-                with Image.open(self.content.backdrop_path[7:]) as image:
+                with Image.open(self.content.backdrop_path[7:]) as image: # type: ignore
                     stat = ImageStat.Stat(image.convert('L'))
 
                     luminance = [
@@ -209,6 +248,7 @@ class DetailsView(Adw.NavigationPage):
         list_box.remove_all()
 
         self._episode_rows = []
+        
         for season in self.content.seasons:  # type: ignore
             season_row = Adw.ExpanderRow(title=season.title,
                                          subtitle=ngettext('{num} Episode'.format(num=season.episodes_number),
@@ -226,29 +266,32 @@ class DetailsView(Adw.NavigationPage):
             season_row.add_prefix(poster)
 
             button = Gtk.Button(valign=Gtk.Align.CENTER)
-            btn_content = Adw.ButtonContent()
+            
+            if not self.mobile:
+                btn_content = Adw.ButtonContent()
 
-            if all(episode.watched for episode in season.episodes):
-                btn_content.set_label(_('Watched'))
-                btn_content.set_icon_name('check-plain')
+                if all(episode.watched for episode in season.episodes):
+                    btn_content.set_label(_('Watched'))
+                    btn_content.set_icon_name('check-plain')
+                else:
+                    btn_content.set_label(_('Mark as Watched'))
+                    btn_content.set_icon_name('watchlist')
+
+                button.set_child(btn_content)
+                season_row.add_suffix(button)
             else:
-                btn_content.set_label(_('Mark as Watched'))
-                btn_content.set_icon_name('watchlist')
-
-            button.set_child(btn_content)
-            season_row.add_suffix(button)
-            season_row.add_css_class("groupcolor")
+                if all(episode.watched for episode in season.episodes):
+                    button.set_icon_name('check-plain')
+                else:
+                    button.set_icon_name('watchlist')
+                season_row.add_suffix(button)
 
             tmp = []
             for episode in season.episodes:
-                episode_row = EpisodeRow(episode)
+                episode_row = EpisodeRow(episode, small_controls=self.mobile)
                 episode_row.connect(
-<<<<<<< HEAD
-                    'watched-clicked', self._on_episode_watch_clicked, (btn_content, season))
-=======
-                    'watched-clicked', self._on_episode_watch_clicked, (btn_content, season, episode))
+                    'watched-clicked', self._on_episode_watch_clicked, (button, season))
                 episode_row.add_css_class("groupcolor")
->>>>>>> 59b90f0 (Improve theming behaviour of DetailsView)
                 season_row.add_row(episode_row)
                 tmp.append(episode_row)
 
@@ -256,18 +299,18 @@ class DetailsView(Adw.NavigationPage):
             self._episode_rows.append((season, tmp))
 
             button.connect('clicked', self._on_season_watched_clicked,
-                           (btn_content, season, self._episode_rows))
+                           (button, season, self._episode_rows))
 
     def _on_episode_watch_clicked(self,
                                   source: Gtk.Widget,
-                                  data: Tuple[Adw.ButtonContent, SeasonModel]) -> None:
+                                  data: Tuple[Gtk.Button, SeasonModel]) -> None:
         """
         Callback for "watched-clicked" signal.
         Called after an episode is (un)marked as watched, checks and updates, if needed, the watched button for the corresponding season.
 
         Args:
             source (Gtk.Widget): caller widget
-            data(tuple[Adw.ButtonContent, SeasonModel]): tuple with the Adw.ButtonContent to change and the SeasonModel
+            data(tuple[Gtk.Button, SeasonModel]): tuple with the Gtk.Button to change and the SeasonModel
                 parent of the changed episode
 
         Returns:
@@ -276,35 +319,41 @@ class DetailsView(Adw.NavigationPage):
 
         self.content = local.get_series_by_id(self.content.id)  # type: ignore
 
-        btn_content = data[0]
         season_idx = 0
         for idx, season in enumerate(self.content.seasons):  # type: ignore
             if season == data[1]:
                 season_idx = idx
-
-        if all(episode.watched for episode in self.content.seasons[season_idx].episodes):
-            btn_content.set_label(_('Watched'))
-            btn_content.set_icon_name('check-plain')
+        
+        if not self.mobile:
+            btn_content = data[0]
+            if all(episode.watched for episode in self.content.seasons[season_idx].episodes): # type: ignore
+                btn_content.set_label(_('Watched'))
+                btn_content.set_icon_name('check-plain')
+            else:
+                btn_content.set_label(_('Mark as Watched'))
+                btn_content.set_icon_name('watchlist')
         else:
-            btn_content.set_label(_('Mark as Watched'))
-            btn_content.set_icon_name('watchlist')
+            if all(episode.watched for episode in self.content.seasons[season_idx].episodes): # type: ignore
+                data[0].set_icon_name('check-plain')
+            else:
+                data[0].set_icon_name('watchlist')
 
         # Update season status
-        local.mark_watched_series(self.content.id, all(
+        local.mark_watched_series(self.content.id, all( # type: ignore
             episode.watched for season in self.content.seasons for episode in season.episodes))  # type: ignore
         self.activate_action('win.refresh', None)
 
     def _on_season_watched_clicked(self,
                                    source: Gtk.Widget,
-                                   data: Tuple[Adw.ButtonContent, SeasonModel, List[Tuple[SeasonModel, List[EpisodeRow]]]]) -> None:
+                                   data: Tuple[Gtk.Button, SeasonModel, List[Tuple[SeasonModel, List[EpisodeRow]]]]) -> None:
         """
         Callback for "clicked" signal.
         Marks a whole season as (un)watched, making changes in the db and updating the ui.
 
         Args:
             source (Gtk.Widget): caller widget
-            data (Tuple[Adw.ButtonContent, SeasonModel, List[Tuple[SeasonModel, List[EpisodeRow]]]]): tuple with the
-                Adw.ButtonContent to change, the SeasonModel of the modified season, and a list of tuples of all
+            data (Tuple[Gtk.Button, SeasonModel, List[Tuple[SeasonModel, List[EpisodeRow]]]]): tuple with the
+                Gtk.Button to change, the SeasonModel of the modified season, and a list of tuples of all
                 SeasonModels and associated EpisodeRows.
 
         Returns:
@@ -313,7 +362,6 @@ class DetailsView(Adw.NavigationPage):
 
         self.content = local.get_series_by_id(self.content.id)  # type: ignore
 
-        btn_content = data[0]
         season_idx = 0
         for idx, season in enumerate(self.content.seasons):  # type: ignore
             if season == data[1]:
@@ -325,8 +373,7 @@ class DetailsView(Adw.NavigationPage):
                 episode_rows = item[1]
 
         # Make changes in db
-        # type: ignore
-        for episode in self.content.seasons[season_idx].episodes:
+        for episode in self.content.seasons[season_idx].episodes:   # type: ignore
             local.mark_watched_episode(episode.id, not all(
                 episode.watched for episode in self.content.seasons[season_idx].episodes))  # type: ignore
 
@@ -336,12 +383,20 @@ class DetailsView(Adw.NavigationPage):
                 not all(episode.watched for episode in self.content.seasons[season_idx].episodes))  # type: ignore
 
         # Update season expander
-        if not all(episode.watched for episode in self.content.seasons[season_idx].episodes):
-            btn_content.set_label(_('Watched'))
-            btn_content.set_icon_name('check-plain')
+        if not self.mobile:
+            btn_content = data[0]
+        
+            if not all(episode.watched for episode in self.content.seasons[season_idx].episodes): # type: ignore
+                btn_content.set_label(_('Watched'))
+                btn_content.set_icon_name('check-plain')
+            else:
+                btn_content.set_label(_('Mark as Watched'))
+                btn_content.set_icon_name('watchlist')
         else:
-            btn_content.set_label(_('Mark as Watched'))
-            btn_content.set_icon_name('watchlist')
+            if all(episode.watched for episode in self.content.seasons[season_idx].episodes): # type: ignore
+                data[0].set_icon_name('check-plain')
+            else:
+                data[0].set_icon_name('watchlist')
 
         # Update season status
         local.mark_watched_series(self.content.id, not all(  # type: ignore
@@ -377,7 +432,7 @@ class DetailsView(Adw.NavigationPage):
             label.add_css_class('heading')
             box.append(label)
             # type: ignore
-            box.append(Gtk.Label(label=self.content.original_language.name))
+            box.append(Gtk.Label(label=self.content.original_language.name, lines=2, wrap=True))
             self._flow_box.append(box)
 
         if self.content.original_title:  # type: ignore
@@ -386,7 +441,7 @@ class DetailsView(Adw.NavigationPage):
             label.add_css_class('heading')
             box.append(label)
             # type: ignore
-            box.append(Gtk.Label(label=self.content.original_title))
+            box.append(Gtk.Label(label=self.content.original_title, lines=2, wrap=True))
             self._flow_box.append(box)
 
         # Movie specific
@@ -497,10 +552,9 @@ class DetailsView(Adw.NavigationPage):
         logging.info(
             f'Editing [{"movie" if type(self.content) is MovieModel else "TV Serie"}] {self.content.title}')
 
-        dialog = AddManualDialog(self.get_ancestor(
-            Gtk.Window), True, self.content)
+        dialog = AddManualDialog(edit_mode=True, content=self.content)
         dialog.connect('edit-saved', self._on_edit_saved)
-        dialog.present()
+        dialog.present(self)
 
     def _on_edit_saved(self, source: Gtk.Widget, content: MovieModel | SeriesModel) -> None:
         """
@@ -562,29 +616,9 @@ class DetailsView(Adw.NavigationPage):
             self.new_content = MovieModel(tmdb.get_movie(self.content.id))
             local.update_movie(old=self.content, new=self.new_content)
         else:
-
-            # Save episodes statuses before delete
-            wathced_episodes = []
-            for season in self.content.seasons:  # type: ignore
-                for episode in season.episodes:
-                    if episode.watched:
-                        wathced_episodes.append(episode.id)
-
-            local.delete_series(self.content.id)  # type: ignore
-
-            self.new_content = SeriesModel(
-                tmdb.get_serie(self.content.id))  # type: ignore
-
-            # Restore episodes statuses if they match before addition
-            for idx, season in enumerate(self.new_content.seasons):
-                for jdx, episode in enumerate(season.episodes):
-                    try:
-                        wathced_episodes.index(episode.id)
-                        self.new_content.seasons[idx].episodes[jdx].watched = True
-                    except ValueError:
-                        self.new_content.seasons[idx].episodes[jdx].watched = False
-
-            local.add_series(serie=self.new_content)
+            self.new_content = SeriesModel(tmdb.get_serie(self.content.id))
+            local.update_series(old=self.content, new=self.new_content)
+            
 
     def _on_update_done(self,
                         source: GObject.Object,

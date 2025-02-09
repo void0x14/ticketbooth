@@ -21,8 +21,8 @@ from .providers.tmdb_provider import TMDBProvider as tmdb
 
 
 @Gtk.Template(resource_path=shared.PREFIX + '/ui/preferences.ui')
-class PreferencesWindow(Adw.PreferencesWindow):
-    __gtype_name__ = 'PreferencesWindow'
+class PreferencesDialog(Adw.PreferencesDialog):
+    __gtype_name__ = 'PreferencesDialog'
 
     _download_group = Gtk.Template.Child()
     _language_comborow = Gtk.Template.Child()
@@ -284,8 +284,7 @@ class PreferencesWindow(Adw.PreferencesWindow):
         builder = Gtk.Builder.new_from_resource(
             shared.PREFIX + '/ui/dialogs/message_dialogs.ui')
         _clear_cache_dialog = builder.get_object('_clear_cache_dialog')
-        _clear_cache_dialog.set_transient_for(self)
-        _clear_cache_dialog.choose(
+        _clear_cache_dialog.choose(self,
             None, self._on_cache_message_dialog_choose, None)
 
     def _on_cache_message_dialog_choose(self,
@@ -305,7 +304,7 @@ class PreferencesWindow(Adw.PreferencesWindow):
             None
         """
 
-        result = Adw.MessageDialog.choose_finish(source, result)
+        result = Adw.AlertDialog.choose_finish(source, result)
         if result == 'cache_cancel':
             logging.debug('Cache clear dialog: cancel, aborting')
             return
@@ -371,8 +370,7 @@ class PreferencesWindow(Adw.PreferencesWindow):
         _series_row.set_subtitle(_('{number} Titles').format(
             number=len(local.get_all_series())))
 
-        _clear_data_dialog.set_transient_for(self)
-        _clear_data_dialog.choose(
+        _clear_data_dialog.choose(self,
             None, self._on_data_message_dialog_choose, None)
 
     def _on_data_message_dialog_choose(self,
@@ -395,7 +393,7 @@ class PreferencesWindow(Adw.PreferencesWindow):
             None
         """
 
-        result = Adw.MessageDialog.choose_finish(source, result)
+        result = Adw.AlertDialog.choose_finish(source, result)
         if result == 'data_cancel':
             logging.debug('Data clear dialog: cancel, aborting')
             return
@@ -445,7 +443,7 @@ class PreferencesWindow(Adw.PreferencesWindow):
         """Callback to complete async activity"""
 
         self._update_occupied_space()
-        self.get_transient_for().activate_action('win.refresh', None)
+        self.get_parent().activate_action('win.refresh', None)
         activity.end()
 
     def _clear_series(self, activity: BackgroundActivity) -> None:

@@ -5,8 +5,7 @@
 using Gtk 4.0;
 using Adw 1;
 
-template $PreferencesWindow: Adw.PreferencesWindow {
-  default-height: 500;
+template $PreferencesDialog: Adw.PreferencesDialog {
   search-enabled: false;
 
   map => $_on_map();
@@ -17,7 +16,7 @@ template $PreferencesWindow: Adw.PreferencesWindow {
 
     Adw.PreferencesGroup _download_group {
       title: C_("preferences", "Optional Download");
-      description: C_("preferences", "For a complete experience, a download of 15 KB is required. The initial setup could not retrieve the data automatically and thus offline mode has been activated. It will remain active until the setup is completed.");
+      description: C_("preferences", "For a complete experience, a download of 15 KB is required. The initial setup could not retrieve the data automatically and thus offline mode has been activated. It will remain active until the setup is completed.");
 
       Adw.ActionRow _download_row {
         // TRANSLATORS: When clicked, it completes the initial setup by downloading the optional data.
@@ -73,7 +72,7 @@ template $PreferencesWindow: Adw.PreferencesWindow {
 
         [suffix]
         Button _check_own_key_button {
-          label: C_('preferences', 'Save Key');
+          label: C_("preferences", "Save Key");
           valign: center;
 
           clicked => $_on_check_own_key_button_clicked();
