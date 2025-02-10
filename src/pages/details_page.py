@@ -95,10 +95,12 @@ class DetailsView(Adw.NavigationPage):
             self.content = local.get_movie_by_id(content.id)
         else:
             self.content = local.get_series_by_id(content.id)
+        
         logging.info(
             f'Loading info [{"movie" if type(content) is MovieModel else "TV Serie"}] {self.content.title}') # type: ignore
 
-        local.set_recent_change_status(self.content.id, False, type(content) == MovieModel) #reset rechent_change since it was clicked on
+        local.set_recent_change_status(self.content.id, False, type(content) is MovieModel) #reset rechent_change since it was clicked on
+        
         self.content_view.refresh_view()
         self.set_title(self.content.title)  # type: ignore
         self._view_stack.set_visible_child_name('loading')
@@ -152,7 +154,7 @@ class DetailsView(Adw.NavigationPage):
         Returns:
             None
         """
-
+        
         # Both movies and tv series
         if self.content.backdrop_path:  # type: ignore
 
@@ -193,7 +195,6 @@ class DetailsView(Adw.NavigationPage):
             self._edit_btn.set_visible(True)
         else:
             self._update_btn.set_visible(True)
-            
 
         if self.content.overview:  # type: ignore
             self._description_box.set_visible(True)
@@ -324,6 +325,7 @@ class DetailsView(Adw.NavigationPage):
 
             button.connect('clicked', self._on_season_watched_clicked,
                            (button, season, self._episode_rows))
+            
 
     def _on_episode_watch_clicked(self,
                                   source: Gtk.Widget,

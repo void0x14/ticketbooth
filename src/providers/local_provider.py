@@ -354,7 +354,11 @@ class LocalProvider:
                     color = LocalProvider.compute_badge_color(Path(poster[7:]))
                 else:
                     color = False
-                activate_notification = datetime.strptime(entry["release_date"], '%Y-%m-%d') > datetime.now()
+                
+                if entry["release_date"]:
+                    activate_notification = datetime.strptime(entry["release_date"], '%Y-%m-%d') > datetime.now()
+                else:
+                    activate_notification = False
 
                 sql = """UPDATE movies SET activate_notification = ?, backdrop_path = ?, poster_path = ?, color = ? WHERE id = ?;"""
                 result = connection.cursor().execute(sql, (

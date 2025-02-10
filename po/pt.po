@@ -674,11 +674,6 @@ msgctxt "preferences"
 msgid "Your API key"
 msgstr ""
 
-#: src/ui/preferences.blp:87
-msgctxt "preferences"
-msgid "Housekeeping"
-msgstr ""
-
 #: src/ui/preferences.blp:91
 msgctxt "preferences"
 msgid "Clear Cache on Exit"

@@ -58,7 +58,7 @@ class PosterButton(Gtk.Box):
         self.activate_notification = content.activate_notification
         self.title = content.title
         self.badge_color_light = content.color
-        self.year = content.release_date[0:4]
+        self.year = content.release_date[0:4] if content.release_date else None
         self.tmdb_id = content.id
         self.poster_path = content.poster_path
         self.watched = content.watched

@@ -34,7 +34,7 @@ class DbUpdateView(Adw.Bin):
               or the user requested "offline mode"
     """
 
-    __gtype_name__ = 'dbUpdateView'
+    __gtype_name__ = 'DbUpdateView'
 
     _progress_bar = Gtk.Template.Child()
     _update_progress_page = Gtk.Template.Child()
