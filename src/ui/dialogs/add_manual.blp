@@ -1,26 +1,15 @@
 // Copyright (C) 2022 - 2023 Alessandro Iepure
-//
+// 
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $AddManualDialog: Adw.Window {
-  modal: true;
-  default-height: 670;
-  default-width: 650;
-
+template $AddManualDialog: Adw.Dialog {
+  content-height: 670;
+  content-width: 650;
   map => $_on_map();
 
-  ShortcutController {
-    Shortcut {
-      trigger: "Escape";
-      action: "action(window.close)";
-    }
-  }
-
   Adw.ToolbarView {
-
     [top]
     Adw.HeaderBar {
       show-end-title-buttons: false;
@@ -41,11 +30,12 @@ template $AddManualDialog: Adw.Window {
           orientation: horizontal;
           valign: center;
 
-          styles ["linked"]
+          styles [
+            "linked"
+          ]
 
           ToggleButton _movies_btn {
             label: C_("Category", "Movie");
-
             toggled => $_on_movies_btn_toggled();
           }
 
@@ -66,86 +56,76 @@ template $AddManualDialog: Adw.Window {
       Button _save_btn {
         label: _("Save");
         sensitive: false;
-
         clicked => $_on_done_btn_clicked();
-        styles ["suggested-action"]
+
+        styles [
+          "suggested-action"
+        ]
       }
     }
 
     content: ScrolledWindow {
       vexpand: true;
-      propagate-natural-width: true;
+      hexpand: true;
 
       Box {
         orientation: vertical;
-        vexpand: true;
         margin-start: 20;
         margin-end: 20;
         margin-bottom: 20;
 
-        Box {
-          orientation: horizontal;
-          margin-top: 20;
+        $ImageSelector _poster {}
+
+        Adw.PreferencesGroup {
           margin-bottom: 20;
-          spacing: 20;
+          title: _("General");
 
-          $ImageSelector _poster {}
+          Adw.EntryRow _title_entry {
+            title: _("Title (required)");
+            changed => $_on_title_changed();
+          }
 
-          Box {
-            orientation: vertical;
-            spacing: 6;
-            valign: start;
-            width-request: 410;
+          Adw.ActionRow {
+            title: _("Release Date");
+            activatable-widget: _release_date_menu_btn;
 
-            Adw.PreferencesGroup {
-              title: _("General");
+            MenuButton _release_date_menu_btn {
+              valign: center;
 
-              Adw.EntryRow _title_entry {
-                title: _("Title (required)");
-
-                changed => $_on_title_changed();
-              }
-
-              Adw.ActionRow {
-                title: _("Release Date");
-                activatable-widget: _release_date_menu_btn;
-
-                MenuButton _release_date_menu_btn {
-                  valign: center;
-                  popover: Popover {
-                    Calendar _calendar {
-                      day-selected => $_on_calendar_day_selected();
-                    }
-                  };
-
-                  styles ["flat"]
+              popover: Popover {
+                Calendar _calendar {
+                  day-selected => $_on_calendar_day_selected();
                 }
-              }
+              };
 
-              Adw.EntryRow _genres_entry {
-                title: _("Genres (comma separated)");
-              }
-
-              Adw.SpinRow _runtime_spinrow {
-                visible: bind _movies_btn.active;
-                title: _("Runtime (minutes)");
-                adjustment: Adjustment {
-                  lower: 0;
-                  upper: 900;
-                  step-increment: 1;
-                };
-              }
-
-              Adw.EntryRow _tagline_entry {
-                title: _("Tagline");
-              }
-
-              Adw.EntryRow _creator_entry {
-                visible: bind _series_btn.active;
-                title: _("Created by");
-              }
-
+              styles [
+                "flat"
+              ]
             }
+          }
+
+          Adw.EntryRow _genres_entry {
+            title: _("Genres (comma separated)");
+          }
+
+          Adw.SpinRow _runtime_spinrow {
+            visible: bind _movies_btn.active;
+            title: _("Runtime (minutes)");
+
+            adjustment: Adjustment {
+              lower: 0;
+              upper: 900;
+              step-increment: 1;
+            };
+          }
+
+          Adw.EntryRow _tagline_entry {
+            title: _("Tagline");
+          }
+
+          Adw.EntryRow _creator_entry {
+            visible: bind _series_btn.active;
+            title: _("Created by");
           }
         }
 
@@ -161,7 +141,9 @@ template $AddManualDialog: Adw.Window {
             left-margin: 12;
             wrap-mode: word;
 
-            styles ["card"]
+            styles [
+              "card"
+            ]
           }
         }
 
@@ -178,6 +160,7 @@ template $AddManualDialog: Adw.Window {
             }
 
             clicked => $_on_season_add_btn_clicked();
+            styles ["accent"]
           }
         }
 
@@ -190,6 +173,7 @@ template $AddManualDialog: Adw.Window {
 
           Adw.ComboRow _original_language_comborow {
             title: _("Original Language");
+
             model: StringList _language_model {};
           }
 
@@ -200,6 +184,7 @@ template $AddManualDialog: Adw.Window {
           Adw.SpinRow _budget_spinrow {
             visible: bind _movies_btn.active;
             title: _("Budget (US$)");
+
             adjustment: Adjustment {
               lower: 0;
               upper: 9999999999999999999;
@@ -210,6 +195,7 @@ template $AddManualDialog: Adw.Window {
           Adw.SpinRow _revenue_spinrow {
             visible: bind _movies_btn.active;
             title: _("Revenue (US$)");
+
             adjustment: Adjustment {
               lower: 0;
               upper: 9999999999999999999;

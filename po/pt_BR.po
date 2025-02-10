@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-10 16:59+0100\n"
-"PO-Revision-Date: 2023-10-09 18:30+0000\n"
+"POT-Creation-Date: 2023-10-02 19:11+0200\n"
+"PO-Revision-Date: 2023-11-07 11:33+0000\n"
 "Last-Translator: Juliano Dorigão <jdorigao@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "ticket-booth/ticket-booth/pt_BR/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -211,7 +211,7 @@ msgstr "Receita"
 
 #: src/pages/details_page.py:443
 msgid "In Production"
-msgstr "Em produção"
+msgstr "Em Produção"
 
 #: src/pages/details_page.py:446
 msgid "Yes"
@@ -686,7 +686,7 @@ msgstr "Serviço de limpeza"
 #: src/ui/preferences.blp:91
 msgctxt "preferences"
 msgid "Clear Cache on Exit"
-msgstr "Limpar cache ao sair"
+msgstr "Limpar Cache ao Sair"
 
 #: src/ui/preferences.blp:95
 msgctxt "preferences"

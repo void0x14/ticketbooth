@@ -47,6 +47,7 @@ class EpisodeRow(Adw.PreferencesRow):
     editable = GObject.Property(type=bool, default=False)
     show_controls = GObject.Property(type=bool, default=True)
     watched = GObject.Property(type=bool, default=False)
+    small_controls = GObject.Property(type=bool, default=False)
 
     __gsignals__ = {
         'watched-clicked': (GObject.SIGNAL_RUN_FIRST, None, ()),
@@ -67,7 +68,8 @@ class EpisodeRow(Adw.PreferencesRow):
                  still_uri: str = '',
                  watched: bool = False,
                  editable: bool = False,
-                 show_controls: bool = True):
+                 show_controls: bool = True,
+                 small_controls: bool = False):
         super().__init__()
 
         if episode:
@@ -89,6 +91,7 @@ class EpisodeRow(Adw.PreferencesRow):
 
         self.editable = editable
         self.show_controls = show_controls
+        self.small_controls = small_controls
 
     @Gtk.Template.Callback('_on_map')
     def _on_map(self, user_data: object | None) -> None:
@@ -104,18 +107,31 @@ class EpisodeRow(Adw.PreferencesRow):
         """
 
         if not self.editable and self.show_controls:
-            self.watched = local.get_episode_by_id(self.id).watched  # type: ignore
+            self.watched = local.get_episode_by_id(
+                self.id).watched  # type: ignore
 
-        self._still_picture.set_file(Gio.File.new_for_uri(self.still_uri))
+        if self.small_controls:
+            self._still_picture.set_visible(False)
+        else:
+            self._still_picture.set_file(Gio.File.new_for_uri(self.still_uri))
+            
         self._title_lbl.set_text(f'{self.episode_number}. {self.title}')
         self._runtime_lbl.set_text(self._format_runtime(self.runtime))
 
-        if self.watched:
-            self._watched_btn.set_label(_('Watched'))
-            self._watched_btn.set_icon_name('check-plain')
+        if self.small_controls:
+            if self.watched:
+                self._watched_btn.set_icon_name('check-plain')
+            else:
+                self._watched_btn.set_icon_name('watchlist')
         else:
-            self._watched_btn.set_label(_('Mark as Watched'))
-            self._watched_btn.set_icon_name('watchlist')
+            btn_content = Adw.ButtonContent.new()
+            if self.watched:
+                btn_content.set_label(_('Watched'))
+                btn_content.set_icon_name('check-plain')
+            else:
+                btn_content.set_label(_('Mark as Watched'))
+                btn_content.set_icon_name('watchlist')
+            self._watched_btn.set_child(btn_content)
 
     @Gtk.Template.Callback('_on_watched_btn_clicked')
     def _on_watched_btn_clicked(self, user_data: object | None) -> None:
@@ -218,7 +234,8 @@ class EpisodeRow(Adw.PreferencesRow):
         parent._episodes.remove(old_episode)
         parent.update_episodes_ui()
 
-        parent._episodes.append((title, episode_number, runtime, overview, still_uri))
+        parent._episodes.append(
+            (title, episode_number, runtime, overview, still_uri))
 
         parent.update_episodes_ui()
 
@@ -236,23 +253,26 @@ class EpisodeRow(Adw.PreferencesRow):
         """
 
         # TRANSLATORS: {title} is the showed content's title
-        dialog = Adw.MessageDialog.new(self.get_ancestor(Adw.Window),
-                                       C_('message dialog heading', 'Delete {title}?').format(
-                                           title=f'{self.episode_number}.{self.title}'),
-                                       C_('message dialog body', 'All changes to this episode will be lost.')
-                                       )
-        dialog.add_response('cancel', C_('message dialog action', '_Cancel'))
-        dialog.add_response('delete', C_('message dialog action', '_Delete'))
-        dialog.set_response_appearance('delete', Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.choose(None, self._on_message_dialog_choose, None)
+        dialog = Adw.AlertDialog.new(
+            heading=C_('alert dialog heading', 'Delete {title}?').format(
+                title=f'{self.episode_number}. {self.title}'),
+            body=C_('alert dialog body',
+                    'All changes to this episode will be lost.')
+        )
+        dialog.add_response('cancel', C_('alert dialog action', '_Cancel'))
+        dialog.add_response('delete', C_('alert dialog action', '_Delete'))
+        dialog.set_response_appearance(
+            'delete', Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.choose(self, None, self._on_alert_dialog_choose, None)
 
-    def _on_message_dialog_choose(self,
-                                  source: GObject.Object | None,
-                                  result: Gio.AsyncResult,
-                                  user_data: object | None) -> None:
+    def _on_alert_dialog_choose(self,
+                                source: GObject.Object | None,
+                                result: Gio.AsyncResult,
+                                user_data: object | None) -> None:
         """
-        Callback for the message dialog.
-        Finishes the async operation and retrieves the user response. If the later is positive, deletes the episode from the list and updates the ui.
+        Callback for the alert dialog.
+        Finishes the async operation and retrieves the user response. If the later 
+        is positive, deletes the episode from the list and updates the ui.
 
         Args:
             source (Gtk.Widget): object that started the async operation
@@ -263,7 +283,7 @@ class EpisodeRow(Adw.PreferencesRow):
             None
         """
 
-        result = Adw.MessageDialog.choose_finish(source, result)
+        result = Adw.AlertDialog.choose_finish(source, result)
         if result == 'cancel':
             return
 

@@ -1,30 +1,19 @@
 // Copyright (C) 2022 - 2023 Alessandro Iepure
-//
+// 
 // SPDX-License-Identifier: GPL-3.0-or-later
-
 using Gtk 4.0;
 using Adw 1;
 
-template $EditSeasonDialog: Adw.Window {
-  modal: true;
-  default-width: 600;
-  default-height: 640;
-
+template $EditSeasonDialog: Adw.Dialog {
+  content-width: 600;
+  content-height: 640;
   map => $_on_map();
-
-  ShortcutController {
-    Shortcut {
-      trigger: "Escape";
-      action: "action(window.close)";
-    }
-  }
 
   Adw.NavigationView _navigation_view {
     Adw.NavigationPage {
       title: _("Edit Season");
+
       child: Adw.ToolbarView {
-
-
         [top]
         Adw.HeaderBar {
           show-end-title-buttons: false;
@@ -40,39 +29,31 @@ template $EditSeasonDialog: Adw.Window {
           Button _save_btn {
             label: _("Save");
             sensitive: false;
-
             clicked => $_on_save_btn_clicked();
-            styles ["suggested-action"]
+
+            styles [
+              "suggested-action"
+            ]
           }
         }
 
         content: ScrolledWindow {
-          vexpand: true;
-          propagate-natural-width: true;
 
           Box {
             orientation: vertical;
-            vexpand: true;
             margin-start: 20;
             margin-end: 20;
             margin-bottom: 20;
 
-            Box {
-              orientation: horizontal;
-              margin-top: 20;
+            $ImageSelector _poster {}
+
+            Adw.PreferencesGroup {
               margin-bottom: 20;
-              spacing: 20;
+              title: _("General");
 
-              $ImageSelector _poster {}
-
-              Adw.PreferencesGroup {
-                title: _("General");
-
-                Adw.EntryRow _title_entry {
-                  title: _("Title (required)");
-
-                  changed => $_on_title_entry_changed();
-                }
+              Adw.EntryRow _title_entry {
+                title: _("Title (required)");
+                changed => $_on_title_entry_changed();
               }
             }
 
@@ -88,6 +69,7 @@ template $EditSeasonDialog: Adw.Window {
                 }
 
                 clicked => $_on_add_btn_clicked();
+                styles ["accent"]
               }
             }
           }

@@ -61,15 +61,14 @@ class TicketboothWindow(Adw.ApplicationWindow):
 
         Args:
             new_state (None): stateless action, always None
-            source (Gtk.Widget): widget that caused the activation
 
         Returns:
             None
         """
 
-        dialog = AddTMDBDialog(source)
+        dialog = AddTMDBDialog()
         logging.info('Add from TMDB dialog open')
-        dialog.present()
+        dialog.present(source)
 
     def _add_manual(self, new_state: None, source: Gtk.Widget) -> None:
         """
@@ -77,15 +76,14 @@ class TicketboothWindow(Adw.ApplicationWindow):
 
         Args:
             new_state (None): stateless action, always None
-            source (Gtk.Widget): widget that caused the activation
 
         Returns:
             None
         """
 
-        dialog = AddManualDialog(source)
+        dialog = AddManualDialog()
         logging.info('Add manual dialog open')
-        dialog.present()
+        dialog.present(source)
 
     def _refresh(self, new_state: None, source: Gtk.Widget) -> None:
         """

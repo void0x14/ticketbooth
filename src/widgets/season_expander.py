@@ -136,18 +136,21 @@ class SeasonExpander(Adw.ExpanderRow):
         """
 
         # TRANSLATORS: {title} is the showed content's title
-        dialog = Adw.MessageDialog.new(self.get_ancestor(Adw.Window),
-                                       C_('message dialog heading', 'Delete {title}?').format(title=self.season_title),
-                                       C_('message dialog body', 'This season contains unsaved metadata.')
-                                       )
-        dialog.add_response('cancel', C_('message dialog action', '_Cancel'))
-        dialog.add_response('delete', C_('message dialog action', '_Delete'))
-        dialog.set_response_appearance('delete', Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.choose(None, self._on_message_dialog_choose, None)
+        dialog = Adw.AlertDialog.new(
+            heading=C_('alert dialog heading', 'Delete {title}?').format(
+                title=self.season_title),
+            body=C_('alert dialog body',
+                    'This season contains unsaved metadata.')
+        )
+        dialog.add_response('cancel', C_('alert dialog action', '_Cancel'))
+        dialog.add_response('delete', C_('alert dialog action', '_Delete'))
+        dialog.set_response_appearance(
+            'delete', Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.choose(self, None, self._on_alert_dialog_choose, None)
 
-    def _on_message_dialog_choose(self, source: GObject.Object | None, result: Gio.AsyncResult, user_data: object | None) -> None:
+    def _on_alert_dialog_choose(self, source: GObject.Object | None, result: Gio.AsyncResult, user_data: object | None) -> None:
         """
-        Callback for the message dialog.
+        Callback for the alert dialog.
         Finishes the async operation and retrieves the user response. If the later is positive, delete the content from the db.
 
         Args:
@@ -159,11 +162,12 @@ class SeasonExpander(Adw.ExpanderRow):
             None
         """
 
-        result = Adw.MessageDialog.choose_finish(source, result)
+        result = Adw.AlertDialog.choose_finish(source, result)
         if result == 'cancel':
             return
 
         parent_dialog = self.get_ancestor(dialog.AddManualDialog)
-        old_season = parent_dialog.get_season(self.season_title, self.poster_uri, self.episodes)
+        old_season = parent_dialog.get_season(
+            self.season_title, self.poster_uri, self.episodes)
         parent_dialog.seasons.remove(old_season)
         parent_dialog.update_seasons_ui()

@@ -1219,7 +1219,8 @@ class LocalProvider:
                     new.seasons[idx].episodes[jdx].watched = False
                     #we have found a new episode therefore the watched flag needs to be set to false
                     new.watched = False
-        
+
+        new.add_date = old.add_date
         
         LocalProvider.add_series(serie=new)
 
