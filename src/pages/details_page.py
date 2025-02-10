@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
+from datetime import datetime, timedelta
 from datetime import date
 from gettext import gettext as _
 from gettext import ngettext
@@ -19,6 +20,7 @@ from ..dialogs.add_manual_dialog import AddManualDialog
 from ..models.movie_model import MovieModel
 from ..models.season_model import SeasonModel
 from ..models.series_model import SeriesModel
+from ..models.episode_model import EpisodeModel
 from ..providers.local_provider import LocalProvider as local
 from ..providers.tmdb_provider import TMDBProvider as tmdb
 from ..widgets.episode_row import EpisodeRow
@@ -60,10 +62,13 @@ class DetailsView(Adw.NavigationPage):
     _chip1_lbl = Gtk.Template.Child()
     _chip2_lbl = Gtk.Template.Child()
     _chip3_lbl = Gtk.Template.Child()
+    _chip4_lbl = Gtk.Template.Child()
     _watched_btn = Gtk.Template.Child()
     _btn_content = Gtk.Template.Child()
     _edit_btn = Gtk.Template.Child()
     _update_btn = Gtk.Template.Child()
+    _activate_notification_btn = Gtk.Template.Child()
+    _notification_icon = Gtk.Template.Child()
     _description_box = Gtk.Template.Child()
     _overview_lbl = Gtk.Template.Child()
     _creator_box = Gtk.Template.Child()
@@ -76,9 +81,10 @@ class DetailsView(Adw.NavigationPage):
     
     mobile = True
 
-    def __init__(self, content: MovieModel | SeriesModel):
+    def __init__(self, content: MovieModel | SeriesModel, content_view):
         super().__init__()
 
+        self.content_view = content_view
         # Theme switcher (Adapted from https://gitlab.gnome.org/tijder/blueprintgtk/)
         themeswitcher = ThemeSwitcher()
         themeswitcher.connect(
@@ -89,9 +95,13 @@ class DetailsView(Adw.NavigationPage):
             self.content = local.get_movie_by_id(content.id)
         else:
             self.content = local.get_series_by_id(content.id)
+        
         logging.info(
             f'Loading info [{"movie" if type(content) is MovieModel else "TV Serie"}] {self.content.title}') # type: ignore
 
+        local.set_recent_change_status(self.content.id, False, type(content) is MovieModel) #reset rechent_change since it was clicked on
+        
+        self.content_view.refresh_view()
         self.set_title(self.content.title)  # type: ignore
         self._view_stack.set_visible_child_name('loading')
         
@@ -144,7 +154,7 @@ class DetailsView(Adw.NavigationPage):
         Returns:
             None
         """
-
+        
         # Both movies and tv series
         if self.content.backdrop_path:  # type: ignore
 
@@ -179,7 +189,7 @@ class DetailsView(Adw.NavigationPage):
         if self.content.release_date:  # type: ignore
             self._chip1_lbl.set_visible(True)
             self._chip1_lbl.set_text(date.fromisoformat(
-                self.content.release_date).strftime('%d %B %Y'))  # type: ignore
+                self.content.release_date).strftime('%d %b. %Y'))  # type: ignore        
 
         if self.content.manual:  # type: ignore
             self._edit_btn.set_visible(True)
@@ -204,6 +214,12 @@ class DetailsView(Adw.NavigationPage):
                 self._chip2_lbl.set_visible(True)
                 self._chip2_lbl.set_text(
                     self._format_runtime(self.content.runtime))
+                self._chip2_lbl.set_tooltip_text(_("Runtime of Movie"))
+
+            if not self.content.manual and datetime.strptime(self.content.release_date,'%Y-%m-%d') > datetime.now():
+                self._notification_icon.set_visible(True)
+                self._activate_notification_btn.set_visible(True)
+                self._activate_notification_btn.set_active(local.get_notification_list_status(self.content.id, movie=True))
 
         # TV series specific
         if type(self.content) is SeriesModel:
@@ -214,6 +230,7 @@ class DetailsView(Adw.NavigationPage):
                                                   '{num} Seasons'.format(
                                                       num=self.content.seasons_number),
                                          self.content.seasons_number))
+                self._chip2_lbl.set_tooltip_text(_("Number of Seasons"))
 
             if self.content.episodes_number:
                 self._chip3_lbl.set_visible(True)
@@ -223,6 +240,14 @@ class DetailsView(Adw.NavigationPage):
                                                       num=self.content.episodes_number),
                                                   self.content.episodes_number))
 
+            if self.content.next_air_date:  # type: ignore
+                self._chip4_lbl.set_visible(True)
+                self._chip4_lbl.set_text(date.fromisoformat(self.content.next_air_date).strftime('%d %b. %Y'))  # type: ignore
+
+            if not self.content.manual and self.content.in_production:
+                self._notification_icon.set_visible(True)
+                self._activate_notification_btn.set_visible(True)
+                self._activate_notification_btn.set_active(local.get_notification_list_status(self.content.id))
             if self.content.created_by:
                 self._creator_box.set_visible(True)
                 self._creator_lbl.set_text(', '.join(self.content.created_by))
@@ -300,17 +325,18 @@ class DetailsView(Adw.NavigationPage):
 
             button.connect('clicked', self._on_season_watched_clicked,
                            (button, season, self._episode_rows))
+            
 
     def _on_episode_watch_clicked(self,
                                   source: Gtk.Widget,
-                                  data: Tuple[Gtk.Button, SeasonModel]) -> None:
+                                  data: Tuple[Gtk.Button, SeasonModel, EpisodeModel]) -> None:
         """
         Callback for "watched-clicked" signal.
         Called after an episode is (un)marked as watched, checks and updates, if needed, the watched button for the corresponding season.
 
         Args:
             source (Gtk.Widget): caller widget
-            data(tuple[Gtk.Button, SeasonModel]): tuple with the Gtk.Button to change and the SeasonModel
+            data(tuple[Gtk.Button, SeasonModel, EpisodeModel]): tuple with the Gtk.Button to change and the SeasonModel
                 parent of the changed episode
 
         Returns:
@@ -323,6 +349,11 @@ class DetailsView(Adw.NavigationPage):
         for idx, season in enumerate(self.content.seasons):  # type: ignore
             if season == data[1]:
                 season_idx = idx
+
+        #compare if the episode clicked was the newest released episode if this is the case set new_release to False
+        if (season_idx+1) == int(self.content.last_episode_number.split('.')[0]) \
+                and data[2].number == int(self.content.last_episode_number.split('.')[1]):
+            local.set_new_release_status(self.content.id, False)
         
         if not self.mobile:
             btn_content = data[0]
@@ -372,35 +403,42 @@ class DetailsView(Adw.NavigationPage):
             if item[0] == self.content.seasons[season_idx]:  # type: ignore
                 episode_rows = item[1]
 
+        #determine if we want to set all episodes to watched or to not watched
+        set_to_watched = data[0].get_icon_name() == 'watchlist'
+        
         # Make changes in db
-        for episode in self.content.seasons[season_idx].episodes:   # type: ignore
-            local.mark_watched_episode(episode.id, not all(
-                episode.watched for episode in self.content.seasons[season_idx].episodes))  # type: ignore
+        for episode in self.content.seasons[season_idx].episodes:
+            local.mark_watched_episode(episode.id, set_to_watched)  # type: ignore
+
+        #if the season in which the last aired episode is in is clicked as watched remove new_release
+        if season_idx == int(self.content.last_episode_number.split('.')[0]):
+            local.set_new_release_status(self.content.id, False)
 
         # Update episode rows
         for episode_row in episode_rows:
-            episode_row.set_watched_btn(
-                not all(episode.watched for episode in self.content.seasons[season_idx].episodes))  # type: ignore
+            episode_row.set_watched_btn(set_to_watched)  # type: ignore
 
         # Update season expander
         if not self.mobile:
             btn_content = data[0]
-        
-            if not all(episode.watched for episode in self.content.seasons[season_idx].episodes): # type: ignore
+            if set_to_watched: # type: ignore
                 btn_content.set_label(_('Watched'))
                 btn_content.set_icon_name('check-plain')
             else:
                 btn_content.set_label(_('Mark as Watched'))
                 btn_content.set_icon_name('watchlist')
         else:
-            if all(episode.watched for episode in self.content.seasons[season_idx].episodes): # type: ignore
+            if set_to_watched: # type: ignore
                 data[0].set_icon_name('check-plain')
             else:
                 data[0].set_icon_name('watchlist')
 
+        #refetch data from db since we have changed episode.watched earlier
+        self.content = local.get_series_by_id(self.content.id)
+        
         # Update season status
-        local.mark_watched_series(self.content.id, not all(  # type: ignore
-            episode.watched for season in self.content.seasons for episode in season.episodes))  # type: ignore
+        local.mark_watched_series(self.content.id, all(  
+            episode.watched for season in self.content.seasons for episode in season.episodes)) 
         self.activate_action('win.refresh', None)
 
     def _build_flow_box(self) -> None:
@@ -601,6 +639,34 @@ class DetailsView(Adw.NavigationPage):
                 task_function=self._update),
             on_done=self._on_update_done)
 
+    @Gtk.Template.Callback('_activate_notification_btn_toggled')
+    def _activate_notification_btn_toggled(self, user_data: object | None) -> None:
+        """
+        Callback for "clicked" signal.
+        Adds the series to the notification list
+        Args:
+            user_data (object or None): additional data passed to the callback
+
+        Returns:
+            None
+        """
+        movie = type(self.content) == MovieModel
+        local.set_notification_list_status(self.content.id, self._activate_notification_btn.get_active(), movie=movie)
+        #if we remove the content from the notification_list then remove the new/soon_release flags and refresh the ContentView
+        if not self._activate_notification_btn.get_active():
+            local.set_new_release_status(self.content.id, False, movie=movie)
+            local.set_soon_release_status(self.content.id, False, movie=movie)
+            self.content_view.refresh_view()
+        else: # if we add content we check if should set the soon_release flag
+            compare_date = self.content.release_date if movie else self.content.next_air_date
+            if len(compare_date) > 0 and datetime.strptime(compare_date, '%Y-%m-%d') < datetime.now() + timedelta(days=14 if movie else 7): # TODO make this a variable and sync with main_view.py
+                local.set_soon_release_status(self.content.id, True, movie=movie)
+                self.content_view.refresh_view()
+
+        
+
+
+
     def _update(self, activity: BackgroundActivity) -> None:
         """
         Fetches updated information and updates the stored copy. Additionally it handles ui updates.
@@ -615,9 +681,11 @@ class DetailsView(Adw.NavigationPage):
         if type(self.content) is MovieModel:
             self.new_content = MovieModel(tmdb.get_movie(self.content.id))
             local.update_movie(old=self.content, new=self.new_content)
+            self.new_content = local.get_movie_by_id(self.content.id)
         else:
             self.new_content = SeriesModel(tmdb.get_serie(self.content.id))
             local.update_series(old=self.content, new=self.new_content)
+            self.new_content = local.get_series_by_id(self.content.id)
             
 
     def _on_update_done(self,
@@ -630,7 +698,7 @@ class DetailsView(Adw.NavigationPage):
         root_page = self.get_ancestor(
             Adw.NavigationView).get_previous_page(self)
         self.get_ancestor(Adw.NavigationView).replace(
-            [root_page, DetailsView(self.new_content)])
+            [root_page, DetailsView(self.new_content, self.content_view)])
         self._loading_lbl.set_label(_('Loading Metadata…'))
         self._view_stack.set_visible_child_name('filled')
         activity.end()

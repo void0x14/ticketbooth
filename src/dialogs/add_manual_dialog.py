@@ -10,6 +10,8 @@ from gettext import gettext as _
 from gettext import pgettext as C_
 from typing import List
 from urllib.parse import unquote
+from PIL import Image, ImageStat
+from pathlib import Path
 
 from gi.repository import Adw, Gio, GLib, GObject, Gtk
 
@@ -350,16 +352,16 @@ class AddManualDialog(Adw.Dialog):
         Returns:
             None
         """
-
-        poster_uri = self._copy_image_to_data(self._poster.get_uri(),
+        
+       
+        poster_uri, color = self._copy_image_to_data(self._poster.get_uri(),
                                               shared.poster_dir,
                                               self._title_entry.get_text()
                                               ) if not self.edit_mode else self._content.poster_path  # type: ignore
-
         if self._movies_btn.get_active():
-            self._save_movie(poster_uri)
+            self._save_movie(poster_uri, color)
         else:
-            self._save_series(poster_uri)
+            self._save_series(poster_uri, color)
 
     def _on_add_done(self,
                      source: GObject.Object,
@@ -371,7 +373,7 @@ class AddManualDialog(Adw.Dialog):
         self.get_ancestor(Adw.ApplicationWindow).activate_action('win.refresh', None)
         activity.end()
 
-    def _save_movie(self, poster_uri: str) -> None:
+    def _save_movie(self, poster_uri: str, color: bool) -> None:
         """
         Creates a MovieModel with the provided data and saves or updates the movie in the local db.
 
@@ -387,26 +389,27 @@ class AddManualDialog(Adw.Dialog):
         end_iter = buffer.get_end_iter()
         overview = buffer.get_text(start_iter, end_iter, False)
 
-        movie = MovieModel(t=(
-            datetime.now(),  # add date
-            '',  # background
-            int(self._budget_spinrow.get_value()),  # budget
-            ''.join(self._genres_entry.get_text().split()),  # genres
-            local.get_next_manual_movie() if not self.edit_mode else self._content.id,  # id
-            True,   # manual
-            local.get_language_by_name(self._original_language_comborow.get_selected_item(
+        movie = MovieModel(t={
+            "add_date": datetime.now(),  # add date
+            "backdrop_path": '',  # background
+            "budget":int(self._budget_spinrow.get_value()),  # budget
+            "color": color,
+            "genres": ''.join(self._genres_entry.get_text().split()),  # genres
+            "id": local.get_next_manual_movie() if not self.edit_mode else self._content.id,  # id
+            "manual":True,   # manual
+            "original_language":local.get_language_by_name(self._original_language_comborow.get_selected_item(
             ).get_string()).iso_name,  # original language
-            self._original_title_entry.get_text(),  # original title
-            overview,   # overview
-            poster_uri,  # poster
-            self._calendar.get_date().format('%Y-%m-%d'),   # release date
-            int(self._revenue_spinrow.get_value()),  # revenue
-            int(self._runtime_spinrow.get_value()),  # runtime
-            self._status_entry.get_text(),  # status
-            self._tagline_entry.get_text(),  # tagline
-            self._title_entry.get_text(),   # title
-            False if not self.edit_mode else self._content.watched  # watched
-        ))
+            "original_title": self._original_title_entry.get_text(),  # original title
+            "overview":overview,   # overview
+            "poster_path": poster_uri,  # poster
+            "release_date": self._calendar.get_date().format('%Y-%m-%d'),   # release date
+            "revenue":int(self._revenue_spinrow.get_value()),  # revenue
+            "runtime":int(self._runtime_spinrow.get_value()),  # runtime
+            "status":self._status_entry.get_text(),  # status
+            "tagline":self._tagline_entry.get_text(),  # tagline
+            "title":self._title_entry.get_text(),   # title
+            "watched": False if not self.edit_mode else self._content.watched  # watched
+        })
 
         if not self.edit_mode:
             local.add_movie(movie=movie)
@@ -414,7 +417,7 @@ class AddManualDialog(Adw.Dialog):
             local.update_movie(old=self._content, new=movie)
             self.emit('edit-saved', movie)
 
-    def _save_series(self, series_poster_uri: str) -> None:
+    def _save_series(self, series_poster_uri: str, color: bool) -> None:
         """
         Creates a SeriesModel with associated SeasonModels/EpisodeModels with the provided data and saves or updates the TV series in the local db.
 
@@ -438,7 +441,7 @@ class AddManualDialog(Adw.Dialog):
                     f'{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}')
 
             # Copy the season poster
-            poster_uri = self._copy_image_to_data(season[1],
+            poster_uri, _ = self._copy_image_to_data(season[1],
                                                   f'{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}',
                                                   season[0])
 
@@ -446,7 +449,7 @@ class AddManualDialog(Adw.Dialog):
             for jdx, episode in enumerate(season[2]):
 
                 # Copy the episode still
-                still_uri = self._copy_image_to_data(episode[4],
+                still_uri, _ = self._copy_image_to_data(episode[4],
                                                      f'{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}',
                                                      episode[0]
                                                      )
@@ -487,28 +490,34 @@ class AddManualDialog(Adw.Dialog):
         end_iter = buffer.get_end_iter()
         overview = buffer.get_text(start_iter, end_iter, False)
 
-        serie = SeriesModel(t=(
-            datetime.now(),                                  # add date
-            '',                                              # backgroud
-            self._creator_entry.get_text(),                  # created by
-            self._compute_episode_number(seasons),           # episode number
-            ''.join(self._genres_entry.get_text().split()),  # genres
-            show_id,                                         # id
-            self._production_checkbtn.get_active(),          # in production
-            True,                                            # manual
-            local.get_language_by_name(self._original_language_comborow.get_selected_item(
-            ).get_string()).iso_name,         # type: ignore # original language
-            self._original_title_entry.get_text(),           # original title
-            overview,                                        # overview
-            series_poster_uri,                               # poster
-            self._calendar.get_date().format('%Y-%m-%d'),    # release date
-            len(seasons),                                    # seasons number
-            self._status_entry.get_text(),                   # status
-            self._tagline_entry.get_text(),                  # tagline
-            self._title_entry.get_text(),                    # title
-            False,                                           # watched
-            seasons                                          # seasons
-        ))
+        serie = SeriesModel(t={
+            "activate_notification": False,                                   # activate notification        
+            "add_date": datetime.now(),                                       # add date
+            "backdrop_path":'',                                               # backgroud
+            "color": color,                                       # color
+            "created_by": self._creator_entry.get_text(),                     # created by
+            "episodes_number": self._compute_episode_number(seasons),         # episode number
+            "genres": ''.join(self._genres_entry.get_text().split()),         # genres
+            "id": show_id,                                                    # id
+            "in_production": self._production_checkbtn.get_active(),          # in production
+            "last_air_date": '',                                              # last air date
+            "manual": True,                                                   # manual
+            "new_release": False,                                             # new release flag
+            "next_air_date": '',                                              # next air date           
+            "original_language": local.get_language_by_name(self._original_language_comborow.get_selected_item(
+            ).get_string()).iso_name,         # type: ignore                  # original language
+            "original_title": self._original_title_entry.get_text(),          # original title
+            "overview": overview,                                             # overview
+            "poster_path": series_poster_uri,                                 # poster
+            "release_date": self._calendar.get_date().format('%Y-%m-%d'),     # release date
+            "seasons_number": len(seasons),                                   # seasons number
+            "soon_release" :False,                                            # soon_release flag      
+            "status": self._status_entry.get_text(),                          # status
+            "tagline": self._tagline_entry.get_text(),                        # tagline
+            "title": self._title_entry.get_text(),                            # title
+            "watched": False,                                                 # watched
+            "seasons": seasons                                                # seasons
+    })
 
         if self.edit_mode:
             local.delete_series(self._content.id)   # type: ignore
@@ -532,6 +541,17 @@ class AddManualDialog(Adw.Dialog):
         tmp = id.split('-')
         return f'M-{int(tmp[1]) + amount}'
 
+    def _compute_badge_color(self, poster_path) -> bool:
+
+        im = Image.open(poster_path)
+        box = (im.size[0]-175, 0, im.size[0], 175)
+        region = im.crop(box)
+        median = ImageStat.Stat(region).median
+        if sum(median) < 3 * 128:
+            return True
+        else:
+            return False
+
     def _compute_episode_number(self, seasons: List[SeasonModel]) -> int:
         """
         Counts the total number of episodes of a tv series.
@@ -549,7 +569,7 @@ class AddManualDialog(Adw.Dialog):
                 num += 1
         return num
 
-    def _copy_image_to_data(self, src_uri: str, dest_folder: str, filename: str) -> str:
+    def _copy_image_to_data(self, src_uri: str, dest_folder: str, filename: str) -> (str,bool):
         """
         Copies src_uri to dest_folder as filename. If src_uri is a resource (empty poster/still) the operation is not
         carried out.
@@ -563,13 +583,14 @@ class AddManualDialog(Adw.Dialog):
         Returns:
             uri of the copied file or src_uri if is a resource.
         """
-
+        
         if src_uri.startswith('file'):
             extension = src_uri[src_uri.rindex('.'):]
             shutil.copy2(
                 src_uri[7:], f'{dest_folder}/{unquote(filename)}{extension}')
-            return f'file://{dest_folder}/{unquote(filename)}{extension}'
-        return src_uri
+            return f'file://{dest_folder}/{unquote(filename)}{extension}', \
+                self._compute_badge_color(Path(src_uri[7:], f'{dest_folder}/{unquote(filename)}{extension}'))
+        return (src_uri,False)
 
     def update_seasons_ui(self) -> None:
         """

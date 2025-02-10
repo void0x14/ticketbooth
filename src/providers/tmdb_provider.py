@@ -76,7 +76,6 @@ class TMDBProvider:
         Returns:
             dict containg the API result.
         """
-
         if not lang:
             lang = shared.schema.get_string('tmdb-lang')
 
@@ -94,10 +93,9 @@ class TMDBProvider:
         Returns:
             dict containg the API result
         """
-
         if not lang:
             lang = shared.schema.get_string('tmdb-lang')
-
+            
         return tmdb.TV(id).info(language=lang)
 
     @staticmethod

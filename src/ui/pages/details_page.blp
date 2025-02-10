@@ -37,6 +37,7 @@ template $DetailsView: Adw.NavigationPage {
 
             Adw.Breakpoint _breakpoint {
               condition ("max-width: 550sp")
+
               setters {
                 main-details.orientation: vertical;
                 main-details.margin-start: 0;
@@ -47,6 +48,10 @@ template $DetailsView: Adw.NavigationPage {
                 _poster_picture.margin-bottom: 20;
                 details.margin-start: 20;
                 details.margin-end: 20;
+                _description_box.margin-start: 20;
+                _description_box.margin-end: 20;
+                _creator_box.margin-start: 20;
+                _creator_box.margin-end: 20;
                 _seasons_box.margin-start: 20;
                 _seasons_box.margin-end: 20;
                 _additional_info_box.margin-start: 20;
@@ -136,11 +141,40 @@ template $DetailsView: Adw.NavigationPage {
 
                       Label _chip3_lbl {
                         visible: false;
+                        tooltip-text: _("Number of Episodes");
 
                         styles [
                           "caption",
                           "chip"
                         ]
+                      }
+
+                      Label _chip4_lbl {
+                        visible: false;
+                        tooltip-text: _("Air Date of Next Episode");
+
+                        styles [
+                          "caption",
+                          "chip"
+                        ]
+                      }
+                    }
+
+                    Box {
+                      Image _notification_icon {
+                        icon-name: "bell-outline-symbolic";
+                        margin-end: 3;
+                        visible: false;
+                        icon-size: normal;
+                      }
+
+                      CheckButton _activate_notification_btn {
+                        label: _("Notify me on new releases");
+                        tooltip-text: _("Notify on new releases");
+                        valign: center;
+                        visible: false;
+                        active: true;
+                        toggled => $_activate_notification_btn_toggled();
                       }
                     }
 
@@ -206,58 +240,62 @@ template $DetailsView: Adw.NavigationPage {
                         }
                       }
                     }
+                  }
+                }
 
-                    Box _description_box {
-                      orientation: vertical;
-                      visible: false;
+                Box _description_box {
+                  orientation: vertical;
+                  visible: false;
+                  margin-start: 50;
+                  margin-end: 50;
 
-                      Separator {
-                        margin-top: 12;
+                  Separator {
+                    margin-top: 12;
 
-                        styles [
-                          "spacer"
-                        ]
-                      }
+                    styles [
+                      "spacer"
+                    ]
+                  }
 
-                      Label {
-                        label: _("Description");
-                        halign: start;
+                  Label {
+                    label: _("Description");
+                    halign: start;
 
-                        styles [
-                          "title-2"
-                        ]
-                      }
+                    styles [
+                      "title-2"
+                    ]
+                  }
 
-                      Label _overview_lbl {
-                        halign: start;
-                        wrap: true;
-                      }
-                    }
+                  Label _overview_lbl {
+                    halign: start;
+                    wrap: true;
+                  }
+                }
 
-                    Separator {
-                      styles [
-                        "spacer"
-                      ]
-                    }
+                Separator {
+                  styles [
+                    "spacer"
+                  ]
+                }
 
-                    Box _creator_box {
-                      visible: false;
-                      halign: start;
-                      orientation: vertical;
+                Box _creator_box {
+                  visible: false;
+                  halign: start;
+                  orientation: vertical;
+                  margin-start: 50;
+                  margin-end: 50;
 
-                      Label {
-                        label: _("Created by");
-                        halign: start;
+                  Label {
+                    label: _("Created by");
+                    halign: start;
 
-                        styles [
-                          "heading"
-                        ]
-                      }
+                    styles [
+                      "heading"
+                    ]
+                  }
 
-                      Label _creator_lbl {
-                        halign: start;
-                      }
-                    }
+                  Label _creator_lbl {
+                    halign: start;
                   }
                 }
 
@@ -285,9 +323,11 @@ template $DetailsView: Adw.NavigationPage {
                     ]
                   }
 
-                Adw.PreferencesGroup _seasons_group {
-                  styles ["groupcolor"]
-                }
+                  Adw.PreferencesGroup _seasons_group {
+                    styles [
+                      "groupcolor"
+                    ]
+                  }
 
                   Separator {
                     margin-bottom: 16;

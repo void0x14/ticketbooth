@@ -4,12 +4,13 @@
 
 import glob
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List
+from pathlib import Path
 
 import requests
 from gi.repository import GLib, GObject
-from PIL import Image, ImageFilter
+from PIL import Image, ImageFilter, ImageStat
 
 import src.providers.local_provider as local
 
@@ -22,20 +23,25 @@ class MovieModel(GObject.GObject):
     This class represents a movie object stored in the db.
 
     Properties:
+        activate_notification (bool): Provide notification if the movie is added to the watchlist before its release date.
         add_date (str): date of addition to the db (ISO format)
         backdrop_path (str): path where the background image is stored
         budget (float): movie budget
+        color (bool): color of the poster badges, False being dark
         genres (List[str]): list of genres
         id (str): movie id
         manual (bool): if movie is added manually
+        new_release (bool): if the movie has had its release
         original_language (LanguageModel): LanguageModel of the original language
         original_title (str): movie title in original language
         overview (str): movie overview, usually the main plot
         poster_path (str): path where the backgroud poster is stored
+        recent_change (bool): indicates that new/soon_release was changed during the last check
         release_date (str): release date in YYYY-MM-DD format
         revenue (float): movie revenue
         runtime (int): movie runtime in minutes
         tagline (str): movie tagline
+        soon_release (bool): if the movie has its release soon
         status (str): movie status, usually released or planned
         title (str): movie title
         watched (bool): if the movie has been market as watched
@@ -49,19 +55,24 @@ class MovieModel(GObject.GObject):
 
     __gtype_name__ = 'MovieModel'
 
+    activate_notification = GObject.Property(type=bool, default=False)
     add_date = GObject.Property(type=str, default='')
     backdrop_path = GObject.Property(type=str, default='')
     budget = GObject.Property(type=float, default=0)
+    color = GObject.Property(type=bool, default=False)
     genres = GObject.Property(type=GLib.strv_get_type())
     id = GObject.Property(type=str, default='')
     manual = GObject.Property(type=bool, default=False)
+    new_release = GObject.Property(type=bool, default=False)
     original_language = GObject.Property(type=LanguageModel)
     original_title = GObject.Property(type=str, default='')
     overview = GObject.Property(type=str, default='')
     poster_path = GObject.Property(type=str, default='')
+    recent_change = GObject.Property(type=bool, default=False)
     release_date = GObject.Property(type=str, default='')
     revenue = GObject.Property(type=float, default=0)
     runtime = GObject.Property(type=int, default=0)
+    soon_release = GObject.Property(type=bool, default=False)
     status = GObject.Property(type=str, default='')
     tagline = GObject.Property(type=str, default='')
     title = GObject.Property(type=str, default='')
@@ -71,44 +82,58 @@ class MovieModel(GObject.GObject):
         super().__init__()
 
         if d is not None:
-            self.add_date = datetime.now()
+            self.add_date = datetime.now().date()
             self.backdrop_path = self._download_background(
                 path=d['backdrop_path'])
             self.budget = d['budget']
             self.genres = self._parse_genres(api_dict=d['genres'])
             self.id = d['id']
             self.manual = False
+            self.new_release = False
             self.original_language = local.LocalProvider.get_language_by_code(
                 d['original_language'])  # type: ignore
             self.original_title = d['original_title']
             self.overview = re.sub(r'\s{2}', ' ', d['overview'])
-            self.poster_path = self._download_poster(path=d['poster_path'])
-            self.release_date = d['release_date']
+            self.poster_path, self.color = self._download_poster(
+                path=d['poster_path'], color=False)
+            self.recent_change = False
+            self.release_date = d['release_date'] if d['release_date'] else None
             self.revenue = d['revenue']
             self.runtime = d['runtime']
+            self.soon_release = datetime.strptime(self.release_date, '%Y-%m-%d') < datetime.strptime(self.add_date, '%Y-%m-%d') + timedelta(
+                days=14) and datetime.strptime(self.release_date, '%Y-%m-%d') > datetime.strptime(self.add_date, '%Y-%m-%d') if self.release_date and self.add_date else False
             self.status = d['status']
             self.tagline = d['tagline']
             self.title = d['title']
             self.watched = False
+            self.activate_notification = datetime.strptime(self.release_date, '%Y-%m-%d') > datetime.strptime(
+                # if the release date is in the future activate notifications
+                self.add_date, '%Y-%m-%d') if self.release_date and self.add_date else False
         else:
-            self.add_date = t[0]  # type: ignore
-            self.backdrop_path = t[1]  # type: ignore
-            self.budget = t[2]  # type: ignore
-            self.genres = self._parse_genres(db_str=t[3])  # type: ignore
-            self.id = t[4]  # type: ignore
-            self.manual = t[5]  # type:ignore
+            self.activate_notification = t["activate_notification"] # type: ignore
+            self.add_date = t["add_date"]  # type: ignore
+            self.backdrop_path = t["backdrop_path"]  # type: ignore
+            self.budget = t["budget"]  # type: ignore
+            self.color = t["color"] # type: ignore
+            self.genres = self._parse_genres(
+                db_str=t["genres"])  # type: ignore
+            self.id = t["id"]  # type: ignore
+            self.manual = t["manual"]  # type:ignore
+            self.new_release = t["new_release"] #type: ignore
             self.original_language = local.LocalProvider.get_language_by_code(
-                t[6])  # type: ignore
-            self.original_title = t[7]  # type: ignore
-            self.overview = t[8]  # type: ignore
-            self.poster_path = t[9]  # type: ignore
-            self.release_date = t[10]  # type: ignore
-            self.revenue = t[11]  # type: ignore
-            self.runtime = t[12]  # type: ignore
-            self.status = t[13]  # type: ignore
-            self.tagline = t[14]  # type: ignore
-            self.title = t[15]  # type: ignore
-            self.watched = t[16]  # type:ignore
+                t["original_language"])  # type: ignore
+            self.original_title = t["original_title"]  # type: ignore
+            self.overview = t["overview"]  # type: ignore
+            self.poster_path = t["poster_path"]  # type: ignore
+            self.recent_change = t["recent_change"] # type: ignore
+            self.release_date = t["release_date"]  # type: ignore
+            self.revenue = t["revenue"]  # type: ignore
+            self.runtime = t["runtime"]  # type: ignore
+            self.soon_release = t["soon_release"] # type: ignore
+            self.status = t["status"]  # type: ignore
+            self.tagline = t["tagline"]  # type: ignore
+            self.title = t["title"]  # type: ignore
+            self.watched = t["watched"]  # type:ignore
 
     def _parse_genres(self, api_dict: dict = {}, db_str: str = '') -> List[str]:
         """
@@ -174,7 +199,7 @@ class MovieModel(GObject.GObject):
         except (requests.exceptions.ConnectionError, requests.exceptions.SSLError):
             return ''
 
-    def _download_poster(self, path: str) -> str:
+    def _download_poster(self, path: str, color: bool) -> (str, bool):
         """
         Returns the uri of the poster image on the local filesystem, downloading if necessary.
 
@@ -186,11 +211,12 @@ class MovieModel(GObject.GObject):
         """
 
         if not path:
-            return f'resource://{shared.PREFIX}/blank_poster.jpg'
+            return (f'resource://{shared.PREFIX}/blank_poster.jpg', False)
 
         files = glob.glob(f'{path[1:-4]}.jpg', root_dir=shared.poster_dir)
         if files:
-            return f'file://{shared.poster_dir}/{files[0]}'
+            color = self._compute_badge_color(Path(f'{files[0]}'))
+            return (f'file://{shared.poster_dir}/{files[0]}', color)
 
         url = f'https://image.tmdb.org/t/p/w500{path}'
         try:
@@ -198,8 +224,20 @@ class MovieModel(GObject.GObject):
             if r.status_code == 200:
                 with open(f'{shared.poster_dir}{path}', 'wb') as f:
                     f.write(r.content)
-                return f'file://{shared.poster_dir}{path}'
+                color = self._compute_badge_color(Path(f'{path}'))
+                return (f'file://{shared.poster_dir}{path}', color)
             else:
                 return f'resource://{shared.PREFIX}/blank_poster.jpg'
         except (requests.exceptions.ConnectionError, requests.exceptions.SSLError):
             return f'resource://{shared.PREFIX}/blank_poster.jpg'
+
+    def _compute_badge_color(self, path: str) -> bool:
+        color_light = False
+        im = Image.open(Path(f'{shared.poster_dir}/{path}'))
+        box = (im.size[0]-175, 0, im.size[0], 175)
+        region = im.crop(box)
+        median = ImageStat.Stat(region).median
+        if sum(median) < 3 * 128:
+            color_light = True
+
+        return color_light
