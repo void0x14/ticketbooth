@@ -49,6 +49,7 @@ class SeriesModel(GObject.GObject):
         title (str): series title
         watched (bool): whether the series has been watched completely or not
         activate_notification (bool): whether the series should be checked for new releases
+        notes (str): user notes
 
     Methods:
         None
@@ -85,6 +86,7 @@ class SeriesModel(GObject.GObject):
     tagline = GObject.Property(type=str, default='')
     title = GObject.Property(type=str, default='')
     watched = GObject.Property(type=bool, default=False)
+    notes = GObject.Property(type=str, default='')
 
     def __init__(self, d=None, t=None):
         super().__init__()
@@ -124,6 +126,7 @@ class SeriesModel(GObject.GObject):
                 self.soon_release = datetime.strptime(self.next_air_date, '%Y-%m-%d') < datetime.now() + timedelta(days=6)
             else:
                 self.soon_release = False
+            self.notes = ''
         else:
             self.activate_notification = t["activate_notification"]
             self.add_date = t["add_date"]  # type: ignore
@@ -158,6 +161,8 @@ class SeriesModel(GObject.GObject):
             else:
                 self.seasons = local.LocalProvider.get_all_seasons(
                     self.id)  # type: ignore
+                
+            self.notes = t["notes"]  # type: ignore
 
     def _parse_genres(self, api_dict: dict = {}, db_str: str = '') -> List[str]:
         """

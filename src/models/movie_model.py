@@ -45,6 +45,7 @@ class MovieModel(GObject.GObject):
         status (str): movie status, usually released or planned
         title (str): movie title
         watched (bool): if the movie has been market as watched
+        notes (str): additional notes added by the user
 
     Methods:
         None
@@ -77,6 +78,7 @@ class MovieModel(GObject.GObject):
     tagline = GObject.Property(type=str, default='')
     title = GObject.Property(type=str, default='')
     watched = GObject.Property(type=bool, default=False)
+    notes = GObject.Property(type=str, default='')
 
     def __init__(self, d=None, t=None):
         super().__init__()
@@ -109,6 +111,7 @@ class MovieModel(GObject.GObject):
             self.activate_notification = datetime.strptime(self.release_date, '%Y-%m-%d') > datetime.strptime(
                 # if the release date is in the future activate notifications
                 self.add_date, '%Y-%m-%d') if self.release_date and self.add_date else False
+            self.notes = ''
         else:
             self.activate_notification = t["activate_notification"] # type: ignore
             self.add_date = t["add_date"]  # type: ignore
@@ -134,6 +137,7 @@ class MovieModel(GObject.GObject):
             self.tagline = t["tagline"]  # type: ignore
             self.title = t["title"]  # type: ignore
             self.watched = t["watched"]  # type:ignore
+            self.notes = t["notes"]  # type: ignore
 
     def _parse_genres(self, api_dict: dict = {}, db_str: str = '') -> List[str]:
         """

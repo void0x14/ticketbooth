@@ -56,6 +56,8 @@ template $DetailsView: Adw.NavigationPage {
                 _seasons_box.margin-end: 20;
                 _additional_info_box.margin-start: 20;
                 _additional_info_box.margin-end: 20;
+                _notes_box.margin-start: 20;
+                _notes_box.margin-end: 20;
               }
 
               apply => $_on_breakpoint_applied();
@@ -340,9 +342,7 @@ template $DetailsView: Adw.NavigationPage {
 
                 Box _additional_info_box {
                   valign: start;
-                  vexpand: true;
                   orientation: vertical;
-                  margin-bottom: 20;
                   margin-start: 50;
                   margin-end: 50;
 
@@ -361,6 +361,79 @@ template $DetailsView: Adw.NavigationPage {
                     selection-mode: none;
                     max-children-per-line: 12;
                   }
+                }
+
+                Box _notes_box {
+                  orientation: vertical;
+                  margin-top: 10;
+                  margin-bottom: 20;
+                  margin-start: 50;
+                  margin-end: 50;
+
+                  Box {
+                    orientation: horizontal;
+                    spacing: 10;
+
+                    Label {
+                      label: _("Notes");
+                      halign: start;
+
+                      styles [
+                        "title-2"
+                      ]
+                    }
+
+                    Revealer _notes_save_revealer {
+                      reveal-child: false;
+                      transition-type: swing_right;
+
+                      child: Button _notes_save_btn {
+                        icon-name: "floppy";
+
+                        styles [
+                          "circular"
+                        ]
+                        clicked => $_on_notes_btn_clicked();
+                      };
+                    }
+                  }
+
+                  TextView _notes_textview {
+                    vexpand: true;
+                    wrap-mode: word;
+                    margin-top: 10;
+                    top-margin: 12;
+                    left-margin: 12;
+                    right-margin: 12;
+                    bottom-margin: 12;
+                    height-request: 100;
+
+                    styles [
+                      "notes",
+                      "card"
+                    ]
+                  }
+
+                  // Adw.ViewStack {
+                  //   styles [
+                  //     "card"
+                  //   ]
+                  //   Adw.ViewStackPage {
+                  //     name: "text-area";
+                  //     child: ScrolledWindow {
+                  //       child: TextView _textview {
+                  //         wrap-mode: word;
+                  //         top-margin: 12;
+                  //         left-margin: 12;
+                  //         right-margin: 12;
+                  //         bottom-margin: 12;
+                  //         styles [
+                  //           "notes"
+                  //         ]
+                  //       };
+                  //     };
+                  //   }
+                  // }
                 }
               };
             };

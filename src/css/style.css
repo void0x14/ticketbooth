@@ -6,6 +6,11 @@
 
 /* Light mode CSS - Main style */
 
+.notes {
+    border-radius: 12px;
+    background-color: alpha(#dddddd, 0.2);
+}
+
 .chip {
     padding: 0 7px;
     line-height: 20px;
@@ -17,20 +22,23 @@
     border-radius: 12px;
 }
 
-.light{
-    color:@light_2; 
+.light {
+    color: @light_2;
 }
-.dark{
-    color:@dark_3;
+
+.dark {
+    color: @dark_3;
 }
+
 .still {
     border-radius: 6px;
 }
 
-.shadow{
+.shadow {
     box-shadow: 0px 0px 4px 4px @accent_color;
 }
-.pulse{
+
+.pulse {
     animation-name: breathing;
     animation-duration: 3s;
     animation-timing-function: ease-in-out;
@@ -40,7 +48,7 @@
     animation-fill-mode: none;
     animation-play-state: running;
 }
-  
+
 @keyframes breathing {
     0% {
         transform: scale(1);
@@ -60,7 +68,7 @@
 }
 
 .progress_complete progress {
-	background-color: @success_color;
+    background-color: @success_color;
 }
 
 .progress_error progress {

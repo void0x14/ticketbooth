@@ -124,7 +124,7 @@ class EpisodeRow(Adw.PreferencesRow):
             else:
                 self._watched_btn.set_icon_name('watchlist')
         else:
-            btn_content = Adw.ButtonContent.new()
+            btn_content = Adw.ButtonContent()
             if self.watched:
                 btn_content.set_label(_('Watched'))
                 btn_content.set_icon_name('check-plain')
@@ -149,12 +149,20 @@ class EpisodeRow(Adw.PreferencesRow):
         local.mark_watched_episode(self.id, not self.watched)
         self.watched = not self.watched
 
-        if self.watched:
-            self._watched_btn.set_label(_('Watched'))
-            self._watched_btn.set_icon_name('check-plain')
+        if self.small_controls:
+            if self.watched:
+                self._watched_btn.set_icon_name('check-plain')
+            else:
+                self._watched_btn.set_icon_name('watchlist')
         else:
-            self._watched_btn.set_label(_('Mark as Watched'))
-            self._watched_btn.set_icon_name('watchlist')
+            btn_content = Adw.ButtonContent()
+            if self.watched:
+                btn_content.set_label(_('Watched'))
+                btn_content.set_icon_name('check-plain')
+            else:
+                btn_content.set_label(_('Mark as Watched'))
+                btn_content.set_icon_name('watchlist')
+            self._watched_btn.set_child(btn_content)
 
         self.emit('watched-clicked')
 
@@ -307,9 +315,18 @@ class EpisodeRow(Adw.PreferencesRow):
             None
         """
 
-        if watched:
-            self._watched_btn.set_label(_('Watched'))
-            self._watched_btn.set_icon_name('check-plain')
+        if self.small_controls:
+            if watched:
+                self._watched_btn.set_icon_name('check-plain')
+            else:
+                self._watched_btn.set_icon_name('watchlist')
         else:
-            self._watched_btn.set_label(_('Mark as Watched'))
-            self._watched_btn.set_icon_name('watchlist')
+            btn_content = Adw.ButtonContent()
+            if watched:
+                btn_content.set_label(_('Watched'))
+                btn_content.set_icon_name('check-plain')
+            else:
+                btn_content.set_label(_('Mark as Watched'))
+                btn_content.set_icon_name('watchlist')
+            self._watched_btn.set_child(btn_content)
+

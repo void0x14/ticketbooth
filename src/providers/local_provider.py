@@ -192,12 +192,19 @@ class LocalProvider:
         Returns:
             None
         """
-        
 
         with sqlite3.connect(shared.db) as connection:
 
             sql = """pragma table_info(series)"""
             result = connection.cursor().execute(sql).fetchall()
+
+            if not any(item[1] == "notes" for item in result):
+                sql = """ALTER TABLE series
+                            ADD notes TEXT
+                            DEFAULT '';"""
+                connection.cursor().execute(sql)
+                connection.commit()
+
             if not any(item[1] == "last_air_date" for item in result):
                 sql = """ALTER TABLE series
                             ADD last_air_date TEXT
@@ -211,7 +218,6 @@ class LocalProvider:
                             DEFAULT (0);"""
                 connection.cursor().execute(sql)
                 connection.commit()
-
 
             if not any(item[1] == "new_release" for item in result):
                 sql = """ALTER TABLE series
@@ -233,7 +239,7 @@ class LocalProvider:
                             DEFAULT '';"""
                 connection.cursor().execute(sql)
                 connection.commit()
-            
+
             if not any(item[1] == "soon_release" for item in result):
                 sql = """ALTER TABLE series
                             ADD soon_release BOOLEAN
@@ -264,17 +270,19 @@ class LocalProvider:
             for entry in result:
                 backdrop = entry["backdrop_path"]
                 poster = entry["poster_path"]
-                new_watched = (all(episode.watched for season in LocalProvider.get_all_seasons(entry["id"]) for episode in season.episodes))
-                        
-                if shared.DEBUG: #if we are in debug build we add Devel to the path, this way we can copy release databases to the debug build to test.
-                    backdrop = backdrop.replace(".Devel",'')
-                    poster = poster.replace(".Devel",'')
+                new_watched = (all(episode.watched for season in LocalProvider.get_all_seasons(
+                    entry["id"]) for episode in season.episodes))
+
+                if shared.DEBUG:  # if we are in debug build we add Devel to the path, this way we can copy release databases to the debug build to test.
+                    backdrop = backdrop.replace(".Devel", '')
+                    poster = poster.replace(".Devel", '')
                 index = poster.find("/data")
                 if index > 0:
                     if shared.DEBUG:
-                        backdrop = backdrop[:index] + ".Devel" + backdrop[index:]
+                        backdrop = backdrop[:index] + \
+                            ".Devel" + backdrop[index:]
                         poster = poster[:index] + ".Devel" + poster[index:]
-                        
+
                     color = LocalProvider.compute_badge_color(Path(poster[7:]))
                 else:
                     color = False
@@ -289,17 +297,23 @@ class LocalProvider:
                     color,
                     new_watched,
                     entry["id"],
-                    ))
+                ))
                 connection.commit()
 
-
-
+    @staticmethod
     def update_movies_table() -> None:
 
         with sqlite3.connect(shared.db) as connection:
-            
+
             sql = """pragma table_info(movies)"""
             result = connection.cursor().execute(sql).fetchall()
+
+            if not any(item[1] == "notes" for item in result):
+                sql = """ALTER TABLE movies
+                            ADD notes TEXT
+                            DEFAULT '';"""
+                connection.cursor().execute(sql)
+                connection.commit()
 
             if not any(item[1] == "color" for item in result):
                 sql = """ALTER TABLE movies
@@ -344,19 +358,21 @@ class LocalProvider:
                 backdrop = entry["backdrop_path"]
                 poster = entry["poster_path"]
                 if shared.DEBUG:
-                    backdrop = backdrop.replace(".Devel",'')
-                    poster = poster.replace(".Devel",'')
+                    backdrop = backdrop.replace(".Devel", '')
+                    poster = poster.replace(".Devel", '')
                 index = backdrop.find("/data")
                 if index > 0:
                     if shared.DEBUG:
-                        backdrop = backdrop[:index] + ".Devel" + backdrop[index:]
+                        backdrop = backdrop[:index] + \
+                            ".Devel" + backdrop[index:]
                         poster = poster[:index] + ".Devel" + poster[index:]
                     color = LocalProvider.compute_badge_color(Path(poster[7:]))
                 else:
                     color = False
-                
+
                 if entry["release_date"]:
-                    activate_notification = datetime.strptime(entry["release_date"], '%Y-%m-%d') > datetime.now()
+                    activate_notification = datetime.strptime(
+                        entry["release_date"], '%Y-%m-%d') > datetime.now()
                 else:
                     activate_notification = False
 
@@ -401,7 +417,7 @@ class LocalProvider:
                      );"""
             connection.cursor().execute(sql)
             connection.commit()
- 
+
     @staticmethod
     def create_tables() -> None:
         """
@@ -476,8 +492,9 @@ class LocalProvider:
                 status,
                 tagline,
                 title,
-                watched
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"""
+                watched,
+                notes
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"""
             result = connection.cursor().execute(sql, (
                 movie.activate_notification,
                 movie.add_date,
@@ -501,6 +518,7 @@ class LocalProvider:
                 movie.tagline,
                 movie.title,
                 movie.watched,
+                movie.notes,
             ))
             connection.commit()
             logging.debug(
@@ -550,8 +568,9 @@ class LocalProvider:
                 status,
                 tagline,
                 title,
-                watched
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"""
+                watched,
+                notes
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"""
             result = connection.cursor().execute(sql, (
                 serie.activate_notification,
                 serie.add_date,
@@ -579,6 +598,7 @@ class LocalProvider:
                 serie.tagline,
                 serie.title,
                 serie.watched,
+                serie.notes,
             ))
 
             for season in serie.seasons:
@@ -707,7 +727,7 @@ class LocalProvider:
                 return []
 
     @staticmethod
-    def mark_watched_movie(id: str, watched: bool) -> int | None:
+    def mark_watched_movie(id: int, watched: bool) -> int | None:
         """
         Sets the watched flag on the movie with the provided id.
 
@@ -893,15 +913,17 @@ class LocalProvider:
             connection.row_factory = sqlite3.Row
             result = connection.cursor().execute(sql).fetchall()
             if result:
-                logging.debug(f'[db] Get all tv series in notification_list: {result}')
+                logging.debug(
+                    f'[db] Get all tv series in notification_list: {result}')
                 series = []
                 for serie in result:
                     series.append(SeriesModel(t=serie))
                 return series
             else:
-                logging.debug(f'[db] Get all tv series in notification_list: {[]}')
+                logging.debug(
+                    f'[db] Get all tv series in notification_list: {[]}')
                 return []
-    
+
     @staticmethod
     def get_all_movies_notification_list() -> List[MovieModel]:
         """
@@ -919,13 +941,15 @@ class LocalProvider:
             connection.row_factory = sqlite3.Row
             result = connection.cursor().execute(sql).fetchall()
             if result:
-                logging.debug(f'[db] Get all moviesin notification_list: {result}')
+                logging.debug(
+                    f'[db] Get all moviesin notification_list: {result}')
                 movies = []
                 for movie in result:
                     movies.append(MovieModel(t=movie))
                 return movies
             else:
-                logging.debug(f'[db] Get all movies in notification_list: {[]}')
+                logging.debug(
+                    f'[db] Get all movies in notification_list: {[]}')
                 return []
 
     @staticmethod
@@ -941,11 +965,10 @@ class LocalProvider:
             int or None containing the id of the last modified row
         """
 
-        #if all episodes are watched remove soon/new_release flags
+        # if all episodes are watched remove soon/new_release flags
         if watched:
             LocalProvider.set_new_release_status(id, False)
             LocalProvider.set_soon_release_status(id, False)
-
 
         with sqlite3.connect(shared.db) as connection:
             sql = 'UPDATE series SET watched = ? WHERE id = ?;'
@@ -1151,7 +1174,8 @@ class LocalProvider:
                          runtime = ?,
                          status = ?,
                          tagline = ?,
-                         title = ?
+                         title = ?,
+                         notes = ?
                      WHERE id = ?;
                   """
             result = connection.cursor().execute(sql, (
@@ -1170,12 +1194,13 @@ class LocalProvider:
                 new.status,
                 new.tagline,
                 new.title,
+                old.notes,
                 old.id,
             ))
             connection.commit()
-            logging.debug(f'[db] Update movie {old.id}: {(new.backdrop_path, new.budget, ",".join(new.genres), new.manual, new.original_language.iso_name, new.original_title, new.overview, new.poster_path, new.release_date, new.revenue, new.runtime, new.status, new.tagline, new.title, old.id)}')
+            logging.debug(f'[db] Update movie {old.id}: {(new.backdrop_path, new.budget, ",".join(new.genres), new.manual, new.original_language.iso_name, new.original_title, new.overview, new.poster_path, new.release_date, new.revenue, new.runtime, new.status, new.tagline, new.title, old.notes, old.id)}')
         return result.lastrowid
-    
+
     @staticmethod
     def update_series(old: SeriesModel, new: SeriesModel) -> int | None:
         """
@@ -1195,7 +1220,7 @@ class LocalProvider:
                 if episode.watched:
                     watched_episodes.append(episode.id)
 
-        #remove series but not the posters, therefore not calling remove_series()
+        # remove series but not the posters, therefore not calling remove_series()
         # TODO Handle if the poster changes, the same problem in update_movie
         with sqlite3.connect(shared.db) as connection:
             connection.cursor().execute('PRAGMA foreign_keys = ON;')
@@ -1206,13 +1231,14 @@ class LocalProvider:
             connection.cursor().close()
             logging.debug(f'[db] TV series {id}, deleted: {result.lastrowid}')
 
-        #Copy all flags that get reset but are still needed from the old to the new soon_release is automatically set in SeriesModel
+        # Copy all flags that get reset but are still needed from the old to the new soon_release is automatically set in SeriesModel
         new.activate_notification = old.activate_notification
         new.add_date = old.add_date
-        new.new_release = old.new_release     
+        new.new_release = old.new_release
         new.recent_change = old.recent_change
         new.watched = old.watched
-        
+        new.notes = old.notes
+
         # Restore episodes statuses if they match before addition
         for idx, season in enumerate(new.seasons):
             for jdx, episode in enumerate(season.episodes):
@@ -1221,15 +1247,12 @@ class LocalProvider:
                     new.seasons[idx].episodes[jdx].watched = True
                 except ValueError:
                     new.seasons[idx].episodes[jdx].watched = False
-                    #we have found a new episode therefore the watched flag needs to be set to false
+                    # we have found a new episode therefore the watched flag needs to be set to false
                     new.watched = False
 
-        new.add_date = old.add_date
-        
         LocalProvider.add_series(serie=new)
 
         return result.lastrowid
-
 
     @staticmethod
     def mark_watched_episode(id: str, watched: bool) -> int | None:
@@ -1275,7 +1298,7 @@ class LocalProvider:
                 return None
 
     @staticmethod
-    def set_notification_list_status(id: int, value: bool, movie: bool = False) ->  None:
+    def set_notification_list_status(id: int, value: bool, movie: bool = False) -> None:
         """
         Sets notification_list status of the content with the id to value.
 
@@ -1287,21 +1310,21 @@ class LocalProvider:
             None
         """
         if not movie:
-            logging.debug(f'[db] TV series {id}, set activation_notification field to {value}')
+            logging.debug(
+                f'[db] TV series {id}, set activation_notification field to {value}')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """UPDATE series SET activate_notification = ? WHERE id = ?"""
                 result = connection.cursor().execute(sql, (value, id,)).fetchone()
                 connection.commit()
         else:
-            logging.debug(f'[db] Movie {id}, set activation_notification field to {value}')
+            logging.debug(
+                f'[db] Movie {id}, set activation_notification field to {value}')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """UPDATE movies SET activate_notification = ? WHERE id = ?"""
                 result = connection.cursor().execute(sql, (value, id,)).fetchone()
                 connection.commit()
-
-
 
     @staticmethod
     def get_notification_list_status(id: int, movie: bool = False) -> bool:
@@ -1330,7 +1353,6 @@ class LocalProvider:
                 result = connection.cursor().execute(sql, (id,)).fetchone()
                 return result[0]
 
-
     @staticmethod
     def set_new_release_status(id: int, value: bool, movie: bool = False) -> None:
         """
@@ -1344,7 +1366,8 @@ class LocalProvider:
             Success int or None if not found in db
         """
         if not movie:
-            logging.debug(f'[db] TV series {id}, set new_release field to {value}')
+            logging.debug(
+                f'[db] TV series {id}, set new_release field to {value}')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """UPDATE series SET new_release = ? WHERE id = ?"""
@@ -1399,21 +1422,21 @@ class LocalProvider:
         """
 
         if not movie:
-            logging.debug(f'[db] TV series {id}, set soon_release field to {value}')
+            logging.debug(
+                f'[db] TV series {id}, set soon_release field to {value}')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """UPDATE series SET soon_release = ? WHERE id = ?"""
                 result = connection.cursor().execute(sql, (value, id,)).fetchone()
                 connection.commit()
         else:
-            logging.debug(f'[db] movie {id}, set soon_release field to {value}')
+            logging.debug(
+                f'[db] movie {id}, set soon_release field to {value}')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """UPDATE movies SET soon_release = ? WHERE id = ?"""
                 result = connection.cursor().execute(sql, (value, id,)).fetchone()
                 connection.commit()
-
-
 
     @staticmethod
     def get_soon_release_status(id: int, value: bool, movie: bool = False) -> None:
@@ -1433,14 +1456,14 @@ class LocalProvider:
             with sqlite3.connect(shared.db) as connection:
                 sql = """SELECT soon_release FROM series WHERE id = ?;"""
                 result = connection.cursor().execute(sql, (id,)).fetchone()
-                return result[0]  
+                return result[0]
         else:
             logging.debug(f'[db] movie {id}, get soon_release status')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """SELECT soon_release FROM movies WHERE id = ?;"""
                 result = connection.cursor().execute(sql, (id,)).fetchone()
-                return result[0]              
+                return result[0]
 
     @staticmethod
     def set_recent_change_status(id: int, value: bool, movie: bool = False) -> None:
@@ -1455,21 +1478,21 @@ class LocalProvider:
             Success int or None if not found in db
         """
         if not movie:
-            logging.debug(f'[db] TV series {id}, set recent_change field to {value}')
+            logging.debug(
+                f'[db] TV series {id}, set recent_change field to {value}')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """UPDATE series SET recent_change = ? WHERE id = ?"""
                 result = connection.cursor().execute(sql, (value, id,))
                 connection.commit()
         else:
-            logging.debug(f'[db] movie {id}, set recent_change field to {value}')
+            logging.debug(
+                f'[db] movie {id}, set recent_change field to {value}')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """UPDATE movies SET recent_change = ? WHERE id = ?"""
                 result = connection.cursor().execute(sql, (value, id,))
                 connection.commit()
-
-
 
     @staticmethod
     def get_recent_change_status(id: int, value: bool, movie: bool = False) -> None:
@@ -1489,14 +1512,14 @@ class LocalProvider:
             with sqlite3.connect(shared.db) as connection:
                 sql = """SELECT recent_change FROM series WHERE id = ?;"""
                 result = connection.cursor().execute(sql, (id,)).fetchone()
-                return result[0]  
+                return result[0]
         else:
             logging.debug(f'[db] movie {id}, get recent_change status')
 
             with sqlite3.connect(shared.db) as connection:
                 sql = """SELECT recent_change FROM movies WHERE id = ?;"""
                 result = connection.cursor().execute(sql, (id,)).fetchone()
-                return result[0]   
+                return result[0]
 
     @staticmethod
     def reset_recent_change() -> None:
@@ -1537,4 +1560,45 @@ class LocalProvider:
             sql = """UPDATE movies SET activate_notification = False;"""
             connection.cursor().execute(sql, ())
             connection.commit()
-                        
+
+    @staticmethod
+    def update_movie_notes(id: int, notes: str) -> int | None:
+        """
+        Updates the notes on the movie with the provided id.
+
+        Args:
+            id (int): movie id to change
+            notes (str): notes to save
+
+        Returns:
+            int or None containing the id of the last modified row
+        """
+
+        with sqlite3.connect(shared.db) as connection:
+            sql = """UPDATE movies SET notes = ? WHERE id = ?"""
+            result = connection.cursor().execute(sql, (notes, id,))
+            connection.commit()
+            logging.debug(
+                f'[db] Save movie {id} notes {notes}: {result.lastrowid}')
+        return result.lastrowid
+
+    @staticmethod
+    def update_serie_notes(id: int, notes: str) -> int | None:
+        """
+        Updates the notes on the TV Series with the provided id.
+
+        Args:
+            id (int): serie id to change
+            notes (str): notes to save
+
+        Returns:
+            int or None containing the id of the last modified row
+        """
+
+        with sqlite3.connect(shared.db) as connection:
+            sql = """UPDATE series SET notes = ? WHERE id = ?"""
+            result = connection.cursor().execute(sql, (notes, id,))
+            connection.commit()
+            logging.debug(
+                f'[db] Save TV Serie {id} notes {notes}: {result.lastrowid}')
+        return result.lastrowid
