@@ -31,6 +31,11 @@ template $MainView: Adw.Bin {
       trigger: "<control>r";
       action: "action(win.refresh)";
     }
+
+    Shortcut {
+      trigger: "<control>f";
+      action: "action(win.search)";
+    }
   }
 
   Adw.NavigationView {
@@ -64,6 +69,13 @@ template $MainView: Adw.Bin {
               menu-model: _add_menu;
             }
 
+            [start]
+            ToggleButton _show_search_btn {
+              icon-name: "loupe";
+              tooltip-text: _("Show/Hide search bar");
+              toggled => $_on_search_btn_toggled();
+            }
+
             [end]
             MenuButton _menu_btn {
               icon-name: "open-menu";
@@ -75,6 +87,19 @@ template $MainView: Adw.Bin {
             $BackgroundIndicator _background_indicator {
               visible: true;
             }
+          }
+
+          [top]
+          SearchBar _search_bar {
+            search-mode-enabled: bind _show_search_btn.active;
+
+            child: SearchEntry _search_entry {
+              halign: center;
+              activates-default: true;
+              placeholder-text: _("Search Your Watchlist");
+              search-delay: 500;
+              search-changed => $_on_searchentry_search_changed();
+            };
           }
 
           content: Box {

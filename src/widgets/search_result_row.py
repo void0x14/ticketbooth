@@ -188,11 +188,11 @@ class SearchResultRow(Gtk.ListBoxRow):
                      activity: BackgroundActivity):
         """Callback to complete async activity"""
 
-        activity.activity_finish(result, self)
+        activity.activity_finish(result, self)        
         self._add_btn.set_label(_('Already in your watchlist'))
         self._add_btn.set_icon_name('check-plain')
         self._add_spinner.set_visible(False)
-        self.get_ancestor(Adw.ApplicationWindow).activate_action('win.refresh', None)
+        self.get_root().activate_action('win.refresh', None)
         activity.end()
 
     def _get_poster_thread(self, task: Gio.Task, source_object: GObject.Object, task_data: object | None,

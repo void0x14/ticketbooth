@@ -64,6 +64,15 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<default>false</default>
 			<summary>Hide watched content</summary>
 		</key>
+		<key name="search-enabled" type="b">
+			<default>false</default>
+			<summary>Search bar visibility</summary>
+		</key>
+		<key name="search-query" type="s">
+			<default>''</default>
+			<summary>Search query</summary>
+		</key>
+
 
 		<!-- Settings -->
 		<key name="style-scheme" type="s">

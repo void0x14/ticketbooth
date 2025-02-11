@@ -4,6 +4,8 @@
 
 import logging
 
+from gettext import gettext as _
+
 from gi.repository import Adw, GObject, Gtk
 
 import src.providers.local_provider as local
@@ -37,6 +39,7 @@ class ContentView(Adw.Bin):
 
     _stack = Gtk.Template.Child()
     _updating_status_lbl = Gtk.Template.Child()
+    _title_lbl = Gtk.Template.Child()
     _flow_box = Gtk.Template.Child()
     _full_box = Gtk.Template.Child()
     _separated_box = Gtk.Template.Child()
@@ -62,6 +65,8 @@ class ContentView(Adw.Bin):
                               self._on_separate_watched_changed)
         shared.schema.connect('changed::hide-watched',
                               self._on_hide_watched_changed)
+        shared.schema.connect('changed::search-query',
+                              self._on_search_enabled_changed)
 
     def _on_sort_changed(self, pspec: GObject.ParamSpec, user_data: object | None) -> None:
         """
@@ -136,7 +141,7 @@ class ContentView(Adw.Bin):
                 f'Created poster button for [{"movie" if self.movie_view else "TV series"}] {item.title}')
             btn = PosterButton(content=item)
             btn.connect('clicked', self._on_clicked)
-            if shared.schema.get_boolean('separate-watched'):
+            if not shared.schema.get_boolean('search-enabled') and shared.schema.get_boolean('separate-watched'):
                 if item.watched:
                     self._watched_flow_box.insert(btn, -1)
                 else:
@@ -164,7 +169,11 @@ class ContentView(Adw.Bin):
         self._unwatched_box.set_visible(False)
         self._watched_box.set_visible(False)
 
-        if shared.schema.get_boolean('separate-watched'):
+        # if shared.schema.get_boolean('search-enabled'):
+        #    self._full_box.set_visible(True)
+        #    return
+
+        if not shared.schema.get_boolean('search-enabled') and shared.schema.get_boolean('separate-watched'):
             self._separated_box.set_visible(True)
             if self._watched_flow_box.get_child_at_index(0) is not None:
                 self._watched_box.set_visible(True)
@@ -272,9 +281,41 @@ class ContentView(Adw.Bin):
             None
         """
 
+        if shared.schema.get_boolean('search-enabled'):
+            self._flow_box.set_filter_func(
+                lambda child,
+                user_data: (
+                    shared.schema.get_string(
+                        'search-query').lower() in child.get_child().content.title.lower()
+                ),
+                None)
+            self._flow_box.invalidate_filter()
+            return
+
         if shared.schema.get_boolean('hide-watched'):
             self._flow_box.set_filter_func(lambda child, user_data: (
                 not child.get_child().content.watched), None)
-        else:
-            self._flow_box.set_filter_func(lambda child, user_data: True, None)
+            self._flow_box.invalidate_filter()
+            return
+
+        self._flow_box.set_filter_func(lambda child, user_data: True, None)
         self._flow_box.invalidate_filter()
+
+    def _on_search_enabled_changed(self, pspec: GObject.ParamSpec, user_data: object | None) -> None:
+        """
+        Callback for the "changed" signal.
+        Refreshes the view when the search is enabled or disabled.
+
+        Args:
+            pspec (GObject.ParamSpec): pspec of the changed property
+            user_data (object or None): additional data passed to the callback
+
+        Returns:
+            None
+        """
+
+        self._title_lbl.set_label(_("Search results") if shared.schema.get_boolean('search-enabled') else _("Your Watchlist"))
+        
+        self.refresh_view()
+
+        self._set_filter_function()

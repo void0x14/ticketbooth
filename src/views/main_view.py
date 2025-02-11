@@ -37,9 +37,12 @@ class MainView(Adw.Bin):
     __gtype_name__ = 'MainView'
 
     _tab_stack = Gtk.Template.Child()
+    _show_search_btn = Gtk.Template.Child()
     _menu_btn = Gtk.Template.Child()
     _banner = Gtk.Template.Child()
     _background_indicator = Gtk.Template.Child()
+    _search_bar = Gtk.Template.Child()
+    _search_entry = Gtk.Template.Child()
 
     _needs_refresh = ''
 
@@ -64,6 +67,10 @@ class MainView(Adw.Bin):
                            'visible-child-name', Gio.SettingsBindFlags.DEFAULT)
         shared.schema.bind('offline-mode', self._banner,
                            'revealed', Gio.SettingsBindFlags.GET)
+        shared.schema.bind('search-enabled', self._search_bar,
+                           'search-mode-enabled', Gio.SettingsBindFlags.DEFAULT)
+        shared.schema.bind('search-enabled', self._show_search_btn,
+                           'active', Gio.SettingsBindFlags.DEFAULT)
 
         self._tab_stack.connect(
             'notify::visible-child-name', self._check_needs_refresh)
@@ -434,3 +441,13 @@ class MainView(Adw.Bin):
             self._tab_stack.get_child_by_name('series').refresh_view()
             logging.info('Refreshed TV series tab')
             self._needs_refresh = 'movies'
+
+    @Gtk.Template.Callback()
+    def _on_searchentry_search_changed(self, user_data: GObject.GPointer | None) -> None:
+        shared.schema.set_string('search-query', self._search_entry.get_text())
+        
+    @Gtk.Template.Callback()
+    def _on_search_btn_toggled(self, user_data: GObject.GPointer | None) -> None:
+        shared.schema.set_boolean('search-enabled', self._show_search_btn.get_active())
+        shared.schema.set_string('search-query', '')
+        

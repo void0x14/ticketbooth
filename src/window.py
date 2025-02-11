@@ -162,6 +162,22 @@ class TicketboothWindow(Adw.ApplicationWindow):
         logging.debug(f'Hide watched: {new_state.get_boolean()}')
         shared.schema.set_boolean('hide-watched', new_state.get_boolean())
         self.set_state(new_state)
+        
+    def _search(self, new_state: GLib.Variant, source: Gtk.Widget) -> None:
+        """
+        Callback for the win.search action
+
+        Args:
+            new_state (bool): new selected state
+            source (Gtk.Widget): widget that caused the activation
+
+        Returns:
+            None
+        """
+
+        logging.debug(f'Search: {new_state.get_boolean()}')
+        shared.schema.set_boolean('search-enabled', new_state.get_boolean())
+        self.set_state(new_state)
 
     _actions = {
         ('view-sorting', None, 's',
@@ -173,7 +189,9 @@ class TicketboothWindow(Adw.ApplicationWindow):
         ('add-tmdb', _add_tmdb),
         ('add-manual', _add_manual),
         ('refresh', _refresh),
-        ('update-backgroud-indicator', _update_background_indicator)
+        ('update-backgroud-indicator', _update_background_indicator),
+        ('search', None, None, 'true' if shared.schema.get_boolean('search-enabled')
+         else 'false', _search),
     }
 
     def __init__(self, **kwargs):
