@@ -42,6 +42,7 @@ class MainView(Adw.Bin):
     _banner = Gtk.Template.Child()
     _background_indicator = Gtk.Template.Child()
     _search_bar = Gtk.Template.Child()
+    _search_mode = Gtk.Template.Child()
     _search_entry = Gtk.Template.Child()
 
     _needs_refresh = ''
@@ -71,11 +72,11 @@ class MainView(Adw.Bin):
                            'search-mode-enabled', Gio.SettingsBindFlags.DEFAULT)
         shared.schema.bind('search-enabled', self._show_search_btn,
                            'active', Gio.SettingsBindFlags.DEFAULT)
+        
+        self._search_mode.connect('notify::selected', self._on_search_mode_changed)
 
         self._tab_stack.connect(
             'notify::visible-child-name', self._check_needs_refresh)
-        
-        
 
         # Theme switcher (Adapted from https://gitlab.gnome.org/tijder/blueprintgtk/)
         self._menu_btn.get_popover().add_child(ThemeSwitcher(), 'themeswitcher')
@@ -451,3 +452,8 @@ class MainView(Adw.Bin):
         shared.schema.set_boolean('search-enabled', self._show_search_btn.get_active())
         shared.schema.set_string('search-query', '')
         
+    def _on_search_mode_changed(self, pspec: GObject.ParamSpec, user_data: object | None) -> None:
+        if self._search_mode.get_selected() == 0:
+            shared.schema.set_string('search-mode', 'title')
+        else:
+            shared.schema.set_string('search-mode', 'genre')

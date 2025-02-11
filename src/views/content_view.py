@@ -169,10 +169,6 @@ class ContentView(Adw.Bin):
         self._unwatched_box.set_visible(False)
         self._watched_box.set_visible(False)
 
-        # if shared.schema.get_boolean('search-enabled'):
-        #    self._full_box.set_visible(True)
-        #    return
-
         if not shared.schema.get_boolean('search-enabled') and shared.schema.get_boolean('separate-watched'):
             self._separated_box.set_visible(True)
             if self._watched_flow_box.get_child_at_index(0) is not None:
@@ -282,13 +278,23 @@ class ContentView(Adw.Bin):
         """
 
         if shared.schema.get_boolean('search-enabled'):
-            self._flow_box.set_filter_func(
-                lambda child,
-                user_data: (
-                    shared.schema.get_string(
-                        'search-query').lower() in child.get_child().content.title.lower()
-                ),
-                None)
+            if shared.schema.get_string('search-mode') == 'title':
+                self._flow_box.set_filter_func(
+                    lambda child,
+                    user_data: (
+                        shared.schema.get_string(
+                            'search-query').lower() in child.get_child().content.title.lower()
+                    ),
+                    None)
+            else:
+                self._flow_box.set_filter_func(
+                    lambda child, user_data: (
+                        any(
+                            shared.schema.get_string(
+                                'search-query').title() in genre
+                            for genre in child.get_child().content.genres)
+                    ),
+                    None)
             self._flow_box.invalidate_filter()
             return
 
@@ -314,8 +320,9 @@ class ContentView(Adw.Bin):
             None
         """
 
-        self._title_lbl.set_label(_("Search results") if shared.schema.get_boolean('search-enabled') else _("Your Watchlist"))
-        
+        self._title_lbl.set_label(_("Search results") if shared.schema.get_boolean(
+            'search-enabled') else _("Your Watchlist"))
+
         self.refresh_view()
 
         self._set_filter_function()

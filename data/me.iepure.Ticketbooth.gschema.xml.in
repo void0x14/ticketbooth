@@ -68,6 +68,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<default>false</default>
 			<summary>Search bar visibility</summary>
 		</key>
+		<key name="search-mode" type="s">
+			<choices>
+				<choice value="title" />
+				<choice value="genre" />
+			</choices>
+			<default>"title"</default>
+			<summary>Search mode</summary>
+		</key>
 		<key name="search-query" type="s">
 			<default>''</default>
 			<summary>Search query</summary>

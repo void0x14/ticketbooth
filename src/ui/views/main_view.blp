@@ -93,12 +93,24 @@ template $MainView: Adw.Bin {
           SearchBar _search_bar {
             search-mode-enabled: bind _show_search_btn.active;
 
-            child: SearchEntry _search_entry {
-              halign: center;
-              activates-default: true;
-              placeholder-text: _("Search Your Watchlist");
-              search-delay: 500;
-              search-changed => $_on_searchentry_search_changed();
+            child: Box {
+              orientation: horizontal;
+              spacing: 6;
+
+              DropDown _search_mode {
+                model: StringList {
+                  strings: ["Title", "Genre"];
+                };
+                selected: 0;      
+              }
+
+              SearchEntry _search_entry {
+                halign: center;
+                activates-default: true;
+                placeholder-text: _("Search Your Watchlist");
+                search-delay: 500;
+                search-changed => $_on_searchentry_search_changed();
+              }
             };
           }
 
