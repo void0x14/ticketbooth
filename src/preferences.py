@@ -234,22 +234,27 @@ class PreferencesDialog(Adw.PreferencesDialog):
             languages = tmdb.get_languages()
             for lang in languages:
                 local.add_language(LanguageModel(lang))
+                
+            local.update_movies_table()
+            local.update_series_table()
 
             shared.schema.set_boolean('first-run', False)
             shared.schema.set_boolean('offline-mode', False)
             shared.schema.set_boolean('onboard-complete', True)
+            shared.schema.set_boolean('db-needs-update', False)
 
             self._setup_languages()
+            
             Gio.NetworkMonitor.get_default().connect(
                 'network-changed', self._on_network_changed)
         else:
             logging.error('No network, aborting first setup completion')
-            dialog = Adw.MessageDialog.new(self,
-                                           C_('message dialog heading',
-                                              'No Network'),
-                                           C_('message dialog body', 'Connect to the Internet to complete the setup.'))
-            dialog.add_response('ok', C_('message dialog action', 'OK'))
-            dialog.present()
+            dialog = Adw.AlertDialog.new(
+                heading=C_('message dialog heading', 'No Network'),
+                body=C_('message dialog body', 'Connect to the Internet to complete the setup.')
+            )
+            dialog.add_response('ok', C_('alert dialog action', '_OK'))
+            dialog.choose(self, None, None, None)
 
     def _on_network_changed(self, network_monitor: Gio.NetworkMonitor, network_available: bool) -> None:
         """
@@ -383,7 +388,7 @@ class PreferencesDialog(Adw.PreferencesDialog):
 
         Args:
             source (Gtk.Widget): object that started the async operation
-            result (Gio.AsyncResult): a Gio.AsyncResultresult = Adw.MessageDialog.choose_finish(source, result)
+            result (Gio.AsyncResult): a Gio.AsyncResultresult = Adw.AlertDialog.choose_finish(source, result)
         if result == 'data_cancel':
             return
 

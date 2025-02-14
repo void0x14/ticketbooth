@@ -32,7 +32,7 @@ class EditEpisodeNavigationPage(Adw.NavigationPage):
     _overview_text = Gtk.Template.Child()
 
     __gsignals__ = {
-        'edit-saved': (GObject.SIGNAL_RUN_LAST, None, (str, int, int, str, str,)),
+        'edit-saved': (GObject.SIGNAL_RUN_LAST, None, (str, int, int, str, str, bool,)),
     }
 
     def __init__(self,
@@ -40,7 +40,8 @@ class EditEpisodeNavigationPage(Adw.NavigationPage):
                  episode_number: int = 0,
                  runtime: int = 0,
                  overview: str = '',
-                 still_uri: str = f'resource://{shared.PREFIX}/blank_still.jpg'):
+                 still_uri: str = f'resource://{shared.PREFIX}/blank_still.jpg',
+                 watched: bool = False):
 
         super().__init__()
 
@@ -49,6 +50,7 @@ class EditEpisodeNavigationPage(Adw.NavigationPage):
         self._runtime = runtime
         self._overview = overview
         self._still_uri = still_uri
+        self._watched = watched
 
     @Gtk.Template.Callback('_on_map')
     def _on_map(self, user_data: object | None) -> None:
@@ -114,5 +116,5 @@ class EditEpisodeNavigationPage(Adw.NavigationPage):
         runtime = int(self._runtime_spin_row.get_value())
         still_uri = self._still.get_uri()
 
-        self.emit('edit-saved', title, episode_number, runtime, overview, still_uri)
+        self.emit('edit-saved', title, episode_number, runtime, overview, still_uri, self._watched)
         self.get_ancestor(Adw.NavigationView).pop()

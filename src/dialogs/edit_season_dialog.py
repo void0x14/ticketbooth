@@ -77,6 +77,7 @@ class EditSeasonDialog(Adw.Dialog):
                                                 runtime=episode[2],
                                                 overview=episode[3],
                                                 still_uri=episode[4],
+                                                watched=episode[5],
                                                 editable=True)
                                      )
 
@@ -151,7 +152,8 @@ class EditSeasonDialog(Adw.Dialog):
                           episode_number: int,
                           runtime: int,
                           overview: str,
-                          still_uri: str) -> None:
+                          still_uri: str,
+                          watched: bool) -> None:
         """
         Callback for "edit-saved" signal.
         Appends the recieved data as a tuple in the episodes list and updates the ui.
@@ -168,7 +170,7 @@ class EditSeasonDialog(Adw.Dialog):
             None
         """
 
-        self._episodes.append((title, episode_number, runtime, overview, still_uri))
+        self._episodes.append((title, episode_number, runtime, overview, still_uri, watched))
         self.update_episodes_ui()
 
     def update_episodes_ui(self) -> None:
@@ -193,6 +195,7 @@ class EditSeasonDialog(Adw.Dialog):
                                                 runtime=episode[2],
                                                 overview=episode[3],
                                                 still_uri=episode[4],
+                                                watched=episode[5],
                                                 editable=True))
         self._enable_save_btn()
 

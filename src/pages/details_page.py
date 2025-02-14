@@ -269,7 +269,7 @@ class DetailsView(Adw.NavigationPage):
         self._notes_textview.get_buffer().set_text(self.content.notes)  # type: ignore
         self._notes_textview.get_buffer().connect(
             'changed', self._on_notes_textview_changed)
-        
+
         self._view_stack.set_visible_child_name('filled')
 
     def _build_seasons_group(self) -> None:
@@ -322,7 +322,7 @@ class DetailsView(Adw.NavigationPage):
                     button.set_icon_name('check-plain')
                 else:
                     button.set_icon_name('watchlist')
-            
+
             season_row.add_suffix(button)
 
             tmp = []
@@ -438,10 +438,8 @@ class DetailsView(Adw.NavigationPage):
             episode_row.set_watched_btn(set_to_watched)  # type: ignore
 
         # Update season expander
-        print("mobile? ", self.mobile)
         if not self.mobile:
             btn_content = data[0].get_child()
-            print("btn_content: ", btn_content)
             if set_to_watched:  # type: ignore
                 btn_content.set_label(_('Watched'))
                 btn_content.set_icon_name('check-plain')
@@ -633,7 +631,7 @@ class DetailsView(Adw.NavigationPage):
         root_page = self.get_ancestor(
             Adw.NavigationView).get_previous_page(self)
         self.get_ancestor(Adw.NavigationView).replace(
-            [root_page, DetailsView(content)])
+            [root_page, DetailsView(content, self.content_view)])
 
     @Gtk.Template.Callback('_on_update_btn_clicked')
     def _on_update_btn_clicked(self, user_data: object | None) -> None:
@@ -738,12 +736,15 @@ class DetailsView(Adw.NavigationPage):
         """
 
         logging.debug('Show delete dialog')
-        dialog = Adw.MessageDialog.new(self.get_ancestor(Adw.ApplicationWindow),  # TRANSLATORS: {title} is the content's title
-                                       C_('message dialog heading', 'Delete {title}?').format(
-                                           title=self.content.title),
-                                       C_('message dialog body', 'This title will be deleted from your watchlist.'))
+
+        # TRANSLATORS: {title} is the content's title
+        dialog = Adw.AlertDialog.new(heading=C_('message dialog heading', 'Delete {title}?').format(
+            title=self.content.title),  # type: ignore
+            body=C_('message dialog body', 'This title will be deleted from your watchlist.'))
         dialog.add_response('cancel', C_('message dialog action', '_Cancel'))
         dialog.add_response('delete', C_('message dialog action', '_Delete'))
+        dialog.set_default_response('delete')
+        dialog.set_close_response('cancel')
         dialog.set_response_appearance(
             'delete', Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.choose(None, self._on_message_dialog_choose, None)
@@ -762,18 +763,19 @@ class DetailsView(Adw.NavigationPage):
             None
         """
 
-        result = Adw.MessageDialog.choose_finish(source, result)
+        result = Adw.AlertDialog.choose_finish(source, result)
         if result == 'cancel':
             logging.debug('Delete dialog: cancel, aborting')
             return
 
         self.get_ancestor(Adw.NavigationView).pop()
-        logging.debug(f'Delete dialog: confim, delete {self.content.title}')
+        logging.debug(f'Delete dialog: confim, delete {self.content.title}') # type: ignore
         BackgroundQueue.add(
             activity=BackgroundActivity(
                 activity_type=ActivityType.REMOVE,
                 # TRANSLATORS: {title} is the content's title
-                title=_('Delete {title}').format(title=self.content.title),
+                title=_('Delete {title}').format(
+                    title=self.content.title),  # type: ignore
                 task_function=self._delete),
             on_done=self._on_delete_done)
 
@@ -850,16 +852,16 @@ class DetailsView(Adw.NavigationPage):
             self._notes_textview.get_buffer().get_end_iter(),
             True
         )
-        
+
         if type(self.content) is MovieModel:
-            local.update_movie_notes(self.content.id, notes) # type: ignore
-        
+            local.update_movie_notes(self.content.id, notes)  # type: ignore
+
         if type(self.content) is SeriesModel:
             local.update_serie_notes(self.content.id, notes)  # type: ignore
-            
+
         self._notes_save_revealer.set_reveal_child(False)
         self.content.notes = notes  # type: ignore
-        self.activate_action('win.refresh', None)        
+        self.activate_action('win.refresh', None)
 
     def _on_notes_textview_changed(self, user_data: GObject.GPointer | None) -> None:
         """

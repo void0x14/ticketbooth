@@ -205,7 +205,8 @@ class EpisodeRow(Adw.PreferencesRow):
                                                       episode_number=self.episode_number,
                                                       runtime=self.runtime,
                                                       overview=self.overview,
-                                                      still_uri=self.still_uri)
+                                                      still_uri=self.still_uri,
+                                                      watched=self.watched)
         edit_episode_page.connect('edit-saved', self._on_episode_saved)
         self.get_ancestor(Adw.NavigationView).push(edit_episode_page)
 
@@ -215,7 +216,8 @@ class EpisodeRow(Adw.PreferencesRow):
                           episode_number: int,
                           runtime: int,
                           overview: str,
-                          still_uri: str) -> None:
+                          still_uri: str,
+                          watched: bool) -> None:
         """
         Callback for "edit-saved" signal.
         Appends the recieved data as a tuple in the episodes list after removing the changed one and updates the ui.
@@ -243,7 +245,7 @@ class EpisodeRow(Adw.PreferencesRow):
         parent.update_episodes_ui()
 
         parent._episodes.append(
-            (title, episode_number, runtime, overview, still_uri))
+            (title, episode_number, runtime, overview, still_uri, watched))
 
         parent.update_episodes_ui()
 
@@ -269,6 +271,8 @@ class EpisodeRow(Adw.PreferencesRow):
         )
         dialog.add_response('cancel', C_('alert dialog action', '_Cancel'))
         dialog.add_response('delete', C_('alert dialog action', '_Delete'))
+        dialog.set_default_response('delete')
+        dialog.set_close_response('cancel')
         dialog.set_response_appearance(
             'delete', Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.choose(self, None, self._on_alert_dialog_choose, None)

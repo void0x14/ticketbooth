@@ -5,7 +5,7 @@
 import glob
 import re
 from datetime import datetime, timedelta
-from typing import List
+from typing import List, Tuple
 from pathlib import Path
 
 import requests
@@ -203,7 +203,7 @@ class MovieModel(GObject.GObject):
         except (requests.exceptions.ConnectionError, requests.exceptions.SSLError):
             return ''
 
-    def _download_poster(self, path: str, color: bool) -> (str, bool):
+    def _download_poster(self, path: str, color: bool) -> Tuple[str, bool]:
         """
         Returns the uri of the poster image on the local filesystem, downloading if necessary.
 
@@ -229,11 +229,11 @@ class MovieModel(GObject.GObject):
                 with open(f'{shared.poster_dir}{path}', 'wb') as f:
                     f.write(r.content)
                 color = self._compute_badge_color(Path(f'{path}'))
-                return (f'file://{shared.poster_dir}{path}', color)
+                return f'file://{shared.poster_dir}{path}', color
             else:
-                return f'resource://{shared.PREFIX}/blank_poster.jpg'
+                return f'resource://{shared.PREFIX}/blank_poster.jpg', False
         except (requests.exceptions.ConnectionError, requests.exceptions.SSLError):
-            return f'resource://{shared.PREFIX}/blank_poster.jpg'
+            return f'resource://{shared.PREFIX}/blank_poster.jpg', False
 
     def _compute_badge_color(self, path: str) -> bool:
         color_light = False

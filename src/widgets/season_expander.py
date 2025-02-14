@@ -71,6 +71,7 @@ class SeasonExpander(Adw.ExpanderRow):
                                     runtime=episode[2],
                                     overview=episode[3],
                                     still_uri=episode[4],
+                                    watched=episode[5],
                                     show_controls=False)
                          )
 
@@ -144,6 +145,8 @@ class SeasonExpander(Adw.ExpanderRow):
         )
         dialog.add_response('cancel', C_('alert dialog action', '_Cancel'))
         dialog.add_response('delete', C_('alert dialog action', '_Delete'))
+        dialog.set_default_response('delete')
+        dialog.set_close_response('cancel')
         dialog.set_response_appearance(
             'delete', Adw.ResponseAppearance.DESTRUCTIVE)
         dialog.choose(self, None, self._on_alert_dialog_choose, None)

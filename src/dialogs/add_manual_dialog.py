@@ -8,7 +8,7 @@ import shutil
 from datetime import date, datetime
 from gettext import gettext as _
 from gettext import pgettext as C_
-from typing import List
+from typing import List, Tuple
 from urllib.parse import unquote
 from PIL import Image, ImageStat
 from pathlib import Path
@@ -357,7 +357,7 @@ class AddManualDialog(Adw.Dialog):
         poster_uri, color = self._copy_image_to_data(self._poster.get_uri(),
                                               shared.poster_dir,
                                               self._title_entry.get_text()
-                                              ) if not self.edit_mode else self._content.poster_path  # type: ignore
+                                              ) if not self.edit_mode else (self._content.poster_path, False)  # type: ignore
         if self._movies_btn.get_active():
             self._save_movie(poster_uri, color)
         else:
@@ -436,21 +436,21 @@ class AddManualDialog(Adw.Dialog):
         for idx, season in enumerate(self.seasons):
 
             # Create folder to store the images, if needed
-            if not os.path.exists(f'{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}'):
+            if not os.path.exists(f"{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}"):
                 os.makedirs(
-                    f'{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}')
+                    f"{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}")
 
             # Copy the season poster
-            poster_uri, _ = self._copy_image_to_data(season[1],
-                                                  f'{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}',
+            poster_uri, color = self._copy_image_to_data(season[1],
+                                                  f"{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}",
                                                   season[0])
 
             episodes = []
             for jdx, episode in enumerate(season[2]):
 
                 # Copy the episode still
-                still_uri, _ = self._copy_image_to_data(episode[4],
-                                                     f'{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}',
+                still_uri, color = self._copy_image_to_data(episode[4],
+                                                     f"{shared.series_dir}/{show_id}/{self._increment_manual_id(base_season_id, idx)}",
                                                      episode[0]
                                                      )
                 episode_id = self._increment_manual_id(base_episode_id, jdx)
@@ -516,6 +516,9 @@ class AddManualDialog(Adw.Dialog):
             "tagline": self._tagline_entry.get_text(),                        # tagline
             "title": self._title_entry.get_text(),                            # title
             "watched": False,                                                 # watched
+            "last_episode_number": 0,                                         # last episode number
+            "recent_change": False,                                           # recent change flag
+            "notes": '',                                                      # notes
             "seasons": seasons                                                # seasons
     })
 
@@ -569,7 +572,7 @@ class AddManualDialog(Adw.Dialog):
                 num += 1
         return num
 
-    def _copy_image_to_data(self, src_uri: str, dest_folder: str, filename: str) -> (str,bool):
+    def _copy_image_to_data(self, src_uri: str, dest_folder: str, filename: str) -> Tuple[str,bool]:
         """
         Copies src_uri to dest_folder as filename. If src_uri is a resource (empty poster/still) the operation is not
         carried out.
@@ -586,11 +589,10 @@ class AddManualDialog(Adw.Dialog):
         
         if src_uri.startswith('file'):
             extension = src_uri[src_uri.rindex('.'):]
-            shutil.copy2(
-                src_uri[7:], f'{dest_folder}/{unquote(filename)}{extension}')
-            return f'file://{dest_folder}/{unquote(filename)}{extension}', \
-                self._compute_badge_color(Path(src_uri[7:], f'{dest_folder}/{unquote(filename)}{extension}'))
-        return (src_uri,False)
+            dest_path = f"{dest_folder}/{unquote(filename)}{extension}"
+            shutil.copy2(src_uri[7:], dest_path)
+            return f"file://{dest_path}", self._compute_badge_color(Path(dest_path))
+        return src_uri, False
 
     def update_seasons_ui(self) -> None:
         """

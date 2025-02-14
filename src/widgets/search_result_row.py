@@ -192,7 +192,15 @@ class SearchResultRow(Gtk.ListBoxRow):
         self._add_btn.set_label(_('Already in your watchlist'))
         self._add_btn.set_icon_name('check-plain')
         self._add_spinner.set_visible(False)
-        self.get_root().activate_action('win.refresh', None)
+        
+        # Try getting root window and refreshing. If root is gone, use application instance
+        if self.get_root():
+            self.get_root().activate_action('win.refresh', None)
+        else:
+            app = Gio.Application.get_default()
+            if app:
+                app.props.active_window.activate_action('win.refresh')
+        
         activity.end()
 
     def _get_poster_thread(self, task: Gio.Task, source_object: GObject.Object, task_data: object | None,

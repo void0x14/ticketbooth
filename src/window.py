@@ -228,12 +228,12 @@ class TicketboothWindow(Adw.ApplicationWindow):
 
         # Background activities
         if not all(activity.completed for activity in BackgroundQueue.get_queue()):
-            dialog = Adw.MessageDialog.new(self,
-                                           C_('message dialog heading',
-                                              'Background Activies Running'),
-                                           C_('message dialog body', 'Some activities are running in the background and need to be completed before exiting. Look for the indicator in the header bar to check when they are finished.'))
-            dialog.add_response('ok', C_('message dialog action', 'OK'))
-            dialog.show()
+            dialog = Adw.AlertDialog.new(
+                heading=C_('message dialog heading', 'Background Activies Running'),
+                body=C_('message dialog body', 'Some activities are running in the background and need to be completed before exiting. Look for the indicator in the header bar to check when they are finished.')
+            )
+            dialog.add_response('ok', C_('alert dialog action', '_OK'))
+            dialog.choose(self, None, None, None)
             logging.error('Close inhibited, running activities in background')
             return True
 

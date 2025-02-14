@@ -6,12 +6,13 @@ import logging
 import os
 import shutil
 import sqlite3
-import time
-from typing import List
+import zipfile
+import shutil
+import json
+from typing import List, Dict, Any
 from pathlib import Path
 from PIL import Image, ImageStat
 from datetime import datetime, timedelta
-
 
 from .. import shared  # type: ignore
 from ..models.episode_model import EpisodeModel
@@ -69,6 +70,7 @@ class LocalProvider:
         get_new_release_status(id: int): Returns if the content given by the id has had a new release
         set_soon_release_status(id: int, value: bool): Sets the soon_release field of the given content to value
         get_soon_release_status(id: int): Returns if the content given by the id has a new release soon
+        export_data(path: Path): Exports the database a zip archive to the given path
     """
 
     @staticmethod
@@ -993,13 +995,19 @@ class LocalProvider:
         logging.debug(f'[db] TV series {id}, delete requested')
         series = LocalProvider.get_series_by_id(id)
 
-        if series.backdrop_path.startswith('file'):   # type: ignore
-            os.remove(series.backdrop_path[7:])       # type: ignore
-            logging.debug(f'[db] TV series {id}, deleted backdrop')
+        if series.backdrop_path and series.backdrop_path.startswith('file'):   # type: ignore
+            try:
+                os.remove(series.backdrop_path[7:])       # type: ignore
+                logging.debug(f'[db] TV series {id}, deleted backdrop')
+            except FileNotFoundError:
+                pass
 
         if series.poster_path.startswith('file'):     # type: ignore
-            os.remove(series.poster_path[7:])         # type: ignore
-            logging.debug(f'[db] TV series {id}, deleted poster')
+            try:
+                os.remove(series.poster_path[7:])         # type: ignore
+                logging.debug(f'[db] TV series {id}, deleted poster')
+            except FileNotFoundError:
+                pass
 
         if (shared.series_dir/id).is_dir():
             shutil.rmtree(shared.series_dir / id)
@@ -1602,3 +1610,283 @@ class LocalProvider:
             logging.debug(
                 f'[db] Save TV Serie {id} notes {notes}: {result.lastrowid}')
         return result.lastrowid
+
+    @staticmethod
+    def export_data(export_path: Path) -> bool:
+        """
+        Exports all database content and associated images to a zip file.
+
+        Args:
+            export_path (Path): Path where to save the export zip file
+
+        Returns:
+            bool: True if export successful, False otherwise
+        """
+        try:
+            with zipfile.ZipFile(export_path, 'w') as archive:
+                # Export database content
+                data: Dict[str, Any] = {
+                    'movies': [],
+                    'series': []
+                }
+                
+                with sqlite3.connect(shared.db) as connection:
+                    connection.row_factory = sqlite3.Row
+                    
+                    # Export movies
+                    movies = connection.execute('SELECT * FROM movies').fetchall()
+                    for movie in movies:
+                        movie_dict = dict(movie)
+                        if movie_dict['poster_path'].startswith('file://'):
+                            poster_path = movie_dict['poster_path'][7:]
+                            if Path(poster_path).exists():
+                                relative_path = str(Path(poster_path)).split('data/')[-1]
+                                archive.write(poster_path, f"images/{relative_path}")
+                        if movie_dict['backdrop_path'].startswith('file://'):
+                            backdrop_path = movie_dict['backdrop_path'][7:]
+                            if Path(backdrop_path).exists():
+                                relative_path = str(Path(backdrop_path)).split('data/')[-1]
+                                archive.write(backdrop_path, f"images/{relative_path}")
+                        data['movies'].append(movie_dict)
+
+                    # Export series and related data
+                    series = connection.execute('SELECT * FROM series').fetchall()
+                    for serie in series:
+                        serie_dict = dict(serie)
+                        
+                        # Add series poster/backdrop
+                        if serie_dict['poster_path'].startswith('file://'):
+                            poster_path = serie_dict['poster_path'][7:]
+                            if Path(poster_path).exists():
+                                relative_path = str(Path(poster_path)).split('data/')[-1]
+                                archive.write(poster_path, f"images/{relative_path}")
+                        if serie_dict['backdrop_path'].startswith('file://'):
+                            backdrop_path = serie_dict['backdrop_path'][7:]
+                            if Path(backdrop_path).exists():
+                                relative_path = str(Path(backdrop_path)).split('data/')[-1]
+                                archive.write(backdrop_path, f"images/{relative_path}")
+                        
+                        # Add seasons
+                        seasons = connection.execute('SELECT * FROM seasons WHERE show_id = ?', 
+                                                (serie_dict['id'],)).fetchall()
+                        serie_dict['seasons'] = []
+                        
+                        for season in seasons:
+                            season_dict = dict(season)
+                            
+                            # Add season poster with series/season folder structure
+                            if season_dict['poster_path'] and season_dict['poster_path'].startswith('file://'):
+                                poster_path = season_dict['poster_path'][7:]
+                                if Path(poster_path).exists():
+                                    filename = Path(poster_path).name
+                                    archive.write(poster_path, 
+                                            f"images/series/{serie_dict['id']}/{season_dict['number']}/{filename}")
+                            
+                            # Add episodes
+                            episodes = connection.execute(
+                                'SELECT * FROM episodes WHERE show_id = ? AND season_number = ?',
+                                (serie_dict['id'], season_dict['number'])).fetchall()
+                            season_dict['episodes'] = []
+                            
+                            for episode in episodes:
+                                episode_dict = dict(episode)
+                                
+                                # Add episode still with series/season folder structure
+                                if episode_dict['still_path'] and episode_dict['still_path'].startswith('file://'):
+                                    still_path = episode_dict['still_path'][7:]
+                                    if Path(still_path).exists():
+                                        filename = Path(still_path).name
+                                        archive.write(still_path,
+                                                f"images/series/{serie_dict['id']}/{season_dict['number']}/{filename}")
+                                
+                                season_dict['episodes'].append(episode_dict)
+                                
+                            serie_dict['seasons'].append(season_dict)
+                                
+                        data['series'].append(serie_dict)
+
+                # Write the JSON data
+                archive.writestr('data.json', json.dumps(data, indent=2))
+                
+                return True
+                
+        except Exception as e:
+            logging.error(f'[db] Export failed: {str(e)}')
+            return False
+        
+    @staticmethod
+    def import_data(import_path: Path) -> bool:
+        """
+        Imports database content and associated images from an export zip file.
+        Restores images to their original locations and handles duplicate IDs.
+        Overwrites existing entries if they have the same ID.
+
+        Args:
+            import_path (Path): Path to the zip file to import
+
+        Returns:
+            bool: True if import successful, False otherwise
+        """
+        try:
+            logging.debug(f'[db] Starting import from {import_path}')
+            
+            with zipfile.ZipFile(import_path, 'r') as archive:
+                # Read the JSON data
+                json_data = archive.read('data.json').decode('utf-8')
+                logging.debug(f'[db] Read JSON data: {json_data[:100]}...') # Log first 100 chars
+                
+                data = json.loads(json_data)
+                if not data or 'movies' not in data or 'series' not in data:
+                    logging.error(f'[db] Invalid JSON data in import file')
+                    return False
+                
+                logging.debug(f'[db] Found {len(data["movies"])} movies and {len(data["series"])} series')
+                
+                with sqlite3.connect(shared.db) as connection:
+                    
+                    # Import movies
+                    for movie in data['movies']:
+                        # Handle movie images
+                        if movie['poster_path'].startswith('file://'):
+                            poster_filename = Path(movie['poster_path'][7:]).name
+                            relative_path = str(Path(movie['poster_path'][7:])).split('data/')[-1]
+                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
+                            target_dir.mkdir(parents=True, exist_ok=True)
+                            
+                            with archive.open(f"images/{relative_path}") as source, \
+                                open(target_dir / poster_filename, 'wb') as target:
+                                shutil.copyfileobj(source, target)
+                                
+                        if movie['backdrop_path'].startswith('file://'):
+                            backdrop_filename = Path(movie['backdrop_path'][7:]).name
+                            relative_path = str(Path(movie['backdrop_path'][7:])).split('data/')[-1]
+                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
+                            target_dir.mkdir(parents=True, exist_ok=True)
+                            
+                            with archive.open(f"images/{relative_path}") as source, \
+                                open(target_dir / backdrop_filename, 'wb') as target:
+                                shutil.copyfileobj(source, target)
+
+                        # Delete existing movie if present
+                        cursor = connection.cursor()
+                        sql = "SELECT COUNT(*) FROM movies WHERE id = ?"
+                        if cursor.execute(sql, (movie['id'],)).fetchone()[0] > 0:
+                            sql = "DELETE FROM movies WHERE id = ?"
+                            connection.execute(sql, (movie['id'],))
+
+                        # Handle manual movie IDs
+                        if movie['id'].startswith('M-'):
+                            movie['id'] = LocalProvider.get_next_manual_movie()
+
+                        # Insert movie
+                        columns = ', '.join(movie.keys())
+                        placeholders = ', '.join(['?' for _ in movie])
+                        sql = f"INSERT INTO movies ({columns}) VALUES ({placeholders})"
+                        connection.execute(sql, list(movie.values()))
+
+                    # Import series
+                    for serie in data['series']:
+                        seasons = serie.pop('seasons')
+                        
+                        # Handle series images
+                        if serie['poster_path'].startswith('file://'):
+                            poster_filename = Path(serie['poster_path'][7:]).name
+                            relative_path = str(Path(serie['poster_path'][7:])).split('data/')[-1]
+                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
+                            target_dir.mkdir(parents=True, exist_ok=True)
+                            
+                            with archive.open(f"images/{relative_path}") as source, \
+                                open(target_dir / poster_filename, 'wb') as target:
+                                shutil.copyfileobj(source, target)
+                                
+                        if serie['backdrop_path'].startswith('file://'):
+                            backdrop_filename = Path(serie['backdrop_path'][7:]).name
+                            relative_path = str(Path(serie['backdrop_path'][7:])).split('data/')[-1]
+                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
+                            target_dir.mkdir(parents=True, exist_ok=True)
+                            
+                            with archive.open(f"images/{relative_path}") as source, \
+                                open(target_dir / backdrop_filename, 'wb') as target:
+                                shutil.copyfileobj(source, target)
+
+                        # Delete existing series if present
+                        connection.execute('PRAGMA foreign_keys = ON;')
+                        cursor = connection.cursor()
+                        
+                        sql = "SELECT COUNT(*) FROM series WHERE id = ?"
+                        if cursor.execute(sql, (serie['id'],)).fetchone()[0] > 0:
+                            sql = "DELETE FROM episodes WHERE show_id = ?"
+                            connection.execute(sql, (serie['id'],)) 
+                            
+                            sql = "DELETE FROM seasons WHERE show_id = ?"
+                            connection.execute(sql, (serie['id'],))
+                            
+                            sql = "DELETE FROM series WHERE id = ?"
+                            connection.execute(sql, (serie['id'],))
+
+                        # Handle manual series IDs
+                        if serie['id'].startswith('M-'):
+                            serie['id'] = LocalProvider.get_next_manual_series()
+                        series_id = serie['id']
+
+                        # Insert series
+                        columns = ', '.join(serie.keys())
+                        placeholders = ', '.join(['?' for _ in serie])
+                        sql = f"INSERT INTO series ({columns}) VALUES ({placeholders})"
+                        connection.execute(sql, list(serie.values()))
+
+                        # Import seasons and episodes
+                        for season in seasons:
+                            episodes = season.pop('episodes')
+                            
+                            # Handle season images
+                            if season['poster_path'].startswith('file://'):
+                                poster_filename = Path(season['poster_path'][7:]).name
+                                target_dir = Path(shared.series_dir) / series_id / str(season['number'])
+                                target_dir.mkdir(parents=True, exist_ok=True)
+                                
+                                image_path = f"images/series/{series_id}/{season['number']}/{poster_filename}"
+                                with archive.open(image_path) as source, \
+                                    open(target_dir / poster_filename, 'wb') as target:
+                                    shutil.copyfileobj(source, target)
+
+                            # Handle manual season IDs
+                            if season['id'].startswith('M-'):
+                                season['id'] = LocalProvider.get_next_manual_season()
+
+                            # Insert season
+                            columns = ', '.join(season.keys())
+                            placeholders = ', '.join(['?' for _ in season])
+                            sql = f"INSERT INTO seasons ({columns}) VALUES ({placeholders})"
+                            connection.execute(sql, list(season.values()))
+
+                            # Import episodes
+                            for episode in episodes:
+                                # Handle episode images
+                                if episode['still_path'].startswith('file://'):
+                                    still_filename = Path(episode['still_path'][7:]).name
+                                    target_dir = Path(shared.series_dir) / series_id / str(season['number'])
+                                    target_dir.mkdir(parents=True, exist_ok=True)
+                                    
+                                    image_path = f"images/series/{series_id}/{season['number']}/{still_filename}"
+                                    with archive.open(image_path) as source, \
+                                        open(target_dir / still_filename, 'wb') as target:
+                                        shutil.copyfileobj(source, target)
+
+                                # Handle manual episode IDs
+                                if episode['id'].startswith('M-'):
+                                    episode['id'] = LocalProvider.get_next_manual_episode()
+
+                                # Insert episode
+                                columns = ', '.join(episode.keys())
+                                placeholders = ', '.join(['?' for _ in episode])
+                                sql = f"INSERT INTO episodes ({columns}) VALUES ({placeholders})"
+                                connection.execute(sql, list(episode.values()))
+
+                    connection.commit()
+                
+            return True
+                
+        except Exception as e:
+            logging.error(f'[db] Import failed: {str(e)}')
+            return False
