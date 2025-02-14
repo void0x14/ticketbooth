@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-02-14 19:55+0000\n"
+"PO-Revision-Date: 2025-02-14 20:21+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/fa/>\n"
@@ -65,15 +65,15 @@ msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:69
 msgid "Search bar visibility"
-msgstr ""
+msgstr "نمایانی نوار جست‌وجو"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:77
 msgid "Search mode"
-msgstr ""
+msgstr "حالت جست‌وجو"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:81
 msgid "Search query"
-msgstr ""
+msgstr "پرس‌وجوی جست‌وجو"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:93
 msgid "App color scheme"
@@ -137,21 +137,21 @@ msgstr ""
 #: src/widgets/season_expander.py:146
 msgctxt "alert dialog action"
 msgid "_Cancel"
-msgstr ""
+msgstr "_لغو"
 
 #: src/main.py:197
 msgctxt "alert dialog action"
 msgid "_Export"
-msgstr ""
+msgstr "_برون‌ریزی"
 
 #: src/main.py:230
 msgctxt "Background activity title"
 msgid "Exporting library"
-msgstr ""
+msgstr "برون‌ریزی کتابخانه"
 
 #: src/main.py:307
 msgid "Confirm Import?"
-msgstr ""
+msgstr "تأیید درون‌ریزی؟"
 
 #: src/main.py:308
 msgid ""
@@ -162,12 +162,12 @@ msgstr ""
 #: src/main.py:311
 msgctxt "alert dialog action"
 msgid "_Import"
-msgstr ""
+msgstr "_درون‌ریزی"
 
 #: src/main.py:344
 msgctxt "Background activity title"
 msgid "Importing library"
-msgstr ""
+msgstr "درون‌ریزی کتابخانه"
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -182,7 +182,7 @@ msgstr "وصل شدن به اینترنت برای کامل کردن برپای�
 #: src/preferences.py:256 src/window.py:235
 msgctxt "alert dialog action"
 msgid "_OK"
-msgstr ""
+msgstr "_تأیید"
 
 #: src/preferences.py:321
 msgctxt "Background activity title"
@@ -280,7 +280,7 @@ msgstr "علامت به دیده"
 
 #: src/pages/details_page.py:223
 msgid "Runtime of Movie"
-msgstr ""
+msgstr "زمان پخش فیلم"
 
 #. TRANSLATORS: {num} is the total number of seasons
 #: src/pages/details_page.py:236
@@ -292,7 +292,7 @@ msgstr[1] "{num} فصل"
 
 #: src/pages/details_page.py:240
 msgid "Number of Seasons"
-msgstr ""
+msgstr "شمار فصل‌ها"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:245 src/pages/details_page.py:293
@@ -336,7 +336,7 @@ msgstr "نه"
 
 #: src/pages/details_page.py:540
 msgid "TMDB ID"
-msgstr ""
+msgstr "شناسهٔ TMDB"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
 #: src/pages/details_page.py:566 src/widgets/episode_row.py:185
@@ -400,6 +400,8 @@ msgid ""
 "Copyright © 2023 - 2025 Alessandro Iepure\n"
 "Some icons are copyright of the GNOME Project"
 msgstr ""
+"حق رونوشت © ۲۰۲۳ - ۲۰۲۵ الکساندرو له‌پور\n"
+"برخی نقشک‌ها زیر حق رونوشت پروژهٔ گنوم هستند"
 
 #. TRANSLATORS: replace with your name (with optional email or website)
 #: src/ui/about_dialog.blp:16
@@ -525,7 +527,7 @@ msgstr "استفاده از دکمهٔ + برای افزودن قسمت"
 #: src/ui/dialogs/message_dialogs.blp:9
 msgctxt "message dialog heading"
 msgid "Clear Cached Data?"
-msgstr ""
+msgstr "پاک سازی داده‌های انباشته؟"
 
 #: src/ui/dialogs/message_dialogs.blp:10
 msgctxt "message dialog body"
@@ -537,17 +539,17 @@ msgstr ""
 #: src/ui/dialogs/message_dialogs.blp:13 src/ui/dialogs/message_dialogs.blp:40
 msgctxt "message dialog action"
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 #: src/ui/dialogs/message_dialogs.blp:14 src/ui/dialogs/message_dialogs.blp:41
 msgctxt "message dialog action"
 msgid "Clear"
-msgstr ""
+msgstr "پاک سازی"
 
 #: src/ui/dialogs/message_dialogs.blp:19
 msgctxt "message dialog heading"
 msgid "Clear Stored Data?"
-msgstr ""
+msgstr "پاک سازی داده‌های ذخیره شده؟"
 
 #: src/ui/dialogs/message_dialogs.blp:20
 msgctxt "message dialog body"
@@ -558,11 +560,11 @@ msgstr ""
 
 #: src/ui/dialogs/message_dialogs.blp:26
 msgid "Movies"
-msgstr ""
+msgstr "فیلم‌ها"
 
 #: src/ui/dialogs/message_dialogs.blp:34
 msgid "TV Series"
-msgstr ""
+msgstr "سریال‌ها"
 
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
@@ -582,7 +584,7 @@ msgstr "نمایش ترجیحات"
 #: src/ui/gtk/help-overlay.blp:28
 msgctxt "shortcut window"
 msgid "Search your Watchlist"
-msgstr ""
+msgstr "جست‌وجوی سیاههٔ تماشایتان"
 
 #: src/ui/gtk/help-overlay.blp:33
 msgctxt "shortcut window"
@@ -615,15 +617,15 @@ msgstr "فهرست اصلی"
 
 #: src/ui/pages/details_page.blp:146
 msgid "Number of Episodes"
-msgstr ""
+msgstr "شمار قسمت‌ها"
 
 #: src/ui/pages/details_page.blp:156
 msgid "Air Date of Next Episode"
-msgstr ""
+msgstr "تاریخ پخش قسمت بعدی"
 
 #: src/ui/pages/details_page.blp:174 src/ui/pages/details_page.blp:175
 msgid "Notify me on new releases"
-msgstr ""
+msgstr "آگاهی از ارائه‌های جدید"
 
 #: src/ui/pages/details_page.blp:208
 msgid "Update Metadata"
@@ -648,7 +650,7 @@ msgstr "فصل‌ها"
 
 #: src/ui/pages/details_page.blp:378
 msgid "Notes"
-msgstr ""
+msgstr "یادداشت‌ها"
 
 #: src/ui/pages/details_page.blp:502 src/ui/views/main_view.blp:225
 msgid "_Preferences"
@@ -766,23 +768,25 @@ msgstr "ماهانه"
 #: src/ui/preferences.blp:65
 msgctxt "preferences"
 msgid "Use Your API Key"
-msgstr ""
+msgstr "استفاده از کلید APIتان"
 
 #: src/ui/preferences.blp:66
 msgctxt "preferences"
 msgid ""
 "Register yours <a href='https://www.themoviedb.org/settings/api'>here</a>"
 msgstr ""
+"کلیدتان را از <a href='https://www.themoviedb.org/settings/api'>این‌جا</a> "
+"ثبت کنید"
 
 #: src/ui/preferences.blp:70
 msgctxt "preferences"
 msgid "Your API key"
-msgstr ""
+msgstr "کلید APIتان"
 
 #: src/ui/preferences.blp:75
 msgctxt "preferences"
 msgid "Save Key"
-msgstr ""
+msgstr "ذخیرهٔ کلید"
 
 #: src/ui/preferences.blp:86
 msgctxt "preferences"
@@ -810,7 +814,7 @@ msgstr "سیاههٔ‌ تماشایتان خالیست"
 
 #: src/ui/views/content_view.blp:15
 msgid "Add content with the + button or import from an older watchlist."
-msgstr ""
+msgstr "افزودن محتوا با دکمهٔ + یا درون‌ریزی از سیاههٔ تماشایی قدیمی‌تر."
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:324
 msgid "Your Watchlist"
@@ -818,11 +822,11 @@ msgstr "سیاههٔ‌ تماشایتان"
 
 #: src/ui/views/content_view.blp:140
 msgid "Unwatched"
-msgstr ""
+msgstr "دیده نشده"
 
 #: src/ui/views/db_update_view.blp:29
 msgid "Updating your watchlist"
-msgstr ""
+msgstr "به‌روز رسانی سیاههٔ تماشایتان"
 
 #: src/ui/views/db_update_view.blp:30
 msgid ""
@@ -839,7 +843,7 @@ msgstr "تلاش دوباره در اجرای بعدی"
 
 #: src/ui/views/db_update_view.blp:66
 msgid "Activate Notifications?"
-msgstr ""
+msgstr "فعّال سازی آگاهی‌ها؟"
 
 #: src/ui/views/db_update_view.blp:67
 msgid ""
@@ -849,11 +853,11 @@ msgstr ""
 
 #: src/ui/views/db_update_view.blp:76
 msgid "Activate"
-msgstr ""
+msgstr "فعّال سازی"
 
 #: src/ui/views/db_update_view.blp:85
 msgid "Deactivate"
-msgstr ""
+msgstr "غیرفعّال"
 
 #: src/ui/views/main_view.blp:68
 msgid "Add a title to your library"
@@ -861,11 +865,11 @@ msgstr "افزودن عنوانی به کتابخانه‌ةان"
 
 #: src/ui/views/main_view.blp:75
 msgid "Show/Hide search bar"
-msgstr ""
+msgstr "نمایش یا نهفتن نوار جست‌وجو"
 
 #: src/ui/views/main_view.blp:110
 msgid "Search Your Watchlist"
-msgstr ""
+msgstr "جست‌وجوی سیاههٔ تماشایتان"
 
 #: src/ui/views/main_view.blp:121
 msgid "Offline Mode Enabled"
@@ -901,11 +905,11 @@ msgstr "تاریخ انتشار (نخست قدیمی‌ترین)"
 
 #: src/ui/views/main_view.blp:194
 msgid "Separate watched from unwatched"
-msgstr ""
+msgstr "جدا کردن دیده شده از دیده نشده"
 
 #: src/ui/views/main_view.blp:199
 msgid "Hide watched"
-msgstr ""
+msgstr "نهفتن دیده شده‌ها"
 
 #: src/ui/views/main_view.blp:206
 msgid "_Refresh"
@@ -913,11 +917,11 @@ msgstr "_تازه‌سازی"
 
 #: src/ui/views/main_view.blp:213
 msgid "_Import"
-msgstr ""
+msgstr "_درون‌ریزی"
 
 #: src/ui/views/main_view.blp:218
 msgid "_Export"
-msgstr ""
+msgstr "_برون‌ریزی"
 
 #: src/ui/views/main_view.blp:243
 msgid "From The Movie Database (TMDB)"
@@ -945,15 +949,15 @@ msgstr "حذف پوستر"
 
 #: src/ui/widgets/poster_button.blp:47
 msgid "The series has a new release"
-msgstr ""
+msgstr "سریال ارائه‌ای جدید دارد"
 
 #: src/ui/widgets/poster_button.blp:67
 msgid "The series has a new release soon"
-msgstr ""
+msgstr "سریال به زودی ارائه‌ای جدید دارد"
 
 #: src/ui/widgets/poster_button.blp:85
 msgid "This title is marked as watched"
-msgstr ""
+msgstr "این عنوان به دیده شده علامت خورد"
 
 #: src/ui/widgets/search_result_row.blp:89
 msgid "Add to watchlist"
@@ -973,7 +977,7 @@ msgstr "سبک تیره"
 
 #: src/views/content_view.py:323
 msgid "Search results"
-msgstr ""
+msgstr "نتایج جست‌وجو"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
@@ -1002,7 +1006,7 @@ msgstr "فیلم‌ها"
 #: src/views/main_view.py:146
 msgctxt "Notification List activity title"
 msgid "Automatic update of notification list"
-msgstr ""
+msgstr "به‌روز رسانی خودکار سیاههٔ آگاهی"
 
 #: src/views/main_view.py:162 src/views/main_view.py:172
 #: src/views/main_view.py:182
@@ -1014,7 +1018,7 @@ msgstr "به‌روز رسانی خودکار"
 #: src/views/main_view.py:326
 #, python-brace-format
 msgid "New release for {title}"
-msgstr ""
+msgstr "ارائه جدید برای {title}"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:329
@@ -1126,30 +1130,30 @@ msgstr ""
 #: src/views/main_view.py:418 src/views/main_view.py:427
 #, python-brace-format
 msgid "These updates affect {count_movies} movie"
-msgstr ""
+msgstr "این به‌روز رسانی روی {count_movies} فیلم اثر می‌گذارد"
 
 #. TRANSLATOR: the connector between the two parts of the sentence (foo and bar)
 #: src/views/main_view.py:420
 msgid " and "
-msgstr ""
+msgstr " و "
 
 #. TRANSLATOR: {count_series} is the number of series
 #: src/views/main_view.py:422
 #, python-brace-format
 msgid " {count_series} TV serie"
-msgstr ""
+msgstr " {count_series} سریال"
 
 #. TRANSLATOR: {count_series} is the number of series
 #: src/views/main_view.py:430
 #, python-brace-format
 msgid "These updates affect {count_series} TV serie"
-msgstr ""
+msgstr "این به‌روز رسانی روی {count_series} سریال اثر می‌گذارد"
 
 #: src/widgets/episode_row.py:267 src/widgets/season_expander.py:141
 #, python-brace-format
 msgctxt "alert dialog heading"
 msgid "Delete {title}?"
-msgstr ""
+msgstr "حذف {title}؟"
 
 #: src/widgets/episode_row.py:270
 msgctxt "alert dialog body"
@@ -1159,7 +1163,7 @@ msgstr "همهٔ تغییرات این قسمت از دست خواهند رفت.
 #: src/widgets/episode_row.py:273 src/widgets/season_expander.py:147
 msgctxt "alert dialog action"
 msgid "_Delete"
-msgstr ""
+msgstr "_حذف"
 
 #: src/widgets/search_result_row.py:100 src/widgets/search_result_row.py:192
 msgid "Already in your watchlist"
