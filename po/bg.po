@@ -128,8 +128,8 @@ msgid ""
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
 "„Ticket Booth“ не ви позволява да гледате или изтегляте съдържание. Това "
-"приложение използва програмния интерфейс (API) на „The Movie Database“ "
-"(TMDB), но не е одобрено от TMDB."
+"приложение използва програмния интерфейс (API) на „The Movie "
+"Database“ (TMDB), но не е одобрено от TMDB."
 
 #: src/main.py:193
 msgid "Confirm Export?"
