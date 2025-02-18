@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-02-16 14:40+0000\n"
+"PO-Revision-Date: 2025-02-19 08:46+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/fr/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -288,14 +288,14 @@ msgstr "Saison"
 #: src/ui/widgets/poster_button.blp:141 src/widgets/episode_row.py:129
 #: src/widgets/episode_row.py:160 src/widgets/episode_row.py:330
 msgid "Watched"
-msgstr "Regardé"
+msgstr "Déjà vu"
 
 #: src/pages/details_page.py:216 src/pages/details_page.py:316
 #: src/pages/details_page.py:378 src/pages/details_page.py:447
 #: src/pages/details_page.py:593 src/widgets/episode_row.py:132
 #: src/widgets/episode_row.py:163 src/widgets/episode_row.py:333
 msgid "Mark as Watched"
-msgstr "Marquer comme regardé"
+msgstr "Marquer comme vu"
 
 #: src/pages/details_page.py:223
 msgid "Runtime of Movie"
