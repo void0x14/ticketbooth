@@ -59,6 +59,17 @@ SPDX-License-Identifier: CC0-1.0
 	<translation type="gettext">me.iepure.ticketbooth</translation>
 	<content_rating type="oars-1.1" />
 	<releases>
+		<release version="1.1.1" date="2025-02-22">
+			<description>
+				<p>What's Changed</p>
+				<ul>
+					<li>Fixed a bug that prevented deleting content from your library (@farao)</li>
+					<li>Fixed a bug that prevented adding content on fresh installs without restarting the app first (@gnesterif)</li>
+					<li>Updated translations</li>
+				</ul>
+				<p>A huge thanks to all contributors and translators for making this release possible!</p>
+			</description>
+		</release>
 		<release version="1.1" date="2025-02-18">
 			<description>
 				<p>What's Changed</p>
