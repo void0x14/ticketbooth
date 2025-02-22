@@ -747,7 +747,7 @@ class DetailsView(Adw.NavigationPage):
         dialog.set_close_response('cancel')
         dialog.set_response_appearance(
             'delete', Adw.ResponseAppearance.DESTRUCTIVE)
-        dialog.choose(None, self._on_message_dialog_choose, None)
+        dialog.choose(self, None, self._on_message_dialog_choose, None)
 
     def _on_message_dialog_choose(self, source: GObject.Object | None, result: Gio.AsyncResult, user_data: object | None) -> None:
         """
