@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-02-14 20:21+0000\n"
+"PO-Revision-Date: 2025-02-23 09:02+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/fa/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -45,7 +45,7 @@ msgstr "مشخّص می‌کند که آیا کاره برای نخستین با
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the database needs an update"
-msgstr ""
+msgstr "مشخّص می‌کند که آیا پایگاه داده نیاز به به‌روز رسانی دارد یا نه"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
@@ -57,11 +57,11 @@ msgstr "دیدن سبک مرتّب سازی"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
-msgstr ""
+msgstr "جدا کردن محتوای دیده شده از دیده نشده"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
-msgstr ""
+msgstr "نهفتن محتوای دیده شده"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:69
 msgid "Search bar visibility"
@@ -93,7 +93,7 @@ msgstr "آخرین داده‌های به‌روز شدهٔ خودکار"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:118
 msgid "Last notification autoupdate date"
-msgstr ""
+msgstr "تاریخ آخرین به‌روز رسانی خودکار آگاهی"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:122
 msgid "Clear cache on exit"
@@ -101,15 +101,15 @@ msgstr "پاک سازی انباره در خروج"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:126
 msgid "Use the user's TMDB key"
-msgstr ""
+msgstr "استفاده از کلید TMDB کاربر"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:130
 msgid "User's TMDB key"
-msgstr ""
+msgstr "کلید TMDB کاربر"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
-msgstr "مگه داشتن آمار نمایش‌های محبوبتان"
+msgstr "نگه داشتن آمار نمایش‌های محبوبتان"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:21
 msgid ""
@@ -125,7 +125,7 @@ msgstr ""
 
 #: src/main.py:193
 msgid "Confirm Export?"
-msgstr ""
+msgstr "تأیید برون‌ریزی؟"
 
 #: src/main.py:194
 msgid ""
@@ -1024,13 +1024,13 @@ msgstr "ارائه جدید برای {title}"
 #: src/views/main_view.py:329
 #, python-brace-format
 msgid "A new episode of {title} was released {days} day ago."
-msgstr ""
+msgstr "قسمتی جدید از {title} ‏{days} روز پیش پخش شد."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:333
 #, python-brace-format
 msgid "New release for {num} TV series on your watchlist"
-msgstr ""
+msgstr "پخش‌های جدید از {num} سریال در سیاههٔ تماشایتان"
 
 #. TRANSLATOR: {series} is a list of TV series seperated by a comma
 #. TRANSLATOR: {series} is a list of all series affected seperated by a comma
@@ -1038,19 +1038,19 @@ msgstr ""
 #: src/views/main_view.py:372
 #, python-brace-format
 msgid "The TV Series are {series}."
-msgstr ""
+msgstr "سریال‌ها این‌هایند: {series}."
 
 #. TRANSLATOR: {title} is the title of the series with a new episode soon
 #: src/views/main_view.py:343
 #, python-brace-format
 msgid "{title} will have a release soon"
-msgstr ""
+msgstr "{title} به زودی پخش می‌شود"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:346
 #, python-brace-format
 msgid "A new episode will release in {days} day."
-msgstr ""
+msgstr "قسمتی جدید {days} روز دیگر پخش می‌شود."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:350
@@ -1062,7 +1062,7 @@ msgstr ""
 #: src/views/main_view.py:361
 #, python-brace-format
 msgid "{title} has gone out of production"
-msgstr ""
+msgstr "{title} از تولید خارج شد"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:364
@@ -1082,37 +1082,37 @@ msgstr ""
 #: src/views/main_view.py:378
 #, python-brace-format
 msgid "{title} has had its release!"
-msgstr ""
+msgstr "{title} پخش شد!"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:381
 #, python-brace-format
 msgid "{title} was released {days} day ago."
-msgstr ""
+msgstr "{title} ‏{days} پیش پخش شد."
 
 #: src/views/main_view.py:384
 #, python-brace-format
 msgid "{num} movies on your watchlist have had their releases."
-msgstr ""
+msgstr "{num} فیلم از سیاههٔ تماشایتان پخش شده‌اند."
 
 #. TRANSLATOR: {movies} is a list of all movies affected seperated by a comma
 #. TRANSLATOR: {movies} will be list of all series affected seperated by a comma
 #: src/views/main_view.py:388 src/views/main_view.py:403
 #, python-brace-format
 msgid "The movies are {movies}."
-msgstr ""
+msgstr "فیلم‌ها این‌هایند: {movies}."
 
 #. TRANSLATOR: {title} is the title of the movie that will have its release soon
 #: src/views/main_view.py:393
 #, python-brace-format
 msgid "{title} will have its release soon!"
-msgstr ""
+msgstr "{title} به زودی پخش می‌شود!"
 
 #. TRANSLATOR: {title} is the title of the movie and {days} the number of days
 #: src/views/main_view.py:396
 #, python-brace-format
 msgid "{title} will have its release in {days} day."
-msgstr ""
+msgstr "{title} ‏{days} روز دیگر پخش می‌شود."
 
 #. TRANSLATOR: {num} is the number of movies
 #: src/views/main_view.py:400
@@ -1124,7 +1124,7 @@ msgstr ""
 #: src/views/main_view.py:413
 #, python-brace-format
 msgid "{num} items of your watchlist have an update"
-msgstr ""
+msgstr "{num} مورد از سیاههٔ تماشایتان به‌روز رسانی دارند"
 
 #. TRANSLATOR: {count_movies} is the number of movies
 #: src/views/main_view.py:418 src/views/main_view.py:427
