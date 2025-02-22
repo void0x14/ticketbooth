@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-02-18 13:32+0000\n"
+"PO-Revision-Date: 2025-02-23 09:02+0000\n"
 "Last-Translator: Leo <leomerh96@outlook.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/de/>\n"
@@ -97,7 +97,6 @@ msgid "Last autoupdate date"
 msgstr "Letzte automatische Aktualisierung"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:118
-#, fuzzy
 msgid "Last notification autoupdate date"
 msgstr "Letzte automatische Aktualisierung"
 
@@ -150,7 +149,6 @@ msgstr ""
 
 #: src/main.py:196 src/main.py:310 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
-#, fuzzy
 msgctxt "alert dialog action"
 msgid "_Cancel"
 msgstr "_Abbrechen"
@@ -201,10 +199,9 @@ msgstr ""
 "vervollständigen."
 
 #: src/preferences.py:256 src/window.py:235
-#, fuzzy
 msgctxt "alert dialog action"
 msgid "_OK"
-msgstr "OK"
+msgstr "_OK"
 
 #: src/preferences.py:321
 msgctxt "Background activity title"
@@ -305,7 +302,6 @@ msgid "Mark as Watched"
 msgstr "Als angesehen markieren"
 
 #: src/pages/details_page.py:223
-#, fuzzy
 msgid "Runtime of Movie"
 msgstr "Laufzeit (Minuten)"
 
@@ -553,10 +549,9 @@ msgid "Use the + button to add episodes"
 msgstr "Nutzen Sie den »+«-Knopf, um Episoden hinzuzufügen"
 
 #: src/ui/dialogs/message_dialogs.blp:9
-#, fuzzy
 msgctxt "message dialog heading"
 msgid "Clear Cached Data?"
-msgstr "Zwischengespeicherte Suchdaten löschen"
+msgstr "Zwischengespeicherte Daten löschen"
 
 #: src/ui/dialogs/message_dialogs.blp:10
 msgctxt "message dialog body"
@@ -568,7 +563,6 @@ msgstr ""
 "wieder heruntergeladen wenn Sie das nächste mal Inhalte von TMDB hinzufügen."
 
 #: src/ui/dialogs/message_dialogs.blp:13 src/ui/dialogs/message_dialogs.blp:40
-#, fuzzy
 msgctxt "message dialog action"
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -580,10 +574,9 @@ msgid "Clear"
 msgstr "Daten löschen"
 
 #: src/ui/dialogs/message_dialogs.blp:19
-#, fuzzy
 msgctxt "message dialog heading"
 msgid "Clear Stored Data?"
-msgstr "Daten löschen"
+msgstr "Gespeicherte Daten löschen?"
 
 #: src/ui/dialogs/message_dialogs.blp:20
 msgctxt "message dialog body"
@@ -591,14 +584,14 @@ msgid ""
 "This operation will permanentlly delete the selected data, loosing all your "
 "changes."
 msgstr ""
+"Dieser Vorgang löscht die ausgewählten Daten dauerhaft, so dass alle Ihre "
+"Änderungen verloren gehen."
 
 #: src/ui/dialogs/message_dialogs.blp:26
-#, fuzzy
 msgid "Movies"
 msgstr "Filme"
 
 #: src/ui/dialogs/message_dialogs.blp:34
-#, fuzzy
 msgid "TV Series"
 msgstr "Serien"
 
@@ -618,10 +611,9 @@ msgid "Show Preferences"
 msgstr "Einstellungen anzeigen"
 
 #: src/ui/gtk/help-overlay.blp:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Search your Watchlist"
-msgstr "Ihre Merkliste"
+msgstr "Durchsuchen Sie Ihre Merkliste"
 
 #: src/ui/gtk/help-overlay.blp:33
 msgctxt "shortcut window"
@@ -653,9 +645,8 @@ msgid "Main Menu"
 msgstr "Hauptmenü"
 
 #: src/ui/pages/details_page.blp:146
-#, fuzzy
 msgid "Number of Episodes"
-msgstr "{num} Episode"
+msgstr "{num} Episoden"
 
 #: src/ui/pages/details_page.blp:156
 msgid "Air Date of Next Episode"
@@ -720,7 +711,6 @@ msgid "Optional Download"
 msgstr "Optionaler Download"
 
 #: src/ui/preferences.blp:19
-#, fuzzy
 msgctxt "preferences"
 msgid ""
 "For a complete experience, a download of 15 KB is required. The initial "
@@ -868,23 +858,22 @@ msgid "Your Watchlist Is Empty"
 msgstr "Ihre Merkliste ist leer"
 
 #: src/ui/views/content_view.blp:15
-#, fuzzy
 msgid "Add content with the + button or import from an older watchlist."
-msgstr "Fügen Sie mit dem »+«-Knopf Inhalte hinzu."
+msgstr ""
+"Fügen Sie mit dem »+«-Knopf Inhalte hinzu oder importiere eine alte "
+"Merkliste."
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:324
 msgid "Your Watchlist"
 msgstr "Ihre Merkliste"
 
 #: src/ui/views/content_view.blp:140
-#, fuzzy
 msgid "Unwatched"
-msgstr "Angesehen"
+msgstr "Ungeschaut"
 
 #: src/ui/views/db_update_view.blp:29
-#, fuzzy
 msgid "Updating your watchlist"
-msgstr "Bereits auf Ihrer Merkliste"
+msgstr "Aktualisiere die Merkliste"
 
 #: src/ui/views/db_update_view.blp:30
 msgid ""
@@ -902,20 +891,20 @@ msgid "Try again on next run"
 msgstr "Beim nächsten Mal erneut versuchen"
 
 #: src/ui/views/db_update_view.blp:66
-#, fuzzy
 msgid "Activate Notifications?"
-msgstr "Automatische Aktualisierung"
+msgstr "Benachrichtigungen aktivieren?"
 
 #: src/ui/views/db_update_view.blp:67
 msgid ""
 "Would you like to activate notifications for all series that are still in "
 "production and for all movies that have not yet released?"
 msgstr ""
+"Möchten Sie für alle Serien, die noch in Produktion sind, und für alle "
+"Filme, die noch nicht erschienen sind, Benachrichtigungen aktivieren?"
 
 #: src/ui/views/db_update_view.blp:76
-#, fuzzy
 msgid "Activate"
-msgstr "Aktiver Reiter"
+msgstr "Aktivieren"
 
 #: src/ui/views/db_update_view.blp:85
 msgid "Deactivate"
@@ -930,9 +919,8 @@ msgid "Show/Hide search bar"
 msgstr "Zeige/Verstecke Suchleiste"
 
 #: src/ui/views/main_view.blp:110
-#, fuzzy
 msgid "Search Your Watchlist"
-msgstr "Ihre Merkliste"
+msgstr "Ihre Merkliste durchsuchen"
 
 #: src/ui/views/main_view.blp:121
 msgid "Offline Mode Enabled"
@@ -971,9 +959,8 @@ msgid "Separate watched from unwatched"
 msgstr "Separiere gesehene von ungesehenen"
 
 #: src/ui/views/main_view.blp:199
-#, fuzzy
 msgid "Hide watched"
-msgstr "Angesehen"
+msgstr "Gesehene verstecken"
 
 #: src/ui/views/main_view.blp:206
 msgid "_Refresh"
@@ -1072,10 +1059,9 @@ msgid "Movies"
 msgstr "Filme"
 
 #: src/views/main_view.py:146
-#, fuzzy
 msgctxt "Notification List activity title"
 msgid "Automatic update of notification list"
-msgstr "Automatische Aktualisierung"
+msgstr "Automatische Aktualisierung der Benachrichtigungsliste"
 
 #: src/views/main_view.py:162 src/views/main_view.py:172
 #: src/views/main_view.py:182
@@ -1085,9 +1071,9 @@ msgstr "Automatische Aktualisierung"
 
 #. TRANSLATOR: {title} is the title of the series
 #: src/views/main_view.py:326
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "New release for {title}"
-msgstr "»{title}« löschen"
+msgstr "Neuerscheinung für {title}"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:329
@@ -1125,13 +1111,13 @@ msgstr "Eine neue Folge erscheint in {days} Tagen."
 #: src/views/main_view.py:350
 #, python-brace-format
 msgid "{num} TV Series on your watchlist will have a new episode soon"
-msgstr ""
+msgstr "{num} Serien aus Ihrer Watchlist werden bald eine Neuerscheinung haben"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:361
 #, python-brace-format
 msgid "{title} has gone out of production"
-msgstr ""
+msgstr "{title} wurde eingestellt"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:364
@@ -1140,66 +1126,68 @@ msgid ""
 "{title} has wrapped up its run. Now is the perfect time to revisit your "
 "favorite moments or find the next binge!"
 msgstr ""
+"{title} ist zu Ende gegangen. Jetzt ist die perfekte Zeit, um deine "
+"Lieblingsmomente noch einmal zu sehen oder die nächste Folge zu finden!"
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:367
 #, python-brace-format
 msgid "{num} TV Series of your watchlist have gone out of production"
-msgstr ""
+msgstr "{num} Serien aus Ihrer Watchlist sind eingestellt worden"
 
 #. TRANSLATOR: {title} is the title of the movie that has had its release
 #: src/views/main_view.py:378
 #, python-brace-format
 msgid "{title} has had its release!"
-msgstr ""
+msgstr "{title} ist erschienen!"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:381
 #, python-brace-format
 msgid "{title} was released {days} day ago."
-msgstr ""
+msgstr "{title} ist vor {days} Tagen erschienen."
 
 #: src/views/main_view.py:384
 #, python-brace-format
 msgid "{num} movies on your watchlist have had their releases."
-msgstr ""
+msgstr "{num} Filme aus ihrer Watchlist sind erschienen."
 
 #. TRANSLATOR: {movies} is a list of all movies affected seperated by a comma
 #. TRANSLATOR: {movies} will be list of all series affected seperated by a comma
 #: src/views/main_view.py:388 src/views/main_view.py:403
 #, python-brace-format
 msgid "The movies are {movies}."
-msgstr ""
+msgstr "Die Filme sind {movies}."
 
 #. TRANSLATOR: {title} is the title of the movie that will have its release soon
 #: src/views/main_view.py:393
 #, python-brace-format
 msgid "{title} will have its release soon!"
-msgstr ""
+msgstr "{title} wird bald erscheinen!"
 
 #. TRANSLATOR: {title} is the title of the movie and {days} the number of days
 #: src/views/main_view.py:396
 #, python-brace-format
 msgid "{title} will have its release in {days} day."
-msgstr ""
+msgstr "{title} wird in {days} Tagen erscheinen."
 
 #. TRANSLATOR: {num} is the number of movies
 #: src/views/main_view.py:400
 #, python-brace-format
 msgid "{num} movies on your watchlist will have their releases soon"
-msgstr ""
+msgstr "{num} Filme aus ihrer Merkliste werden bald erscheinen"
 
 #. TRANSLATOR: {num} is the number of affected items
 #: src/views/main_view.py:413
 #, python-brace-format
 msgid "{num} items of your watchlist have an update"
-msgstr ""
+msgstr "{num} Elemente aus ihrer Merkliste hatten Aktualisierungen"
 
 #. TRANSLATOR: {count_movies} is the number of movies
 #: src/views/main_view.py:418 src/views/main_view.py:427
 #, python-brace-format
 msgid "These updates affect {count_movies} movie"
-msgstr ""
+msgstr "Die Aktualisierungen betreffen {count_movies} Filme"
 
 #. TRANSLATOR: the connector between the two parts of the sentence (foo and bar)
 #: src/views/main_view.py:420
@@ -1210,19 +1198,19 @@ msgstr " und "
 #: src/views/main_view.py:422
 #, python-brace-format
 msgid " {count_series} TV serie"
-msgstr ""
+msgstr " {count_series} Serien"
 
 #. TRANSLATOR: {count_series} is the number of series
 #: src/views/main_view.py:430
 #, python-brace-format
 msgid "These updates affect {count_series} TV serie"
-msgstr ""
+msgstr "Die Aktualisierungen betreffen {count_series} Serien"
 
 #: src/widgets/episode_row.py:267 src/widgets/season_expander.py:141
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgctxt "alert dialog heading"
 msgid "Delete {title}?"
-msgstr "»{title}« löschen?"
+msgstr "{title} löschen?"
 
 #: src/widgets/episode_row.py:270
 #, fuzzy
@@ -1231,7 +1219,6 @@ msgid "All changes to this episode will be lost."
 msgstr "Alle Änderungen an dieser Episode gehen verloren."
 
 #: src/widgets/episode_row.py:273 src/widgets/season_expander.py:147
-#, fuzzy
 msgctxt "alert dialog action"
 msgid "_Delete"
 msgstr "_Löschen"
