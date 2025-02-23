@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-02-23 09:02+0000\n"
+"PO-Revision-Date: 2025-02-24 12:03+0000\n"
 "Last-Translator: Leo <leomerh96@outlook.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/de/>\n"
@@ -47,9 +47,8 @@ msgid "Specifies if the app is run for the first time"
 msgstr "Legt fest, ob die App das erste Mal ausgeführt wird"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
-#, fuzzy
 msgid "Specifies if the database needs an update"
-msgstr "Legt fest, ob die App die erforderlichen Daten heruntergeladen hat"
+msgstr "Legt fest, ob die Datenbank eine Aktualisierung benötigt"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
@@ -72,9 +71,8 @@ msgid "Search bar visibility"
 msgstr "Suchbarsichtbarkeit"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:77
-#, fuzzy
 msgid "Search mode"
-msgstr "Einen Titel suchen"
+msgstr "Suchmodus"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:81
 msgid "Search query"
@@ -568,10 +566,9 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: src/ui/dialogs/message_dialogs.blp:14 src/ui/dialogs/message_dialogs.blp:41
-#, fuzzy
 msgctxt "message dialog action"
 msgid "Clear"
-msgstr "Daten löschen"
+msgstr "Löschen"
 
 #: src/ui/dialogs/message_dialogs.blp:19
 msgctxt "message dialog heading"
@@ -828,10 +825,9 @@ msgid "Your API key"
 msgstr "Ihr API-Schlüssel"
 
 #: src/ui/preferences.blp:75
-#, fuzzy
 msgctxt "preferences"
 msgid "Save Key"
-msgstr "Speichern"
+msgstr "Schlüssel speichern"
 
 #: src/ui/preferences.blp:86
 msgctxt "preferences"
@@ -1213,7 +1209,6 @@ msgid "Delete {title}?"
 msgstr "{title} löschen?"
 
 #: src/widgets/episode_row.py:270
-#, fuzzy
 msgctxt "alert dialog body"
 msgid "All changes to this episode will be lost."
 msgstr "Alle Änderungen an dieser Episode gehen verloren."
@@ -1228,7 +1223,6 @@ msgid "Already in your watchlist"
 msgstr "Bereits auf Ihrer Merkliste"
 
 #: src/widgets/season_expander.py:144
-#, fuzzy
 msgctxt "alert dialog body"
 msgid "This season contains unsaved metadata."
 msgstr "Diese Staffel enthält ungesicherte Metadaten."
