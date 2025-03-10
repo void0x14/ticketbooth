@@ -408,7 +408,13 @@ class AddManualDialog(Adw.Dialog):
             "status":self._status_entry.get_text(),  # status
             "tagline":self._tagline_entry.get_text(),  # tagline
             "title":self._title_entry.get_text(),   # title
-            "watched": False if not self.edit_mode else self._content.watched  # watched
+            "watched": False if not self.edit_mode else self._content.watched,  # watched
+            "activate_notification": False,  # activate notification
+            "new_release": False,  # new release flag
+            "soon_release": False,  # soon release flag
+            "last_watched": datetime.now(),  # last watched
+            "notes": '',  # notes
+            "recent_change": False  # recent change flag
         })
 
         if not self.edit_mode:
