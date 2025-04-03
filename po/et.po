@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-04-01 14:01+0000\n"
+"PO-Revision-Date: 2025-04-03 09:59+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
@@ -41,35 +41,35 @@ msgstr "Aktiivne vahekaart"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
-msgstr ""
+msgstr "Määratleb, kas tegemist on rakenduse esimese käivitamisega"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the database needs an update"
-msgstr ""
+msgstr "Määratleb, kas andmebaas vajab uuendamist"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
-msgstr ""
+msgstr "Määratleb, kas rakendus laadis alla vajalikud andmed"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:57
 msgid "View sorting style"
-msgstr ""
+msgstr "Vaate järjestusviis"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
-msgstr ""
+msgstr "Eralda vaadatud sisu mittevaadatust"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
-msgstr ""
+msgstr "Peida vaadatud sisu"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:69
 msgid "Search bar visibility"
-msgstr ""
+msgstr "Otsinguriba nähtavus"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:77
 msgid "Search mode"
-msgstr ""
+msgstr "Otsinguviis"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:81
 msgid "Search query"
@@ -182,12 +182,12 @@ msgstr ""
 #: src/preferences.py:256 src/window.py:235
 msgctxt "alert dialog action"
 msgid "_OK"
-msgstr ""
+msgstr "S_obib"
 
 #: src/preferences.py:321
 msgctxt "Background activity title"
 msgid "Clear cache"
-msgstr ""
+msgstr "Kustuta puhverdatud andmed"
 
 #. TRANSLATORS: {number} is the number of titles
 #: src/preferences.py:373 src/preferences.py:375
@@ -198,12 +198,12 @@ msgstr ""
 #: src/preferences.py:412
 msgctxt "Background activity title"
 msgid "Delete all movies"
-msgstr ""
+msgstr "Kustuta kõik filmid"
 
 #: src/preferences.py:423
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr ""
+msgstr "Kustuta kõik telesarjad"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:498
@@ -233,32 +233,32 @@ msgstr ""
 
 #: src/dialogs/add_manual_dialog.py:89
 msgid "Edit Movie"
-msgstr ""
+msgstr "Muuda filmi"
 
 #: src/dialogs/add_manual_dialog.py:92
 msgid "Edit TV Series"
-msgstr ""
+msgstr "Muuda telesarja"
 
 #: src/dialogs/add_manual_dialog.py:294
 #, python-brace-format
 msgid "Season {num}"
-msgstr ""
+msgstr "{num}. hooaeg"
 
 #: src/dialogs/add_manual_dialog.py:334 src/widgets/search_result_row.py:165
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Add {title}"
-msgstr ""
+msgstr "Lisa {title}"
 
 #: src/dialogs/add_manual_dialog.py:340
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Update {title}"
-msgstr ""
+msgstr "Uuenda: {title}"
 
 #: src/dialogs/edit_season_dialog.py:44 src/widgets/season_expander.py:43
 msgid "Season"
-msgstr ""
+msgstr "Hooaeg"
 
 #. type: ignore
 #: src/pages/details_page.py:213 src/pages/details_page.py:313
@@ -267,58 +267,58 @@ msgstr ""
 #: src/ui/widgets/poster_button.blp:141 src/widgets/episode_row.py:129
 #: src/widgets/episode_row.py:160 src/widgets/episode_row.py:330
 msgid "Watched"
-msgstr ""
+msgstr "Vaadatud"
 
 #: src/pages/details_page.py:216 src/pages/details_page.py:316
 #: src/pages/details_page.py:378 src/pages/details_page.py:447
 #: src/pages/details_page.py:593 src/widgets/episode_row.py:132
 #: src/widgets/episode_row.py:163 src/widgets/episode_row.py:333
 msgid "Mark as Watched"
-msgstr ""
+msgstr "Märgi vaadatuks"
 
 #: src/pages/details_page.py:223
 msgid "Runtime of Movie"
-msgstr ""
+msgstr "Filmi kestus"
 
 #. TRANSLATORS: {num} is the total number of seasons
 #: src/pages/details_page.py:236
 #, python-brace-format
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{num} hooaeg"
+msgstr[1] "{num} hooaega"
 
 #: src/pages/details_page.py:240
 msgid "Number of Seasons"
-msgstr ""
+msgstr "Hooaegu"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:245 src/pages/details_page.py:293
 #, python-brace-format
 msgid "{num} Episode"
 msgid_plural "{num} Episodes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{num} osa"
+msgstr[1] "{num} osa"
 
 #: src/pages/details_page.py:480 src/ui/dialogs/add_manual.blp:171
 msgid "Status"
-msgstr ""
+msgstr "Olek"
 
 #: src/pages/details_page.py:488 src/ui/dialogs/add_manual.blp:175
 msgid "Original Language"
-msgstr ""
+msgstr "Algne keel"
 
 #: src/pages/details_page.py:498 src/ui/dialogs/add_manual.blp:181
 msgid "Original Title"
-msgstr ""
+msgstr "Algne pealkiri"
 
 #: src/pages/details_page.py:511
 msgid "Budget"
-msgstr ""
+msgstr "Eelarve"
 
 #: src/pages/details_page.py:521
 msgid "Revenue"
-msgstr ""
+msgstr "Müügitulud"
 
 #: src/pages/details_page.py:531
 msgid "In Production"
@@ -369,7 +369,7 @@ msgstr ""
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
-msgstr ""
+msgstr "Kas kustutame: {title}?"
 
 #. type: ignore
 #: src/pages/details_page.py:743
@@ -380,18 +380,18 @@ msgstr ""
 #: src/pages/details_page.py:744
 msgctxt "message dialog action"
 msgid "_Cancel"
-msgstr ""
+msgstr "_Katkesta"
 
 #: src/pages/details_page.py:745
 msgctxt "message dialog action"
 msgid "_Delete"
-msgstr ""
+msgstr "_Kustuta"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:777
 #, python-brace-format
 msgid "Delete {title}"
-msgstr ""
+msgstr "{title} kustutamine"
 
 #: src/ui/about_dialog.blp:9
 msgid ""
