@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-04-03 09:59+0000\n"
+"PO-Revision-Date: 2025-04-03 10:05+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
@@ -413,7 +413,7 @@ msgstr ""
 #: src/widgets/search_result_row.py:82
 msgctxt "Category"
 msgid "TV Series"
-msgstr ""
+msgstr "Telesarjad"
 
 #: src/ui/dialogs/add_manual.blp:51 src/ui/dialogs/edit_season.blp:24
 msgid "Cancel"
@@ -555,11 +555,11 @@ msgstr ""
 
 #: src/ui/dialogs/message_dialogs.blp:26
 msgid "Movies"
-msgstr ""
+msgstr "Filmid"
 
 #: src/ui/dialogs/message_dialogs.blp:34
 msgid "TV Series"
-msgstr ""
+msgstr "Telesarjad"
 
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
@@ -970,7 +970,7 @@ msgstr ""
 
 #: src/views/content_view.py:323
 msgid "Search results"
-msgstr ""
+msgstr "Otsingutulemused"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
@@ -994,7 +994,7 @@ msgstr ""
 #: src/views/main_view.py:57
 msgctxt "Category"
 msgid "Movies"
-msgstr ""
+msgstr "Filmid"
 
 #: src/views/main_view.py:146
 msgctxt "Notification List activity title"
@@ -1031,7 +1031,7 @@ msgstr ""
 #: src/views/main_view.py:372
 #, python-brace-format
 msgid "The TV Series are {series}."
-msgstr ""
+msgstr "Telesarjad on: {series}."
 
 #. TRANSLATOR: {title} is the title of the series with a new episode soon
 #: src/views/main_view.py:343
@@ -1093,7 +1093,7 @@ msgstr ""
 #: src/views/main_view.py:388 src/views/main_view.py:403
 #, python-brace-format
 msgid "The movies are {movies}."
-msgstr ""
+msgstr "Filmid on: {movies}."
 
 #. TRANSLATOR: {title} is the title of the movie that will have its release soon
 #: src/views/main_view.py:393
@@ -1123,7 +1123,7 @@ msgstr ""
 #: src/views/main_view.py:418 src/views/main_view.py:427
 #, python-brace-format
 msgid "These updates affect {count_movies} movie"
-msgstr ""
+msgstr "Need uuendused mõjutavad {count_movies} filmi"
 
 #. TRANSLATOR: the connector between the two parts of the sentence (foo and bar)
 #: src/views/main_view.py:420
