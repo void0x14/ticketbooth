@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-04-03 10:05+0000\n"
+"PO-Revision-Date: 2025-04-07 17:05+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
@@ -73,39 +73,39 @@ msgstr "Otsinguviis"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:81
 msgid "Search query"
-msgstr ""
+msgstr "Otsingupäring"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:93
 msgid "App color scheme"
-msgstr ""
+msgstr "Rakenduse kujundus"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:97
 msgid "Language used by TMDB results"
-msgstr ""
+msgstr "TMDB päringutulemuste keel"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:110
 msgid "Frequency to check for new data on TMDB"
-msgstr ""
+msgstr "Päringute sagedus uute andmete tuvastamiseks TMDB teenusest"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:114
 msgid "Last autoupdate date"
-msgstr ""
+msgstr "Viimase automaatse uuenduse kuupäev"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:118
 msgid "Last notification autoupdate date"
-msgstr ""
+msgstr "Viimase teavituse automaatse uuenduse kuupäev"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:122
 msgid "Clear cache on exit"
-msgstr ""
+msgstr "Väljumisel kustuta puhverdatud andmed"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:126
 msgid "Use the user's TMDB key"
-msgstr ""
+msgstr "Kasuta TMDB teenuses kasutaja oma võtit"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:130
 msgid "User's TMDB key"
-msgstr ""
+msgstr "Kasutaja võti TMDB teenuses"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
@@ -137,47 +137,50 @@ msgstr ""
 #: src/widgets/season_expander.py:146
 msgctxt "alert dialog action"
 msgid "_Cancel"
-msgstr ""
+msgstr "_Katkesta"
 
 #: src/main.py:197
 msgctxt "alert dialog action"
 msgid "_Export"
-msgstr ""
+msgstr "_Ekspordi"
 
 #: src/main.py:230
 msgctxt "Background activity title"
 msgid "Exporting library"
-msgstr ""
+msgstr "Ekspordin meediakogu"
 
 #: src/main.py:307
 msgid "Confirm Import?"
-msgstr ""
+msgstr "Kas kinnitad importimise?"
 
 #: src/main.py:308
 msgid ""
 "Importing a library will merge it with the current library. This action "
 "cannot be undone and in case of conflicts, the new data will be kept."
 msgstr ""
+"Meediakogu importimisel mestid ta senise meediakoguga. Seda tegevust ei saa "
+"tagasi pöörata ning kui uute ja vanade andmete vahel on vastuolu, siis "
+"säiluvad uued andmed."
 
 #: src/main.py:311
 msgctxt "alert dialog action"
 msgid "_Import"
-msgstr ""
+msgstr "_Impordi"
 
 #: src/main.py:344
 msgctxt "Background activity title"
 msgid "Importing library"
-msgstr ""
+msgstr "Meediakogu on importimisel"
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
 msgid "No Network"
-msgstr ""
+msgstr "Võrguühendus puudub"
 
 #: src/preferences.py:254
 msgctxt "message dialog body"
 msgid "Connect to the Internet to complete the setup."
-msgstr ""
+msgstr "Paigaldamise lõpetamiseks loo internetiühendus."
 
 #: src/preferences.py:256 src/window.py:235
 msgctxt "alert dialog action"
@@ -322,31 +325,31 @@ msgstr "Müügitulud"
 
 #: src/pages/details_page.py:531
 msgid "In Production"
-msgstr ""
+msgstr "Tootmises"
 
 #: src/pages/details_page.py:534
 msgid "Yes"
-msgstr ""
+msgstr "Jah"
 
 #: src/pages/details_page.py:535
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: src/pages/details_page.py:540
 msgid "TMDB ID"
-msgstr ""
+msgstr "TMDB tunnus"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
 #: src/pages/details_page.py:566 src/widgets/episode_row.py:185
 #, python-brace-format
 msgid "{h}h {m}min"
-msgstr ""
+msgstr "{h} t {m} min"
 
 #. TRANSLATORS: {m} is the runtime minutes
 #: src/pages/details_page.py:569 src/widgets/episode_row.py:189
 #, python-brace-format
 msgid "{m}min"
-msgstr ""
+msgstr "{m} min"
 
 #. TRANSLATORS: {title} is the showed content's title
 #: src/pages/details_page.py:652
@@ -362,7 +365,7 @@ msgstr ""
 
 #: src/pages/details_page.py:721
 msgid "Loading Metadata…"
-msgstr ""
+msgstr "Laadin metateavet…"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:741
@@ -407,7 +410,7 @@ msgstr ""
 #: src/ui/dialogs/add_manual.blp:38 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
-msgstr ""
+msgstr "Film"
 
 #: src/ui/dialogs/add_manual.blp:43 src/views/main_view.py:63
 #: src/widgets/search_result_row.py:82
@@ -417,17 +420,17 @@ msgstr "Telesarjad"
 
 #: src/ui/dialogs/add_manual.blp:51 src/ui/dialogs/edit_season.blp:24
 msgid "Cancel"
-msgstr ""
+msgstr "Katkesta"
 
 #: src/ui/dialogs/add_manual.blp:57 src/ui/dialogs/edit_season.blp:30
 #: src/ui/pages/edit_episode_page.blp:19
 msgid "Save"
-msgstr ""
+msgstr "Salvesta"
 
 #: src/ui/dialogs/add_manual.blp:81 src/ui/dialogs/edit_season.blp:52
 #: src/ui/pages/edit_episode_page.blp:41
 msgid "General"
-msgstr ""
+msgstr "Üldised"
 
 #: src/ui/dialogs/add_manual.blp:84 src/ui/dialogs/edit_season.blp:55
 #: src/ui/pages/edit_episode_page.blp:55
@@ -564,17 +567,17 @@ msgstr "Telesarjad"
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Üldised"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Näita kiirklahve"
 
 #: src/ui/gtk/help-overlay.blp:23
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Näita eelistusi"
 
 #: src/ui/gtk/help-overlay.blp:28
 msgctxt "shortcut window"
