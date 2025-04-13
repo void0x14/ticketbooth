@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the ticketbooth package.
 # Óscar Fernández Díaz <oscfdezdz@users.noreply.hosted.weblate.org>, 2023.
+# "Emilio S." <emism.translations@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2023-09-26 01:52+0000\n"
-"Last-Translator: Óscar Fernández Díaz <oscfdezdz@users.noreply.hosted."
-"weblate.org>\n"
+"PO-Revision-Date: 2025-04-13 22:18+0000\n"
+"Last-Translator: \"Emilio S.\" <emism.translations@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -70,9 +70,8 @@ msgid "Search bar visibility"
 msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:77
-#, fuzzy
 msgid "Search mode"
-msgstr "Buscar un título"
+msgstr "Modo de búsqueda"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:81
 msgid "Search query"
@@ -95,9 +94,8 @@ msgid "Last autoupdate date"
 msgstr "Última fecha de actualización automática"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:118
-#, fuzzy
 msgid "Last notification autoupdate date"
-msgstr "Última fecha de actualización automática"
+msgstr "Última fecha de notificación de actualización automática"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:122
 msgid "Clear cache on exit"
@@ -144,7 +142,6 @@ msgstr ""
 
 #: src/main.py:196 src/main.py:310 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
-#, fuzzy
 msgctxt "alert dialog action"
 msgid "_Cancel"
 msgstr "_Cancelar"
@@ -190,10 +187,9 @@ msgid "Connect to the Internet to complete the setup."
 msgstr "Conéctese a Internet para completar la configuración."
 
 #: src/preferences.py:256 src/window.py:235
-#, fuzzy
 msgctxt "alert dialog action"
 msgid "_OK"
-msgstr "De acuerdo"
+msgstr "_Aceptar"
 
 #: src/preferences.py:321
 msgctxt "Background activity title"
@@ -540,10 +536,9 @@ msgid "Use the + button to add episodes"
 msgstr "Use el botón + para añadir episodios"
 
 #: src/ui/dialogs/message_dialogs.blp:9
-#, fuzzy
 msgctxt "message dialog heading"
 msgid "Clear Cached Data?"
-msgstr "Limpiar datos de búsqueda en caché"
+msgstr "¿Limpiar los datos en caché?"
 
 #: src/ui/dialogs/message_dialogs.blp:10
 msgctxt "message dialog body"
@@ -565,10 +560,9 @@ msgid "Clear"
 msgstr "Limpiar datos"
 
 #: src/ui/dialogs/message_dialogs.blp:19
-#, fuzzy
 msgctxt "message dialog heading"
 msgid "Clear Stored Data?"
-msgstr "Limpiar datos"
+msgstr "¿Limpiar los datos guardados?"
 
 #: src/ui/dialogs/message_dialogs.blp:20
 msgctxt "message dialog body"
@@ -883,9 +877,8 @@ msgid "Try again on next run"
 msgstr "Inténtelo de nuevo en la próxima ejecución"
 
 #: src/ui/views/db_update_view.blp:66
-#, fuzzy
 msgid "Activate Notifications?"
-msgstr "Actualización automática"
+msgstr "¿Activar las notificaciones?"
 
 #: src/ui/views/db_update_view.blp:67
 msgid ""
