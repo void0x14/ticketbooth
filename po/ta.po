@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-03-13 12:34+0000\n"
+"PO-Revision-Date: 2025-04-20 23:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/ta/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.3\n"
+"X-Generator: Weblate 5.11.1-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -89,7 +89,7 @@ msgstr "TMDB இல் புதிய தரவை சரிபார்க்�
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:114
 msgid "Last autoupdate date"
-msgstr "கடைசி தன்னியக்க தேதி தேதி"
+msgstr "கடைசி தன்னியக்க தேதி"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:118
 msgid "Last notification autoupdate date"
@@ -944,11 +944,11 @@ msgstr "பற்றாக்குறையிலிருந்து தன�
 
 #: src/ui/views/main_view.blp:199
 msgid "Hide watched"
-msgstr "பார்த்தேன்"
+msgstr "பார்த்தை மறை"
 
 #: src/ui/views/main_view.blp:206
 msgid "_Refresh"
-msgstr "_Refresh"
+msgstr "புத்துணர்வு"
 
 #: src/ui/views/main_view.blp:213
 msgid "_Import"
@@ -1056,13 +1056,13 @@ msgstr "தானியங்கி புதுப்பிப்பு"
 #: src/views/main_view.py:326
 #, python-brace-format
 msgid "New release for {title}"
-msgstr "{தலைப்பு க்கு க்கான புதிய வெளியீடு"
+msgstr "{title} க்கான புதிய வெளியீடு"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:329
 #, python-brace-format
 msgid "A new episode of {title} was released {days} day ago."
-msgstr "{தலைப்பு of இன் புதிய அத்தியாயம் {title} நாள் முன்பு வெளியிடப்பட்டது."
+msgstr "{title} இன் புதிய அத்தியாயம் {days} நாள் முன்பு வெளியிடப்பட்டது."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:333
@@ -1095,14 +1095,14 @@ msgstr "ஒரு புதிய அத்தியாயம் {days} நா�
 #, python-brace-format
 msgid "{num} TV Series on your watchlist will have a new episode soon"
 msgstr ""
-"Your உங்கள் கண்காணிப்பு பட்டியலில் எண்} டிவி தொடர்கள் விரைவில் ஒரு புதிய அத்தியாயத்தைக் "
+"Your உங்கள் கண்காணிப்பு பட்டியலில் {num} டிவி தொடர்கள் விரைவில் ஒரு புதிய அத்தியாயத்தைக் "
 "கொண்டிருக்கும்"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:361
 #, python-brace-format
 msgid "{title} has gone out of production"
-msgstr "{தலைப்பு the உற்பத்தியில் இருந்து வெளியேறிவிட்டது"
+msgstr "{title} உற்பத்தியிலிருந்து வெளியேறிவிட்டது"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:364
@@ -1119,7 +1119,7 @@ msgstr ""
 #, python-brace-format
 msgid "{num} TV Series of your watchlist have gone out of production"
 msgstr ""
-"Your உங்கள் கண்காணிப்புப் பட்டியலின் எண்} டிவி தொடர் உற்பத்தியில் இருந்து வெளியேறிவிட்டது"
+"Your உங்கள் கண்காணிப்புப் பட்டியலின் {num} டிவி தொடர் உற்பத்தியிலிருந்து வெளியேறிவிட்டது"
 
 #. TRANSLATOR: {title} is the title of the movie that has had its release
 #: src/views/main_view.py:378
@@ -1137,7 +1137,8 @@ msgstr "{title} {days} நாள் முன்பு வெளியிடப�
 #, python-brace-format
 msgid "{num} movies on your watchlist have had their releases."
 msgstr ""
-"Your உங்கள் கண்காணிப்பு பட்டியலில் உள்ள திரைப்படங்கள் அவற்றின் வெளியீடுகளைக் கொண்டுள்ளன."
+"Your உங்கள் கண்காணிப்பு பட்டியலில் உள்ள {num} திரைப்படங்கள் அவற்றின் வெளியீடுகளைக் "
+"கொண்டுள்ளன."
 
 #. TRANSLATOR: {movies} is a list of all movies affected seperated by a comma
 #. TRANSLATOR: {movies} will be list of all series affected seperated by a comma
@@ -1163,7 +1164,7 @@ msgstr "{title} அதன் வெளியீடு {days} நாளில் 
 #, python-brace-format
 msgid "{num} movies on your watchlist will have their releases soon"
 msgstr ""
-"Your உங்கள் கண்காணிப்பு பட்டியலில் உள்ள திரைப்படங்கள் விரைவில் அவற்றின் வெளியீடுகளைக் "
+"Your உங்கள் கண்காணிப்பு பட்டியலில் உள்ள {num} திரைப்படங்கள் விரைவில் அவற்றின் வெளியீடுகளைக் "
 "கொண்டிருக்கும்"
 
 #. TRANSLATOR: {num} is the number of affected items
@@ -1171,7 +1172,7 @@ msgstr ""
 #, python-brace-format
 msgid "{num} items of your watchlist have an update"
 msgstr ""
-"Your Num} உங்கள் கண்காணிப்பு பட்டியலின் உருப்படிகள் ஒரு புதுப்பிப்பைக் கொண்டுள்ளன"
+"{num} உங்கள் கண்காணிப்பு பட்டியலின் உருப்படிகள் ஒரு புதுப்பிப்பைக் கொண்டுள்ளன"
 
 #. TRANSLATOR: {count_movies} is the number of movies
 #: src/views/main_view.py:418 src/views/main_view.py:427
