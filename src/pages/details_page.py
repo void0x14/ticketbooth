@@ -165,7 +165,7 @@ class DetailsView(Adw.NavigationPage):
             if not Adw.StyleManager.get_default().get_high_contrast():
                 self._background_picture.set_file(Gio.File.new_for_uri(
                     self.content.backdrop_path))  # type: ignore
-                # type: ignore
+
                 with Image.open(self.content.backdrop_path[7:]) as image:
                     stat = ImageStat.Stat(image.convert('L'))
 
