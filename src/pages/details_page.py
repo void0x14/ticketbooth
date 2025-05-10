@@ -65,10 +65,9 @@ class DetailsView(Adw.NavigationPage):
     _chip4_lbl = Gtk.Template.Child()
     _watched_btn = Gtk.Template.Child()
     _btn_content = Gtk.Template.Child()
+    _notify_group = Gtk.Template.Child()
     _edit_btn = Gtk.Template.Child()
     _update_btn = Gtk.Template.Child()
-    _activate_notification_btn = Gtk.Template.Child()
-    _notification_icon = Gtk.Template.Child()
     _description_box = Gtk.Template.Child()
     _overview_lbl = Gtk.Template.Child()
     _creator_box = Gtk.Template.Child()
@@ -98,7 +97,8 @@ class DetailsView(Adw.NavigationPage):
             self.content = local.get_series_by_id(content.id)
 
         logging.info(
-            f'Loading info [{"movie" if type(content) is MovieModel else "TV Serie"}] {self.content.title}') # type: ignore
+            # type: ignore
+            f'Loading info [{"movie" if type(content) is MovieModel else "TV Serie"}] {self.content.title}')
 
         local.set_recent_change_status(self.content.id, False, type(    # type: ignore
             content) is MovieModel)  # reset recent_change since it was clicked on
@@ -223,10 +223,9 @@ class DetailsView(Adw.NavigationPage):
                 self._chip2_lbl.set_tooltip_text(_("Runtime of Movie"))
 
             if not self.content.manual and datetime.strptime(self.content.release_date, '%Y-%m-%d') > datetime.now():
-                self._notification_icon.set_visible(True)
-                self._activate_notification_btn.set_visible(True)
-                self._activate_notification_btn.set_active(
-                    local.get_notification_list_status(self.content.id, movie=True))
+                self._notify_group.set_visible(True)
+                self._notify_group.set_active(
+                    0 if local.get_notification_list_status(self.content.id, movie=True) else 1)
 
         # TV series specific
         if type(self.content) is SeriesModel:
@@ -254,10 +253,9 @@ class DetailsView(Adw.NavigationPage):
                     self.content.next_air_date).strftime('%d %b. %Y'))
 
             if not self.content.manual and self.content.in_production:
-                self._notification_icon.set_visible(True)
-                self._activate_notification_btn.set_visible(True)
-                self._activate_notification_btn.set_active(
-                    local.get_notification_list_status(self.content.id))
+                self._notify_group.set_visible(True)
+                self._notify_group.set_active(
+                    0 if local.get_notification_list_status(self.content.id, movie=False) else 1)
             if self.content.created_by:
                 self._creator_box.set_visible(True)
                 self._creator_lbl.set_text(', '.join(self.content.created_by))
@@ -660,11 +658,12 @@ class DetailsView(Adw.NavigationPage):
                 task_function=self._update),
             on_done=self._on_update_done)
 
-    @Gtk.Template.Callback('_activate_notification_btn_toggled')
-    def _activate_notification_btn_toggled(self, user_data: object | None) -> None:
+    @Gtk.Template.Callback()
+    def _on_notify_group_toggled(self, pspec: GObject.ParamSpec, user_data: object | None) -> None:
         """
-        Callback for "clicked" signal.
+        Callback for "notify::active" signal.
         Adds the series to the notification list
+        
         Args:
             user_data (object or None): additional data passed to the callback
 
@@ -673,9 +672,9 @@ class DetailsView(Adw.NavigationPage):
         """
         movie = type(self.content) == MovieModel
         local.set_notification_list_status(
-            self.content.id, self._activate_notification_btn.get_active(), movie=movie)
+            self.content.id, self._notify_group.get_active() == 0, movie=movie)
         # if we remove the content from the notification_list then remove the new/soon_release flags and refresh the ContentView
-        if not self._activate_notification_btn.get_active():
+        if not self._notify_group.get_active() == 0:
             local.set_new_release_status(self.content.id, False, movie=movie)
             local.set_soon_release_status(self.content.id, False, movie=movie)
             self.content_view.refresh_view()
@@ -769,7 +768,8 @@ class DetailsView(Adw.NavigationPage):
             return
 
         self.get_ancestor(Adw.NavigationView).pop()
-        logging.debug(f'Delete dialog: confim, delete {self.content.title}') # type: ignore
+        # type: ignore
+        logging.debug(f'Delete dialog: confim, delete {self.content.title}')
         BackgroundQueue.add(
             activity=BackgroundActivity(
                 activity_type=ActivityType.REMOVE,

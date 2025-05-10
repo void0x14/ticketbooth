@@ -163,24 +163,7 @@ template $DetailsView: Adw.NavigationPage {
                     }
 
                     Box {
-                      Image _notification_icon {
-                        icon-name: "bell-outline-symbolic";
-                        margin-end: 3;
-                        visible: false;
-                        icon-size: normal;
-                      }
-
-                      CheckButton _activate_notification_btn {
-                        label: _("Notify me on new releases");
-                        tooltip-text: _("Notify me on new releases");
-                        valign: center;
-                        visible: false;
-                        active: true;
-                        toggled => $_activate_notification_btn_toggled();
-                      }
-                    }
-
-                    Box {
+                      margin-top: 12;
                       orientation: horizontal;
 
                       Button _watched_btn {
@@ -192,8 +175,7 @@ template $DetailsView: Adw.NavigationPage {
                         margin-end: 16;
 
                         styles [
-                          "pill",
-                          "opaque"
+                          "pill"
                         ]
 
                         clicked => $_on_watched_btn_clicked();
@@ -202,6 +184,25 @@ template $DetailsView: Adw.NavigationPage {
                       Box {
                         orientation: horizontal;
                         spacing: 6;
+
+                        Adw.ToggleGroup _notify_group {
+                          styles [
+                            "round"
+                          ]
+
+                          visible: false;
+                          notify::active => $_on_notify_group_toggled();
+
+                          Adw.Toggle {
+                            icon-name: "bell-outline";
+                            label: "Notify me on new releases";
+                          }
+
+                          Adw.Toggle {
+                            icon-name: "bell-outline-none";
+                            label: "Silence notifications";
+                          }
+                        }
 
                         Button _update_btn {
                           icon-name: "update";
@@ -393,6 +394,7 @@ template $DetailsView: Adw.NavigationPage {
                         styles [
                           "circular"
                         ]
+
                         clicked => $_on_notes_btn_clicked();
                       };
                     }

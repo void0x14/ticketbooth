@@ -50,6 +50,7 @@ template $MainView: Adw.Bin {
           setters {
             _header_bar.title-widget: null;
             _switcher_bar.reveal: true;
+            _search_entry.width-request: -1;
           }
         }
 
@@ -92,6 +93,7 @@ template $MainView: Adw.Bin {
           [top]
           SearchBar _search_bar {
             search-mode-enabled: bind _show_search_btn.active;
+            styles ["inline"]
 
             child: Box {
               orientation: horizontal;
@@ -112,6 +114,7 @@ template $MainView: Adw.Bin {
 
               SearchEntry _search_entry {
                 halign: center;
+                width-request: 430;
                 activates-default: true;
                 placeholder-text: _("Search Your Watchlist");
                 search-delay: 500;

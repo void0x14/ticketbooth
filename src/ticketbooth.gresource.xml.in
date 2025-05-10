@@ -71,6 +71,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <file preprocess="xml-stripblanks" alias="update-symbolic.svg">../data/icons/symbolic/update-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="warning-symbolic.svg">../data/icons/symbolic/warning-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="floppy-symbolic.svg">../data/icons/symbolic/floppy-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="bell-outline-none-symbolic.svg">../data/icons/symbolic/bell-outline-none-symbolic.svg</file>
   </gresource>
 
 </gresources>

@@ -25,17 +25,14 @@ template $BackgroundIndicator: Adw.Bin {
 
     popover: Popover {
       styles ["menu"]
+      width-request: 300;
 
       child: Adw.ViewStack _stack {
         Adw.ViewStackPage {
           name: 'empty';
-          child: Adw.Clamp {
-            child: Adw.StatusPage {
-              styles ["compact"]
-
-              title: _("No Background Activities");
-              icon-name: 'check-plain';
-            };
+          child: Adw.StatusPage {
+            title: _("No Background Activities");
+            icon-name: 'check-plain';
           };
         }
 
