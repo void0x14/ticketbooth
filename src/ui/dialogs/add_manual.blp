@@ -34,14 +34,18 @@ template $AddManualDialog: Adw.Dialog {
             "linked"
           ]
 
-          ToggleButton _movies_btn {
-            label: C_("Category", "Movie");
-            toggled => $_on_movies_btn_toggled();
-          }
+          Adw.ToggleGroup _toggle_group {
+            notify::active => $_on_toggle_group_changed();
 
-          ToggleButton _series_btn {
-            label: C_("Category", "TV Series");
-            group: _movies_btn;
+            Adw.Toggle _movies_btn {
+              name: "movies";
+              label: C_("Category", "Movie");
+            }
+
+            Adw.Toggle _series_btn {
+              name: "series";
+              label: C_("Category", "TV Series");
+            }
           }
         }
       };
@@ -73,6 +77,7 @@ template $AddManualDialog: Adw.Dialog {
         margin-start: 20;
         margin-end: 20;
         margin-bottom: 20;
+        margin-top: 20;
 
         $ImageSelector _poster {}
 
@@ -109,7 +114,8 @@ template $AddManualDialog: Adw.Dialog {
           }
 
           Adw.SpinRow _runtime_spinrow {
-            visible: bind _movies_btn.active;
+            // visible: bind _movies_btn.active;
+            visible: bind $_show_for_movies(_toggle_group.active-name) as <bool>;
             title: _("Runtime (minutes)");
 
             adjustment: Adjustment {
@@ -124,7 +130,8 @@ template $AddManualDialog: Adw.Dialog {
           }
 
           Adw.EntryRow _creator_entry {
-            visible: bind _series_btn.active;
+            // visible: bind _series_btn.active;
+            visible: bind $_show_for_series(_toggle_group.active-name) as <bool>;
             title: _("Created by");
           }
         }
@@ -148,7 +155,8 @@ template $AddManualDialog: Adw.Dialog {
         }
 
         Adw.PreferencesGroup _seasons_group {
-          visible: bind _series_btn.active;
+          // visible: bind _series_btn.active;
+          visible: bind $_show_for_series(_toggle_group.active-name) as <bool>;
           title: _("Seasons (required)");
           description: _("Use the + button to add seasons");
 
@@ -160,7 +168,10 @@ template $AddManualDialog: Adw.Dialog {
             }
 
             clicked => $_on_season_add_btn_clicked();
-            styles ["accent"]
+
+            styles [
+              "accent"
+            ]
           }
         }
 
@@ -182,7 +193,8 @@ template $AddManualDialog: Adw.Dialog {
           }
 
           Adw.SpinRow _budget_spinrow {
-            visible: bind _movies_btn.active;
+            // visible: bind _movies_btn.active;
+            visible: bind $_show_for_movies(_toggle_group.active-name) as <bool>;
             title: _("Budget (US$)");
 
             adjustment: Adjustment {
@@ -193,7 +205,8 @@ template $AddManualDialog: Adw.Dialog {
           }
 
           Adw.SpinRow _revenue_spinrow {
-            visible: bind _movies_btn.active;
+            // visible: bind _movies_btn.active;
+            visible: bind $_show_for_movies(_toggle_group.active-name) as <bool>;
             title: _("Revenue (US$)");
 
             adjustment: Adjustment {
@@ -205,7 +218,8 @@ template $AddManualDialog: Adw.Dialog {
 
           Adw.ActionRow {
             title: _("In production");
-            visible: bind _series_btn.active;
+            // visible: bind _series_btn.active;
+            visible: bind $_show_for_series(_toggle_group.active-name) as <bool>;
             activatable-widget: _production_checkbtn;
 
             [suffix]
