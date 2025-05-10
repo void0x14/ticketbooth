@@ -5,6 +5,7 @@
 import logging
 
 from gettext import gettext as _
+from typing import Callable
 
 from gi.repository import Adw, GObject, Gtk
 
@@ -229,42 +230,59 @@ class ContentView(Adw.Bin):
             None
         """
 
-        match shared.schema.get_string('view-sorting'):
-            case 'az':
-                self._flow_box.set_sort_func(lambda child1, child2, user_data: (
-                    (child1.get_child().title > child2.get_child().title) -
-                    (child1.get_child().title < child2.get_child().title)
-                ), None)
-            case 'za':
-                self._flow_box.set_sort_func(lambda child1, child2, user_data: (
-                    (child1.get_child().title < child2.get_child().title) -
-                    (child1.get_child().title > child2.get_child().title)
-                ), None)
-            case 'added-date-new':
-                self._flow_box.set_sort_func(lambda child1, child2, user_data: (
-                    (child1.get_child().content.add_date < child2.get_child().content.add_date) -
-                    (child1.get_child().content.add_date >
-                     child2.get_child().content.add_date)
-                ), None)
-            case 'added-date-old':
-                self._flow_box.set_sort_func(lambda child1, child2, user_data: (
-                    (child1.get_child().content.add_date > child2.get_child().content.add_date) -
-                    (child1.get_child().content.add_date <
-                     child2.get_child().content.add_date)
-                ), None)
-            case 'released-date-new':
-                self._flow_box.set_sort_func(lambda child1, child2, user_data: (
-                    (child1.get_child().content.release_date < child2.get_child().content.release_date) -
-                    (child1.get_child().content.release_date >
-                     child2.get_child().content.release_date)
-                ), None)
-            case 'released-date-old':
-                self._flow_box.set_sort_func(lambda child1, child2, user_data: (
-                    (child1.get_child().content.release_date > child2.get_child().content.release_date) -
-                    (child1.get_child().content.release_date <
-                     child2.get_child().content.release_date)
-                ), None)
-        self._flow_box.invalidate_sort()
+        def get_sort_func(key: str) -> Callable | None:
+            match key:
+                case 'az':
+                    return lambda child1, child2, user_data: (
+                        (child1.get_child().title > child2.get_child().title) -
+                        (child1.get_child().title < child2.get_child().title)
+                    )
+                case 'za':
+                    return lambda child1, child2, user_data: (
+                        (child1.get_child().title < child2.get_child().title) -
+                        (child1.get_child().title > child2.get_child().title)
+                    )
+                case 'added-date-new':
+                    return lambda child1, child2, user_data: (
+                        (child1.get_child().content.add_date < child2.get_child().content.add_date) -
+                        (child1.get_child().content.add_date >
+                        child2.get_child().content.add_date)
+                    )
+                case 'added-date-old':
+                    return lambda child1, child2, user_data: (
+                        (child1.get_child().content.add_date > child2.get_child().content.add_date) -
+                        (child1.get_child().content.add_date <
+                        child2.get_child().content.add_date)
+                    )
+                case 'released-date-new':
+                    return lambda child1, child2, user_data: (
+                        (child1.get_child().content.release_date < child2.get_child().content.release_date) -
+                        (child1.get_child().content.release_date >
+                        child2.get_child().content.release_date)
+                    )
+                case 'released-date-old':
+                    return lambda child1, child2, user_data: (
+                        (child1.get_child().content.release_date > child2.get_child().content.release_date) -
+                        (child1.get_child().content.release_date <
+                        child2.get_child().content.release_date)
+                    )
+            return None
+        
+        sort_key = shared.schema.get_string('view-sorting')
+        sort_func = get_sort_func(sort_key)
+
+        if not shared.schema.get_boolean('search-enabled') and shared.schema.get_boolean('separate-watched'):
+            # Apply sorting to both watched and unwatched flow boxes
+            if sort_func:
+                self._watched_flow_box.set_sort_func(sort_func, None)
+                self._unwatched_flow_box.set_sort_func(sort_func, None)
+                self._watched_flow_box.invalidate_sort()
+                self._unwatched_flow_box.invalidate_sort()
+        else:
+            # Apply sorting to the main flow box
+            if sort_func:
+                self._flow_box.set_sort_func(sort_func, None)
+                self._flow_box.invalidate_sort()
 
     def _set_filter_function(self) -> None:
         """
@@ -276,7 +294,7 @@ class ContentView(Adw.Bin):
         Returns;
             None
         """
-
+                    
         if shared.schema.get_boolean('search-enabled'):
             if shared.schema.get_string('search-mode') == 'title':
                 self._flow_box.set_filter_func(
