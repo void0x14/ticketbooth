@@ -57,9 +57,9 @@ template $MainView: Adw.Bin {
 
           [top]
           Adw.HeaderBar _header_bar {
-            title-widget: Adw.ViewSwitcher _title {
+            title-widget: Adw.InlineViewSwitcher _title {
               stack: _tab_stack;
-              policy: wide;
+              display-mode: both;
             };
 
             [start]

@@ -48,6 +48,7 @@ class AddManualDialog(Adw.Dialog):
 
     edit_mode = GObject.Property(type=bool, default=False)
 
+    _toggle_group = Gtk.Template.Child()
     _movies_btn = Gtk.Template.Child()
     _series_btn = Gtk.Template.Child()
     _save_btn = Gtk.Template.Child()
@@ -118,9 +119,9 @@ class AddManualDialog(Adw.Dialog):
 
         if not self._content:
             if shared.schema.get_string('win-tab') == 'movies':
-                self._movies_btn.set_active(True)
+                self._toggle_group.set_active(0)
             else:
-                self._series_btn.set_active(True)
+                self._toggle_group.set_active(1)
 
             self._release_date_menu_btn.set_label(
                 self._calendar.get_date().format('%x'))
@@ -221,13 +222,14 @@ class AddManualDialog(Adw.Dialog):
 
         self._enable_save_btn()
 
-    @Gtk.Template.Callback('_on_movies_btn_toggled')
-    def _on_movies_btn_toggled(self, user_data: object | None) -> None:
+    @Gtk.Template.Callback()
+    def _on_toggle_group_changed(self, pspec: GObject.ParamSpec, user_data: object | None) -> None:
         """
-        Callback for "toggled" signal.
+        Callback for "notify::active" signal.
         Wrapper around self._enable_save_btn().
 
         Args:
+            pspec (GObject.ParamSpec): the property spec
             user_data (object or None): user data passed to the callback.
 
         Returns:
@@ -248,12 +250,12 @@ class AddManualDialog(Adw.Dialog):
         """
 
         # Movies: title required
-        if self._movies_btn.get_active() and self._title_entry.get_text():
+        if self._toggle_group.get_active_name() == "movies" and self._title_entry.get_text():
             self._save_btn.set_sensitive(True)
             return
 
         # TV Series: title and at least a season required
-        if self._series_btn.get_active() and self._title_entry.get_text() and len(self.seasons) > 0:
+        if self._toggle_group.get_active_name() == "series" and self._title_entry.get_text() and len(self.seasons) > 0:
             self._save_btn.set_sensitive(True)
             return
 
@@ -358,7 +360,7 @@ class AddManualDialog(Adw.Dialog):
                                               shared.poster_dir,
                                               self._title_entry.get_text()
                                               ) if not self.edit_mode else (self._content.poster_path, False)  # type: ignore
-        if self._movies_btn.get_active():
+        if self._toggle_group.get_active_name() == "movies":
             self._save_movie(poster_uri, color)
         else:
             self._save_series(poster_uri, color)
@@ -645,3 +647,36 @@ class AddManualDialog(Adw.Dialog):
                     season[2] == episodes):
                 return season
         return ()
+
+    @Gtk.Template.Callback()
+    def _show_for_movies(self, source: Gtk.Widget, active_name: str) -> bool:
+        """
+        Closure to show movie specific widgets.
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
+
+        if active_name == "movie":
+            return True
+        return False
+    
+    @Gtk.Template.Callback()
+    def _show_for_series(self, source: Gtk.Widget, active_name: str) -> bool:
+        """
+        Closure to show series specific widgets.
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
+
+        if active_name == "series":
+            return True
+        return False
+    
