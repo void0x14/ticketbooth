@@ -64,6 +64,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<default>false</default>
 			<summary>Hide watched content</summary>
 		</key>
+
+		<!-- Search -->
 		<key name="search-enabled" type="b">
 			<default>false</default>
 			<summary>Search bar visibility</summary>
@@ -72,6 +74,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
 			<choices>
 				<choice value="title" />
 				<choice value="genre" />
+				<choice value="overview" />
+				<choice value="notes" />
+				<choice value="tmdb-id" />
 			</choices>
 			<default>"title"</default>
 			<summary>Search mode</summary>

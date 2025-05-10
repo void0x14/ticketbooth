@@ -477,5 +477,11 @@ class MainView(Adw.Bin):
     def _on_search_mode_changed(self, pspec: GObject.ParamSpec, user_data: object | None) -> None:
         if self._search_mode.get_selected() == 0:
             shared.schema.set_string('search-mode', 'title')
-        else:
+        elif self._search_mode.get_selected() == 1:
             shared.schema.set_string('search-mode', 'genre')
+        elif self._search_mode.get_selected() == 2:
+            shared.schema.set_string('search-mode', 'overview')
+        elif self._search_mode.get_selected() == 3:
+            shared.schema.set_string('search-mode', 'notes')
+        elif self._search_mode.get_selected() == 4:
+            shared.schema.set_string('search-mode', 'tmdb-id')

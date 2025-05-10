@@ -99,7 +99,13 @@ template $MainView: Adw.Bin {
 
               DropDown _search_mode {
                 model: StringList {
-                  strings: ["Title", "Genre"];
+                  strings [
+                    C_("Search mode", "Title"), 
+                    C_("Search mode", "Genre"), 
+                    C_("Search mode", "Overview"), 
+                    C_("Search mode", "Notes"), 
+                    C_("Search mode", "TMDB ID")
+                  ]
                 };
                 selected: 0;      
               }

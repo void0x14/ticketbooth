@@ -286,13 +286,34 @@ class ContentView(Adw.Bin):
                             'search-query').lower() in child.get_child().content.title.lower()
                     ),
                     None)
-            else:
+            elif shared.schema.get_string('search-mode') == 'genre':
                 self._flow_box.set_filter_func(
                     lambda child, user_data: (
                         any(
                             shared.schema.get_string(
                                 'search-query').title() in genre
                             for genre in child.get_child().content.genres)
+                    ),
+                    None)
+            elif shared.schema.get_string('search-mode') == 'overview':
+                self._flow_box.set_filter_func(
+                    lambda child, user_data: (
+                        shared.schema.get_string(
+                            'search-query').lower() in child.get_child().content.overview.lower()
+                    ),
+                    None)
+            elif shared.schema.get_string('search-mode') == 'notes':
+                self._flow_box.set_filter_func(
+                    lambda child, user_data: (
+                        shared.schema.get_string(
+                            'search-query').lower() in child.get_child().content.notes.lower()
+                    ),
+                    None)
+            elif shared.schema.get_string('search-mode') == 'tmdb-id':
+                self._flow_box.set_filter_func(
+                    lambda child, user_data: (
+                        shared.schema.get_string(
+                            'search-query').lower() in child.get_child().content.id.lower()
                     ),
                     None)
             self._flow_box.invalidate_filter()
