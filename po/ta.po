@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-14 19:37+0100\n"
+"POT-Creation-Date: 2025-05-11 10:41+0200\n"
 "PO-Revision-Date: 2025-04-20 23:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ticket-booth/"
@@ -22,6 +22,10 @@ msgstr ""
 #: data/me.iepure.Ticketbooth.desktop.in:8
 msgid "@app_name@"
 msgstr "@app_name@"
+
+#: data/me.iepure.Ticketbooth.desktop.in:14
+msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -63,47 +67,47 @@ msgstr "கவனிக்காத உள்ளடக்கத்தை தன�
 msgid "Hide watched content"
 msgstr "பார்த்த உள்ளடக்கத்தை மறைக்கவும்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:69
+#: data/me.iepure.Ticketbooth.gschema.xml.in:71
 msgid "Search bar visibility"
 msgstr "தேடல் பார் தெரிவுநிலை"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:77
+#: data/me.iepure.Ticketbooth.gschema.xml.in:82
 msgid "Search mode"
 msgstr "தேடல் பயன்முறை"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:81
+#: data/me.iepure.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
 msgstr "தேடல் வினவல்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:93
+#: data/me.iepure.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
 msgstr "பயன்பாட்டு வண்ணத் திட்டம்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:97
+#: data/me.iepure.Ticketbooth.gschema.xml.in:102
 msgid "Language used by TMDB results"
 msgstr "TMDB முடிவுகள் பயன்படுத்தும் மொழி"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:110
+#: data/me.iepure.Ticketbooth.gschema.xml.in:115
 msgid "Frequency to check for new data on TMDB"
 msgstr "TMDB இல் புதிய தரவை சரிபார்க்க அதிர்வெண்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:114
+#: data/me.iepure.Ticketbooth.gschema.xml.in:119
 msgid "Last autoupdate date"
 msgstr "கடைசி தன்னியக்க தேதி"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:118
+#: data/me.iepure.Ticketbooth.gschema.xml.in:123
 msgid "Last notification autoupdate date"
 msgstr "கடைசி அறிவிப்பு ஆட்டோப்டேட் தேதி"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:122
+#: data/me.iepure.Ticketbooth.gschema.xml.in:127
 msgid "Clear cache on exit"
 msgstr "வெளியேறும்போது கேச் அழிக்கவும்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:126
+#: data/me.iepure.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
 msgstr "பயனரின் TMDB விசையைப் பயன்படுத்தவும்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:130
+#: data/me.iepure.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
 msgstr "பயனரின் TMDB விசை"
 
@@ -111,7 +115,7 @@ msgstr "பயனரின் TMDB விசை"
 msgid "Keep track of your favorite shows"
 msgstr "உங்களுக்கு பிடித்த நிகழ்ச்சிகளைக் கண்காணிக்கவும்"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:21
+#: data/me.iepure.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
@@ -120,7 +124,7 @@ msgstr ""
 "பார்த்த தலைப்புகளைக் கண்காணிக்கவும், அண்மைக் கால வெளியீடுகளைப் பற்றிய தகவல்களைக் கண்டறியவும் "
 "டிக்கெட் பூத் உங்களை அனுமதிக்கிறது."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:23
+#: data/me.iepure.Ticketbooth.metainfo.xml.in:22
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
@@ -128,6 +132,25 @@ msgstr ""
 "டிக்கெட் பூத் உள்ளடக்கத்தைப் பார்க்க அல்லது பதிவிறக்கம் செய்ய உங்களை அனுமதிக்காது. இந்த "
 "பயன்பாடு TMDB பநிஇ ஐப் பயன்படுத்துகிறது, ஆனால் இது TMDB ஆல் அங்கீகரிக்கப்படவில்லை அல்லது "
 "சான்றளிக்கப்படவில்லை."
+
+#: data/me.iepure.Ticketbooth.metainfo.xml.in:44
+msgid "Movie Library"
+msgstr ""
+
+#: data/me.iepure.Ticketbooth.metainfo.xml.in:48
+#, fuzzy
+msgid "Movie Details"
+msgstr "திரைப்படங்கள்"
+
+#: data/me.iepure.Ticketbooth.metainfo.xml.in:52
+#, fuzzy
+msgid "TV Series Library"
+msgstr "தொலைக்காட்சி தொடர்"
+
+#: data/me.iepure.Ticketbooth.metainfo.xml.in:56
+#, fuzzy
+msgid "TV Series Details"
+msgstr "தொலைக்காட்சி தொடர்"
 
 #: src/main.py:193
 msgid "Confirm Export?"
@@ -141,7 +164,7 @@ msgstr ""
 "உங்கள் நூலகத்தை ஏற்றுமதி செய்வது உங்கள் எல்லா தரவையும் கொண்ட ஒரு காப்பகத்தை உருவாக்கும். "
 "உங்கள் நூலகத்தை மீட்டெடுக்க இந்த காப்பகத்தை பின்னர் இறக்குமதி செய்யலாம்."
 
-#: src/main.py:196 src/main.py:310 src/widgets/episode_row.py:272
+#: src/main.py:196 src/main.py:332 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
 msgctxt "alert dialog action"
 msgid "_Cancel"
@@ -157,11 +180,34 @@ msgctxt "Background activity title"
 msgid "Exporting library"
 msgstr "ஏற்றுமதி நூலகம்"
 
-#: src/main.py:307
+#: src/main.py:263
+msgid "Export Completed"
+msgstr ""
+
+#: src/main.py:264
+msgid "The library has been exported successfully."
+msgstr ""
+
+#: src/main.py:267 src/main.py:277 src/main.py:408 src/main.py:417
+#: src/preferences.py:256 src/window.py:235
+msgctxt "alert dialog action"
+msgid "_OK"
+msgstr "_Ok"
+
+#: src/main.py:273
+#, fuzzy
+msgid "Export failed"
+msgstr "ஏற்றுமதி (_E)"
+
+#: src/main.py:274
+msgid "An error occurred while exporting the library."
+msgstr ""
+
+#: src/main.py:329
 msgid "Confirm Import?"
 msgstr "இறக்குமதியை உறுதிப்படுத்தவா?"
 
-#: src/main.py:308
+#: src/main.py:330
 msgid ""
 "Importing a library will merge it with the current library. This action "
 "cannot be undone and in case of conflicts, the new data will be kept."
@@ -169,15 +215,34 @@ msgstr ""
 "ஒரு நூலகத்தை இறக்குமதி செய்வது தற்போதைய நூலகத்துடன் ஒன்றிணைக்கும். இந்த நடவடிக்கை "
 "செயல்தவிர்க்க முடியாது மற்றும் மோதல்கள் ஏற்பட்டால், புதிய தரவு வைக்கப்படும்."
 
-#: src/main.py:311
+#: src/main.py:333
 msgctxt "alert dialog action"
 msgid "_Import"
 msgstr "_ முக்கிய நற்பொருத்தம்"
 
-#: src/main.py:344
+#: src/main.py:366
 msgctxt "Background activity title"
 msgid "Importing library"
 msgstr "இறக்குமதி நூலகம்"
+
+#: src/main.py:404
+msgid "Import Completed"
+msgstr ""
+
+#: src/main.py:405
+msgid "The library has been imported successfully."
+msgstr ""
+
+#: src/main.py:413
+#, fuzzy
+msgid "Import failed"
+msgstr "_ முக்கிய நற்பொருத்தம்"
+
+#: src/main.py:414
+msgid ""
+"Please check the selected archive and try again. Only archives created by "
+"Ticket Booth are supported."
+msgstr ""
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -188,11 +253,6 @@ msgstr "பிணையம் இல்லை"
 msgctxt "message dialog body"
 msgid "Connect to the Internet to complete the setup."
 msgstr "அமைப்பை முடிக்க இணையத்துடன் இணைக்கவும்."
-
-#: src/preferences.py:256 src/window.py:235
-msgctxt "alert dialog action"
-msgid "_OK"
-msgstr "_Ok"
 
 #: src/preferences.py:321
 msgctxt "Background activity title"
@@ -222,8 +282,8 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
-"டிக்கெட் பூத் தற்போது {total_space:.2f} எம்பி பயன்படுத்துகிறது. சிறிது இடத்தை விடுவிக்"
-"க கீழே உள்ள விருப்பங்களைப் பயன்படுத்தவும்."
+"டிக்கெட் பூத் தற்போது {total_space:.2f} எம்பி பயன்படுத்துகிறது. சிறிது இடத்தை "
+"விடுவிக்க கீழே உள்ள விருப்பங்களைப் பயன்படுத்தவும்."
 
 #: src/preferences.py:502 src/preferences.py:504
 #, python-brace-format
@@ -242,29 +302,29 @@ msgid ""
 "before exiting. Look for the indicator in the header bar to check when they "
 "are finished."
 msgstr ""
-"சில நடவடிக்கைகள் பின்னணியில் இயங்குகின்றன, மேலும் வெளியேறுவதற்கு முன்பு முடிக்க வேண்டும்"
-". அவை முடிந்ததும் சரிபார்க்க தலைப்பு பட்டியில் உள்ள குறிகாட்டியைத் தேடுங்கள்."
+"சில நடவடிக்கைகள் பின்னணியில் இயங்குகின்றன, மேலும் வெளியேறுவதற்கு முன்பு முடிக்க "
+"வேண்டும். அவை முடிந்ததும் சரிபார்க்க தலைப்பு பட்டியில் உள்ள குறிகாட்டியைத் தேடுங்கள்."
 
-#: src/dialogs/add_manual_dialog.py:89
+#: src/dialogs/add_manual_dialog.py:90
 msgid "Edit Movie"
 msgstr "திரைப்படத்தைத் திருத்து"
 
-#: src/dialogs/add_manual_dialog.py:92
+#: src/dialogs/add_manual_dialog.py:93
 msgid "Edit TV Series"
 msgstr "டிவி தொடரைத் திருத்து"
 
-#: src/dialogs/add_manual_dialog.py:294
+#: src/dialogs/add_manual_dialog.py:296
 #, python-brace-format
 msgid "Season {num}"
 msgstr "சீசன் {num}"
 
-#: src/dialogs/add_manual_dialog.py:334 src/widgets/search_result_row.py:165
+#: src/dialogs/add_manual_dialog.py:336 src/widgets/search_result_row.py:165
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Add {title}"
 msgstr "{title} சேர்க்கவும்"
 
-#: src/dialogs/add_manual_dialog.py:340
+#: src/dialogs/add_manual_dialog.py:342
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Update {title}"
@@ -275,17 +335,17 @@ msgid "Season"
 msgstr "சீசன்"
 
 #. type: ignore
-#: src/pages/details_page.py:213 src/pages/details_page.py:313
-#: src/pages/details_page.py:375 src/pages/details_page.py:444
-#: src/pages/details_page.py:590 src/ui/views/content_view.blp:163
+#: src/pages/details_page.py:213 src/pages/details_page.py:311
+#: src/pages/details_page.py:373 src/pages/details_page.py:442
+#: src/pages/details_page.py:588 src/ui/views/content_view.blp:163
 #: src/ui/widgets/poster_button.blp:141 src/widgets/episode_row.py:129
 #: src/widgets/episode_row.py:160 src/widgets/episode_row.py:330
 msgid "Watched"
 msgstr "பார்த்தேன்"
 
-#: src/pages/details_page.py:216 src/pages/details_page.py:316
-#: src/pages/details_page.py:378 src/pages/details_page.py:447
-#: src/pages/details_page.py:593 src/widgets/episode_row.py:132
+#: src/pages/details_page.py:216 src/pages/details_page.py:314
+#: src/pages/details_page.py:376 src/pages/details_page.py:445
+#: src/pages/details_page.py:591 src/widgets/episode_row.py:132
 #: src/widgets/episode_row.py:163 src/widgets/episode_row.py:333
 msgid "Mark as Watched"
 msgstr "பார்த்தபடி குறி"
@@ -295,108 +355,108 @@ msgid "Runtime of Movie"
 msgstr "திரைப்படத்தின் இயக்க நேரம்"
 
 #. TRANSLATORS: {num} is the total number of seasons
-#: src/pages/details_page.py:236
+#: src/pages/details_page.py:235
 #, python-brace-format
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
 msgstr[0] "{num} பருவம்"
 msgstr[1] "{num} பருவங்கள்"
 
-#: src/pages/details_page.py:240
+#: src/pages/details_page.py:239
 msgid "Number of Seasons"
 msgstr "பருவங்களின் எண்ணிக்கை"
 
 #. TRANSLATORS: {num} is the total number of episodes
-#: src/pages/details_page.py:245 src/pages/details_page.py:293
+#: src/pages/details_page.py:244 src/pages/details_page.py:291
 #, python-brace-format
 msgid "{num} Episode"
 msgid_plural "{num} Episodes"
 msgstr[0] "{num} அத்தியாயம்"
 msgstr[1] "{num} அத்தியாயங்கள்"
 
-#: src/pages/details_page.py:480 src/ui/dialogs/add_manual.blp:171
+#: src/pages/details_page.py:478 src/ui/dialogs/add_manual.blp:182
 msgid "Status"
 msgstr "நிலை"
 
-#: src/pages/details_page.py:488 src/ui/dialogs/add_manual.blp:175
+#: src/pages/details_page.py:486 src/ui/dialogs/add_manual.blp:186
 msgid "Original Language"
 msgstr "அசல் மொழி"
 
-#: src/pages/details_page.py:498 src/ui/dialogs/add_manual.blp:181
+#: src/pages/details_page.py:496 src/ui/dialogs/add_manual.blp:192
 msgid "Original Title"
 msgstr "அசல் தலைப்பு"
 
-#: src/pages/details_page.py:511
+#: src/pages/details_page.py:509
 msgid "Budget"
 msgstr "பட்செட்"
 
-#: src/pages/details_page.py:521
+#: src/pages/details_page.py:519
 msgid "Revenue"
 msgstr "வருவாய்"
 
-#: src/pages/details_page.py:531
+#: src/pages/details_page.py:529
 msgid "In Production"
 msgstr "உற்பத்தியில்"
 
-#: src/pages/details_page.py:534
+#: src/pages/details_page.py:532
 msgid "Yes"
 msgstr "ஆம்"
 
-#: src/pages/details_page.py:535
+#: src/pages/details_page.py:533
 msgid "No"
 msgstr "இல்லை"
 
-#: src/pages/details_page.py:540
+#: src/pages/details_page.py:538
 msgid "TMDB ID"
 msgstr "டி.எம்.டி.பி ஐடி"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
-#: src/pages/details_page.py:566 src/widgets/episode_row.py:185
+#: src/pages/details_page.py:564 src/widgets/episode_row.py:185
 #, python-brace-format
 msgid "{h}h {m}min"
 msgstr "{h} h {m} min"
 
 #. TRANSLATORS: {m} is the runtime minutes
-#: src/pages/details_page.py:569 src/widgets/episode_row.py:189
+#: src/pages/details_page.py:567 src/widgets/episode_row.py:189
 #, python-brace-format
 msgid "{m}min"
 msgstr "{m} மணித்துளி"
 
 #. TRANSLATORS: {title} is the showed content's title
-#: src/pages/details_page.py:652
+#: src/pages/details_page.py:650
 #, python-brace-format
 msgid "Updating {title}"
 msgstr "புதுப்பித்தல் {title}"
 
 #. TRANSLATORS: {title} is the content's title
-#: src/pages/details_page.py:659
+#: src/pages/details_page.py:657
 #, python-brace-format
 msgid "Update {title}"
 msgstr "புதுப்பிப்பு {title}"
 
-#: src/pages/details_page.py:721
+#: src/pages/details_page.py:720
 msgid "Loading Metadata…"
 msgstr "மெட்டாடேட்டாவை ஏற்றுகிறது…"
 
 #. TRANSLATORS: {title} is the content's title
-#: src/pages/details_page.py:741
+#: src/pages/details_page.py:740
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
 msgstr "{title} நீக்கு?"
 
 #. type: ignore
-#: src/pages/details_page.py:743
+#: src/pages/details_page.py:742
 msgctxt "message dialog body"
 msgid "This title will be deleted from your watchlist."
 msgstr "இந்த தலைப்பு உங்கள் கண்காணிப்பு பட்டியலிலிருந்து நீக்கப்படும்."
 
-#: src/pages/details_page.py:744
+#: src/pages/details_page.py:743
 msgctxt "message dialog action"
 msgid "_Cancel"
 msgstr "_CANCEL"
 
-#: src/pages/details_page.py:745
+#: src/pages/details_page.py:744
 msgctxt "message dialog action"
 msgid "_Delete"
 msgstr "_Delete"
@@ -420,85 +480,85 @@ msgstr ""
 msgid "translator-credits"
 msgstr "மொழிபெயர்ப்பாளர்-வரவு"
 
-#: src/ui/dialogs/add_manual.blp:38 src/widgets/search_result_row.py:80
+#: src/ui/dialogs/add_manual.blp:42 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
 msgstr "படம்"
 
-#: src/ui/dialogs/add_manual.blp:43 src/views/main_view.py:63
+#: src/ui/dialogs/add_manual.blp:47 src/views/main_view.py:63
 #: src/widgets/search_result_row.py:82
 msgctxt "Category"
 msgid "TV Series"
 msgstr "தொலைக்காட்சி தொடர்"
 
-#: src/ui/dialogs/add_manual.blp:51 src/ui/dialogs/edit_season.blp:24
+#: src/ui/dialogs/add_manual.blp:55 src/ui/dialogs/edit_season.blp:24
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
-#: src/ui/dialogs/add_manual.blp:57 src/ui/dialogs/edit_season.blp:30
+#: src/ui/dialogs/add_manual.blp:61 src/ui/dialogs/edit_season.blp:30
 #: src/ui/pages/edit_episode_page.blp:19
 msgid "Save"
 msgstr "சேமி"
 
-#: src/ui/dialogs/add_manual.blp:81 src/ui/dialogs/edit_season.blp:52
+#: src/ui/dialogs/add_manual.blp:86 src/ui/dialogs/edit_season.blp:52
 #: src/ui/pages/edit_episode_page.blp:41
 msgid "General"
 msgstr "பொது"
 
-#: src/ui/dialogs/add_manual.blp:84 src/ui/dialogs/edit_season.blp:55
+#: src/ui/dialogs/add_manual.blp:89 src/ui/dialogs/edit_season.blp:55
 #: src/ui/pages/edit_episode_page.blp:55
 msgid "Title (required)"
 msgstr "தலைப்பு (தேவை)"
 
-#: src/ui/dialogs/add_manual.blp:89
+#: src/ui/dialogs/add_manual.blp:94
 msgid "Release Date"
 msgstr "வெளியீட்டு தேதி"
 
-#: src/ui/dialogs/add_manual.blp:108
+#: src/ui/dialogs/add_manual.blp:113
 msgid "Genres (comma separated)"
 msgstr "வகைகள் (கமா பிரிக்கப்பட்டவை)"
 
-#: src/ui/dialogs/add_manual.blp:113 src/ui/pages/edit_episode_page.blp:60
+#: src/ui/dialogs/add_manual.blp:119 src/ui/pages/edit_episode_page.blp:60
 msgid "Runtime (minutes)"
 msgstr "இயக்க நேரம் (நிமிடங்கள்)"
 
-#: src/ui/dialogs/add_manual.blp:123
+#: src/ui/dialogs/add_manual.blp:129
 msgid "Tagline"
 msgstr "ஒலி"
 
-#: src/ui/dialogs/add_manual.blp:128 src/ui/pages/details_page.blp:291
+#: src/ui/dialogs/add_manual.blp:135 src/ui/pages/details_page.blp:292
 msgid "Created by"
 msgstr "உருவாக்கியது"
 
-#: src/ui/dialogs/add_manual.blp:133 src/ui/pages/edit_episode_page.blp:71
+#: src/ui/dialogs/add_manual.blp:140 src/ui/pages/edit_episode_page.blp:71
 msgid "Overview"
 msgstr "கண்ணோட்டம்"
 
-#: src/ui/dialogs/add_manual.blp:152
+#: src/ui/dialogs/add_manual.blp:160
 msgid "Seasons (required)"
 msgstr "பருவங்கள் (தேவை)"
 
-#: src/ui/dialogs/add_manual.blp:153
+#: src/ui/dialogs/add_manual.blp:161
 msgid "Use the + button to add seasons"
 msgstr "பருவங்களைச் சேர்க்க + பொத்தானைப் பயன்படுத்தவும்"
 
-#: src/ui/dialogs/add_manual.blp:158 src/ui/dialogs/edit_season.blp:67
+#: src/ui/dialogs/add_manual.blp:166 src/ui/dialogs/edit_season.blp:67
 msgid "Add"
 msgstr "கூட்டு"
 
-#: src/ui/dialogs/add_manual.blp:168 src/ui/pages/details_page.blp:350
+#: src/ui/dialogs/add_manual.blp:179 src/ui/pages/details_page.blp:351
 msgid "Additional Information"
 msgstr "கூடுதல் தகவல்"
 
-#: src/ui/dialogs/add_manual.blp:186
+#: src/ui/dialogs/add_manual.blp:198
 msgid "Budget (US$)"
 msgstr "பட்செட் (அமெரிக்க $)"
 
-#: src/ui/dialogs/add_manual.blp:197
+#: src/ui/dialogs/add_manual.blp:210
 msgid "Revenue (US$)"
 msgstr "வருவாய் (அமெரிக்க $)"
 
-#: src/ui/dialogs/add_manual.blp:207
+#: src/ui/dialogs/add_manual.blp:220
 msgid "In production"
 msgstr "உற்பத்தியில்"
 
@@ -628,7 +688,7 @@ msgctxt "shortcut window"
 msgid "Refresh library"
 msgstr "நூலகத்தை புதுப்பிக்கவும்"
 
-#: src/ui/pages/details_page.blp:30 src/ui/views/main_view.blp:83
+#: src/ui/pages/details_page.blp:30 src/ui/views/main_view.blp:84
 msgid "Main Menu"
 msgstr "பட்டியல் விளையாடுங்கள்"
 
@@ -640,44 +700,40 @@ msgstr "அத்தியாயங்களின் எண்ணிக்க�
 msgid "Air Date of Next Episode"
 msgstr "அடுத்த அத்தியாயத்தின் காற்று தேதி"
 
-#: src/ui/pages/details_page.blp:174 src/ui/pages/details_page.blp:175
-msgid "Notify me on new releases"
-msgstr "புதிய வெளியீடுகளில் எனக்கு அறிவிக்கவும்"
-
-#: src/ui/pages/details_page.blp:208
+#: src/ui/pages/details_page.blp:209
 msgid "Update Metadata"
 msgstr "மெட்டாடேட்டாவைப் புதுப்பிக்கவும்"
 
-#: src/ui/pages/details_page.blp:221 src/ui/widgets/episode_row.blp:87
+#: src/ui/pages/details_page.blp:222 src/ui/widgets/episode_row.blp:87
 #: src/ui/widgets/season_expander.blp:42
 msgid "Edit"
 msgstr "தொகு"
 
-#: src/ui/pages/details_page.blp:234
+#: src/ui/pages/details_page.blp:235
 msgid "Delete"
 msgstr "நீக்கு"
 
-#: src/ui/pages/details_page.blp:263
+#: src/ui/pages/details_page.blp:264
 msgid "Description"
 msgstr "விவரம்"
 
-#: src/ui/pages/details_page.blp:319
+#: src/ui/pages/details_page.blp:320
 msgid "Seasons"
 msgstr "பருவங்கள்"
 
-#: src/ui/pages/details_page.blp:378
+#: src/ui/pages/details_page.blp:379
 msgid "Notes"
 msgstr "குறிப்புகள்"
 
-#: src/ui/pages/details_page.blp:502 src/ui/views/main_view.blp:225
+#: src/ui/pages/details_page.blp:483 src/ui/views/main_view.blp:234
 msgid "_Preferences"
 msgstr "_ முனைகள்"
 
-#: src/ui/pages/details_page.blp:507 src/ui/views/main_view.blp:230
+#: src/ui/pages/details_page.blp:488 src/ui/views/main_view.blp:239
 msgid "_Keyboard Shortcuts"
 msgstr "விசைப்பலகை குறுக்குவழிகள்"
 
-#: src/ui/pages/details_page.blp:512 src/ui/views/main_view.blp:235
+#: src/ui/pages/details_page.blp:493 src/ui/views/main_view.blp:244
 msgid "_About Ticket Booth"
 msgstr "டிக்கெட் சாவடி"
 
@@ -689,7 +745,7 @@ msgstr "அத்தியாயத்தைத் திருத்து"
 msgid "Episode Number (required)"
 msgstr "அத்தியாயம் எண் (தேவை)"
 
-#: src/ui/preferences.blp:15 src/ui/views/main_view.blp:122
+#: src/ui/preferences.blp:15 src/ui/views/main_view.blp:131
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
@@ -752,13 +808,13 @@ msgid ""
 "to TMDB</a>. Additionally, an automatic update is performed on a frequency "
 "of your choosing."
 msgstr ""
-"டி.எம்.டி.பி பெரும்பாலான உள்ளடக்கங்களுக்கு உள்ளூர்மயமாக்கப்பட்ட மெட்டாடேட்டாவை வழங்குகிறது"
-". டிக்கெட் பூத் அதை உங்கள் விருப்பமான மொழியில் பதிவிறக்கும், கீழே தேர்ந்தெடுக்கப்பட்டிருக்கும்"
-". இது கிடைக்கவில்லை எனில், அது ஆங்கிலம் எங்களுக்கும் பின்னர் உள்ளடக்கத்தின் அசல் மொழிக்கும் "
-"குறைகிறது. இரண்டுமே கிடைக்கவில்லை என்றால், அது ஒரு வெற்று சரத்தை ஏற்படுத்தும். "
-"தயவுசெய்து <a href = 'https: //www.themoveidb.org/bible/new_content'> tmdb </"
-"a> க்கு பங்களிப்பதைக் கவனியுங்கள். கூடுதலாக, நீங்கள் தேர்ந்தெடுக்கும் அதிர்வெண்ணில் தானியங்கி "
-"புதுப்பிப்பு செய்யப்படுகிறது."
+"டி.எம்.டி.பி பெரும்பாலான உள்ளடக்கங்களுக்கு உள்ளூர்மயமாக்கப்பட்ட மெட்டாடேட்டாவை "
+"வழங்குகிறது. டிக்கெட் பூத் அதை உங்கள் விருப்பமான மொழியில் பதிவிறக்கும், கீழே "
+"தேர்ந்தெடுக்கப்பட்டிருக்கும். இது கிடைக்கவில்லை எனில், அது ஆங்கிலம் எங்களுக்கும் பின்னர் "
+"உள்ளடக்கத்தின் அசல் மொழிக்கும் குறைகிறது. இரண்டுமே கிடைக்கவில்லை என்றால், அது ஒரு வெற்று "
+"சரத்தை ஏற்படுத்தும். தயவுசெய்து <a href = 'https: //www.themoveidb.org/bible/"
+"new_content'> tmdb </a> க்கு பங்களிப்பதைக் கவனியுங்கள். கூடுதலாக, நீங்கள் "
+"தேர்ந்தெடுக்கும் அதிர்வெண்ணில் தானியங்கி புதுப்பிப்பு செய்யப்படுகிறது."
 
 #: src/ui/preferences.blp:47
 msgctxt "preferences"
@@ -848,7 +904,7 @@ msgstr ""
 "+ பொத்தானைக் கொண்டு உள்ளடக்கத்தைச் சேர்க்கவும் அல்லது பழைய கண்காணிப்பு பட்டியலிலிருந்து "
 "இறக்குமதி செய்யவும்."
 
-#: src/ui/views/content_view.blp:111 src/views/content_view.py:324
+#: src/ui/views/content_view.blp:111 src/views/content_view.py:363
 msgid "Your Watchlist"
 msgstr "உங்கள் கண்காணிப்பு பட்டியல்"
 
@@ -863,8 +919,7 @@ msgstr "உங்கள் கண்காணிப்பு பட்டிய�
 #: src/ui/views/db_update_view.blp:30
 msgid ""
 "After updating Ticket Booth we need to update the local database entries"
-msgstr ""
-"டிக்கெட் சாவடியைப் புதுப்பித்த பிறகு உள்ளக தரவுத்தள உள்ளீடுகளை புதுப்பிக்க வேண்டும்"
+msgstr "டிக்கெட் சாவடியைப் புதுப்பித்த பிறகு உள்ளக தரவுத்தள உள்ளீடுகளை புதுப்பிக்க வேண்டும்"
 
 #: src/ui/views/db_update_view.blp:49 src/ui/views/first_run_view.blp:55
 msgid "Use Offline Mode"
@@ -894,75 +949,103 @@ msgstr "செயல்படுத்து"
 msgid "Deactivate"
 msgstr "செயலிழக்கச் செய்யுங்கள்"
 
-#: src/ui/views/main_view.blp:68
+#: src/ui/views/main_view.blp:69
 msgid "Add a title to your library"
 msgstr "உங்கள் நூலகத்தில் ஒரு தலைப்பைச் சேர்க்கவும்"
 
-#: src/ui/views/main_view.blp:75
+#: src/ui/views/main_view.blp:76
 msgid "Show/Hide search bar"
 msgstr "தேடல் பட்டியைக் காட்டவும்/மறைக்கவும்"
 
-#: src/ui/views/main_view.blp:110
+#: src/ui/views/main_view.blp:105
+msgctxt "Search mode"
+msgid "Title"
+msgstr ""
+
+#: src/ui/views/main_view.blp:106
+msgctxt "Search mode"
+msgid "Genre"
+msgstr ""
+
+#: src/ui/views/main_view.blp:107
+#, fuzzy
+msgctxt "Search mode"
+msgid "Overview"
+msgstr "கண்ணோட்டம்"
+
+#: src/ui/views/main_view.blp:108
+#, fuzzy
+msgctxt "Search mode"
+msgid "Notes"
+msgstr "குறிப்புகள்"
+
+#: src/ui/views/main_view.blp:109
+#, fuzzy
+msgctxt "Search mode"
+msgid "TMDB ID"
+msgstr "டி.எம்.டி.பி ஐடி"
+
+#: src/ui/views/main_view.blp:119
 msgid "Search Your Watchlist"
 msgstr "உங்கள் கண்காணிப்பு பட்டியலைத் தேடுங்கள்"
 
-#: src/ui/views/main_view.blp:121
+#: src/ui/views/main_view.blp:130
 msgid "Offline Mode Enabled"
 msgstr "இணைப்பில்லாத பயன்முறை இயக்கப்பட்டது"
 
-#: src/ui/views/main_view.blp:152
+#: src/ui/views/main_view.blp:161
 msgid "_Sorting"
 msgstr "_சார்டிங்"
 
-#: src/ui/views/main_view.blp:156
+#: src/ui/views/main_view.blp:165
 msgid "A-Z"
 msgstr "A-z"
 
-#: src/ui/views/main_view.blp:162
+#: src/ui/views/main_view.blp:171
 msgid "Z-A"
 msgstr "Z-A."
 
-#: src/ui/views/main_view.blp:168
+#: src/ui/views/main_view.blp:177
 msgid "Date added (newest first)"
 msgstr "தேதி சேர்க்கப்பட்டது (புதிய முதல்)"
 
-#: src/ui/views/main_view.blp:174
+#: src/ui/views/main_view.blp:183
 msgid "Date added (oldest first)"
 msgstr "தேதி சேர்க்கப்பட்டது (முதல் முதல்)"
 
-#: src/ui/views/main_view.blp:180
+#: src/ui/views/main_view.blp:189
 msgid "Release date (newest first)"
 msgstr "வெளியீட்டு தேதி (புதிய முதல்)"
 
-#: src/ui/views/main_view.blp:186
+#: src/ui/views/main_view.blp:195
 msgid "Release date (oldest first)"
 msgstr "வெளியீட்டு தேதி (முதல் முதல்)"
 
-#: src/ui/views/main_view.blp:194
+#: src/ui/views/main_view.blp:203
 msgid "Separate watched from unwatched"
 msgstr "பற்றாக்குறையிலிருந்து தனித்தனியாகப் பார்த்தேன்"
 
-#: src/ui/views/main_view.blp:199
+#: src/ui/views/main_view.blp:208
 msgid "Hide watched"
 msgstr "பார்த்தை மறை"
 
-#: src/ui/views/main_view.blp:206
+#: src/ui/views/main_view.blp:215
 msgid "_Refresh"
 msgstr "புத்துணர்வு"
 
-#: src/ui/views/main_view.blp:213
+#: src/ui/views/main_view.blp:222
 msgid "_Import"
 msgstr "_ முக்கிய நற்பொருத்தம்"
 
-#: src/ui/views/main_view.blp:218
+#: src/ui/views/main_view.blp:227
 msgid "_Export"
 msgstr "ஏற்றுமதி (_E)"
 
-#: src/ui/views/main_view.blp:243
+#: src/ui/views/main_view.blp:252
 msgid "From The Movie Database (TMDB)"
 msgstr "மூவி தரவுத்தளத்திலிருந்து (டிஎம்டிபி)"
 
-#: src/ui/views/main_view.blp:248
+#: src/ui/views/main_view.blp:257
 msgid "Manually"
 msgstr "கைமுறையாக"
 
@@ -970,7 +1053,7 @@ msgstr "கைமுறையாக"
 msgid "Background Activities"
 msgstr "பின்னணி நடவடிக்கைகள்"
 
-#: src/ui/widgets/background_indicator.blp:36
+#: src/ui/widgets/background_indicator.blp:34
 msgid "No Background Activities"
 msgstr "பின்னணி நடவடிக்கைகள் இல்லை"
 
@@ -1010,7 +1093,7 @@ msgstr "ஒளி நடை"
 msgid "Dark style"
 msgstr "இருண்ட நடை"
 
-#: src/views/content_view.py:323
+#: src/views/content_view.py:362
 msgid "Search results"
 msgstr "தேடல் முடிவுகள்"
 
@@ -1111,8 +1194,8 @@ msgid ""
 "{title} has wrapped up its run. Now is the perfect time to revisit your "
 "favorite moments or find the next binge!"
 msgstr ""
-"{title} அதன் ஓட்டத்தை மூடியுள்ளது. உங்களுக்கு பிடித்த தருணங்களை மறுபரிசீலனை செய்ய அல்லது"
-" அடுத்த பிங்கைக் கண்டுபிடிப்பதற்கான சரியான நேரம் இது!"
+"{title} அதன் ஓட்டத்தை மூடியுள்ளது. உங்களுக்கு பிடித்த தருணங்களை மறுபரிசீலனை செய்ய "
+"அல்லது அடுத்த பிங்கைக் கண்டுபிடிப்பதற்கான சரியான நேரம் இது!"
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:367
@@ -1171,8 +1254,7 @@ msgstr ""
 #: src/views/main_view.py:413
 #, python-brace-format
 msgid "{num} items of your watchlist have an update"
-msgstr ""
-"{num} உங்கள் கண்காணிப்பு பட்டியலின் உருப்படிகள் ஒரு புதுப்பிப்பைக் கொண்டுள்ளன"
+msgstr "{num} உங்கள் கண்காணிப்பு பட்டியலின் உருப்படிகள் ஒரு புதுப்பிப்பைக் கொண்டுள்ளன"
 
 #. TRANSLATOR: {count_movies} is the number of movies
 #: src/views/main_view.py:418 src/views/main_view.py:427
@@ -1221,3 +1303,6 @@ msgstr "ஏற்கனவே உங்கள் கண்காணிப்ப�
 msgctxt "alert dialog body"
 msgid "This season contains unsaved metadata."
 msgstr "இந்த பருவத்தில் சேமிக்கப்படாத மேனிலை தரவு உள்ளது."
+
+#~ msgid "Notify me on new releases"
+#~ msgstr "புதிய வெளியீடுகளில் எனக்கு அறிவிக்கவும்"

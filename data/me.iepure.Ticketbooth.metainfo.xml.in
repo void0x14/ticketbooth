@@ -41,26 +41,26 @@ SPDX-License-Identifier: CC0-1.0
 	<screenshots>
 		<screenshot type="default">
 			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/1.png</image>
-			<caption>Movie Library</caption>
+			<caption translate="no">Movie Library</caption>
 		</screenshot>
 		<screenshot>
 			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/2.png</image>
-			<caption>Movie Details</caption>
+			<caption translate="no">Movie Details</caption>
 		</screenshot>
 		<screenshot>
 			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/3.png</image>
-			<caption>TV Series Library</caption>
+			<caption translate="no">TV Series Library</caption>
 		</screenshot>
 		<screenshot>
 			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/4.png</image>
-			<caption>TV Series Details</caption>
+			<caption translate="no">TV Series Details</caption>
 		</screenshot>
 	</screenshots>
 	<translation type="gettext">me.iepure.ticketbooth</translation>
 	<content_rating type="oars-1.1" />
 	<releases>
 		<release version="1.1.1" date="2025-02-22">
-			<description>
+			<description translate="no">
 				<p>What's Changed</p>
 				<ul>
 					<li>Fixed a bug that prevented deleting content from your library (@farao)</li>
@@ -71,7 +71,7 @@ SPDX-License-Identifier: CC0-1.0
 			</description>
 		</release>
 		<release version="1.1" date="2025-02-18">
-			<description>
+			<description translate="no">
 				<p>What's Changed</p>
 				<ul>
 					<li>Revamped UI with updated widgets, refined theming (@gnesterif), and a fully responsive design for use on smaller devices</li>
