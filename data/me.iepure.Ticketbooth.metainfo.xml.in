@@ -40,19 +40,19 @@ SPDX-License-Identifier: CC0-1.0
 	</requires>
 	<screenshots>
 		<screenshot type="default">
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/1.png</image>
+			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new1.png</image>
 			<caption translate="no">Movie Library</caption>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/2.png</image>
+			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new2.png</image>
 			<caption translate="no">Movie Details</caption>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/3.png</image>
+			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new3.png</image>
 			<caption translate="no">TV Series Library</caption>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/4.png</image>
+			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new4.png</image>
 			<caption translate="no">TV Series Details</caption>
 		</screenshot>
 	</screenshots>
