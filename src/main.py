@@ -232,7 +232,7 @@ class TicketboothApplication(Adw.Application):
             on_done=self._on_export_done
         )
         
-    def _export_content_from_db(self, activity: BackgroundActivity) -> None:
+    def _export_content_from_db(self, activity: BackgroundActivity) -> bool:
         """
         Exports the library to the selected archive.
 
@@ -240,12 +240,15 @@ class TicketboothApplication(Adw.Application):
             activity (BackgroundActivity): the calling activity
 
         Returns:
-            None
+            bool: True if export succeeded, False otherwise
         """
-        if not local.export_data(self.archive.get_path()):
+        
+        result = local.export_data(self.archive.get_path())
+        if not result:
             activity.error()
             logging.info("Export failed")
-            
+        return result    
+        
     def _on_export_done(self,
                      source: GObject.Object,
                      result: Gio.AsyncResult,
@@ -253,9 +256,28 @@ class TicketboothApplication(Adw.Application):
                      activity: BackgroundActivity):
         """Callback to complete async activity"""
 
-        activity.activity_finish(result, self)
+        result = activity.activity_finish(result, activity)
         activity.end()
-        logging.info("Export done")
+        if result:
+            dialog = Adw.AlertDialog.new(
+                heading=_("Export Completed"),
+                body=_("The library has been exported successfully."),
+            )
+            dialog.set_close_response('ok')
+            dialog.add_response('ok', C_('alert dialog action', '_OK'))
+            dialog.set_default_response('ok')
+            dialog.present(self.props.active_window)
+            logging.info("Export done")
+        else:
+            dialog = Adw.AlertDialog.new(
+                heading=_("Export failed"),
+                body=_("An error occurred while exporting the library."),
+            )
+            dialog.set_close_response('ok')
+            dialog.add_response('ok', C_('alert dialog action', '_OK'))
+            dialog.set_default_response('ok')
+            dialog.present(self.props.active_window)
+            logging.info("Export failed")
 
 
     def do_import(self, new_state: None, source: Gtk.Widget) -> None:
@@ -347,7 +369,7 @@ class TicketboothApplication(Adw.Application):
         )
 
 
-    def _import_content_to_db(self, activity: BackgroundActivity) -> None:
+    def _import_content_to_db(self, activity: BackgroundActivity) -> bool:
         """
         Imports the library from the selected archive.
 
@@ -355,11 +377,14 @@ class TicketboothApplication(Adw.Application):
             activity (BackgroundActivity): the calling activity
 
         Returns:
-            None
+            bool: True if the import was successful, False otherwise
         """
-        if not local.import_data(self.archive.get_path()):
+        
+        result = local.import_data(self.archive.get_path())
+        if not result:
             activity.error()
             logging.info("Import failed")
+        return result
 
 
     def _on_import_done(self,
@@ -369,10 +394,29 @@ class TicketboothApplication(Adw.Application):
                      activity: BackgroundActivity):
         """Callback to complete async activity"""
 
-        activity.activity_finish(result, self)
+        result = activity.activity_finish(result, activity)
         activity.end()
-        self.props.active_window.activate_action('win.refresh')
-        logging.info("Import done")
+        
+        if result:
+            self.props.active_window.activate_action('win.refresh')
+            logging.info("Import completed successfully")
+            dialog = Adw.AlertDialog.new(
+                heading=_("Import Completed"),
+                body=_("The library has been imported successfully."),
+            )
+            dialog.set_close_response('ok')
+            dialog.add_response('ok', C_('alert dialog action', '_OK'))
+            dialog.set_default_response('ok')
+            dialog.present(self.props.active_window)
+        else:
+            dialog = Adw.AlertDialog.new(
+                heading=_("Import failed"),
+                body=_("Please check the selected archive and try again. Only archives created by Ticket Booth are supported."),
+            )
+            dialog.set_close_response('ok')
+            dialog.add_response('ok', C_('alert dialog action', '_OK'))
+            dialog.set_default_response('ok')
+            dialog.present(self.props.active_window)
 
 def main():
     """The application's entry point."""

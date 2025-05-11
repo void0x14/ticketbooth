@@ -7,6 +7,8 @@ from typing import Callable
 
 from gi.repository import Gio, GLib, GObject
 
+import logging
+
 from . import shared  # type: ignore
 
 
@@ -77,8 +79,9 @@ class BackgroundActivity(GObject.GObject):
 
         if task.return_error_if_cancelled():
             return
+        
         outcome = self.task_function(self)  # type: ignore
-        task.return_value(outcome)
+        task.return_value(GLib.Variant('b', outcome))
 
     def activity_finish(self, result: Gio.AsyncResult, caller: GObject.Object):
         """
@@ -94,9 +97,15 @@ class BackgroundActivity(GObject.GObject):
         if not Gio.Task.is_valid(result, caller):
             return -1
 
-        # self.completed = True
-        return result.propagate_value().value
-
+        try:
+            variant_value = result.propagate_value().value 
+            if isinstance(variant_value, GLib.Variant):
+                return variant_value.get_boolean()
+            return variant_value
+        except GLib.Error as e:
+            logging.error(f"Error in activity_finish: {e}")
+            return False
+            
     def end(self) -> None:
         """
         Marks the activity as completed.
