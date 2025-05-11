@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-02-14 19:55+0000\n"
+"PO-Revision-Date: 2025-05-11 08:47+0000\n"
 "Last-Translator: Alessandro Iepure <alessandro.iepure@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/it/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -28,7 +28,7 @@ msgstr "@app_name@"
 
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
-msgstr ""
+msgstr "Film;Films;Programmi;TV;Serie;Anime;Guarda;Lista;Libreria;"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -136,22 +136,19 @@ msgstr ""
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
-msgstr ""
+msgstr "Libreria Film"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
-#, fuzzy
 msgid "Movie Details"
-msgstr "Film"
+msgstr "Dettagli film"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:52
-#, fuzzy
 msgid "TV Series Library"
-msgstr "Serie TV"
+msgstr "Libreria Serie TV"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:56
-#, fuzzy
 msgid "TV Series Details"
-msgstr "Serie TV"
+msgstr "Dettagli Serie TV"
 
 #: src/main.py:193
 msgid "Confirm Export?"
@@ -184,11 +181,11 @@ msgstr "Esportando libreria"
 
 #: src/main.py:263
 msgid "Export Completed"
-msgstr ""
+msgstr "Esportazione Completata"
 
 #: src/main.py:264
 msgid "The library has been exported successfully."
-msgstr ""
+msgstr "La libreria è stata esportata con successo."
 
 #: src/main.py:267 src/main.py:277 src/main.py:408 src/main.py:417
 #: src/preferences.py:256 src/window.py:235
@@ -197,13 +194,12 @@ msgid "_OK"
 msgstr "_OK"
 
 #: src/main.py:273
-#, fuzzy
 msgid "Export failed"
-msgstr "_Esporta"
+msgstr "Esportazione fallita"
 
 #: src/main.py:274
 msgid "An error occurred while exporting the library."
-msgstr ""
+msgstr "Si è verificato un errore durante l'esportazione della libreria."
 
 #: src/main.py:329
 msgid "Confirm Import?"
@@ -230,22 +226,23 @@ msgstr "Importando libreria"
 
 #: src/main.py:404
 msgid "Import Completed"
-msgstr ""
+msgstr "Importazione completata"
 
 #: src/main.py:405
 msgid "The library has been imported successfully."
-msgstr ""
+msgstr "La libreria è stata importata con successo."
 
 #: src/main.py:413
-#, fuzzy
 msgid "Import failed"
-msgstr "_Importa"
+msgstr "Importazione fallita"
 
 #: src/main.py:414
 msgid ""
 "Please check the selected archive and try again. Only archives created by "
 "Ticket Booth are supported."
 msgstr ""
+"Si prega di controllare l'archivio selezionato e riprovare. Sono supportati "
+"solo gli archivi creati da Ticket Booth."
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -964,27 +961,24 @@ msgstr "Mostra/Nascondi barra di ricerca"
 #: src/ui/views/main_view.blp:105
 msgctxt "Search mode"
 msgid "Title"
-msgstr ""
+msgstr "Titolo"
 
 #: src/ui/views/main_view.blp:106
 msgctxt "Search mode"
 msgid "Genre"
-msgstr ""
+msgstr "Genere"
 
 #: src/ui/views/main_view.blp:107
-#, fuzzy
 msgctxt "Search mode"
 msgid "Overview"
 msgstr "Trama"
 
 #: src/ui/views/main_view.blp:108
-#, fuzzy
 msgctxt "Search mode"
 msgid "Notes"
 msgstr "Note"
 
 #: src/ui/views/main_view.blp:109
-#, fuzzy
 msgctxt "Search mode"
 msgid "TMDB ID"
 msgstr "ID TMDB"
