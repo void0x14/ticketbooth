@@ -59,6 +59,21 @@ SPDX-License-Identifier: CC0-1.0
 	<translation type="gettext">me.iepure.ticketbooth</translation>
 	<content_rating type="oars-1.1" />
 	<releases>
+		<release version="1.2.0" date="2025-05-11">
+			<description translate="no">
+				<p>What's Changed</p>
+				<ul>
+					<li>Added search functionality for notes, overview, and by ID</li>
+					<li>Resolved issue with background stretching during window resizing</li>
+					<li>Sorting now functions correctly when separating watched and unwatched content</li>
+					<li>Improved notification toggle appearance</li>
+					<li>Dialogs now appear after completing import or export</li>
+					<li>Updated to GNOME platform 48</li>
+					<li>UI uses new libadwaita 1.7 widgets</li>
+					<li>Updated translations</li>
+				</ul>
+			</description>
+		</release>
 		<release version="1.1.1" date="2025-02-22">
 			<description translate="no">
 				<p>What's Changed</p>
