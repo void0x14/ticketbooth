@@ -1,18 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the ticketbooth package.
-# Óscar Fernández Díaz <oscfdezdz@users.noreply.hosted.weblate.org>, 2023.
-# "Emilio S." <emism.translations@gmail.com>, 2025.
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-14 19:37+0100\n"
-"PO-Revision-Date: 2025-04-14 23:01+0000\n"
-"Last-Translator: \"Emilio S.\" <emism.translations@gmail.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/ticket-booth/"
-"ticket-booth/es/>\n"
-"Language: es\n"
+"PO-Revision-Date: 2025-03-22 19:01+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/ticket-booth/"
+"ticket-booth/fi/>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,56 +21,55 @@ msgstr ""
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
 msgid "@app_name@"
-msgstr "@app_name@"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
-msgstr "Anchura de la ventana"
+msgstr "Ikkunan leveys"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
-msgstr "Altura de la ventana"
+msgstr "Ikkunan korkeus"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
-msgstr "Ventana maximizada"
+msgstr "Ikkuna suurennettu"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
-msgstr "Pestaña activa"
+msgstr "Aktiivinen välilehti"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
-msgstr "Especifica si la aplicación se ejecuta por primera vez"
+msgstr "Määrittää suoritetaankoi sovellus ensimmäistä kertaa"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
-#, fuzzy
 msgid "Specifies if the database needs an update"
-msgstr "Especifica si la aplicación ha descargado los datos necesarios"
+msgstr "Määrittää tarvitseeko tietokanta päivityksen"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
-msgstr "Especifica si la aplicación ha descargado los datos necesarios"
+msgstr "Määrittää latasiko sovellus tarvittavan datan"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:57
 msgid "View sorting style"
-msgstr "Estilo de clasificación de la vista"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
-msgstr "Separa los contenidos vistos de los no vistos"
+msgstr "Erota katsottu sisältö katsomattomasta sisällöstä"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
-msgstr "Ocultar contenido ya visto"
+msgstr "Piilota katsottu sisältö"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:69
 msgid "Search bar visibility"
-msgstr "Visibilidad de la barra de búsqueda"
+msgstr "Hakupalkin näkyvyys"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:77
 msgid "Search mode"
-msgstr "Modo de búsqueda"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:81
 msgid "Search query"
@@ -79,138 +77,142 @@ msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:93
 msgid "App color scheme"
-msgstr "Esquema de colores de la aplicación"
+msgstr "Sovelluksen väriteema"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:97
 msgid "Language used by TMDB results"
-msgstr "Idioma usado por los resultados de TMDB"
+msgstr "TMDB-tuloksissa käytettävä kieli"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:110
 msgid "Frequency to check for new data on TMDB"
-msgstr "Frecuencia de comprobación de datos nuevos en TMDB"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:114
 msgid "Last autoupdate date"
-msgstr "Última fecha de actualización automática"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:118
 msgid "Last notification autoupdate date"
-msgstr "Última fecha de notificación de actualización automática"
+msgstr ""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:122
 msgid "Clear cache on exit"
-msgstr "Limpiar caché al salir"
+msgstr "Tyhjennä välimuisti lopettaessa"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:126
 msgid "Use the user's TMDB key"
-msgstr ""
+msgstr "Käytä käyttäjän TMDB-avainta"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:130
 msgid "User's TMDB key"
-msgstr ""
+msgstr "Käyttäjän TMDB-avain"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
-msgstr "No pierda de vista sus programas favoritos"
+msgstr "Pidä kirjaa suosikkiohjelmistasi"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:21
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
-"Ticket Booth le permite crear su lista de películas y programas de TV, "
-"llevar un registro de los títulos vistos y encontrar información sobre los "
-"últimos estrenos."
+"Ticket Boothin avulla voit rakentaa katselulistan elokuvista ja TV-"
+"sarjoista, pitää kirjaa katsotuista ohjelmista ja etsiä tietoja uusimmista "
+"julkaisuista."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:23
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
-"Ticket Booth no permite ver ni descargar contenidos. Esta aplicación usa la "
-"API de TMDB, pero no está avalada ni certificada por TMDB."
+"Ticket Boothin avulla et voi katsoa tai ladata sisältöä. Sovellus käyttää "
+"TMDB:n rajapintaa, mutta ei ole TMDB:n tukema tai sertifioima."
 
 #: src/main.py:193
 msgid "Confirm Export?"
-msgstr ""
+msgstr "Vahvistetaanko vienti?"
 
 #: src/main.py:194
 msgid ""
 "Exporting your library will create an archive containing all your data. You "
 "can import this archive later to restore your library."
 msgstr ""
+"Kirjaston vienti luo arkiston sisältäen kaiken datan. Voit tuoda tämän "
+"arkiston myöhemmin palauttaaksesi kirjastosi."
 
 #: src/main.py:196 src/main.py:310 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
 msgctxt "alert dialog action"
 msgid "_Cancel"
-msgstr "_Cancelar"
+msgstr "_Peru"
 
 #: src/main.py:197
 msgctxt "alert dialog action"
 msgid "_Export"
-msgstr "_Exportar"
+msgstr "_Vie"
 
 #: src/main.py:230
 msgctxt "Background activity title"
 msgid "Exporting library"
-msgstr "Exportar biblioteca"
+msgstr "Viedään kirjasto"
 
 #: src/main.py:307
 msgid "Confirm Import?"
-msgstr "¿Confirmar la importación?"
+msgstr "Vahvistetaanko tuonti?"
 
 #: src/main.py:308
 msgid ""
 "Importing a library will merge it with the current library. This action "
 "cannot be undone and in case of conflicts, the new data will be kept."
 msgstr ""
+"Kirjaston tuominen yhdistää sen nykyisen kirjaston kanssa. Tätä toimintoa ei "
+"voi perua, ja mahdollisissa ristiriitatilanteissa uusi data säilytetään."
 
 #: src/main.py:311
 msgctxt "alert dialog action"
 msgid "_Import"
-msgstr ""
+msgstr "_Tuo"
 
 #: src/main.py:344
 msgctxt "Background activity title"
 msgid "Importing library"
-msgstr ""
+msgstr "Tuodaan kirjasto"
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
 msgid "No Network"
-msgstr "Sin conexión a la red"
+msgstr "Ei verkkoyhteyttä"
 
 #: src/preferences.py:254
 msgctxt "message dialog body"
 msgid "Connect to the Internet to complete the setup."
-msgstr "Conéctese a Internet para completar la configuración."
+msgstr "Yhdistä Internetiin viimeistelläksesi määrityksen."
 
 #: src/preferences.py:256 src/window.py:235
 msgctxt "alert dialog action"
 msgid "_OK"
-msgstr "_Aceptar"
+msgstr "_OK"
 
 #: src/preferences.py:321
 msgctxt "Background activity title"
 msgid "Clear cache"
-msgstr "Limpiar caché"
+msgstr "Tyhjennä välimuisti"
 
 #. TRANSLATORS: {number} is the number of titles
 #: src/preferences.py:373 src/preferences.py:375
 #, python-brace-format
 msgid "{number} Titles"
-msgstr "{number} títulos"
+msgstr "{number} nimikettä"
 
 #: src/preferences.py:412
 msgctxt "Background activity title"
 msgid "Delete all movies"
-msgstr "Eliminar todas las películas"
+msgstr "Poista kaikki elokuvat"
 
 #: src/preferences.py:423
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr "Eliminar todas las series de TV"
+msgstr "Poista kaikki TV-sarjat"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:498
@@ -219,18 +221,18 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
-"Ticket Booth usa actualmente {total_space:.2f} MB. Use las opciones a "
-"continuación para liberar algo de espacio."
+"Ticket Booth käyttää tällä hetkellä {total_space:.2f} megatavua. Käytä alla "
+"olevia valintoja vapauttaaksesi tilaa."
 
 #: src/preferences.py:502 src/preferences.py:504
 #, python-brace-format
 msgid "{space:.2f} MB occupied"
-msgstr "{space:.2f} MB ocupados"
+msgstr "{space:.2f} megatavua varattu"
 
 #: src/window.py:232
 msgctxt "message dialog heading"
 msgid "Background Activies Running"
-msgstr "Actividades en segundo plano en ejecución"
+msgstr "Taustatoimenpiteitä käynnissä"
 
 #: src/window.py:233
 msgctxt "message dialog body"
@@ -239,38 +241,38 @@ msgid ""
 "before exiting. Look for the indicator in the header bar to check when they "
 "are finished."
 msgstr ""
-"Algunas actividades se ejecutan en segundo plano y deben completarse antes "
-"de salir. Busque el indicador en la barra de cabecera para comprobar cuándo "
-"han terminado."
+"Joitain toimintoja on käynnissä taustalla, ja ne tulee suorittaa loppuun "
+"ennen lopettamista. Tarkista otsakepalkissa oleva ilmaisin nähdäksesi, "
+"milloin toiminnot ovat valmistuneet."
 
 #: src/dialogs/add_manual_dialog.py:89
 msgid "Edit Movie"
-msgstr "Editar película"
+msgstr "Muokkaa elokuvaa"
 
 #: src/dialogs/add_manual_dialog.py:92
 msgid "Edit TV Series"
-msgstr "Editar serie de TV"
+msgstr "Muokkaa TV-sarjaa"
 
 #: src/dialogs/add_manual_dialog.py:294
 #, python-brace-format
 msgid "Season {num}"
-msgstr "Temporada {num}"
+msgstr "Kausi {num}"
 
 #: src/dialogs/add_manual_dialog.py:334 src/widgets/search_result_row.py:165
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Add {title}"
-msgstr "Añadir {title}"
+msgstr "Lisää {title}"
 
 #: src/dialogs/add_manual_dialog.py:340
 #, python-brace-format
 msgctxt "Background activity title"
 msgid "Update {title}"
-msgstr "Actualizar {title}"
+msgstr "Päivitä {title}"
 
 #: src/dialogs/edit_season_dialog.py:44 src/widgets/season_expander.py:43
 msgid "Season"
-msgstr "Temporada"
+msgstr "Kausi"
 
 #. type: ignore
 #: src/pages/details_page.py:213 src/pages/details_page.py:313
@@ -279,266 +281,266 @@ msgstr "Temporada"
 #: src/ui/widgets/poster_button.blp:141 src/widgets/episode_row.py:129
 #: src/widgets/episode_row.py:160 src/widgets/episode_row.py:330
 msgid "Watched"
-msgstr "Visto"
+msgstr "Katsottu"
 
 #: src/pages/details_page.py:216 src/pages/details_page.py:316
 #: src/pages/details_page.py:378 src/pages/details_page.py:447
 #: src/pages/details_page.py:593 src/widgets/episode_row.py:132
 #: src/widgets/episode_row.py:163 src/widgets/episode_row.py:333
 msgid "Mark as Watched"
-msgstr "Marcar como visto"
+msgstr "Merkitse katsotuksi"
 
 #: src/pages/details_page.py:223
 msgid "Runtime of Movie"
-msgstr "Duración de la película"
+msgstr "Elokuvan kesto"
 
 #. TRANSLATORS: {num} is the total number of seasons
 #: src/pages/details_page.py:236
 #, python-brace-format
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
-msgstr[0] "{num} temporada"
-msgstr[1] "{num} temporadas"
+msgstr[0] "{num} kausi"
+msgstr[1] "{num} kautta"
 
 #: src/pages/details_page.py:240
 msgid "Number of Seasons"
-msgstr "Número de temporadas"
+msgstr "Kausien määrä"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:245 src/pages/details_page.py:293
 #, python-brace-format
 msgid "{num} Episode"
 msgid_plural "{num} Episodes"
-msgstr[0] "{num} episodio"
-msgstr[1] "{num} episodios"
+msgstr[0] "{num} jakso"
+msgstr[1] "{num} jaksoa"
 
 #: src/pages/details_page.py:480 src/ui/dialogs/add_manual.blp:171
 msgid "Status"
-msgstr "Estado"
+msgstr "Tila"
 
 #: src/pages/details_page.py:488 src/ui/dialogs/add_manual.blp:175
 msgid "Original Language"
-msgstr "Idioma original"
+msgstr "Alkuperäinen kieli"
 
 #: src/pages/details_page.py:498 src/ui/dialogs/add_manual.blp:181
 msgid "Original Title"
-msgstr "Título original"
+msgstr "Alkuperäinen nimi"
 
 #: src/pages/details_page.py:511
 msgid "Budget"
-msgstr "Presupuesto"
+msgstr "Budjetti"
 
 #: src/pages/details_page.py:521
 msgid "Revenue"
-msgstr "Ingresos"
+msgstr "Tuotto"
 
 #: src/pages/details_page.py:531
 msgid "In Production"
-msgstr "En producción"
+msgstr "Tuotannossa"
 
 #: src/pages/details_page.py:534
 msgid "Yes"
-msgstr "Sí"
+msgstr "Kyllä"
 
 #: src/pages/details_page.py:535
 msgid "No"
-msgstr "No"
+msgstr "Ei"
 
 #: src/pages/details_page.py:540
 msgid "TMDB ID"
-msgstr "ID de TMDB"
+msgstr "TMDB-tunniste"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
 #: src/pages/details_page.py:566 src/widgets/episode_row.py:185
 #, python-brace-format
 msgid "{h}h {m}min"
-msgstr "{h}h {m}min"
+msgstr "{h} h {m} min"
 
 #. TRANSLATORS: {m} is the runtime minutes
 #: src/pages/details_page.py:569 src/widgets/episode_row.py:189
 #, python-brace-format
 msgid "{m}min"
-msgstr "{m}min"
+msgstr "{m} min"
 
 #. TRANSLATORS: {title} is the showed content's title
 #: src/pages/details_page.py:652
 #, python-brace-format
 msgid "Updating {title}"
-msgstr "Actualizando {title}"
+msgstr "Päivitetään {title}"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:659
 #, python-brace-format
 msgid "Update {title}"
-msgstr "Actualizar {title}"
+msgstr "Päivitä {title}"
 
 #: src/pages/details_page.py:721
 msgid "Loading Metadata…"
-msgstr "Cargando metadatos…"
+msgstr "Ladataan metatietoja…"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:741
 #, python-brace-format
 msgctxt "message dialog heading"
 msgid "Delete {title}?"
-msgstr "¿Eliminar {title}?"
+msgstr "Poistetaanko {title}?"
 
 #. type: ignore
 #: src/pages/details_page.py:743
 msgctxt "message dialog body"
 msgid "This title will be deleted from your watchlist."
-msgstr "Este título se eliminará de su lista de seguimiento."
+msgstr "Tämä nimike poistetaan katselulistaltasi."
 
 #: src/pages/details_page.py:744
 msgctxt "message dialog action"
 msgid "_Cancel"
-msgstr "_Cancelar"
+msgstr "_Peru"
 
 #: src/pages/details_page.py:745
 msgctxt "message dialog action"
 msgid "_Delete"
-msgstr "_Eliminar"
+msgstr "_Poista"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:777
 #, python-brace-format
 msgid "Delete {title}"
-msgstr "Eliminar {title}"
+msgstr "Poista {title}"
 
 #: src/ui/about_dialog.blp:9
 msgid ""
 "Copyright © 2023 - 2025 Alessandro Iepure\n"
 "Some icons are copyright of the GNOME Project"
 msgstr ""
-"Copyright © 2023 - 2025 Alessandro Iepure\n"
-"Algunos íconos están bajo el copyright del proyecto GNOME"
+"Tekijänoikeus © 2023 - 2025 Alessandro Iepure\n"
+"Joidenkin kuvakkeiden tekijänoikeus kuuluu GNOME-projektille"
 
 #. TRANSLATORS: replace with your name (with optional email or website)
 #: src/ui/about_dialog.blp:16
 msgid "translator-credits"
-msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
+msgstr "Jiri Grönroos"
 
 #: src/ui/dialogs/add_manual.blp:38 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
-msgstr "Película"
+msgstr "Elokuva"
 
 #: src/ui/dialogs/add_manual.blp:43 src/views/main_view.py:63
 #: src/widgets/search_result_row.py:82
 msgctxt "Category"
 msgid "TV Series"
-msgstr "Series de TV"
+msgstr "TV-sarjat"
 
 #: src/ui/dialogs/add_manual.blp:51 src/ui/dialogs/edit_season.blp:24
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Peru"
 
 #: src/ui/dialogs/add_manual.blp:57 src/ui/dialogs/edit_season.blp:30
 #: src/ui/pages/edit_episode_page.blp:19
 msgid "Save"
-msgstr "Guardar"
+msgstr "Tallenna"
 
 #: src/ui/dialogs/add_manual.blp:81 src/ui/dialogs/edit_season.blp:52
 #: src/ui/pages/edit_episode_page.blp:41
 msgid "General"
-msgstr "General"
+msgstr "Yleiset"
 
 #: src/ui/dialogs/add_manual.blp:84 src/ui/dialogs/edit_season.blp:55
 #: src/ui/pages/edit_episode_page.blp:55
 msgid "Title (required)"
-msgstr "Título (requerido)"
+msgstr "Nimi (vaadittu)"
 
 #: src/ui/dialogs/add_manual.blp:89
 msgid "Release Date"
-msgstr "Fecha de lanzamiento"
+msgstr "Julkaisupäivä"
 
 #: src/ui/dialogs/add_manual.blp:108
 msgid "Genres (comma separated)"
-msgstr "Géneros (separados por comas)"
+msgstr "Tyylilajit (pilkulla erotettu)"
 
 #: src/ui/dialogs/add_manual.blp:113 src/ui/pages/edit_episode_page.blp:60
 msgid "Runtime (minutes)"
-msgstr "Duración (minutos)"
+msgstr "Kesto (minuuteissa)"
 
 #: src/ui/dialogs/add_manual.blp:123
 msgid "Tagline"
-msgstr "Eslogan"
+msgstr "Iskulause"
 
 #: src/ui/dialogs/add_manual.blp:128 src/ui/pages/details_page.blp:291
 msgid "Created by"
-msgstr "Creado por"
+msgstr "Luonut"
 
 #: src/ui/dialogs/add_manual.blp:133 src/ui/pages/edit_episode_page.blp:71
 msgid "Overview"
-msgstr "Vista general"
+msgstr "Yleiskatsaus"
 
 #: src/ui/dialogs/add_manual.blp:152
 msgid "Seasons (required)"
-msgstr "Temporadas (requerido)"
+msgstr "Kaudet (vaadittu)"
 
 #: src/ui/dialogs/add_manual.blp:153
 msgid "Use the + button to add seasons"
-msgstr "Use el botón + para añadir temporadas"
+msgstr "Käytä painiketta + lisätäksesi kausia"
 
 #: src/ui/dialogs/add_manual.blp:158 src/ui/dialogs/edit_season.blp:67
 msgid "Add"
-msgstr "Añadir"
+msgstr "Lisää"
 
 #: src/ui/dialogs/add_manual.blp:168 src/ui/pages/details_page.blp:350
 msgid "Additional Information"
-msgstr "Información adicional"
+msgstr "Lisätiedot"
 
 #: src/ui/dialogs/add_manual.blp:186
 msgid "Budget (US$)"
-msgstr "Presupuesto (USD)"
+msgstr "Budjetti (Yhdysvaltain dollareissa)"
 
 #: src/ui/dialogs/add_manual.blp:197
 msgid "Revenue (US$)"
-msgstr "Ingresos (USD)"
+msgstr "Tuotto (Yhdysvaltain dollareissa)"
 
 #: src/ui/dialogs/add_manual.blp:207
 msgid "In production"
-msgstr "En producción"
+msgstr "Tuotannossa"
 
 #: src/ui/dialogs/add_tmdb.blp:27
 msgid "Search The Movie Database…"
-msgstr "Buscar en The Movie Database…"
+msgstr "Etsi elokuvatietokannasta…"
 
 #: src/ui/dialogs/add_tmdb.blp:37
 msgid "Search For a Title"
-msgstr "Buscar un título"
+msgstr "Etsi nimikettä"
 
 #: src/ui/dialogs/add_tmdb.blp:39
 msgid ""
 "Start typing in the search bar to see a list of matching movies and TV series"
 msgstr ""
-"Empiece a escribir en la barra de búsqueda para ver una lista de películas y "
-"series de TV coincidentes"
+"Aloita hakukenttään kirjoittaminen nähdäksesi hakua vastaavat elokuvat ja TV-"
+"sarjat"
 
 #: src/ui/dialogs/add_tmdb.blp:46
 msgid "No Results Found"
-msgstr "No se han encontrado resultados"
+msgstr "Tuloksia ei löytynyt"
 
 #: src/ui/dialogs/add_tmdb.blp:48
 msgid "Try a different search"
-msgstr "Intente otra búsqueda"
+msgstr "Kokeile eri hakuehtoja"
 
 #: src/ui/dialogs/edit_season.blp:14
 msgid "Edit Season"
-msgstr "Editar temporada"
+msgstr "Muokkaa kautta"
 
 #: src/ui/dialogs/edit_season.blp:61
 msgid "Episodes (required)"
-msgstr "Episodios (requerido)"
+msgstr "Jaksot (vaadittu)"
 
 #: src/ui/dialogs/edit_season.blp:62
 msgid "Use the + button to add episodes"
-msgstr "Use el botón + para añadir episodios"
+msgstr "Käytä painiketta + lisätäksesi jaksoja"
 
 #: src/ui/dialogs/message_dialogs.blp:9
 msgctxt "message dialog heading"
 msgid "Clear Cached Data?"
-msgstr "¿Limpiar los datos en caché?"
+msgstr "Tyhjennetäänkö välimuistissa oleva data?"
 
 #: src/ui/dialogs/message_dialogs.blp:10
 msgctxt "message dialog body"
@@ -546,21 +548,23 @@ msgid ""
 "This operation will clear all stored cache data. It might get downloaded "
 "again next time you add content from TMDB."
 msgstr ""
+"Tämä toimenpide tyhjentää kaiken välimuistissa olevan datan. Data saatetaan "
+"ladata uudelleen, kun lisäät sisältöä TMDB:stä."
 
 #: src/ui/dialogs/message_dialogs.blp:13 src/ui/dialogs/message_dialogs.blp:40
 msgctxt "message dialog action"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Peru"
 
 #: src/ui/dialogs/message_dialogs.blp:14 src/ui/dialogs/message_dialogs.blp:41
 msgctxt "message dialog action"
 msgid "Clear"
-msgstr "Limpiar"
+msgstr "Tyhjennä"
 
 #: src/ui/dialogs/message_dialogs.blp:19
 msgctxt "message dialog heading"
 msgid "Clear Stored Data?"
-msgstr "¿Limpiar los datos guardados?"
+msgstr "Tyhjennetäänkö tallennetut tiedot?"
 
 #: src/ui/dialogs/message_dialogs.blp:20
 msgctxt "message dialog body"
@@ -568,155 +572,153 @@ msgid ""
 "This operation will permanentlly delete the selected data, loosing all your "
 "changes."
 msgstr ""
+"Tämä toimenpide poistaa pysyvästi valitun datan, ja kaikki muutokset "
+"katoavat."
 
 #: src/ui/dialogs/message_dialogs.blp:26
 msgid "Movies"
-msgstr "Películas"
+msgstr "Elokuvat"
 
 #: src/ui/dialogs/message_dialogs.blp:34
 msgid "TV Series"
-msgstr "Series de TV"
+msgstr "TV-sarjat"
 
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr "General"
+msgstr "Yleiset"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Mostrar atajos"
+msgstr "Näytä pikanäppäimet"
 
 #: src/ui/gtk/help-overlay.blp:23
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Mostrar preferencias"
+msgstr "Näytä asetukset"
 
 #: src/ui/gtk/help-overlay.blp:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Search your Watchlist"
-msgstr "Su lista de seguimiento"
+msgstr "Etsi katselulistalta"
 
 #: src/ui/gtk/help-overlay.blp:33
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Salir"
+msgstr "Lopeta"
 
 #: src/ui/gtk/help-overlay.blp:39
 msgctxt "shortcut window"
 msgid "Library management"
-msgstr "Gestión de la biblioteca"
+msgstr "Kirjaston hallinta"
 
 #: src/ui/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Add title from TMDB"
-msgstr "Añadir título de TMDB"
+msgstr "Lisää nimike TMDB:stä"
 
 #: src/ui/gtk/help-overlay.blp:47
 msgctxt "shortcut window"
 msgid "Add title manually"
-msgstr "Añadir título manualmente"
+msgstr "Lisää nimike manuaalisesti"
 
 #: src/ui/gtk/help-overlay.blp:51
 msgctxt "shortcut window"
 msgid "Refresh library"
-msgstr "Refrescar biblioteca"
+msgstr "Päivitä kirjasto"
 
 #: src/ui/pages/details_page.blp:30 src/ui/views/main_view.blp:83
 msgid "Main Menu"
-msgstr "Menú principal"
+msgstr "Päävalikko"
 
 #: src/ui/pages/details_page.blp:146
-#, fuzzy
 msgid "Number of Episodes"
-msgstr "{num} episodio"
+msgstr "Jaksojen määrä"
 
 #: src/ui/pages/details_page.blp:156
 msgid "Air Date of Next Episode"
-msgstr "Fecha de emisión del próximo episodio"
+msgstr "Seuraavan jakson esityspäivä"
 
 #: src/ui/pages/details_page.blp:174 src/ui/pages/details_page.blp:175
 msgid "Notify me on new releases"
-msgstr "Notifícame de nuevos lanzamientos"
+msgstr "Ilmoita uusista julkaisuista"
 
 #: src/ui/pages/details_page.blp:208
 msgid "Update Metadata"
-msgstr "Actualizar metadatos"
+msgstr "Päivitä metatiedot"
 
 #: src/ui/pages/details_page.blp:221 src/ui/widgets/episode_row.blp:87
 #: src/ui/widgets/season_expander.blp:42
 msgid "Edit"
-msgstr "Editar"
+msgstr "Muokkaa"
 
 #: src/ui/pages/details_page.blp:234
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Poista"
 
 #: src/ui/pages/details_page.blp:263
 msgid "Description"
-msgstr "Descripción"
+msgstr "Kuvaus"
 
 #: src/ui/pages/details_page.blp:319
 msgid "Seasons"
-msgstr "Temporadas"
+msgstr "Kaudet"
 
 #: src/ui/pages/details_page.blp:378
 msgid "Notes"
-msgstr "Notas"
+msgstr "Muistiinpanot"
 
 #: src/ui/pages/details_page.blp:502 src/ui/views/main_view.blp:225
 msgid "_Preferences"
-msgstr "_Preferencias"
+msgstr "_Asetukset"
 
 #: src/ui/pages/details_page.blp:507 src/ui/views/main_view.blp:230
 msgid "_Keyboard Shortcuts"
-msgstr "Atajos del _teclado"
+msgstr "_Pikanäppäimet"
 
 #: src/ui/pages/details_page.blp:512 src/ui/views/main_view.blp:235
 msgid "_About Ticket Booth"
-msgstr "_Acerca de Ticket Booth"
+msgstr "_Tietoja - Ticket Booth"
 
 #: src/ui/pages/edit_episode_page.blp:9
 msgid "Edit Episode"
-msgstr "Editar episodio"
+msgstr "Muokkaa jaksoa"
 
 #: src/ui/pages/edit_episode_page.blp:45
 msgid "Episode Number (required)"
-msgstr "Número de episodio (requerido)"
+msgstr "Jakson numero (vaadittu)"
 
 #: src/ui/preferences.blp:15 src/ui/views/main_view.blp:122
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr "Asetukset"
 
 #: src/ui/preferences.blp:18
 msgctxt "preferences"
 msgid "Optional Download"
-msgstr "Descarga opcional"
+msgstr "Valinnainen lataus"
 
 #: src/ui/preferences.blp:19
-#, fuzzy
 msgctxt "preferences"
 msgid ""
 "For a complete experience, a download of 15 KB is required. The initial "
 "setup could not retrieve the data automatically and thus offline mode has "
 "been activated. It will remain active until the setup is completed."
 msgstr ""
-"Para una experiencia completa, se requiere una descarga de 15 KB. La "
-"configuración inicial no ha podido recuperar los datos automáticamente, por "
-"lo que se ha activado el modo sin conexión. Permanecerá activo hasta que "
-"finalice la configuración."
+"Täyden kokemuksen takaamiseksi 15 kilotavun lataus vaaditaan. Alkumääritys "
+"ei voinut noutaa dataa automaattisesti, joten yhteydetön tila on aktivoitu. "
+"Yhteydetön tila pysyy aktiivisena, kunnes määritys on saatettu loppuun."
 
 #. TRANSLATORS: When clicked, it completes the initial setup by downloading the optional data.
 #: src/ui/preferences.blp:23
 msgctxt "preferences"
 msgid "Complete Setup"
-msgstr "Completar la configuración"
+msgstr "Viimeistele määritys"
 
 #: src/ui/preferences.blp:34
 msgctxt "preferences"
 msgid "Offline Mode"
-msgstr "Modo sin conexión"
+msgstr "Yhteydetön tila"
 
 #: src/ui/preferences.blp:35
 msgctxt "preferences"
@@ -725,14 +727,14 @@ msgid ""
 "some features that require the Internet and/or access to third party APIs "
 "will not be available."
 msgstr ""
-"Ticket Booth puede funcionar completamente sin conexión. Si elige funcionar "
-"en este modo, algunas funciones que requieren Internet y/o acceso a API de "
-"terceros no estarán disponibles."
+"Ticket Booth voi pysyä täysin yhteydettömässä tilassa. Jos päätät jatkaa "
+"tässä tilassa, jotkin Internet-yhteyden tai kolmannen osapuolen rajapintaa "
+"vaativat ominaisuudet eivät ole käytettävissä."
 
 #: src/ui/preferences.blp:38
 msgctxt "preferences"
 msgid "Enable Offline Mode"
-msgstr "Activar el modo sin conexión"
+msgstr "Ota yhteydetön tila käyttöön"
 
 #: src/ui/preferences.blp:43
 msgctxt "preferences"
@@ -750,269 +752,270 @@ msgid ""
 "to TMDB</a>. Additionally, an automatic update is performed on a frequency "
 "of your choosing."
 msgstr ""
-"TMDB proporciona metadatos localizados para la mayoría de los contenidos. "
-"Ticket Booth los descargará en su idioma preferido, que puede seleccionar a "
-"continuación. En caso de que no esté disponible, pasará al inglés de EE.UU. "
-"y, a continuación, al idioma original del contenido. Si ninguno de los dos "
-"está disponible, el resultado será una cadena en blanco. Por favor, "
-"considere <a href='https://www.themoviedb.org/bible/new_content'>contribuir "
-"a TMDB</a>. Además, se realiza una actualización automática con la "
-"frecuencia que elija."
+"TMDB tarjoaa lokalisoidut metatiedot suurimmalle osalle sisältöä. Ticket "
+"Booth lataa metatiedot kielellä, jonka voit valita alta. Jos metatiedot "
+"eivät ole saatavilla valitsemallasi kielellä, käytetään amerikanenglantia "
+"tai sisällön alkuperäistä kieltä. Jos kumpikaan ei ole saatavilla, näytetään "
+"tyhjä merkkijono. Harkitse <a href='https://www.themoviedb.org/bible/"
+"new_content'>osallistumista TMDB:n sisällöntuotantoon</a>. Metatiedot "
+"päivitetään valitsemallasi päivitysvälillä."
 
 #: src/ui/preferences.blp:47
 msgctxt "preferences"
 msgid "TMDB Results Language"
-msgstr "Idioma de los resultados de TMDB"
+msgstr "TMDB-tulosten kieli"
 
 #: src/ui/preferences.blp:52
 msgctxt "preferences"
 msgid "Update Frequency"
-msgstr "Frecuencia de actualización"
+msgstr "Päivitysväli"
 
 #: src/ui/preferences.blp:53
 msgctxt "preferences"
 msgid "Restart Ticket Booth after changing"
-msgstr "Reinicie Ticket Booth después de cambiar"
+msgstr "Käynnistä Ticket Booth uudelleen muuttamisen jälkeen"
 
 #: src/ui/preferences.blp:56
 msgctxt "preferences"
 msgid "Never"
-msgstr "Nunca"
+msgstr "Ei koskaan"
 
 #: src/ui/preferences.blp:57
 msgctxt "preferences"
 msgid "Daily"
-msgstr "Diario"
+msgstr "Päivittäin"
 
 #: src/ui/preferences.blp:58
 msgctxt "preferences"
 msgid "Weekly"
-msgstr "Semanal"
+msgstr "Viikottain"
 
 #: src/ui/preferences.blp:59
 msgctxt "preferences"
 msgid "Monthly"
-msgstr "Mensual"
+msgstr "Kuukausittain"
 
 #: src/ui/preferences.blp:65
 msgctxt "preferences"
 msgid "Use Your API Key"
-msgstr "Usa tu clave API"
+msgstr "Käytä API-avaintasi"
 
 #: src/ui/preferences.blp:66
 msgctxt "preferences"
 msgid ""
 "Register yours <a href='https://www.themoviedb.org/settings/api'>here</a>"
 msgstr ""
-"Registra la tuya <a href='https://www.themoviedb.org/settings/api'>aquí</a>"
+"Rekisteröi omasi <a href='https://www.themoviedb.org/settings/api'>täällä</a>"
 
 #: src/ui/preferences.blp:70
 msgctxt "preferences"
 msgid "Your API key"
-msgstr "Tu clave API"
+msgstr "API-avaimesi"
 
 #: src/ui/preferences.blp:75
 msgctxt "preferences"
 msgid "Save Key"
-msgstr "Guardar clave"
+msgstr "Tallenna avain"
 
 #: src/ui/preferences.blp:86
 msgctxt "preferences"
 msgid "Housekeeping"
-msgstr "Servicio de limpieza"
+msgstr "Siivous"
 
 #: src/ui/preferences.blp:90
 msgctxt "preferences"
 msgid "Clear Cache on Exit"
-msgstr "Limpiar caché al salir"
+msgstr "Tyhjennä välimuisti suljettaessa"
 
 #: src/ui/preferences.blp:94
 msgctxt "preferences"
 msgid "Clear Cached Search Data"
-msgstr "Limpiar datos de búsqueda en caché"
+msgstr "Tyhjennä välimuistissa oleva hakudata"
 
 #: src/ui/preferences.blp:104
 msgctxt "preferences"
 msgid "Clear Data"
-msgstr "Limpiar datos"
+msgstr "Tyhjennä tiedot"
 
 #: src/ui/views/content_view.blp:14
 msgid "Your Watchlist Is Empty"
-msgstr "Su lista de seguimiento está vacía"
+msgstr "Katselulistasi on tyhjä"
 
 #: src/ui/views/content_view.blp:15
-#, fuzzy
 msgid "Add content with the + button or import from an older watchlist."
-msgstr "Añada contenido con el botón +."
+msgstr ""
+"Lisää sisältöä painikkeella + tai tuo sisältöä aiemmasta katselulistasta."
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:324
 msgid "Your Watchlist"
-msgstr "Su lista de seguimiento"
+msgstr "Katselulistasi"
 
 #: src/ui/views/content_view.blp:140
 msgid "Unwatched"
-msgstr "No visto"
+msgstr "Katsomatta"
 
 #: src/ui/views/db_update_view.blp:29
 msgid "Updating your watchlist"
-msgstr "Actualizando su lista de seguimiento"
+msgstr "Päivitetään katselulista"
 
 #: src/ui/views/db_update_view.blp:30
 msgid ""
 "After updating Ticket Booth we need to update the local database entries"
 msgstr ""
-"Después de actualizar Ticket Booth necesitamos actualizar las entradas de la "
-"base de datos local"
+"Ticket Boothin päivityksen jälkeen paikallisen tietokannan tietueet tulee "
+"päivittää"
 
 #: src/ui/views/db_update_view.blp:49 src/ui/views/first_run_view.blp:55
 msgid "Use Offline Mode"
-msgstr "Usar el modo sin conexión"
+msgstr "Käytä yhteydetöntä tilaa"
 
 #: src/ui/views/db_update_view.blp:55 src/ui/views/first_run_view.blp:61
 msgid "Try again on next run"
-msgstr "Inténtelo de nuevo en la próxima ejecución"
+msgstr "Yritä uudelleen seuraavalla käynnistyskerralla"
 
 #: src/ui/views/db_update_view.blp:66
 msgid "Activate Notifications?"
-msgstr "¿Activar las notificaciones?"
+msgstr "Otetaanko ilmoitukset käyttöön?"
 
 #: src/ui/views/db_update_view.blp:67
 msgid ""
 "Would you like to activate notifications for all series that are still in "
 "production and for all movies that have not yet released?"
 msgstr ""
+"Haluatko ottaa ilmoitukset käyttöön kaikkien yhä tuotannossa olevian "
+"sarjojen ja julkaisemattomien elokuvien osalta?"
 
 #: src/ui/views/db_update_view.blp:76
 msgid "Activate"
-msgstr "Activar"
+msgstr "Ota käyttöön"
 
 #: src/ui/views/db_update_view.blp:85
 msgid "Deactivate"
-msgstr "Desactivar"
+msgstr "Poista käytöstä"
 
 #: src/ui/views/main_view.blp:68
 msgid "Add a title to your library"
-msgstr "Añada un título a su biblioteca"
+msgstr "Lisää nimike kirjastoon"
 
 #: src/ui/views/main_view.blp:75
 msgid "Show/Hide search bar"
-msgstr "Mostrar/ocultar la barra de búsqueda"
+msgstr "Näytä/piilota hakupalkki"
 
 #: src/ui/views/main_view.blp:110
 msgid "Search Your Watchlist"
-msgstr "Tu lista de seguimiento"
+msgstr "Etsi katselulistaltasi"
 
 #: src/ui/views/main_view.blp:121
 msgid "Offline Mode Enabled"
-msgstr "Modo sin conexión activado"
+msgstr "Yhteydetön tila otettu käyttöön"
 
 #: src/ui/views/main_view.blp:152
 msgid "_Sorting"
-msgstr "_Ordenación"
+msgstr "_Järjestys"
 
 #: src/ui/views/main_view.blp:156
 msgid "A-Z"
-msgstr "A-Z"
+msgstr "A-Ö"
 
 #: src/ui/views/main_view.blp:162
 msgid "Z-A"
-msgstr "Z-A"
+msgstr "Ö-A"
 
 #: src/ui/views/main_view.blp:168
 msgid "Date added (newest first)"
-msgstr "Fecha de adición (la más reciente primero)"
+msgstr "Lisäyspäivä (uusin ensin)"
 
 #: src/ui/views/main_view.blp:174
 msgid "Date added (oldest first)"
-msgstr "Fecha de adición (la más antigua primero)"
+msgstr "Lisäyspäivä (vanhin ensin)"
 
 #: src/ui/views/main_view.blp:180
 msgid "Release date (newest first)"
-msgstr "Fecha de lanzamiento (la más reciente primero)"
+msgstr "Julkaisupäivä (uusin ensin)"
 
 #: src/ui/views/main_view.blp:186
 msgid "Release date (oldest first)"
-msgstr "Fecha de lanzamiento (la más antigua primero)"
+msgstr "Julkaisupäivä (vanhin ensin)"
 
 #: src/ui/views/main_view.blp:194
 msgid "Separate watched from unwatched"
-msgstr "Separar contenidos vistos de los no vistos"
+msgstr "Erota katsotut katsomattomista"
 
 #: src/ui/views/main_view.blp:199
 msgid "Hide watched"
-msgstr "Ocultar ya vistos"
+msgstr "Piilota katsotut"
 
 #: src/ui/views/main_view.blp:206
 msgid "_Refresh"
-msgstr "_Refrescar"
+msgstr "_Päivitä"
 
 #: src/ui/views/main_view.blp:213
 msgid "_Import"
-msgstr "_Importar"
+msgstr "_Tuo"
 
 #: src/ui/views/main_view.blp:218
 msgid "_Export"
-msgstr "_Exportar"
+msgstr "_Vie"
 
 #: src/ui/views/main_view.blp:243
 msgid "From The Movie Database (TMDB)"
-msgstr "De The Movie Database (TMDB)"
+msgstr "The Movie Databasesta (TMDB)"
 
 #: src/ui/views/main_view.blp:248
 msgid "Manually"
-msgstr "Manualmente"
+msgstr "Manuaalisesti"
 
 #: src/ui/widgets/background_indicator.blp:13
 msgid "Background Activities"
-msgstr "Actividades en segundo plano"
+msgstr "Taustatoimenpiteet"
 
 #: src/ui/widgets/background_indicator.blp:36
 msgid "No Background Activities"
-msgstr "Sin actividades de segundo plano"
+msgstr "Ei taustatoimenpiteitä"
 
 #: src/ui/widgets/image_selector.blp:30
 msgid "Edit poster"
-msgstr "Editar póster"
+msgstr "Muokkaa julistetta"
 
 #: src/ui/widgets/image_selector.blp:48
 msgid "Delete poster"
-msgstr "Eliminar póster"
+msgstr "Poista juliste"
 
 #: src/ui/widgets/poster_button.blp:47
 msgid "The series has a new release"
-msgstr ""
+msgstr "Sarjassa on uusi julkaisu"
 
 #: src/ui/widgets/poster_button.blp:67
 msgid "The series has a new release soon"
-msgstr ""
+msgstr "Sarjassa on pian uusi julkaisu"
 
 #: src/ui/widgets/poster_button.blp:85
 msgid "This title is marked as watched"
-msgstr ""
+msgstr "Tämä nimike on merkitty katsotuksi"
 
 #: src/ui/widgets/search_result_row.blp:89
 msgid "Add to watchlist"
-msgstr "Añadir a la lista de seguimiento"
+msgstr "Lisää katselulistalle"
 
 #: src/ui/widgets/theme_switcher.blp:29
 msgid "Follow system style"
-msgstr "Seguir el estilo del sistema"
+msgstr "Seuraa järjestelmän tyyliä"
 
 #: src/ui/widgets/theme_switcher.blp:43
 msgid "Light style"
-msgstr "Estilo claro"
+msgstr "Vaalea tyyli"
 
 #: src/ui/widgets/theme_switcher.blp:57
 msgid "Dark style"
-msgstr "Estilo oscuro"
+msgstr "Tumma tyyli"
 
 #: src/views/content_view.py:323
 msgid "Search results"
-msgstr ""
+msgstr "Hakutulokset"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
-msgstr "Esperando a la red…"
+msgstr "Odotetaan verkkoyhteyttä…"
 
 #: src/views/first_run_view.py:103
 msgid ""
@@ -1020,51 +1023,48 @@ msgid ""
 "are not connected to the Internet or don't want to wait, you can skip this "
 "step and continue offline without some features."
 msgstr ""
-"Para una experiencia completa, se requiere una descarga de 15 KB. Sin "
-"embargo, si no está conectado a Internet o no quiere esperar, puede omitir "
-"este paso y continuar sin conexión sin algunas funciones."
 
 #: src/views/first_run_view.py:107
 msgid "Getting things ready…"
-msgstr "Preparando todo…"
+msgstr "Valmistellaan asioita…"
 
 #: src/views/first_run_view.py:108
 msgid "Downloading data"
-msgstr "Descargando datos"
+msgstr "Ladataan tietoja"
 
 #: src/views/main_view.py:57
 msgctxt "Category"
 msgid "Movies"
-msgstr "Películas"
+msgstr "Elokuvat"
 
 #: src/views/main_view.py:146
 msgctxt "Notification List activity title"
 msgid "Automatic update of notification list"
-msgstr "Actualización automática de la lista de notificaciones"
+msgstr "Ilmoitusluettelon automaattinen päivitys"
 
 #: src/views/main_view.py:162 src/views/main_view.py:172
 #: src/views/main_view.py:182
 msgctxt "Background activity title"
 msgid "Automatic update"
-msgstr "Actualización automática"
+msgstr "Automaattinen päivitys"
 
 #. TRANSLATOR: {title} is the title of the series
 #: src/views/main_view.py:326
 #, python-brace-format
 msgid "New release for {title}"
-msgstr "Nuevo estreno para {title}"
+msgstr "Uusi nimikkeen {title} julkaisu"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:329
 #, python-brace-format
 msgid "A new episode of {title} was released {days} day ago."
-msgstr ""
+msgstr "Uusi jakso sarjasta {title} julkaistiin {days} päivä(ä) sitten."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:333
 #, python-brace-format
 msgid "New release for {num} TV series on your watchlist"
-msgstr ""
+msgstr "Uusi julkaisu {num} TV-sarjalle katselulistallasi"
 
 #. TRANSLATOR: {series} is a list of TV series seperated by a comma
 #. TRANSLATOR: {series} is a list of all series affected seperated by a comma
@@ -1072,33 +1072,31 @@ msgstr ""
 #: src/views/main_view.py:372
 #, python-brace-format
 msgid "The TV Series are {series}."
-msgstr "Las series de TV son {series}."
+msgstr "TV-sarjat ovat {series}."
 
 #. TRANSLATOR: {title} is the title of the series with a new episode soon
 #: src/views/main_view.py:343
 #, python-brace-format
 msgid "{title} will have a release soon"
-msgstr "{title} próximamente tendrá un nuevo lanzamiento"
+msgstr "{title} saa pian uuden julkaisun"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:346
 #, python-brace-format
 msgid "A new episode will release in {days} day."
-msgstr "Un nuevo episodio será estrenado en {days} días."
+msgstr "Uuden jakson julkaisuun on {days} päivä(ä)."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:350
 #, python-brace-format
 msgid "{num} TV Series on your watchlist will have a new episode soon"
-msgstr ""
-"{num} series de TV en su lista de seguimiento tendrán próximamente un nuevo "
-"episodio"
+msgstr "{num} TV-sarjalla katselulistallasi on pian uusi jakso"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:361
 #, python-brace-format
 msgid "{title} has gone out of production"
-msgstr "{title} ya no está en producción"
+msgstr "Sarjan {title} tuotanto on loppunut"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:364
@@ -1112,139 +1110,100 @@ msgstr ""
 #: src/views/main_view.py:367
 #, python-brace-format
 msgid "{num} TV Series of your watchlist have gone out of production"
-msgstr ""
+msgstr "{num} TV-sarjaa katselulistallasi on poistunut tuotannosta"
 
 #. TRANSLATOR: {title} is the title of the movie that has had its release
 #: src/views/main_view.py:378
 #, python-brace-format
 msgid "{title} has had its release!"
-msgstr "¡{title} ha tenido su estreno!"
+msgstr "{title} on saanut julkaisun!"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:381
 #, python-brace-format
 msgid "{title} was released {days} day ago."
-msgstr "{title} fue estrenado hace {days} días."
+msgstr "{title} julkaistiin {days} päivä(ä) sitten."
 
 #: src/views/main_view.py:384
 #, python-brace-format
 msgid "{num} movies on your watchlist have had their releases."
-msgstr ""
+msgstr "{num} elokuvaa katselulistallasi on saanut julkaisun."
 
 #. TRANSLATOR: {movies} is a list of all movies affected seperated by a comma
 #. TRANSLATOR: {movies} will be list of all series affected seperated by a comma
 #: src/views/main_view.py:388 src/views/main_view.py:403
 #, python-brace-format
 msgid "The movies are {movies}."
-msgstr "Las películas son {movies}."
+msgstr "Elokuvat ovat {movies}."
 
 #. TRANSLATOR: {title} is the title of the movie that will have its release soon
 #: src/views/main_view.py:393
 #, python-brace-format
 msgid "{title} will have its release soon!"
-msgstr "¡{title} se estrenará pronto!"
+msgstr "{title} saa pian julkaisun!"
 
 #. TRANSLATOR: {title} is the title of the movie and {days} the number of days
 #: src/views/main_view.py:396
 #, python-brace-format
 msgid "{title} will have its release in {days} day."
-msgstr "{title} tendrá su estreno en {days} días."
+msgstr "{title} saa julkaisun {days} päivän kuluttua."
 
 #. TRANSLATOR: {num} is the number of movies
 #: src/views/main_view.py:400
 #, python-brace-format
 msgid "{num} movies on your watchlist will have their releases soon"
-msgstr ""
+msgstr "{num} elokuvaa katselulistallasi saa pian julkaisun"
 
 #. TRANSLATOR: {num} is the number of affected items
 #: src/views/main_view.py:413
 #, python-brace-format
 msgid "{num} items of your watchlist have an update"
-msgstr ""
+msgstr "{num} nimikettä katselulistallasi on saanut päivityksen"
 
 #. TRANSLATOR: {count_movies} is the number of movies
 #: src/views/main_view.py:418 src/views/main_view.py:427
 #, python-brace-format
 msgid "These updates affect {count_movies} movie"
-msgstr "Estas actualizaciones afectan a {count_movies} películas"
+msgstr "Päivitykset kohdistuvat {count_movies} elokuvaan"
 
 #. TRANSLATOR: the connector between the two parts of the sentence (foo and bar)
 #: src/views/main_view.py:420
 msgid " and "
-msgstr " y "
+msgstr " ja "
 
 #. TRANSLATOR: {count_series} is the number of series
 #: src/views/main_view.py:422
 #, python-brace-format
 msgid " {count_series} TV serie"
-msgstr " {count_series} serie(s) de TV"
+msgstr " {count_series} TV-sarja"
 
 #. TRANSLATOR: {count_series} is the number of series
 #: src/views/main_view.py:430
 #, python-brace-format
 msgid "These updates affect {count_series} TV serie"
-msgstr ""
+msgstr "Päivitykset kohdistuvat {count_series} TV-sarjaan"
 
 #: src/widgets/episode_row.py:267 src/widgets/season_expander.py:141
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgctxt "alert dialog heading"
 msgid "Delete {title}?"
-msgstr "¿Eliminar {title}?"
+msgstr "Poistetaanko {title}?"
 
 #: src/widgets/episode_row.py:270
 msgctxt "alert dialog body"
 msgid "All changes to this episode will be lost."
-msgstr "Todos los cambios a este episodio se perderán."
+msgstr "Kaikki muutokset tähän jaksoon katoavat."
 
 #: src/widgets/episode_row.py:273 src/widgets/season_expander.py:147
 msgctxt "alert dialog action"
 msgid "_Delete"
-msgstr "_Eliminar"
+msgstr "_Poista"
 
 #: src/widgets/search_result_row.py:100 src/widgets/search_result_row.py:192
 msgid "Already in your watchlist"
-msgstr "Ya está en su lista de seguimiento"
+msgstr "On jo katselulistallasi"
 
 #: src/widgets/season_expander.py:144
 msgctxt "alert dialog body"
 msgid "This season contains unsaved metadata."
-msgstr "Esta temporada contiene metadatos no guardados."
-
-#, fuzzy
-#~ msgid "movie"
-#~ msgstr "Película"
-
-#, fuzzy
-#~ msgid "movies"
-#~ msgstr "Películas"
-
-#, fuzzy
-#~ msgid "series"
-#~ msgstr "Series de TV"
-
-#~ msgid ""
-#~ "Fixes issue that prevented the addition of movies with large budgets and "
-#~ "revenues."
-#~ msgstr ""
-#~ "Soluciona un problema que impedía añadir películas con grandes "
-#~ "presupuestos e ingresos."
-
-#~ msgid "First release"
-#~ msgstr "Primera versión"
-
-#~ msgctxt "preferences"
-#~ msgid ""
-#~ "Ticket Booth can work entirelly offline. If you choose to run in this "
-#~ "mode, some features that require the Internet and/or access to third "
-#~ "party APIs will not be available."
-#~ msgstr ""
-#~ "Ticket Booth puede funcionar completamente sin conexión. Si elige "
-#~ "funcionar en este modo, algunas funciones que requieren Internet y/o "
-#~ "acceso a API de terceros no estarán disponibles."
-
-#~ msgctxt "message dialog body"
-#~ msgid "All cheanges to this episode will be lost."
-#~ msgstr "Todos los cambios de este episodio se perderán."
-
-#~ msgid "Already in your whatchlist"
-#~ msgstr "Ya está en su lista"
+msgstr "Tämä kausi sisältää tallentamattomia metatietoja."
