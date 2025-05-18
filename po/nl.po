@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the ticketbooth package.
-# Heimen Stoffels <vistausss@fastmail.com>, 2024.
+# Heimen Stoffels <vistausss@fastmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2024-04-28 18:07+0000\n"
+"PO-Revision-Date: 2025-05-19 21:02+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/nl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5.1\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -25,7 +25,7 @@ msgstr ""
 
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
-msgstr ""
+msgstr "Films;Shows;TV;Series;Anime;Kijken;Lijst;Bibliotheek;Verzameling;"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -48,9 +48,8 @@ msgid "Specifies if the app is run for the first time"
 msgstr "Geef aan of de toepassing voor de eerste keer opstart"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
-#, fuzzy
 msgid "Specifies if the database needs an update"
-msgstr "Geef aan of de toepassing de vereiste gegevens heeft opgehaald"
+msgstr "Geef aan of de databank dient te worden bijgewerkt"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
@@ -62,24 +61,23 @@ msgstr "Sorteervolgorde"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
-msgstr ""
+msgstr "Bekeken inhoud scheiden van niet-bekeken"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
-msgstr ""
+msgstr "Bekeken inhoud verbergen"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:71
 msgid "Search bar visibility"
-msgstr ""
+msgstr "Zoekbalk tonen/verbergen"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:82
-#, fuzzy
 msgid "Search mode"
-msgstr "Zoeken naar titel"
+msgstr "Zoekmodus"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
-msgstr ""
+msgstr "Zoekopdracht"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
