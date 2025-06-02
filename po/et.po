@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-04-07 17:05+0000\n"
+"PO-Revision-Date: 2025-06-03 19:01+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -26,6 +26,8 @@ msgstr "@app_name@"
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
+"Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;filmid;sarjad;seeria;episood;hooaeg;meediakogu;teave;vaata;vaatamine;"
+""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -113,7 +115,7 @@ msgstr "Kasutaja võti TMDB teenuses"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
-msgstr ""
+msgstr "Pea arvet oma lemmiksarjade ja -filmide osas"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:20
 msgid ""
@@ -132,23 +134,20 @@ msgid "Movie Library"
 msgstr ""
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
-#, fuzzy
 msgid "Movie Details"
-msgstr "Filmid"
+msgstr "Filmi üksikasjad"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:52
-#, fuzzy
 msgid "TV Series Library"
-msgstr "Telesarjad"
+msgstr "Telesarjade kogu"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:56
-#, fuzzy
 msgid "TV Series Details"
-msgstr "Telesarjad"
+msgstr "Telesarjade üksikasjad"
 
 #: src/main.py:193
 msgid "Confirm Export?"
-msgstr ""
+msgstr "Kas kinnitad eksportimise?"
 
 #: src/main.py:194
 msgid ""
@@ -174,11 +173,11 @@ msgstr "Ekspordin meediakogu"
 
 #: src/main.py:263
 msgid "Export Completed"
-msgstr ""
+msgstr "Eksportimine on lõppenud"
 
 #: src/main.py:264
 msgid "The library has been exported successfully."
-msgstr ""
+msgstr "Meediakogu eksportimine õnnestus."
 
 #: src/main.py:267 src/main.py:277 src/main.py:408 src/main.py:417
 #: src/preferences.py:256 src/window.py:235
@@ -188,11 +187,11 @@ msgstr "S_obib"
 
 #: src/main.py:273
 msgid "Export failed"
-msgstr ""
+msgstr "Eksportimine ei õnnestunud"
 
 #: src/main.py:274
 msgid "An error occurred while exporting the library."
-msgstr ""
+msgstr "Meediakogu eksportimine ei õnnestunud."
 
 #: src/main.py:329
 msgid "Confirm Import?"
@@ -219,21 +218,23 @@ msgstr "Meediakogu on importimisel"
 
 #: src/main.py:404
 msgid "Import Completed"
-msgstr ""
+msgstr "Importimine on lõppenud"
 
 #: src/main.py:405
 msgid "The library has been imported successfully."
-msgstr ""
+msgstr "Meediakogu importimine õnnestus."
 
 #: src/main.py:413
 msgid "Import failed"
-msgstr ""
+msgstr "Importimine ei õnnestunud"
 
 #: src/main.py:414
 msgid ""
 "Please check the selected archive and try again. Only archives created by "
 "Ticket Booth are supported."
 msgstr ""
+"Palun kontrolli, et valitud impordifail on korrektne. Importida saad vaid "
+"sama rakenduse loodud faile."
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -413,13 +414,13 @@ msgstr "{m} min"
 #: src/pages/details_page.py:650
 #, python-brace-format
 msgid "Updating {title}"
-msgstr ""
+msgstr "Uuendan: {title}"
 
 #. TRANSLATORS: {title} is the content's title
 #: src/pages/details_page.py:657
 #, python-brace-format
 msgid "Update {title}"
-msgstr ""
+msgstr "Uuenda: {title}"
 
 #: src/pages/details_page.py:720
 msgid "Loading Metadata…"
@@ -459,11 +460,13 @@ msgid ""
 "Copyright © 2023 - 2025 Alessandro Iepure\n"
 "Some icons are copyright of the GNOME Project"
 msgstr ""
+"Autoriõigused © 2023 - 2025 Alessandro Iepure\n"
+"Mõnede ikoonide autoriõigused kuuluvad GNOME'i Projektile"
 
 #. TRANSLATORS: replace with your name (with optional email or website)
 #: src/ui/about_dialog.blp:16
 msgid "translator-credits"
-msgstr ""
+msgstr "Priit Jõerüüt 2025"
 
 #: src/ui/dialogs/add_manual.blp:42 src/widgets/search_result_row.py:80
 msgctxt "Category"
@@ -493,59 +496,59 @@ msgstr "Üldised"
 #: src/ui/dialogs/add_manual.blp:89 src/ui/dialogs/edit_season.blp:55
 #: src/ui/pages/edit_episode_page.blp:55
 msgid "Title (required)"
-msgstr ""
+msgstr "Pealkiri (nõutav)"
 
 #: src/ui/dialogs/add_manual.blp:94
 msgid "Release Date"
-msgstr ""
+msgstr "Avaldamise kuupäev"
 
 #: src/ui/dialogs/add_manual.blp:113
 msgid "Genres (comma separated)"
-msgstr ""
+msgstr "Žanrid (eraldatud komadega)"
 
 #: src/ui/dialogs/add_manual.blp:119 src/ui/pages/edit_episode_page.blp:60
 msgid "Runtime (minutes)"
-msgstr ""
+msgstr "Kestus (minutites)"
 
 #: src/ui/dialogs/add_manual.blp:129
 msgid "Tagline"
-msgstr ""
+msgstr "Tunnuslause"
 
 #: src/ui/dialogs/add_manual.blp:135 src/ui/pages/details_page.blp:292
 msgid "Created by"
-msgstr ""
+msgstr "Looja"
 
 #: src/ui/dialogs/add_manual.blp:140 src/ui/pages/edit_episode_page.blp:71
 msgid "Overview"
-msgstr ""
+msgstr "Ülevaade"
 
 #: src/ui/dialogs/add_manual.blp:160
 msgid "Seasons (required)"
-msgstr ""
+msgstr "Hooaegu (nõutav)"
 
 #: src/ui/dialogs/add_manual.blp:161
 msgid "Use the + button to add seasons"
-msgstr ""
+msgstr "Hooaegade lisamiseks kasuta + nuppu"
 
 #: src/ui/dialogs/add_manual.blp:166 src/ui/dialogs/edit_season.blp:67
 msgid "Add"
-msgstr ""
+msgstr "Lisa"
 
 #: src/ui/dialogs/add_manual.blp:179 src/ui/pages/details_page.blp:351
 msgid "Additional Information"
-msgstr ""
+msgstr "Lisateave"
 
 #: src/ui/dialogs/add_manual.blp:198
 msgid "Budget (US$)"
-msgstr ""
+msgstr "Eelarve (USD)"
 
 #: src/ui/dialogs/add_manual.blp:210
 msgid "Revenue (US$)"
-msgstr ""
+msgstr "Tulu (USD)"
 
 #: src/ui/dialogs/add_manual.blp:220
 msgid "In production"
-msgstr ""
+msgstr "Tootmises"
 
 #: src/ui/dialogs/add_tmdb.blp:27
 msgid "Search The Movie Database…"
@@ -562,28 +565,28 @@ msgstr ""
 
 #: src/ui/dialogs/add_tmdb.blp:46
 msgid "No Results Found"
-msgstr ""
+msgstr "Tulemusi ei leidu"
 
 #: src/ui/dialogs/add_tmdb.blp:48
 msgid "Try a different search"
-msgstr ""
+msgstr "Proovi teistsugust otsingut"
 
 #: src/ui/dialogs/edit_season.blp:14
 msgid "Edit Season"
-msgstr ""
+msgstr "Muuda hooaega"
 
 #: src/ui/dialogs/edit_season.blp:61
 msgid "Episodes (required)"
-msgstr ""
+msgstr "Osi (nõutav)"
 
 #: src/ui/dialogs/edit_season.blp:62
 msgid "Use the + button to add episodes"
-msgstr ""
+msgstr "Osade lisamiseks kasuta + nuppu"
 
 #: src/ui/dialogs/message_dialogs.blp:9
 msgctxt "message dialog heading"
 msgid "Clear Cached Data?"
-msgstr ""
+msgstr "Kas kustutame puhverdatud andmed?"
 
 #: src/ui/dialogs/message_dialogs.blp:10
 msgctxt "message dialog body"
@@ -595,12 +598,12 @@ msgstr ""
 #: src/ui/dialogs/message_dialogs.blp:13 src/ui/dialogs/message_dialogs.blp:40
 msgctxt "message dialog action"
 msgid "Cancel"
-msgstr ""
+msgstr "Katkesta"
 
 #: src/ui/dialogs/message_dialogs.blp:14 src/ui/dialogs/message_dialogs.blp:41
 msgctxt "message dialog action"
 msgid "Clear"
-msgstr ""
+msgstr "Tühjenda"
 
 #: src/ui/dialogs/message_dialogs.blp:19
 msgctxt "message dialog heading"
@@ -640,17 +643,17 @@ msgstr "Näita eelistusi"
 #: src/ui/gtk/help-overlay.blp:28
 msgctxt "shortcut window"
 msgid "Search your Watchlist"
-msgstr ""
+msgstr "Otsi oma jälgimisloendist"
 
 #: src/ui/gtk/help-overlay.blp:33
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Välju"
 
 #: src/ui/gtk/help-overlay.blp:39
 msgctxt "shortcut window"
 msgid "Library management"
-msgstr ""
+msgstr "Meediakogu haldus"
 
 #: src/ui/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
@@ -665,15 +668,15 @@ msgstr ""
 #: src/ui/gtk/help-overlay.blp:51
 msgctxt "shortcut window"
 msgid "Refresh library"
-msgstr ""
+msgstr "Uuenda meediakogu"
 
 #: src/ui/pages/details_page.blp:30 src/ui/views/main_view.blp:84
 msgid "Main Menu"
-msgstr ""
+msgstr "Põhimenüü"
 
 #: src/ui/pages/details_page.blp:146
 msgid "Number of Episodes"
-msgstr ""
+msgstr "Osade arv"
 
 #: src/ui/pages/details_page.blp:156
 msgid "Air Date of Next Episode"
@@ -681,52 +684,52 @@ msgstr ""
 
 #: src/ui/pages/details_page.blp:209
 msgid "Update Metadata"
-msgstr ""
+msgstr "Uuenda metateavet"
 
 #: src/ui/pages/details_page.blp:222 src/ui/widgets/episode_row.blp:87
 #: src/ui/widgets/season_expander.blp:42
 msgid "Edit"
-msgstr ""
+msgstr "Muuda"
 
 #: src/ui/pages/details_page.blp:235
 msgid "Delete"
-msgstr ""
+msgstr "Kustuta"
 
 #: src/ui/pages/details_page.blp:264
 msgid "Description"
-msgstr ""
+msgstr "Kirjeldus"
 
 #: src/ui/pages/details_page.blp:320
 msgid "Seasons"
-msgstr ""
+msgstr "Hooajad"
 
 #: src/ui/pages/details_page.blp:379
 msgid "Notes"
-msgstr ""
+msgstr "Märkmed"
 
 #: src/ui/pages/details_page.blp:483 src/ui/views/main_view.blp:234
 msgid "_Preferences"
-msgstr ""
+msgstr "_Eelistused"
 
 #: src/ui/pages/details_page.blp:488 src/ui/views/main_view.blp:239
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klaviatuuri kiirklahvid"
 
 #: src/ui/pages/details_page.blp:493 src/ui/views/main_view.blp:244
 msgid "_About Ticket Booth"
-msgstr ""
+msgstr "_Rakenduse teave: Ticket Booth"
 
 #: src/ui/pages/edit_episode_page.blp:9
 msgid "Edit Episode"
-msgstr ""
+msgstr "Muuda osa"
 
 #: src/ui/pages/edit_episode_page.blp:45
 msgid "Episode Number (required)"
-msgstr ""
+msgstr "Osa number (nõutav)"
 
 #: src/ui/preferences.blp:15 src/ui/views/main_view.blp:131
 msgid "Preferences"
-msgstr ""
+msgstr "Eelistused"
 
 #: src/ui/preferences.blp:18
 msgctxt "preferences"
@@ -745,12 +748,12 @@ msgstr ""
 #: src/ui/preferences.blp:23
 msgctxt "preferences"
 msgid "Complete Setup"
-msgstr ""
+msgstr "Lõpeta seadistamine"
 
 #: src/ui/preferences.blp:34
 msgctxt "preferences"
 msgid "Offline Mode"
-msgstr ""
+msgstr "Vallasrežiim"
 
 #: src/ui/preferences.blp:35
 msgctxt "preferences"
@@ -790,7 +793,7 @@ msgstr ""
 #: src/ui/preferences.blp:52
 msgctxt "preferences"
 msgid "Update Frequency"
-msgstr ""
+msgstr "Uuendamise sagedus"
 
 #: src/ui/preferences.blp:53
 msgctxt "preferences"
@@ -800,22 +803,22 @@ msgstr ""
 #: src/ui/preferences.blp:56
 msgctxt "preferences"
 msgid "Never"
-msgstr ""
+msgstr "Mitte kunagi"
 
 #: src/ui/preferences.blp:57
 msgctxt "preferences"
 msgid "Daily"
-msgstr ""
+msgstr "Kord päevas"
 
 #: src/ui/preferences.blp:58
 msgctxt "preferences"
 msgid "Weekly"
-msgstr ""
+msgstr "Iga nädal"
 
 #: src/ui/preferences.blp:59
 msgctxt "preferences"
 msgid "Monthly"
-msgstr ""
+msgstr "Iga kuu"
 
 #: src/ui/preferences.blp:65
 msgctxt "preferences"
@@ -856,11 +859,11 @@ msgstr ""
 #: src/ui/preferences.blp:104
 msgctxt "preferences"
 msgid "Clear Data"
-msgstr ""
+msgstr "Kustuta andmed"
 
 #: src/ui/views/content_view.blp:14
 msgid "Your Watchlist Is Empty"
-msgstr ""
+msgstr "Sinu jälgimisloend on tühi"
 
 #: src/ui/views/content_view.blp:15
 msgid "Add content with the + button or import from an older watchlist."
@@ -868,15 +871,15 @@ msgstr ""
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:363
 msgid "Your Watchlist"
-msgstr ""
+msgstr "Sinu jälgimisloend"
 
 #: src/ui/views/content_view.blp:140
 msgid "Unwatched"
-msgstr ""
+msgstr "Vaatamata"
 
 #: src/ui/views/db_update_view.blp:29
 msgid "Updating your watchlist"
-msgstr ""
+msgstr "Uuendan sinu jälgimisloendidt"
 
 #: src/ui/views/db_update_view.blp:30
 msgid ""
@@ -893,7 +896,7 @@ msgstr ""
 
 #: src/ui/views/db_update_view.blp:66
 msgid "Activate Notifications?"
-msgstr ""
+msgstr "Kas võtad teavitused kasutusele?"
 
 #: src/ui/views/db_update_view.blp:67
 msgid ""
@@ -903,11 +906,11 @@ msgstr ""
 
 #: src/ui/views/db_update_view.blp:76
 msgid "Activate"
-msgstr ""
+msgstr "Võta kasutusele"
 
 #: src/ui/views/db_update_view.blp:85
 msgid "Deactivate"
-msgstr ""
+msgstr "Eemalda kasutusest"
 
 #: src/ui/views/main_view.blp:69
 msgid "Add a title to your library"
@@ -920,32 +923,31 @@ msgstr ""
 #: src/ui/views/main_view.blp:105
 msgctxt "Search mode"
 msgid "Title"
-msgstr ""
+msgstr "Pealkiri"
 
 #: src/ui/views/main_view.blp:106
 msgctxt "Search mode"
 msgid "Genre"
-msgstr ""
+msgstr "Žanr"
 
 #: src/ui/views/main_view.blp:107
 msgctxt "Search mode"
 msgid "Overview"
-msgstr ""
+msgstr "Ülevaade"
 
 #: src/ui/views/main_view.blp:108
 msgctxt "Search mode"
 msgid "Notes"
-msgstr ""
+msgstr "Märkmed"
 
 #: src/ui/views/main_view.blp:109
-#, fuzzy
 msgctxt "Search mode"
 msgid "TMDB ID"
 msgstr "TMDB tunnus"
 
 #: src/ui/views/main_view.blp:119
 msgid "Search Your Watchlist"
-msgstr ""
+msgstr "Otsi oma jälgimisloendist"
 
 #: src/ui/views/main_view.blp:130
 msgid "Offline Mode Enabled"
@@ -953,15 +955,15 @@ msgstr ""
 
 #: src/ui/views/main_view.blp:161
 msgid "_Sorting"
-msgstr ""
+msgstr "_Järjestamine"
 
 #: src/ui/views/main_view.blp:165
 msgid "A-Z"
-msgstr ""
+msgstr "A-Z"
 
 #: src/ui/views/main_view.blp:171
 msgid "Z-A"
-msgstr ""
+msgstr "Z-A"
 
 #: src/ui/views/main_view.blp:177
 msgid "Date added (newest first)"
@@ -985,19 +987,19 @@ msgstr ""
 
 #: src/ui/views/main_view.blp:208
 msgid "Hide watched"
-msgstr ""
+msgstr "Peida vaadatud osad"
 
 #: src/ui/views/main_view.blp:215
 msgid "_Refresh"
-msgstr ""
+msgstr "_Laadi uuesti"
 
 #: src/ui/views/main_view.blp:222
 msgid "_Import"
-msgstr ""
+msgstr "_Impordi"
 
 #: src/ui/views/main_view.blp:227
 msgid "_Export"
-msgstr ""
+msgstr "_Ekspordi"
 
 #: src/ui/views/main_view.blp:252
 msgid "From The Movie Database (TMDB)"
@@ -1005,23 +1007,23 @@ msgstr ""
 
 #: src/ui/views/main_view.blp:257
 msgid "Manually"
-msgstr ""
+msgstr "Käsitsi"
 
 #: src/ui/widgets/background_indicator.blp:13
 msgid "Background Activities"
-msgstr ""
+msgstr "Tegevused taustal"
 
 #: src/ui/widgets/background_indicator.blp:34
 msgid "No Background Activities"
-msgstr ""
+msgstr "Pole taustategevusi"
 
 #: src/ui/widgets/image_selector.blp:30
 msgid "Edit poster"
-msgstr ""
+msgstr "Muuda plakatit"
 
 #: src/ui/widgets/image_selector.blp:48
 msgid "Delete poster"
-msgstr ""
+msgstr "Kustuta plakat"
 
 #: src/ui/widgets/poster_button.blp:47
 msgid "The series has a new release"
@@ -1037,19 +1039,19 @@ msgstr ""
 
 #: src/ui/widgets/search_result_row.blp:89
 msgid "Add to watchlist"
-msgstr ""
+msgstr "Lisa jälgimisloendisse"
 
 #: src/ui/widgets/theme_switcher.blp:29
 msgid "Follow system style"
-msgstr ""
+msgstr "Kasuta süsteemi kujundust"
 
 #: src/ui/widgets/theme_switcher.blp:43
 msgid "Light style"
-msgstr ""
+msgstr "Hele kujundus"
 
 #: src/ui/widgets/theme_switcher.blp:57
 msgid "Dark style"
-msgstr ""
+msgstr "Tume kujundus"
 
 #: src/views/content_view.py:362
 msgid "Search results"
@@ -1088,7 +1090,7 @@ msgstr ""
 #: src/views/main_view.py:182
 msgctxt "Background activity title"
 msgid "Automatic update"
-msgstr ""
+msgstr "Automaatne uuendus"
 
 #. TRANSLATOR: {title} is the title of the series
 #: src/views/main_view.py:326
@@ -1211,7 +1213,7 @@ msgstr "Need uuendused mõjutavad {count_movies} filmi"
 #. TRANSLATOR: the connector between the two parts of the sentence (foo and bar)
 #: src/views/main_view.py:420
 msgid " and "
-msgstr ""
+msgstr " ja "
 
 #. TRANSLATOR: {count_series} is the number of series
 #: src/views/main_view.py:422
@@ -1239,13 +1241,13 @@ msgstr ""
 #: src/widgets/episode_row.py:273 src/widgets/season_expander.py:147
 msgctxt "alert dialog action"
 msgid "_Delete"
-msgstr ""
+msgstr "_Kustuta"
 
 #: src/widgets/search_result_row.py:100 src/widgets/search_result_row.py:192
 msgid "Already in your watchlist"
-msgstr ""
+msgstr "Juba leidub sinu jälgimisloendis"
 
 #: src/widgets/season_expander.py:144
 msgctxt "alert dialog body"
 msgid "This season contains unsaved metadata."
-msgstr ""
+msgstr "Selles hooajas on salvestamata metateavet."
