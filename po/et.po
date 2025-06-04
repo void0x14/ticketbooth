@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-06-03 19:01+0000\n"
+"PO-Revision-Date: 2025-06-05 16:01+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
@@ -608,7 +608,7 @@ msgstr "Tühjenda"
 #: src/ui/dialogs/message_dialogs.blp:19
 msgctxt "message dialog heading"
 msgid "Clear Stored Data?"
-msgstr ""
+msgstr "Kas kustutame salvestatud andmed?"
 
 #: src/ui/dialogs/message_dialogs.blp:20
 msgctxt "message dialog body"
@@ -823,23 +823,23 @@ msgstr "Iga kuu"
 #: src/ui/preferences.blp:65
 msgctxt "preferences"
 msgid "Use Your API Key"
-msgstr ""
+msgstr "Kasuta oma API võtit"
 
 #: src/ui/preferences.blp:66
 msgctxt "preferences"
 msgid ""
 "Register yours <a href='https://www.themoviedb.org/settings/api'>here</a>"
-msgstr ""
+msgstr "Registreeru <a href='https://www.themoviedb.org/settings/api'>siin</a>"
 
 #: src/ui/preferences.blp:70
 msgctxt "preferences"
 msgid "Your API key"
-msgstr ""
+msgstr "Sinu API võti"
 
 #: src/ui/preferences.blp:75
 msgctxt "preferences"
 msgid "Save Key"
-msgstr ""
+msgstr "Salvesta võti"
 
 #: src/ui/preferences.blp:86
 msgctxt "preferences"
@@ -849,12 +849,12 @@ msgstr ""
 #: src/ui/preferences.blp:90
 msgctxt "preferences"
 msgid "Clear Cache on Exit"
-msgstr ""
+msgstr "Väljumisel kustuta puhverdatud andmed"
 
 #: src/ui/preferences.blp:94
 msgctxt "preferences"
 msgid "Clear Cached Search Data"
-msgstr ""
+msgstr "Kustuta puhverdatud otsinguandmed"
 
 #: src/ui/preferences.blp:104
 msgctxt "preferences"
@@ -892,7 +892,7 @@ msgstr ""
 
 #: src/ui/views/db_update_view.blp:55 src/ui/views/first_run_view.blp:61
 msgid "Try again on next run"
-msgstr ""
+msgstr "Järgmisel korral proovi uuesti"
 
 #: src/ui/views/db_update_view.blp:66
 msgid "Activate Notifications?"
@@ -918,7 +918,7 @@ msgstr ""
 
 #: src/ui/views/main_view.blp:76
 msgid "Show/Hide search bar"
-msgstr ""
+msgstr "Näita/peida otsinguriba"
 
 #: src/ui/views/main_view.blp:105
 msgctxt "Search mode"
@@ -967,19 +967,19 @@ msgstr "Z-A"
 
 #: src/ui/views/main_view.blp:177
 msgid "Date added (newest first)"
-msgstr ""
+msgstr "Lisamise kuupäev (esmalt uuemad)"
 
 #: src/ui/views/main_view.blp:183
 msgid "Date added (oldest first)"
-msgstr ""
+msgstr "Lisamise kuupäev (esmalt vanemad)"
 
 #: src/ui/views/main_view.blp:189
 msgid "Release date (newest first)"
-msgstr ""
+msgstr "Väljaandmise kuupäev (esmalt uuemad)"
 
 #: src/ui/views/main_view.blp:195
 msgid "Release date (oldest first)"
-msgstr ""
+msgstr "Väljaandmise kuupäev (esmalt vanemad)"
 
 #: src/ui/views/main_view.blp:203
 msgid "Separate watched from unwatched"
@@ -1059,7 +1059,7 @@ msgstr "Otsingutulemused"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
-msgstr ""
+msgstr "Ootan võrguühenduse loomist…"
 
 #: src/views/first_run_view.py:103
 msgid ""
@@ -1074,7 +1074,7 @@ msgstr ""
 
 #: src/views/first_run_view.py:108
 msgid "Downloading data"
-msgstr ""
+msgstr "Laadin alla andmeid"
 
 #: src/views/main_view.py:57
 msgctxt "Category"
@@ -1231,7 +1231,7 @@ msgstr ""
 #, python-brace-format
 msgctxt "alert dialog heading"
 msgid "Delete {title}?"
-msgstr ""
+msgstr "Kas kustutame: {title}?"
 
 #: src/widgets/episode_row.py:270
 msgctxt "alert dialog body"
