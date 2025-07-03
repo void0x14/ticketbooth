@@ -26,7 +26,7 @@ msgstr "@app_name@"
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
-"திரைப்படங்கள்; திரைப்படங்கள்; நிகழ்ச்சிகள்; டிவி; தொடர்; அனிம்; வாட்ச்; பட்டியல்; நூலகம்;"
+"திரைப்படங்கள்; படங்கள்; நிகழ்ச்சிகள்; டிவி; தொடர்; அனிம்; வாட்ச்; பட்டியல்; நூலகம்;"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
