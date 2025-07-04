@@ -908,7 +908,7 @@ msgstr "Ваш список спостереження порожній"
 #: src/ui/views/content_view.blp:15
 msgid "Add content with the + button or import from an older watchlist."
 msgstr ""
-"Додайте вміст за допомогою кнопки \"+\" або імпортуйте старій список "
+"Додайте вміст за допомогою кнопки \"+\" або імпортуйте старий список "
 "спостереження."
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:363
@@ -916,19 +916,17 @@ msgid "Your Watchlist"
 msgstr "Ваш список спостереження"
 
 #: src/ui/views/content_view.blp:140
-#, fuzzy
 msgid "Unwatched"
-msgstr "Переглянуте"
+msgstr "Не переглянуте"
 
 #: src/ui/views/db_update_view.blp:29
-#, fuzzy
 msgid "Updating your watchlist"
-msgstr "Вже у вашому списку спостереження"
+msgstr "Оновлюємо ваш список спостереження"
 
 #: src/ui/views/db_update_view.blp:30
 msgid ""
 "After updating Ticket Booth we need to update the local database entries"
-msgstr ""
+msgstr "Після оновлення Ticket Booth, нам потрібно оновити локальну базу даних"
 
 #: src/ui/views/db_update_view.blp:49 src/ui/views/first_run_view.blp:55
 msgid "Use Offline Mode"
@@ -940,22 +938,23 @@ msgstr "Спробуйте ще раз під час наступного зап
 
 #: src/ui/views/db_update_view.blp:66
 msgid "Activate Notifications?"
-msgstr ""
+msgstr "Ввімкнути повідомлення?"
 
 #: src/ui/views/db_update_view.blp:67
 msgid ""
 "Would you like to activate notifications for all series that are still in "
 "production and for all movies that have not yet released?"
 msgstr ""
+"Бажаєте ввімкнути повідомлення для усіх телесеріалів які все ще виходять та "
+"фільмів які ще не вийшли?"
 
 #: src/ui/views/db_update_view.blp:76
-#, fuzzy
 msgid "Activate"
-msgstr "Активна вкладка"
+msgstr "Ввімкнути"
 
 #: src/ui/views/db_update_view.blp:85
 msgid "Deactivate"
-msgstr ""
+msgstr "Вимкнути"
 
 #: src/ui/views/main_view.blp:69
 msgid "Add a title to your library"
@@ -963,20 +962,19 @@ msgstr "Додайте стрічку до своєї бібліотеки"
 
 #: src/ui/views/main_view.blp:76
 msgid "Show/Hide search bar"
-msgstr ""
+msgstr "Показати/сховати панель пошуку"
 
 #: src/ui/views/main_view.blp:105
 msgctxt "Search mode"
 msgid "Title"
-msgstr ""
+msgstr "Назва"
 
 #: src/ui/views/main_view.blp:106
 msgctxt "Search mode"
 msgid "Genre"
-msgstr ""
+msgstr "Жанр"
 
 #: src/ui/views/main_view.blp:107
-#, fuzzy
 msgctxt "Search mode"
 msgid "Overview"
 msgstr "Загальна інформація"
@@ -984,17 +982,16 @@ msgstr "Загальна інформація"
 #: src/ui/views/main_view.blp:108
 msgctxt "Search mode"
 msgid "Notes"
-msgstr ""
+msgstr "Примітки"
 
 #: src/ui/views/main_view.blp:109
 msgctxt "Search mode"
 msgid "TMDB ID"
-msgstr ""
+msgstr "Ідентифікатор TMDB"
 
 #: src/ui/views/main_view.blp:119
-#, fuzzy
 msgid "Search Your Watchlist"
-msgstr "Ваш список спостереження"
+msgstr "Шукати ваш список спостереження"
 
 #: src/ui/views/main_view.blp:130
 msgid "Offline Mode Enabled"
@@ -1002,7 +999,7 @@ msgstr "Ввімкнено автономний режим"
 
 #: src/ui/views/main_view.blp:161
 msgid "_Sorting"
-msgstr "_Упорядкування"
+msgstr "_Сортування"
 
 #: src/ui/views/main_view.blp:165
 msgid "A-Z"
@@ -1030,12 +1027,11 @@ msgstr "Дата випуску (найстаріші спочатку)"
 
 #: src/ui/views/main_view.blp:203
 msgid "Separate watched from unwatched"
-msgstr ""
+msgstr "Відокремити переглянуте від не переглянутого"
 
 #: src/ui/views/main_view.blp:208
-#, fuzzy
 msgid "Hide watched"
-msgstr "Переглянуте"
+msgstr "Сховати переглянуте"
 
 #: src/ui/views/main_view.blp:215
 msgid "_Refresh"
@@ -1043,11 +1039,11 @@ msgstr "_Оновити"
 
 #: src/ui/views/main_view.blp:222
 msgid "_Import"
-msgstr ""
+msgstr "_Імпортувати"
 
 #: src/ui/views/main_view.blp:227
 msgid "_Export"
-msgstr ""
+msgstr "_Експортувати"
 
 #: src/ui/views/main_view.blp:252
 msgid "From The Movie Database (TMDB)"
@@ -1075,15 +1071,15 @@ msgstr "Видалити постер"
 
 #: src/ui/widgets/poster_button.blp:47
 msgid "The series has a new release"
-msgstr ""
+msgstr "Вийшов новий епізод телесеріалу"
 
 #: src/ui/widgets/poster_button.blp:67
 msgid "The series has a new release soon"
-msgstr ""
+msgstr "Скоро вийде нова серія телесеріалу"
 
 #: src/ui/widgets/poster_button.blp:85
 msgid "This title is marked as watched"
-msgstr ""
+msgstr "Ця стрічка позначена як переглянута"
 
 #: src/ui/widgets/search_result_row.blp:89
 msgid "Add to watchlist"
@@ -1103,7 +1099,7 @@ msgstr "Темний стиль"
 
 #: src/views/content_view.py:362
 msgid "Search results"
-msgstr ""
+msgstr "Результати пошуку"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
@@ -1133,10 +1129,9 @@ msgid "Movies"
 msgstr "Фільми"
 
 #: src/views/main_view.py:146
-#, fuzzy
 msgctxt "Notification List activity title"
 msgid "Automatic update of notification list"
-msgstr "Автоматичне оновлення"
+msgstr "Автоматичне оновлення списку повідомлень"
 
 #: src/views/main_view.py:162 src/views/main_view.py:172
 #: src/views/main_view.py:182
@@ -1146,9 +1141,9 @@ msgstr "Автоматичне оновлення"
 
 #. TRANSLATOR: {title} is the title of the series
 #: src/views/main_view.py:326
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "New release for {title}"
-msgstr "Видалити {title}"
+msgstr "Новий випуск  {title}"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:329
