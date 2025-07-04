@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-07-05 16:01+0000\n"
+"PO-Revision-Date: 2025-07-05 16:02+0000\n"
 "Last-Translator: freeducks-debug <209897795+freeducks-"
 "debug@users.noreply.github.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/ticket-booth/"
@@ -1143,19 +1143,19 @@ msgstr "Автоматичне оновлення"
 #: src/views/main_view.py:326
 #, python-brace-format
 msgid "New release for {title}"
-msgstr "Новий випуск  {title}"
+msgstr "Новий випуск {title}"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:329
 #, python-brace-format
 msgid "A new episode of {title} was released {days} day ago."
-msgstr ""
+msgstr "Нова серія {title} вийшла {days} дні(в) тому."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:333
 #, python-brace-format
 msgid "New release for {num} TV series on your watchlist"
-msgstr ""
+msgstr "Нові(а) серії(я) для {num} телесеріалів у вашому списку спостереження"
 
 #. TRANSLATOR: {series} is a list of TV series seperated by a comma
 #. TRANSLATOR: {series} is a list of all series affected seperated by a comma
@@ -1163,7 +1163,7 @@ msgstr ""
 #: src/views/main_view.py:372
 #, python-brace-format
 msgid "The TV Series are {series}."
-msgstr ""
+msgstr "Телесеріали {series}"
 
 #. TRANSLATOR: {title} is the title of the series with a new episode soon
 #: src/views/main_view.py:343
