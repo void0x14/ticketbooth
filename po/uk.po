@@ -1169,25 +1169,26 @@ msgstr "Телесеріали {series}."
 #: src/views/main_view.py:343
 #, python-brace-format
 msgid "{title} will have a release soon"
-msgstr "Нова серія {title} скоро вийде."
+msgstr "Нова серія {title} скоро вийде"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:346
 #, python-brace-format
 msgid "A new episode will release in {days} day."
-msgstr ""
+msgstr "Нова серія вийде через {days} дні(в)."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:350
 #, python-brace-format
 msgid "{num} TV Series on your watchlist will have a new episode soon"
 msgstr ""
+"У {num} телесеріалів у вашому списку спостереження скоро вийдуть нові серії"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:361
 #, python-brace-format
 msgid "{title} has gone out of production"
-msgstr ""
+msgstr "{title} більше не розробляється"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:364
@@ -1196,29 +1197,32 @@ msgid ""
 "{title} has wrapped up its run. Now is the perfect time to revisit your "
 "favorite moments or find the next binge!"
 msgstr ""
+"{title} завершив свою трансляцію. Це ідеальний шанс, щоб передивитися ваші "
+"улюблені моменти або знайти наступну круту стрічку!"
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:367
 #, python-brace-format
 msgid "{num} TV Series of your watchlist have gone out of production"
 msgstr ""
+"{num} телесеріалів у вашому списку спостереження більше не розробляються"
 
 #. TRANSLATOR: {title} is the title of the movie that has had its release
 #: src/views/main_view.py:378
 #, python-brace-format
 msgid "{title} has had its release!"
-msgstr ""
+msgstr "Вийшла нова серія {title}!"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:381
 #, python-brace-format
 msgid "{title} was released {days} day ago."
-msgstr ""
+msgstr "{title} вийшов {days} дні(в) тому."
 
 #: src/views/main_view.py:384
 #, python-brace-format
 msgid "{num} movies on your watchlist have had their releases."
-msgstr ""
+msgstr "{num} фільмів у вашому списку спостереження вийшли у прокатю"
 
 #. TRANSLATOR: {movies} is a list of all movies affected seperated by a comma
 #. TRANSLATOR: {movies} will be list of all series affected seperated by a comma
