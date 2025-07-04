@@ -111,7 +111,7 @@ msgstr "Очищення кешу при виході"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
-msgstr "Ключ користувача TMDB"
+msgstr "Використовувати ключ користувача TMDB"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
@@ -126,7 +126,7 @@ msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
-"Ticket Booth дозволяє створювати список фільмів і серіалів для перегляду, "
+"Каса дозволяє створювати список фільмів і серіалів для перегляду, "
 "відстежувати переглянуті стрічки та знаходити інформацію про найновіші "
 "випуски."
 
@@ -135,17 +135,16 @@ msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
-"Ticket Booth не дозволяє переглядати або завантажувати контент. Цей додаток "
+"Каса не дозволяє переглядати або завантажувати контент. Цей додаток "
 "використовує API TMDB, але не схвалений і не сертифікований TMDB."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
-msgstr ""
+msgstr "Бібліотека кіно"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
-#, fuzzy
 msgid "Movie Details"
-msgstr "Фільми"
+msgstr "Подробиці про фільм"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:52
 #, fuzzy
