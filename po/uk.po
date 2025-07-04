@@ -3,22 +3,24 @@
 # This file is distributed under the same license as the ticketbooth package.
 # DartDeaDia <dartdeadia@protonmail.com>, 2023.
 # Сергій <sergiy.goncharuk.1@gmail.com>, 2024.
+# freeducks-debug <209897795+freeducks-debug@users.noreply.github.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2024-01-07 19:06+0000\n"
-"Last-Translator: Сергій <sergiy.goncharuk.1@gmail.com>\n"
+"PO-Revision-Date: 2025-07-05 16:01+0000\n"
+"Last-Translator: freeducks-debug <209897795+freeducks-"
+"debug@users.noreply.github.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -28,6 +30,8 @@ msgstr "@app_name@"
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
+"Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;кіно;фільми;шоу;вистави;телесеріали;серіали;аніме;анімє;тв;список;перегляду;бібліотека;дивився;"
+""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -50,9 +54,8 @@ msgid "Specifies if the app is run for the first time"
 msgstr "Вказує, чи запускається програма вперше"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
-#, fuzzy
 msgid "Specifies if the database needs an update"
-msgstr "Вказує, чи завантажив застосунок необхідні дані"
+msgstr "Вказує, чи потрібно оновити базу даних"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
@@ -64,24 +67,23 @@ msgstr "Переглянути стиль упорядкування"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
-msgstr ""
+msgstr "Відокремлювати переглянуте від не переглянутого"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
-msgstr ""
+msgstr "Ховати переглянуте"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:71
 msgid "Search bar visibility"
-msgstr ""
+msgstr "Видимість панелі пошуку"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:82
-#, fuzzy
 msgid "Search mode"
-msgstr "Пошук стрiчки"
+msgstr "Режим пошуку"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
-msgstr ""
+msgstr "Запити пошуку"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
@@ -100,9 +102,8 @@ msgid "Last autoupdate date"
 msgstr "Дата останнього автооновлення"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:123
-#, fuzzy
 msgid "Last notification autoupdate date"
-msgstr "Дата останнього автооновлення"
+msgstr "Дата останнього сповіщення автооновлення"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:127
 msgid "Clear cache on exit"
@@ -110,11 +111,11 @@ msgstr "Очищення кешу при виході"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
-msgstr ""
+msgstr "Ключ користувача TMDB"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
-msgstr ""
+msgstr "Ключ користувача TMDB"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
