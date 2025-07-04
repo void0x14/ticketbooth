@@ -59,11 +59,11 @@ msgstr "Вказує, чи потрібно оновити базу даних"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
-msgstr "Вказує, чи завантажив застосунок необхідні дані"
+msgstr "Вказує, чи завантажив додаток усі потрібні дані"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:57
 msgid "View sorting style"
-msgstr "Переглянути стиль упорядкування"
+msgstr "Переглянути стиль сортування"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
@@ -107,7 +107,7 @@ msgstr "Дата останнього сповіщення автооновле�
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:127
 msgid "Clear cache on exit"
-msgstr "Очищення кешу при виході"
+msgstr "Видаляти кеш при виході"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
@@ -126,9 +126,9 @@ msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
-"Ticket Booth дозволяє створювати список фільмів і серіалів для перегляду, "
-"відстежувати переглянуті стрічки та знаходити інформацію про найновіші "
-"випуски."
+"Ticket Booth дозволяє створювати список фільмів і телесеріалів для "
+"перегляду, відстежувати переглянуті стрічки та знаходити інформацію про "
+"найновіші випуски."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:22
 msgid ""
@@ -245,7 +245,7 @@ msgid ""
 "Ticket Booth are supported."
 msgstr ""
 "Будь ласка, перевірте обраний архів та спробуйте ще раз. Підтримуються "
-"тільки архіви створені у \"Каса\"."
+"тільки архіви створені у Ticket Booth."
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -285,8 +285,8 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
-"\"Каса\" зараз використовує {total_space:.2f} МБ. Скористайтеся наведеними "
-"нижче опціями, щоб звільнити місце."
+"Ticket Booth зараз використовує {total_space:.2f} МБ. Скористайтеся "
+"наведеними нижче опціями, щоб звільнити місце."
 
 #: src/preferences.py:502 src/preferences.py:504
 #, python-brace-format
@@ -315,7 +315,7 @@ msgstr "Редагувати фільм"
 
 #: src/dialogs/add_manual_dialog.py:93
 msgid "Edit TV Series"
-msgstr "Редагувати серіал"
+msgstr "Редагувати телесеріал"
 
 #: src/dialogs/add_manual_dialog.py:296
 #, python-brace-format
@@ -355,18 +355,17 @@ msgid "Mark as Watched"
 msgstr "Позначити як переглянуте"
 
 #: src/pages/details_page.py:223
-#, fuzzy
 msgid "Runtime of Movie"
-msgstr "Тривалість (хвилини)"
+msgstr "Тривалість фільму"
 
 #. TRANSLATORS: {num} is the total number of seasons
 #: src/pages/details_page.py:235
 #, python-brace-format
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
-msgstr[0] "{num} Сезон"
-msgstr[1] "{num} Сезонiв"
-msgstr[2] "{num} Сезонiв"
+msgstr[0] "{num} сезон"
+msgstr[1] "{num} сезонiв"
+msgstr[2] "{num} сезонiв"
 
 #: src/pages/details_page.py:239
 #, fuzzy
