@@ -364,26 +364,25 @@ msgstr "Тривалість фільму"
 msgid "{num} Season"
 msgid_plural "{num} Seasons"
 msgstr[0] "{num} сезон"
-msgstr[1] "{num} сезонiв"
-msgstr[2] "{num} сезонiв"
+msgstr[1] "{num} сезони"
+msgstr[2] "{num} сезонів"
 
 #: src/pages/details_page.py:239
-#, fuzzy
 msgid "Number of Seasons"
-msgstr "{num} Сезон"
+msgstr "Кількість сезонів"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:244 src/pages/details_page.py:291
 #, python-brace-format
 msgid "{num} Episode"
 msgid_plural "{num} Episodes"
-msgstr[0] "{num} Серія"
-msgstr[1] "{num} Серій"
-msgstr[2] "{num} Серій"
+msgstr[0] "{num} серія"
+msgstr[1] "{num} серії"
+msgstr[2] "{num} серій"
 
 #: src/pages/details_page.py:478 src/ui/dialogs/add_manual.blp:182
 msgid "Status"
-msgstr "Статус"
+msgstr "Стан"
 
 #: src/pages/details_page.py:486 src/ui/dialogs/add_manual.blp:186
 msgid "Original Language"
@@ -415,7 +414,7 @@ msgstr "Ні"
 
 #: src/pages/details_page.py:538
 msgid "TMDB ID"
-msgstr ""
+msgstr "Ідентифікатор TMDB"
 
 #. TRANSLATORS: {h} and {m} are the runtime hours and minutes respectively
 #: src/pages/details_page.py:564 src/widgets/episode_row.py:185
@@ -479,22 +478,26 @@ msgid ""
 "Copyright © 2023 - 2025 Alessandro Iepure\n"
 "Some icons are copyright of the GNOME Project"
 msgstr ""
+"Авторське право © 2023 - 2025 Alessandro Iepure\n"
+"Деякі піктограми належать проекту GNOME"
 
 #. TRANSLATORS: replace with your name (with optional email or website)
 #: src/ui/about_dialog.blp:16
 msgid "translator-credits"
-msgstr "DartDeaDia"
+msgstr ""
+"DartDeaDia\n"
+"freeducks-debug"
 
 #: src/ui/dialogs/add_manual.blp:42 src/widgets/search_result_row.py:80
 msgctxt "Category"
 msgid "Movie"
-msgstr "Кіно"
+msgstr "Фільм"
 
 #: src/ui/dialogs/add_manual.blp:47 src/views/main_view.py:63
 #: src/widgets/search_result_row.py:82
 msgctxt "Category"
 msgid "TV Series"
-msgstr "Серіали"
+msgstr "Телесеріали"
 
 #: src/ui/dialogs/add_manual.blp:55 src/ui/dialogs/edit_season.blp:24
 msgid "Cancel"
@@ -508,7 +511,7 @@ msgstr "Зберегти"
 #: src/ui/dialogs/add_manual.blp:86 src/ui/dialogs/edit_season.blp:52
 #: src/ui/pages/edit_episode_page.blp:41
 msgid "General"
-msgstr "Загальне"
+msgstr "Загальні"
 
 #: src/ui/dialogs/add_manual.blp:89 src/ui/dialogs/edit_season.blp:55
 #: src/ui/pages/edit_episode_page.blp:55
@@ -580,7 +583,7 @@ msgid ""
 "Start typing in the search bar to see a list of matching movies and TV series"
 msgstr ""
 "Почніть вводити текст у рядку пошуку, щоб побачити список відповідних "
-"фільмів і серіалів"
+"фільмів і телесеріалів"
 
 #: src/ui/dialogs/add_tmdb.blp:46
 msgid "No Results Found"
@@ -603,10 +606,9 @@ msgid "Use the + button to add episodes"
 msgstr "Використовуйте кнопку \"+\", щоб додати серії"
 
 #: src/ui/dialogs/message_dialogs.blp:9
-#, fuzzy
 msgctxt "message dialog heading"
 msgid "Clear Cached Data?"
-msgstr "Очистити кешовані дані пошуку"
+msgstr "Видалити кешовані дані?"
 
 #: src/ui/dialogs/message_dialogs.blp:10
 msgctxt "message dialog body"
@@ -614,24 +616,23 @@ msgid ""
 "This operation will clear all stored cache data. It might get downloaded "
 "again next time you add content from TMDB."
 msgstr ""
+"Ця дія видалить усі збережені кешовані дані. Вони можуть бути "
+"перезавантажені наступного разу, коли будете додавати нові стрічки з TMDB."
 
 #: src/ui/dialogs/message_dialogs.blp:13 src/ui/dialogs/message_dialogs.blp:40
-#, fuzzy
 msgctxt "message dialog action"
 msgid "Cancel"
 msgstr "Скасувати"
 
 #: src/ui/dialogs/message_dialogs.blp:14 src/ui/dialogs/message_dialogs.blp:41
-#, fuzzy
 msgctxt "message dialog action"
 msgid "Clear"
-msgstr "Очистити дані"
+msgstr "Видалити"
 
 #: src/ui/dialogs/message_dialogs.blp:19
-#, fuzzy
 msgctxt "message dialog heading"
 msgid "Clear Stored Data?"
-msgstr "Очистити дані"
+msgstr "Видалити збережені дані?"
 
 #: src/ui/dialogs/message_dialogs.blp:20
 msgctxt "message dialog body"
@@ -639,21 +640,20 @@ msgid ""
 "This operation will permanentlly delete the selected data, loosing all your "
 "changes."
 msgstr ""
+"Ця операція назавжди видалить обрані дані, що призведе до втрати ваших змін."
 
 #: src/ui/dialogs/message_dialogs.blp:26
-#, fuzzy
 msgid "Movies"
 msgstr "Фільми"
 
 #: src/ui/dialogs/message_dialogs.blp:34
-#, fuzzy
 msgid "TV Series"
-msgstr "Серіали"
+msgstr "Телесеріали"
 
 #: src/ui/gtk/help-overlay.blp:15
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Загальне"
+msgstr "Загальні"
 
 #: src/ui/gtk/help-overlay.blp:18
 msgctxt "shortcut window"
@@ -666,10 +666,9 @@ msgid "Show Preferences"
 msgstr "Показати налаштування"
 
 #: src/ui/gtk/help-overlay.blp:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Search your Watchlist"
-msgstr "Ваш список спостереження"
+msgstr "Шукати ваш список спостереження"
 
 #: src/ui/gtk/help-overlay.blp:33
 msgctxt "shortcut window"
@@ -684,7 +683,7 @@ msgstr "Керування бібліотекою"
 #: src/ui/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Add title from TMDB"
-msgstr "Додати назву з бази даних TMDB"
+msgstr "Додати стрічку з бази даних TMDB"
 
 #: src/ui/gtk/help-overlay.blp:47
 msgctxt "shortcut window"
@@ -701,13 +700,12 @@ msgid "Main Menu"
 msgstr "Головне меню"
 
 #: src/ui/pages/details_page.blp:146
-#, fuzzy
 msgid "Number of Episodes"
-msgstr "{num} Серія"
+msgstr "Кількість серій"
 
 #: src/ui/pages/details_page.blp:156
 msgid "Air Date of Next Episode"
-msgstr ""
+msgstr "Дата виходу наступної серії"
 
 #: src/ui/pages/details_page.blp:209
 msgid "Update Metadata"
@@ -732,7 +730,7 @@ msgstr "Сезони"
 
 #: src/ui/pages/details_page.blp:379
 msgid "Notes"
-msgstr ""
+msgstr "Примітки"
 
 #: src/ui/pages/details_page.blp:483 src/ui/views/main_view.blp:234
 msgid "_Preferences"
@@ -764,16 +762,16 @@ msgid "Optional Download"
 msgstr "Необов'язкове завантаження"
 
 #: src/ui/preferences.blp:19
-#, fuzzy
 msgctxt "preferences"
 msgid ""
 "For a complete experience, a download of 15 KB is required. The initial "
 "setup could not retrieve the data automatically and thus offline mode has "
 "been activated. It will remain active until the setup is completed."
 msgstr ""
-"Для повноцінної роботи необхідно завантажити 15 КБ. Під час початкового "
-"налаштування не вдалося отримати дані автоматично, тому було ввімкнено "
-"автономний режим. Він залишатиметься активним до завершення налаштування."
+"Для повноцінної роботи необхідно завантажити 15 КБ даних. Під час "
+"початкового налаштування не вдалося отримати дані автоматично, тому було "
+"ввімкнено автономний режим. Він залишатиметься активним до завершення "
+"налаштування."
 
 #. TRANSLATORS: When clicked, it completes the initial setup by downloading the optional data.
 #: src/ui/preferences.blp:23
@@ -864,24 +862,24 @@ msgstr "Щомісяця"
 #: src/ui/preferences.blp:65
 msgctxt "preferences"
 msgid "Use Your API Key"
-msgstr ""
+msgstr "Використовувати ваш API ключ"
 
 #: src/ui/preferences.blp:66
 msgctxt "preferences"
 msgid ""
 "Register yours <a href='https://www.themoviedb.org/settings/api'>here</a>"
 msgstr ""
+"Зареєструйте свій <a href='https://www.themoviedb.org/settings/api'>тут</a>"
 
 #: src/ui/preferences.blp:70
 msgctxt "preferences"
 msgid "Your API key"
-msgstr ""
+msgstr "Ваш API ключ"
 
 #: src/ui/preferences.blp:75
-#, fuzzy
 msgctxt "preferences"
 msgid "Save Key"
-msgstr "Зберегти"
+msgstr "Зберегти ключ"
 
 #: src/ui/preferences.blp:86
 msgctxt "preferences"
@@ -908,9 +906,10 @@ msgid "Your Watchlist Is Empty"
 msgstr "Ваш список спостереження порожній"
 
 #: src/ui/views/content_view.blp:15
-#, fuzzy
 msgid "Add content with the + button or import from an older watchlist."
-msgstr "Додайте контент за допомогою кнопки \"+\"."
+msgstr ""
+"Додайте вміст за допомогою кнопки \"+\" або імпортуйте старій список "
+"спостереження."
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:363
 msgid "Your Watchlist"
