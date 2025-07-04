@@ -1163,13 +1163,13 @@ msgstr "Нові(а) серії(я) для {num} телесеріалів у в�
 #: src/views/main_view.py:372
 #, python-brace-format
 msgid "The TV Series are {series}."
-msgstr "Телесеріали {series}"
+msgstr "Телесеріали {series}."
 
 #. TRANSLATOR: {title} is the title of the series with a new episode soon
 #: src/views/main_view.py:343
 #, python-brace-format
 msgid "{title} will have a release soon"
-msgstr ""
+msgstr "Нова серія {title} скоро вийде."
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:346
