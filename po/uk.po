@@ -87,7 +87,7 @@ msgstr "Запити пошуку"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
-msgstr "Колірна схема додатку"
+msgstr "Стиль додатку"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:102
 msgid "Language used by TMDB results"
@@ -126,7 +126,7 @@ msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
-"Каса дозволяє створювати список фільмів і серіалів для перегляду, "
+"Ticket Booth дозволяє створювати список фільмів і серіалів для перегляду, "
 "відстежувати переглянуті стрічки та знаходити інформацію про найновіші "
 "випуски."
 
@@ -135,40 +135,40 @@ msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
-"Каса не дозволяє переглядати або завантажувати контент. Цей додаток "
+"Ticket Booth не дозволяє переглядати або завантажувати контент. Цей додаток "
 "використовує API TMDB, але не схвалений і не сертифікований TMDB."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
-msgstr "Бібліотека кіно"
+msgstr "Бібліотека фільмів"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
 msgid "Movie Details"
 msgstr "Подробиці про фільм"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:52
-#, fuzzy
 msgid "TV Series Library"
-msgstr "Серіали"
+msgstr "Бібліотека телесеріалів"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:56
-#, fuzzy
 msgid "TV Series Details"
-msgstr "Серіали"
+msgstr "Подробиці про телесеріал"
 
 #: src/main.py:193
 msgid "Confirm Export?"
-msgstr ""
+msgstr "Підтвердити експорт?"
 
 #: src/main.py:194
 msgid ""
 "Exporting your library will create an archive containing all your data. You "
 "can import this archive later to restore your library."
 msgstr ""
+"Експортування вашої бібліотеки створить архів в якому будуть зберігатися усі "
+"ваші дані. Ви можете потім імпортувати цей архів, щоб відновити вашу "
+"бібліотеку."
 
 #: src/main.py:196 src/main.py:332 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
-#, fuzzy
 msgctxt "alert dialog action"
 msgid "_Cancel"
 msgstr "_Скасувати"
@@ -176,73 +176,76 @@ msgstr "_Скасувати"
 #: src/main.py:197
 msgctxt "alert dialog action"
 msgid "_Export"
-msgstr ""
+msgstr "_Експортувати"
 
 #: src/main.py:230
 msgctxt "Background activity title"
 msgid "Exporting library"
-msgstr ""
+msgstr "Експорт бібліотеки"
 
 #: src/main.py:263
 msgid "Export Completed"
-msgstr ""
+msgstr "Експорт завершено"
 
 #: src/main.py:264
 msgid "The library has been exported successfully."
-msgstr ""
+msgstr "Успішно експортовано бібліотеку."
 
 #: src/main.py:267 src/main.py:277 src/main.py:408 src/main.py:417
 #: src/preferences.py:256 src/window.py:235
-#, fuzzy
 msgctxt "alert dialog action"
 msgid "_OK"
-msgstr "ОК"
+msgstr "_Добре"
 
 #: src/main.py:273
 msgid "Export failed"
-msgstr ""
+msgstr "Не вдалося експортувати"
 
 #: src/main.py:274
 msgid "An error occurred while exporting the library."
-msgstr ""
+msgstr "Сталася помилка при експортуванні бібліотеки."
 
 #: src/main.py:329
 msgid "Confirm Import?"
-msgstr ""
+msgstr "Підтвердити імпорт?"
 
 #: src/main.py:330
 msgid ""
 "Importing a library will merge it with the current library. This action "
 "cannot be undone and in case of conflicts, the new data will be kept."
 msgstr ""
+"Імпортування бібліотеки об'єднає її з поточною. Цю дію буде неможливо "
+"скасувати і у випадку конфліктів, нові дані будуть записані замість старих."
 
 #: src/main.py:333
 msgctxt "alert dialog action"
 msgid "_Import"
-msgstr ""
+msgstr "_Імпортувати"
 
 #: src/main.py:366
 msgctxt "Background activity title"
 msgid "Importing library"
-msgstr ""
+msgstr "Імпортування бібліотеки"
 
 #: src/main.py:404
 msgid "Import Completed"
-msgstr ""
+msgstr "Імпортування завершено"
 
 #: src/main.py:405
 msgid "The library has been imported successfully."
-msgstr ""
+msgstr "Успішно імпортовано бібліотеку."
 
 #: src/main.py:413
 msgid "Import failed"
-msgstr ""
+msgstr "Не вдалося імпортувати"
 
 #: src/main.py:414
 msgid ""
 "Please check the selected archive and try again. Only archives created by "
 "Ticket Booth are supported."
 msgstr ""
+"Будь ласка, перевірте обраний архів та спробуйте ще раз. Підтримуються "
+"тільки архіви створені у \"Каса\"."
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -263,7 +266,7 @@ msgstr "Очистити кеш"
 #: src/preferences.py:373 src/preferences.py:375
 #, python-brace-format
 msgid "{number} Titles"
-msgstr "{number} Стрiчок"
+msgstr "{number} стрiчок"
 
 #: src/preferences.py:412
 msgctxt "Background activity title"
@@ -273,7 +276,7 @@ msgstr "Видалити всі фільми"
 #: src/preferences.py:423
 msgctxt "Background activity title"
 msgid "Delete all TV Series"
-msgstr "Видалити всі серіали"
+msgstr "Видалити всі телесеріали"
 
 #. TRANSLATORS: {total_space:.2f} is the total occupied space
 #: src/preferences.py:498
@@ -282,8 +285,8 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
-"Ticket Booth зараз використовує {total_space:.2f} МБ. Скористайтеся "
-"наведеними нижче опціями, щоб звільнити місце."
+"\"Каса\" зараз використовує {total_space:.2f} МБ. Скористайтеся наведеними "
+"нижче опціями, щоб звільнити місце."
 
 #: src/preferences.py:502 src/preferences.py:504
 #, python-brace-format
