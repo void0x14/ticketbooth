@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the ticketbooth package.
 # Priit Jõerüüt <hwlate@joeruut.com>, 2025.
+# Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-06-05 16:01+0000\n"
-"Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
+"PO-Revision-Date: 2025-07-23 21:02+0000\n"
+"Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
 "Language: et\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -87,7 +88,7 @@ msgstr "Rakenduse kujundus"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:102
 msgid "Language used by TMDB results"
-msgstr "TMDB päringutulemuste keel"
+msgstr "TMDB päringutulemustes kasutatav keel"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:115
 msgid "Frequency to check for new data on TMDB"
@@ -131,7 +132,7 @@ msgstr ""
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
-msgstr ""
+msgstr "Filmikogu"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
 msgid "Movie Details"
@@ -278,7 +279,7 @@ msgstr ""
 #: src/preferences.py:502 src/preferences.py:504
 #, python-brace-format
 msgid "{space:.2f} MB occupied"
-msgstr ""
+msgstr "Kasutusel on {space:.2f} MB"
 
 #: src/window.py:232
 msgctxt "message dialog heading"
@@ -352,7 +353,7 @@ msgstr[1] "{num} hooaega"
 
 #: src/pages/details_page.py:239
 msgid "Number of Seasons"
-msgstr "Hooaegu"
+msgstr "Hooaegade arv"
 
 #. TRANSLATORS: {num} is the total number of episodes
 #: src/pages/details_page.py:244 src/pages/details_page.py:291
@@ -766,7 +767,7 @@ msgstr ""
 #: src/ui/preferences.blp:38
 msgctxt "preferences"
 msgid "Enable Offline Mode"
-msgstr ""
+msgstr "Kasuta vallasrežiimi"
 
 #: src/ui/preferences.blp:43
 msgctxt "preferences"
@@ -788,7 +789,7 @@ msgstr ""
 #: src/ui/preferences.blp:47
 msgctxt "preferences"
 msgid "TMDB Results Language"
-msgstr ""
+msgstr "TMDB päringutulemuste keel"
 
 #: src/ui/preferences.blp:52
 msgctxt "preferences"
@@ -983,7 +984,7 @@ msgstr "Väljaandmise kuupäev (esmalt vanemad)"
 
 #: src/ui/views/main_view.blp:203
 msgid "Separate watched from unwatched"
-msgstr ""
+msgstr "Eralda vaadatud ja vaatamata sisu"
 
 #: src/ui/views/main_view.blp:208
 msgid "Hide watched"
@@ -1027,15 +1028,15 @@ msgstr "Kustuta plakat"
 
 #: src/ui/widgets/poster_button.blp:47
 msgid "The series has a new release"
-msgstr ""
+msgstr "Sellel telesarjal on ilmunud uus osa"
 
 #: src/ui/widgets/poster_button.blp:67
 msgid "The series has a new release soon"
-msgstr ""
+msgstr "Sellel telesarjal ilmub varsti uus osa"
 
 #: src/ui/widgets/poster_button.blp:85
 msgid "This title is marked as watched"
-msgstr ""
+msgstr "See on märgitud vaadatuks"
 
 #: src/ui/widgets/search_result_row.blp:89
 msgid "Add to watchlist"
@@ -1070,7 +1071,7 @@ msgstr ""
 
 #: src/views/first_run_view.py:107
 msgid "Getting things ready…"
-msgstr ""
+msgstr "Sätin asju valmis…"
 
 #: src/views/first_run_view.py:108
 msgid "Downloading data"
@@ -1096,7 +1097,7 @@ msgstr "Automaatne uuendus"
 #: src/views/main_view.py:326
 #, python-brace-format
 msgid "New release for {title}"
-msgstr ""
+msgstr "Telesarja uus osa: {title}"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:329
