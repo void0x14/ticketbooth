@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-09-07 13:14+0000\n"
+"PO-Revision-Date: 2025-09-07 13:56+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
@@ -755,7 +755,7 @@ msgstr "Eelistused"
 #: src/ui/preferences.blp:18
 msgctxt "preferences"
 msgid "Optional Download"
-msgstr ""
+msgstr "Täiendav allalaadimine"
 
 #: src/ui/preferences.blp:19
 msgctxt "preferences"
@@ -764,6 +764,10 @@ msgid ""
 "setup could not retrieve the data automatically and thus offline mode has "
 "been activated. It will remain active until the setup is completed."
 msgstr ""
+"Parimaks kasutuskogemuseks on vajalik 15 kB andmemahu allalaadimine. Algsel "
+"seadistamisel seda polnud võimalik automaatselt teha ja rakendus toimib "
+"hetkel vallasrežiimis, mis jääb kasutusele seni, kuni vajalikud andmed on "
+"olemas."
 
 #. TRANSLATORS: When clicked, it completes the initial setup by downloading the optional data.
 #: src/ui/preferences.blp:23
@@ -783,6 +787,10 @@ msgid ""
 "some features that require the Internet and/or access to third party APIs "
 "will not be available."
 msgstr ""
+"Ticket Booth võib tervikuna toimida vallasrežiimis ehk võrguühendust "
+"kasutamata. Kui soovid seda kasutada, siis ei toimi need funtsionaalsused, "
+"mis eeldavad internetiühenduse ja/või kolmandate osapoolte liideste "
+"pruukimist."
 
 #: src/ui/preferences.blp:38
 msgctxt "preferences"
@@ -792,7 +800,7 @@ msgstr "Kasuta vallasrežiimi"
 #: src/ui/preferences.blp:43
 msgctxt "preferences"
 msgid "The Movie Database (TMDB)"
-msgstr ""
+msgstr "The Movie Database (TMDB)"
 
 #: src/ui/preferences.blp:44
 msgctxt "preferences"
@@ -805,6 +813,13 @@ msgid ""
 "to TMDB</a>. Additionally, an automatic update is performed on a frequency "
 "of your choosing."
 msgstr ""
+"TMDB oskab suurele osale sisust lisada andmeid paljudes keeltes. Ticket "
+"Booth laadib andmed keeles, mille alljärgnevalt valid. Kui sinu valitud "
+"keeles teavet pole, siis kasutatakse inglise keelt või materjali algset "
+"keelt. Kui kumbagi pole saadaval, siis näidatakse tühja andmevälja. Kui sul "
+"on võimalik, siis plun osale <a href='https://www.themoviedb.org/bible/"
+"new_content'>TMDB sisu täiendamisel</a>. Lisaks uuendatakse sinu valitud "
+"ajavahemiku järel andmeid."
 
 #: src/ui/preferences.blp:47
 msgctxt "preferences"
@@ -865,7 +880,7 @@ msgstr "Salvesta võti"
 #: src/ui/preferences.blp:86
 msgctxt "preferences"
 msgid "Housekeeping"
-msgstr ""
+msgstr "Andmehooldus"
 
 #: src/ui/preferences.blp:90
 msgctxt "preferences"
@@ -926,6 +941,8 @@ msgid ""
 "Would you like to activate notifications for all series that are still in "
 "production and for all movies that have not yet released?"
 msgstr ""
+"Kas soovid saada teavitusi telesarjade kohta, kuhu lisandub uusi osi ning "
+"veel avaldamata filmide kohta?"
 
 #: src/ui/views/db_update_view.blp:76
 msgid "Activate"
@@ -1090,6 +1107,10 @@ msgid ""
 "are not connected to the Internet or don't want to wait, you can skip this "
 "step and continue offline without some features."
 msgstr ""
+"Parimaks kasutuskogemuseks on vajalik 15 kB andmemahu allalaadimine. Aga kui "
+"sinu või arvutis seadmes puudub internetiühendus või sa ei soovi oodata, "
+"siis võid selle sammu vahele jätta ning jätkata vallasrežiimis, kus mõni "
+"funktsionaalsus ei toimi."
 
 #: src/views/first_run_view.py:107
 msgid "Getting things ready…"
@@ -1107,7 +1128,7 @@ msgstr "Filmid"
 #: src/views/main_view.py:146
 msgctxt "Notification List activity title"
 msgid "Automatic update of notification list"
-msgstr ""
+msgstr "Teavituste loendi automaatne uuendus"
 
 #: src/views/main_view.py:162 src/views/main_view.py:172
 #: src/views/main_view.py:182
@@ -1173,6 +1194,8 @@ msgid ""
 "{title} has wrapped up its run. Now is the perfect time to revisit your "
 "favorite moments or find the next binge!"
 msgstr ""
+"„{title}“ telesarjale ei lisandu enam uusi osi. Nüüd ongi õige aeg oma "
+"lemmikosade ülevaatamiseks või uue lemmiku leidmiseks!"
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:367
