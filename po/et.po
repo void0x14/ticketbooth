@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-07-23 21:02+0000\n"
+"PO-Revision-Date: 2025-09-07 13:14+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/et/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -123,12 +123,18 @@ msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
+"Ticket Booth aitab sul hallata vaadatud ja vaatamata filmide ning "
+"telesarjade loendit ning kergemini saada teavet uute avaldatud filmide ja "
+"sarjade osade kohta."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:22
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
+"Ticket Booth ei aita sul neid filme ega telesarju vaadata või alla laadida. "
+"Kasutusel on TMDB veebiteenuse liidestus, kuid rakendus pole TMDB poolt "
+"heaks kiidetud."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
@@ -155,6 +161,9 @@ msgid ""
 "Exporting your library will create an archive containing all your data. You "
 "can import this archive later to restore your library."
 msgstr ""
+"Oma meediakogu eksportimisel luuakse arhiivifail, milles sisalduvad kõik "
+"sinu kogutud andme. Saad seda arhiivi kasutada hilisemal meediakogu "
+"taastamisel."
 
 #: src/main.py:196 src/main.py:332 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
@@ -256,7 +265,7 @@ msgstr "Kustuta puhverdatud andmed"
 #: src/preferences.py:373 src/preferences.py:375
 #, python-brace-format
 msgid "{number} Titles"
-msgstr ""
+msgstr "{number} filmi või sarja"
 
 #: src/preferences.py:412
 msgctxt "Background activity title"
@@ -275,6 +284,8 @@ msgid ""
 "Ticket Booth is currently using {total_space:.2f} MB. Use the options below "
 "to free some space."
 msgstr ""
+"Ticket Booth kasutab hetkel {total_space:.2f} MB andmeruumi. Alljärgnevate "
+"tegevustega saad andmeruumi vabastada."
 
 #: src/preferences.py:502 src/preferences.py:504
 #, python-brace-format
@@ -284,7 +295,7 @@ msgstr "Kasutusel on {space:.2f} MB"
 #: src/window.py:232
 msgctxt "message dialog heading"
 msgid "Background Activies Running"
-msgstr ""
+msgstr "Taustateenused on töös"
 
 #: src/window.py:233
 msgctxt "message dialog body"
@@ -293,6 +304,9 @@ msgid ""
 "before exiting. Look for the indicator in the header bar to check when they "
 "are finished."
 msgstr ""
+"Mõned taustal tehtavad tegevused on pooleli ja enne väljumist peavad nad töö "
+"lõpetama. Päiseribal nähtava indikaatori alusel saad teada, kas nende töö on "
+"lõppenud."
 
 #: src/dialogs/add_manual_dialog.py:90
 msgid "Edit Movie"
@@ -438,7 +452,7 @@ msgstr "Kas kustutame: {title}?"
 #: src/pages/details_page.py:742
 msgctxt "message dialog body"
 msgid "This title will be deleted from your watchlist."
-msgstr ""
+msgstr "See film või sari eemaldatakse sinu jälgimisloendist."
 
 #: src/pages/details_page.py:743
 msgctxt "message dialog action"
@@ -553,16 +567,18 @@ msgstr "Tootmises"
 
 #: src/ui/dialogs/add_tmdb.blp:27
 msgid "Search The Movie Database…"
-msgstr ""
+msgstr "Otsi TMDB-st…"
 
 #: src/ui/dialogs/add_tmdb.blp:37
 msgid "Search For a Title"
-msgstr ""
+msgstr "Otsi filmi või sarja"
 
 #: src/ui/dialogs/add_tmdb.blp:39
 msgid ""
 "Start typing in the search bar to see a list of matching movies and TV series"
 msgstr ""
+"Hakka otsinguribale kirjutama ning näed päringule vastavaid filme ja "
+"telesarju"
 
 #: src/ui/dialogs/add_tmdb.blp:46
 msgid "No Results Found"
@@ -595,6 +611,8 @@ msgid ""
 "This operation will clear all stored cache data. It might get downloaded "
 "again next time you add content from TMDB."
 msgstr ""
+"Järgnev tegevus kustutab kõik puhverdatud andmed. Järgmisel korral sisu "
+"laadimisel TMDB-st võidakse andmed uuesti lisada."
 
 #: src/ui/dialogs/message_dialogs.blp:13 src/ui/dialogs/message_dialogs.blp:40
 msgctxt "message dialog action"
@@ -617,6 +635,8 @@ msgid ""
 "This operation will permanentlly delete the selected data, loosing all your "
 "changes."
 msgstr ""
+"Selle tegevusega kustutatakse valitud andmed jäädavalt ning kõik sinu tehtud "
+"muudatused lähevad kaotsi."
 
 #: src/ui/dialogs/message_dialogs.blp:26
 msgid "Movies"
@@ -659,12 +679,12 @@ msgstr "Meediakogu haldus"
 #: src/ui/gtk/help-overlay.blp:42
 msgctxt "shortcut window"
 msgid "Add title from TMDB"
-msgstr ""
+msgstr "Lisa film või sari TMDB-sse"
 
 #: src/ui/gtk/help-overlay.blp:47
 msgctxt "shortcut window"
 msgid "Add title manually"
-msgstr ""
+msgstr "Lisa film või sari käsitsi"
 
 #: src/ui/gtk/help-overlay.blp:51
 msgctxt "shortcut window"
@@ -681,7 +701,7 @@ msgstr "Osade arv"
 
 #: src/ui/pages/details_page.blp:156
 msgid "Air Date of Next Episode"
-msgstr ""
+msgstr "Järgmine osa on vaadatav"
 
 #: src/ui/pages/details_page.blp:209
 msgid "Update Metadata"
@@ -799,7 +819,7 @@ msgstr "Uuendamise sagedus"
 #: src/ui/preferences.blp:53
 msgctxt "preferences"
 msgid "Restart Ticket Booth after changing"
-msgstr ""
+msgstr "Peale muutmist käivita Ticket Booth uuesti"
 
 #: src/ui/preferences.blp:56
 msgctxt "preferences"
@@ -869,6 +889,8 @@ msgstr "Sinu jälgimisloend on tühi"
 #: src/ui/views/content_view.blp:15
 msgid "Add content with the + button or import from an older watchlist."
 msgstr ""
+"Pluss-nupust saad lisada uut sisu või lihtsalt impordi varasem "
+"jälgimisloendis."
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:363
 msgid "Your Watchlist"
@@ -880,16 +902,16 @@ msgstr "Vaatamata"
 
 #: src/ui/views/db_update_view.blp:29
 msgid "Updating your watchlist"
-msgstr "Uuendan sinu jälgimisloendidt"
+msgstr "Uuendan sinu jälgimisloendit"
 
 #: src/ui/views/db_update_view.blp:30
 msgid ""
 "After updating Ticket Booth we need to update the local database entries"
-msgstr ""
+msgstr "Peale Ticket Boothi uuendamist on vaja uuendada ka kasutatav andmebaas"
 
 #: src/ui/views/db_update_view.blp:49 src/ui/views/first_run_view.blp:55
 msgid "Use Offline Mode"
-msgstr ""
+msgstr "Kasuta vallasrežiimi"
 
 #: src/ui/views/db_update_view.blp:55 src/ui/views/first_run_view.blp:61
 msgid "Try again on next run"
@@ -915,7 +937,7 @@ msgstr "Eemalda kasutusest"
 
 #: src/ui/views/main_view.blp:69
 msgid "Add a title to your library"
-msgstr ""
+msgstr "Lisa film või sari meediakogusse"
 
 #: src/ui/views/main_view.blp:76
 msgid "Show/Hide search bar"
@@ -952,7 +974,7 @@ msgstr "Otsi oma jälgimisloendist"
 
 #: src/ui/views/main_view.blp:130
 msgid "Offline Mode Enabled"
-msgstr ""
+msgstr "Vallasrežiim on kasutusel"
 
 #: src/ui/views/main_view.blp:161
 msgid "_Sorting"
@@ -1004,7 +1026,7 @@ msgstr "_Ekspordi"
 
 #: src/ui/views/main_view.blp:252
 msgid "From The Movie Database (TMDB)"
-msgstr ""
+msgstr "Allikas: The Movie Database (TMDB)"
 
 #: src/ui/views/main_view.blp:257
 msgid "Manually"
@@ -1103,13 +1125,13 @@ msgstr "Telesarja uus osa: {title}"
 #: src/views/main_view.py:329
 #, python-brace-format
 msgid "A new episode of {title} was released {days} day ago."
-msgstr ""
+msgstr "„{title}“ sarja uus osa avaldati {days} päeva tagasi."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:333
 #, python-brace-format
 msgid "New release for {num} TV series on your watchlist"
-msgstr ""
+msgstr "{num}-l sinu jälgimisloendis leiduval telesarjal avaldati uus osa"
 
 #. TRANSLATOR: {series} is a list of TV series seperated by a comma
 #. TRANSLATOR: {series} is a list of all series affected seperated by a comma
@@ -1123,25 +1145,26 @@ msgstr "Telesarjad on: {series}."
 #: src/views/main_view.py:343
 #, python-brace-format
 msgid "{title} will have a release soon"
-msgstr ""
+msgstr "„{title}“ sarjal avaldatakse õige pea uus osa"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:346
 #, python-brace-format
 msgid "A new episode will release in {days} day."
-msgstr ""
+msgstr "Uus osa avaldatakse {days} päeva pärast."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:350
 #, python-brace-format
 msgid "{num} TV Series on your watchlist will have a new episode soon"
 msgstr ""
+"{num}-l sinu jälgimisloendis leiduval telesarjal avaldatakse varsti uus osa"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:361
 #, python-brace-format
 msgid "{title} has gone out of production"
-msgstr ""
+msgstr "„{title}“ sarjale enam ei lisandu uusi osi"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:364
@@ -1156,23 +1179,24 @@ msgstr ""
 #, python-brace-format
 msgid "{num} TV Series of your watchlist have gone out of production"
 msgstr ""
+"{num}-l sinu jälgimisloendis leiduvale telesarjale enam uusi osi ei lisandu"
 
 #. TRANSLATOR: {title} is the title of the movie that has had its release
 #: src/views/main_view.py:378
 #, python-brace-format
 msgid "{title} has had its release!"
-msgstr ""
+msgstr "„{title}“ on avaldatud!"
 
 #. TRANSLATOR: {title} is the title of the series and {days} the number of days
 #: src/views/main_view.py:381
 #, python-brace-format
 msgid "{title} was released {days} day ago."
-msgstr ""
+msgstr "„{title}“ avaldati {days} päeva tagasi."
 
 #: src/views/main_view.py:384
 #, python-brace-format
 msgid "{num} movies on your watchlist have had their releases."
-msgstr ""
+msgstr "Sinu jälgimisloendi {num}-l kirjel on avaldatud jätkuosi."
 
 #. TRANSLATOR: {movies} is a list of all movies affected seperated by a comma
 #. TRANSLATOR: {movies} will be list of all series affected seperated by a comma
@@ -1185,25 +1209,25 @@ msgstr "Filmid on: {movies}."
 #: src/views/main_view.py:393
 #, python-brace-format
 msgid "{title} will have its release soon!"
-msgstr ""
+msgstr "„{title}“ filmil avaldatakse varsti jätkuosa!"
 
 #. TRANSLATOR: {title} is the title of the movie and {days} the number of days
 #: src/views/main_view.py:396
 #, python-brace-format
 msgid "{title} will have its release in {days} day."
-msgstr ""
+msgstr "„{title}“ filmi jätkuosa avaldatakse {days} päeva pärast."
 
 #. TRANSLATOR: {num} is the number of movies
 #: src/views/main_view.py:400
 #, python-brace-format
 msgid "{num} movies on your watchlist will have their releases soon"
-msgstr ""
+msgstr "Sinu jälgimisloendi {num}-l filmil avaldatakse varsti jätkuosa"
 
 #. TRANSLATOR: {num} is the number of affected items
 #: src/views/main_view.py:413
 #, python-brace-format
 msgid "{num} items of your watchlist have an update"
-msgstr ""
+msgstr "Sinu jälgimisloendi {num}-l kirjel on uuendusi"
 
 #. TRANSLATOR: {count_movies} is the number of movies
 #: src/views/main_view.py:418 src/views/main_view.py:427
@@ -1220,13 +1244,13 @@ msgstr " ja "
 #: src/views/main_view.py:422
 #, python-brace-format
 msgid " {count_series} TV serie"
-msgstr ""
+msgstr " {count_series} telesarja"
 
 #. TRANSLATOR: {count_series} is the number of series
 #: src/views/main_view.py:430
 #, python-brace-format
 msgid "These updates affect {count_series} TV serie"
-msgstr ""
+msgstr "Need muudatusel kohanduvad {count_series}-le telesarjale"
 
 #: src/widgets/episode_row.py:267 src/widgets/season_expander.py:141
 #, python-brace-format
@@ -1237,7 +1261,7 @@ msgstr "Kas kustutame: {title}?"
 #: src/widgets/episode_row.py:270
 msgctxt "alert dialog body"
 msgid "All changes to this episode will be lost."
-msgstr ""
+msgstr "Kõik selle osaga seotud muudatused lähevad kaotsi."
 
 #: src/widgets/episode_row.py:273 src/widgets/season_expander.py:147
 msgctxt "alert dialog action"
