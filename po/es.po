@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the ticketbooth package.
 # Óscar Fernández Díaz <oscfdezdz@users.noreply.hosted.weblate.org>, 2023.
 # "Emilio S." <emism.translations@gmail.com>, 2025.
+# Ignacio Muñoz C <ignaciomunozc88@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-04-14 23:01+0000\n"
-"Last-Translator: \"Emilio S.\" <emism.translations@gmail.com>\n"
+"PO-Revision-Date: 2025-09-20 03:01+0000\n"
+"Last-Translator: Ignacio Muñoz C <ignaciomunozc88@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/es/>\n"
 "Language: es\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -26,7 +27,7 @@ msgstr "@app_name@"
 
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
-msgstr ""
+msgstr "Películas;Films;Shows;TV;Series;Anime;Lista;Seguimiento;Biblioteca;"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -49,9 +50,8 @@ msgid "Specifies if the app is run for the first time"
 msgstr "Especifica si la aplicación se ejecuta por primera vez"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:39
-#, fuzzy
 msgid "Specifies if the database needs an update"
-msgstr "Especifica si la aplicación ha descargado los datos necesarios"
+msgstr "Especifica si la base de datos requiere actualización"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
@@ -79,7 +79,7 @@ msgstr "Modo de búsqueda"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
-msgstr ""
+msgstr "Búsqueda"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
@@ -107,15 +107,15 @@ msgstr "Limpiar caché al salir"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
-msgstr ""
+msgstr "Usar la clave de usuario de TMDB"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
-msgstr ""
+msgstr "Clave de usuario en TMDB"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
-msgstr "No pierda de vista sus programas favoritos"
+msgstr "Haz seguimiento a tus programas favoritos"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:20
 msgid ""
@@ -136,32 +136,31 @@ msgstr ""
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
-msgstr ""
+msgstr "Biblioteca de Películas"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
-#, fuzzy
 msgid "Movie Details"
-msgstr "Películas"
+msgstr "Detalle de Películas"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:52
-#, fuzzy
 msgid "TV Series Library"
-msgstr "Series de TV"
+msgstr "Biblioteca de Series de TV"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:56
-#, fuzzy
 msgid "TV Series Details"
-msgstr "Series de TV"
+msgstr "Detalles de Series de TV"
 
 #: src/main.py:193
 msgid "Confirm Export?"
-msgstr ""
+msgstr "¿Confirma exportar?"
 
 #: src/main.py:194
 msgid ""
 "Exporting your library will create an archive containing all your data. You "
 "can import this archive later to restore your library."
 msgstr ""
+"Exportar la biblioteca creará un archivo con todos sus datos. Puedes "
+"importar posteriormente para restaurar la biblioteca."
 
 #: src/main.py:196 src/main.py:332 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
@@ -181,11 +180,11 @@ msgstr "Exportar biblioteca"
 
 #: src/main.py:263
 msgid "Export Completed"
-msgstr ""
+msgstr "Exportación Completa"
 
 #: src/main.py:264
 msgid "The library has been exported successfully."
-msgstr ""
+msgstr "La biblioteca ha sido exportada con éxito."
 
 #: src/main.py:267 src/main.py:277 src/main.py:408 src/main.py:417
 #: src/preferences.py:256 src/window.py:235
@@ -194,13 +193,12 @@ msgid "_OK"
 msgstr "_Aceptar"
 
 #: src/main.py:273
-#, fuzzy
 msgid "Export failed"
-msgstr "_Exportar"
+msgstr "Exportación fallida"
 
 #: src/main.py:274
 msgid "An error occurred while exporting the library."
-msgstr ""
+msgstr "Ha ocurrido un error mientras se exportaba la biblioteca."
 
 #: src/main.py:329
 msgid "Confirm Import?"
@@ -211,35 +209,39 @@ msgid ""
 "Importing a library will merge it with the current library. This action "
 "cannot be undone and in case of conflicts, the new data will be kept."
 msgstr ""
+"Importar una biblioteca unirá los datos nuevos con los previamente "
+"existentes. Esta acción no puede deshacerse, y en caso de conflictos, se "
+"mantendrán los datos nuevos."
 
 #: src/main.py:333
 msgctxt "alert dialog action"
 msgid "_Import"
-msgstr ""
+msgstr "_Importar"
 
 #: src/main.py:366
 msgctxt "Background activity title"
 msgid "Importing library"
-msgstr ""
+msgstr "Importando la biblioteca"
 
 #: src/main.py:404
 msgid "Import Completed"
-msgstr ""
+msgstr "Importación Completa"
 
 #: src/main.py:405
 msgid "The library has been imported successfully."
-msgstr ""
+msgstr "La biblioteca se ha importado exitosamente."
 
 #: src/main.py:413
-#, fuzzy
 msgid "Import failed"
-msgstr "_Importar"
+msgstr "_Importación fallida"
 
 #: src/main.py:414
 msgid ""
 "Please check the selected archive and try again. Only archives created by "
 "Ticket Booth are supported."
 msgstr ""
+"Favor verifica el archivo seleccionado y prueba nuevamente. Solo archivos de "
+"bibliotecas creados por Ticket Booth son soportados."
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -476,7 +478,9 @@ msgstr ""
 #. TRANSLATORS: replace with your name (with optional email or website)
 #: src/ui/about_dialog.blp:16
 msgid "translator-credits"
-msgstr "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
+msgstr ""
+"Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
+"Ignacio Muñoz C <ignaciomunozc88@gmail.com>"
 
 #: src/ui/dialogs/add_manual.blp:42 src/widgets/search_result_row.py:80
 msgctxt "Category"
@@ -606,6 +610,8 @@ msgid ""
 "This operation will clear all stored cache data. It might get downloaded "
 "again next time you add content from TMDB."
 msgstr ""
+"Esta operación borrará todos los datos guardados en caché. Podrían ser "
+"descargados posteriormente al agregar contenido desde TMDB."
 
 #: src/ui/dialogs/message_dialogs.blp:13 src/ui/dialogs/message_dialogs.blp:40
 msgctxt "message dialog action"
@@ -628,6 +634,8 @@ msgid ""
 "This operation will permanentlly delete the selected data, loosing all your "
 "changes."
 msgstr ""
+"Esta operación borrará permanentemente los datos seleccionados, perdiendo "
+"todos los cambios realizados."
 
 #: src/ui/dialogs/message_dialogs.blp:26
 msgid "Movies"
@@ -653,10 +661,9 @@ msgid "Show Preferences"
 msgstr "Mostrar preferencias"
 
 #: src/ui/gtk/help-overlay.blp:28
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Search your Watchlist"
-msgstr "Su lista de seguimiento"
+msgstr "Buscar en tu lista de seguimiento"
 
 #: src/ui/gtk/help-overlay.blp:33
 msgctxt "shortcut window"
@@ -688,9 +695,8 @@ msgid "Main Menu"
 msgstr "Menú principal"
 
 #: src/ui/pages/details_page.blp:146
-#, fuzzy
 msgid "Number of Episodes"
-msgstr "{num} episodio"
+msgstr "Cantidad de Episodios"
 
 #: src/ui/pages/details_page.blp:156
 msgid "Air Date of Next Episode"
@@ -751,7 +757,6 @@ msgid "Optional Download"
 msgstr "Descarga opcional"
 
 #: src/ui/preferences.blp:19
-#, fuzzy
 msgctxt "preferences"
 msgid ""
 "For a complete experience, a download of 15 KB is required. The initial "
@@ -897,9 +902,9 @@ msgid "Your Watchlist Is Empty"
 msgstr "Su lista de seguimiento está vacía"
 
 #: src/ui/views/content_view.blp:15
-#, fuzzy
 msgid "Add content with the + button or import from an older watchlist."
-msgstr "Añada contenido con el botón +."
+msgstr ""
+"Agrega contenido con el botón + o importe desde una biblioteca anterior."
 
 #: src/ui/views/content_view.blp:111 src/views/content_view.py:363
 msgid "Your Watchlist"
@@ -937,6 +942,8 @@ msgid ""
 "Would you like to activate notifications for all series that are still in "
 "production and for all movies that have not yet released?"
 msgstr ""
+"¿Deseas activar las notificaciones para todas las series que se mantienen en "
+"producción y para todas las películas que no han sido estrenadas aún?"
 
 #: src/ui/views/db_update_view.blp:76
 msgid "Activate"
@@ -957,27 +964,24 @@ msgstr "Mostrar/ocultar la barra de búsqueda"
 #: src/ui/views/main_view.blp:105
 msgctxt "Search mode"
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: src/ui/views/main_view.blp:106
 msgctxt "Search mode"
 msgid "Genre"
-msgstr ""
+msgstr "Género"
 
 #: src/ui/views/main_view.blp:107
-#, fuzzy
 msgctxt "Search mode"
 msgid "Overview"
-msgstr "Vista general"
+msgstr "Resumen"
 
 #: src/ui/views/main_view.blp:108
-#, fuzzy
 msgctxt "Search mode"
 msgid "Notes"
 msgstr "Notas"
 
 #: src/ui/views/main_view.blp:109
-#, fuzzy
 msgctxt "Search mode"
 msgid "TMDB ID"
 msgstr "ID de TMDB"
@@ -1064,15 +1068,15 @@ msgstr "Eliminar póster"
 
 #: src/ui/widgets/poster_button.blp:47
 msgid "The series has a new release"
-msgstr ""
+msgstr "La serie tiene un nuevo estreno"
 
 #: src/ui/widgets/poster_button.blp:67
 msgid "The series has a new release soon"
-msgstr ""
+msgstr "La serie pronto estrenará un nuevo episodio"
 
 #: src/ui/widgets/poster_button.blp:85
 msgid "This title is marked as watched"
-msgstr ""
+msgstr "Este título está marcado como visto"
 
 #: src/ui/widgets/search_result_row.blp:89
 msgid "Add to watchlist"
@@ -1092,7 +1096,7 @@ msgstr "Estilo oscuro"
 
 #: src/views/content_view.py:362
 msgid "Search results"
-msgstr ""
+msgstr "Resultados de búsqueda"
 
 #: src/views/first_run_view.py:101
 msgid "Waiting for Network…"
@@ -1142,13 +1146,13 @@ msgstr "Nuevo estreno para {title}"
 #: src/views/main_view.py:329
 #, python-brace-format
 msgid "A new episode of {title} was released {days} day ago."
-msgstr ""
+msgstr "Un nuevo episodio de {title} se estrenó hace {days} días."
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:333
 #, python-brace-format
 msgid "New release for {num} TV series on your watchlist"
-msgstr ""
+msgstr "Nuevos estrenos disponibles en {num} Series de tu lista de seguimiento"
 
 #. TRANSLATOR: {series} is a list of TV series seperated by a comma
 #. TRANSLATOR: {series} is a list of all series affected seperated by a comma
@@ -1191,12 +1195,14 @@ msgid ""
 "{title} has wrapped up its run. Now is the perfect time to revisit your "
 "favorite moments or find the next binge!"
 msgstr ""
+"{title} ha finalizado su emisión. ¡Ahora es el momento perfecto para revivir "
+"tus momentos favoritos o encontrar tu próxima maratón!"
 
 #. TRANSLATOR: {num} is the number of TV Series
 #: src/views/main_view.py:367
 #, python-brace-format
 msgid "{num} TV Series of your watchlist have gone out of production"
-msgstr ""
+msgstr "{num} Series de tu lista de seguimiento han terminado su emisión"
 
 #. TRANSLATOR: {title} is the title of the movie that has had its release
 #: src/views/main_view.py:378
@@ -1213,7 +1219,7 @@ msgstr "{title} fue estrenado hace {days} días."
 #: src/views/main_view.py:384
 #, python-brace-format
 msgid "{num} movies on your watchlist have had their releases."
-msgstr ""
+msgstr "{num} películas de tu lista de seguimiento se han estrenado."
 
 #. TRANSLATOR: {movies} is a list of all movies affected seperated by a comma
 #. TRANSLATOR: {movies} will be list of all series affected seperated by a comma
@@ -1238,13 +1244,13 @@ msgstr "{title} tendrá su estreno en {days} días."
 #: src/views/main_view.py:400
 #, python-brace-format
 msgid "{num} movies on your watchlist will have their releases soon"
-msgstr ""
+msgstr "{num} películas de tu lista de seguimiento se estrenarán pronto"
 
 #. TRANSLATOR: {num} is the number of affected items
 #: src/views/main_view.py:413
 #, python-brace-format
 msgid "{num} items of your watchlist have an update"
-msgstr ""
+msgstr "{num} títulos de tu lista de seguimiento se han actualizado"
 
 #. TRANSLATOR: {count_movies} is the number of movies
 #: src/views/main_view.py:418 src/views/main_view.py:427
@@ -1267,10 +1273,10 @@ msgstr " {count_series} serie(s) de TV"
 #: src/views/main_view.py:430
 #, python-brace-format
 msgid "These updates affect {count_series} TV serie"
-msgstr ""
+msgstr "Esta actualización afecta a {count_series} series"
 
 #: src/widgets/episode_row.py:267 src/widgets/season_expander.py:141
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgctxt "alert dialog heading"
 msgid "Delete {title}?"
 msgstr "¿Eliminar {title}?"
