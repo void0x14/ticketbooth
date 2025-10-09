@@ -4,13 +4,15 @@
 # Óscar Fernández Díaz <oscfdezdz@users.noreply.hosted.weblate.org>, 2023.
 # "Emilio S." <emism.translations@gmail.com>, 2025.
 # Ignacio Muñoz C <ignaciomunozc88@gmail.com>, 2025.
+# Ignacio Muñoz C <ignaciomunozc88@users.noreply.hosted.weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-09-20 03:01+0000\n"
-"Last-Translator: Ignacio Muñoz C <ignaciomunozc88@gmail.com>\n"
+"PO-Revision-Date: 2025-10-10 02:07+0000\n"
+"Last-Translator: Ignacio Muñoz C "
+"<ignaciomunozc88@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/es/>\n"
 "Language: es\n"
@@ -396,7 +398,7 @@ msgstr "Ingresos"
 
 #: src/pages/details_page.py:529
 msgid "In Production"
-msgstr "En producción"
+msgstr "En Producción"
 
 #: src/pages/details_page.py:532
 msgid "Yes"
@@ -996,7 +998,7 @@ msgstr "Modo sin conexión activado"
 
 #: src/ui/views/main_view.blp:161
 msgid "_Sorting"
-msgstr "_Ordenación"
+msgstr "_Orden"
 
 #: src/ui/views/main_view.blp:165
 msgid "A-Z"
