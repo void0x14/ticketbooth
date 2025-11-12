@@ -5,6 +5,9 @@ using Gtk 4.0;
 using Adw 1;
 
 template $ContentView: Adw.Bin {
+
+  map => $_on_map();
+
   Adw.ViewStack _stack {
     Adw.ViewStackPage {
       name: "empty";
@@ -94,7 +97,7 @@ template $ContentView: Adw.Bin {
     Adw.ViewStackPage {
       name: "filled";
 
-      child: ScrolledWindow {
+      child: ScrolledWindow _scrolled_window {
         Box {
           orientation: vertical;
 
