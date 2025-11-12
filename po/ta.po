@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-04-20 23:01+0000\n"
+"PO-Revision-Date: 2025-07-04 05:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/ta/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.1-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -26,6 +26,7 @@ msgstr "@app_name@"
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
+"திரைப்படங்கள்; படங்கள்; நிகழ்ச்சிகள்; டிவி; தொடர்; அனிம்; வாட்ச்; பட்டியல்; நூலகம்;"
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -135,22 +136,19 @@ msgstr ""
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
-msgstr ""
+msgstr "திரைப்பட நூலகம்"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
-#, fuzzy
 msgid "Movie Details"
-msgstr "திரைப்படங்கள்"
+msgstr "திரைப்பட தகவல்கள்"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:52
-#, fuzzy
 msgid "TV Series Library"
-msgstr "தொலைக்காட்சி தொடர்"
+msgstr "தொலைக்காட்சி தொடர் நூலகம்"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:56
-#, fuzzy
 msgid "TV Series Details"
-msgstr "தொலைக்காட்சி தொடர்"
+msgstr "தொலைக்காட்சி தொடர் தகவல்கள்"
 
 #: src/main.py:193
 msgid "Confirm Export?"
@@ -182,11 +180,11 @@ msgstr "ஏற்றுமதி நூலகம்"
 
 #: src/main.py:263
 msgid "Export Completed"
-msgstr ""
+msgstr "ஏற்றுமதி முடிந்தது"
 
 #: src/main.py:264
 msgid "The library has been exported successfully."
-msgstr ""
+msgstr "நூலகம் வெற்றிகரமாக ஏற்றுமதி செய்யப்பட்டுள்ளது."
 
 #: src/main.py:267 src/main.py:277 src/main.py:408 src/main.py:417
 #: src/preferences.py:256 src/window.py:235
@@ -195,13 +193,12 @@ msgid "_OK"
 msgstr "_Ok"
 
 #: src/main.py:273
-#, fuzzy
 msgid "Export failed"
-msgstr "ஏற்றுமதி (_E)"
+msgstr "ஏற்றுமதி தோல்வியடைந்தது"
 
 #: src/main.py:274
 msgid "An error occurred while exporting the library."
-msgstr ""
+msgstr "நூலகத்தை ஏற்றுமதி செய்யும் போது பிழை ஏற்பட்டது."
 
 #: src/main.py:329
 msgid "Confirm Import?"
@@ -227,22 +224,23 @@ msgstr "இறக்குமதி நூலகம்"
 
 #: src/main.py:404
 msgid "Import Completed"
-msgstr ""
+msgstr "இறக்குமதி முடிந்தது"
 
 #: src/main.py:405
 msgid "The library has been imported successfully."
-msgstr ""
+msgstr "நூலகம் வெற்றிகரமாக இறக்குமதி செய்யப்பட்டுள்ளது."
 
 #: src/main.py:413
-#, fuzzy
 msgid "Import failed"
-msgstr "_ முக்கிய நற்பொருத்தம்"
+msgstr "இறக்குமதி தோல்வியடைந்தது"
 
 #: src/main.py:414
 msgid ""
 "Please check the selected archive and try again. Only archives created by "
 "Ticket Booth are supported."
 msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட காப்பகத்தை சரிபார்த்து மீண்டும் முயற்சிக்கவும். டிக்கெட் சாவடி உருவாக்கிய "
+"காப்பகங்கள் மட்டுமே ஆதரிக்கப்படுகின்றன."
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -960,30 +958,27 @@ msgstr "தேடல் பட்டியைக் காட்டவும்/
 #: src/ui/views/main_view.blp:105
 msgctxt "Search mode"
 msgid "Title"
-msgstr ""
+msgstr "தலைப்பு"
 
 #: src/ui/views/main_view.blp:106
 msgctxt "Search mode"
 msgid "Genre"
-msgstr ""
+msgstr "வகை"
 
 #: src/ui/views/main_view.blp:107
-#, fuzzy
 msgctxt "Search mode"
 msgid "Overview"
 msgstr "கண்ணோட்டம்"
 
 #: src/ui/views/main_view.blp:108
-#, fuzzy
 msgctxt "Search mode"
 msgid "Notes"
 msgstr "குறிப்புகள்"
 
 #: src/ui/views/main_view.blp:109
-#, fuzzy
 msgctxt "Search mode"
 msgid "TMDB ID"
-msgstr "டி.எம்.டி.பி ஐடி"
+msgstr "டிஎம்டிபி ஐடி"
 
 #: src/ui/views/main_view.blp:119
 msgid "Search Your Watchlist"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ticketbooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-11 10:41+0200\n"
-"PO-Revision-Date: 2025-02-23 09:02+0000\n"
+"PO-Revision-Date: 2025-07-27 14:05+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/ticket-booth/"
 "ticket-booth/fa/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10.1-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. TRANSLATORS: do not translate
 #: data/me.iepure.Ticketbooth.desktop.in:8
@@ -26,6 +26,8 @@ msgstr "گیشه"
 #: data/me.iepure.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
+"Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;Ticket;Booth;فیلم;سریال;نمایش;تلویزیون;سینما;انیمه;باجه;بلیت;"
+""
 
 #: data/me.iepure.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
@@ -120,31 +122,32 @@ msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
 msgstr ""
+"گیشه می‌گذارد سیاههٔ پخشتان از فیلم‌ها و سریال‌ها را ساخته، عنوانین تماشا شده را "
+"ردیابی کرده و اطّلاعاتی دربارهٔ جدیدترین ارائه‌ها بیابید."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:22
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
 msgstr ""
+"گیشه نمی‌گذارد محتوا را دیده یا بار بگیرید. این کاره از میانای برنامه‌نویسی "
+"TMDB استفاده می‌کند؛ ولی از سویش توصیه نمی‌شود."
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
-msgstr ""
+msgstr "کتابخانهٔ فیلم"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:48
-#, fuzzy
 msgid "Movie Details"
-msgstr "فیلم‌ها"
+msgstr "جزییات فیلم"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:52
-#, fuzzy
 msgid "TV Series Library"
-msgstr "سریال‌ها"
+msgstr "کتابخانهٔ سریال‌ها"
 
 #: data/me.iepure.Ticketbooth.metainfo.xml.in:56
-#, fuzzy
 msgid "TV Series Details"
-msgstr "سریال‌ها"
+msgstr "جزییات سریال"
 
 #: src/main.py:193
 msgid "Confirm Export?"
@@ -155,6 +158,8 @@ msgid ""
 "Exporting your library will create an archive containing all your data. You "
 "can import this archive later to restore your library."
 msgstr ""
+"برون‌ریزی کتابخانه‌تان بایگانی‌ای شامل همهٔ داده‌هیتان ایجاد خواهد کرد. می‌توانید "
+"بعداً این بایگانی را بازگردانید."
 
 #: src/main.py:196 src/main.py:332 src/widgets/episode_row.py:272
 #: src/widgets/season_expander.py:146
@@ -174,11 +179,11 @@ msgstr "برون‌ریزی کتابخانه"
 
 #: src/main.py:263
 msgid "Export Completed"
-msgstr ""
+msgstr "برون‌ریزی کامل شد"
 
 #: src/main.py:264
 msgid "The library has been exported successfully."
-msgstr ""
+msgstr "کتابخانه با موفّقیت برون ریزی شد."
 
 #: src/main.py:267 src/main.py:277 src/main.py:408 src/main.py:417
 #: src/preferences.py:256 src/window.py:235
@@ -187,13 +192,12 @@ msgid "_OK"
 msgstr "_تأیید"
 
 #: src/main.py:273
-#, fuzzy
 msgid "Export failed"
-msgstr "_برون‌ریزی"
+msgstr "برون‌ریزی شکست خورد"
 
 #: src/main.py:274
 msgid "An error occurred while exporting the library."
-msgstr ""
+msgstr "هنگام برون‌ریزی کتابخانه خطایی رخ داد."
 
 #: src/main.py:329
 msgid "Confirm Import?"
@@ -204,6 +208,8 @@ msgid ""
 "Importing a library will merge it with the current library. This action "
 "cannot be undone and in case of conflicts, the new data will be kept."
 msgstr ""
+"درون‌ریزی کتابخانه آن را با کتابخانهٔ کنونی ادغام خواهد کرد. این کنش بازگشت‌"
+"پذیر نبوده و در صورت تداخل، داده‌های جدید حفظ خواهند شد."
 
 #: src/main.py:333
 msgctxt "alert dialog action"
@@ -217,22 +223,23 @@ msgstr "درون‌ریزی کتابخانه"
 
 #: src/main.py:404
 msgid "Import Completed"
-msgstr ""
+msgstr "درون‌ریزی کامل شد"
 
 #: src/main.py:405
 msgid "The library has been imported successfully."
-msgstr ""
+msgstr "کتابخانه با موفّقیت درون‌ریزی شد."
 
 #: src/main.py:413
-#, fuzzy
 msgid "Import failed"
-msgstr "_درون‌ریزی"
+msgstr "درون‌ریزی شکست خورد"
 
 #: src/main.py:414
 msgid ""
 "Please check the selected archive and try again. Only archives created by "
 "Ticket Booth are supported."
 msgstr ""
+"لطفاً بایگانی گزیده را بررسی کرده و دوباره تلاش کنید. تنها بایگانی‌های ایجاد "
+"شده با گیشه پیشیبانی می‌شوند."
 
 #: src/preferences.py:253
 msgctxt "message dialog heading"
@@ -926,27 +933,24 @@ msgstr "نمایش یا نهفتن نوار جست‌وجو"
 #: src/ui/views/main_view.blp:105
 msgctxt "Search mode"
 msgid "Title"
-msgstr ""
+msgstr "عنوان"
 
 #: src/ui/views/main_view.blp:106
 msgctxt "Search mode"
 msgid "Genre"
-msgstr ""
+msgstr "سبک"
 
 #: src/ui/views/main_view.blp:107
-#, fuzzy
 msgctxt "Search mode"
 msgid "Overview"
 msgstr "نمای کلی"
 
 #: src/ui/views/main_view.blp:108
-#, fuzzy
 msgctxt "Search mode"
 msgid "Notes"
 msgstr "یادداشت‌ها"
 
 #: src/ui/views/main_view.blp:109
-#, fuzzy
 msgctxt "Search mode"
 msgid "TMDB ID"
 msgstr "شناسهٔ TMDB"
@@ -1140,7 +1144,7 @@ msgstr "قسمتی جدید {days} روز دیگر پخش می‌شود."
 #: src/views/main_view.py:350
 #, python-brace-format
 msgid "{num} TV Series on your watchlist will have a new episode soon"
-msgstr ""
+msgstr "{num} تا از سریال‌های فهرست تماشایتان به زودی قسمتی جدید خواهند داشت"
 
 #. TRANSLATOR: {title} is the title of the series that has gone out of production
 #: src/views/main_view.py:361
@@ -1202,7 +1206,7 @@ msgstr "{title} ‏{days} روز دیگر پخش می‌شود."
 #: src/views/main_view.py:400
 #, python-brace-format
 msgid "{num} movies on your watchlist will have their releases soon"
-msgstr ""
+msgstr "{num} تا از فیلم‌های سیاههٔ تماشایتان به زودی اکران خواهند شد"
 
 #. TRANSLATOR: {num} is the number of affected items
 #: src/views/main_view.py:413
