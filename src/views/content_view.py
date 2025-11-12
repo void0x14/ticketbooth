@@ -7,7 +7,7 @@ import logging
 from gettext import gettext as _
 from typing import Callable
 
-from gi.repository import Adw, GObject, Gtk
+from gi.repository import Adw, GObject, Gtk, GLib
 
 import src.providers.local_provider as local
 
@@ -41,6 +41,7 @@ class ContentView(Adw.Bin):
     _stack = Gtk.Template.Child()
     _updating_status_lbl = Gtk.Template.Child()
     _title_lbl = Gtk.Template.Child()
+    _scrolled_window = Gtk.Template.Child()
     _flow_box = Gtk.Template.Child()
     _full_box = Gtk.Template.Child()
     _separated_box = Gtk.Template.Child()
@@ -68,6 +69,24 @@ class ContentView(Adw.Bin):
                               self._on_hide_watched_changed)
         shared.schema.connect('changed::search-query',
                               self._on_search_enabled_changed)
+
+    @Gtk.Template.Callback()
+    def _on_map(self, user_data: object | None) -> None:
+        """
+        Callback for the "map" signal.
+        Restores the scroll position when the view is mapped.
+
+        Args:
+            user_data (object or None): additional data passed to the callback
+        Returns:
+            None
+        """
+        
+        if hasattr(self, '_saved_scroll_value'):
+            vadjustment = self._scrolled_window.get_vadjustment()
+
+            # Restore position after a small delay to ensure content is loaded
+            GLib.idle_add(lambda: vadjustment.set_value(self._saved_scroll_value))
 
     def _on_sort_changed(self, pspec: GObject.ParamSpec, user_data: object | None) -> None:
         """
@@ -213,10 +232,17 @@ class ContentView(Adw.Bin):
             None
         """
 
+        # Create the details page
         logging.info(
             f'Clicked on [{"movie" if self.movie_view else "TV series"}] {content.title}')
         page = DetailsView(content, self)
         page.connect('deleted', lambda *args: self.refresh_view())
+        
+        # Preserve the scroll position
+        vadjustment = self._scrolled_window.get_vadjustment()
+        self._saved_scroll_value = vadjustment.get_value()
+        
+        # Push the details page onto the navigation stack
         self.get_ancestor(Adw.NavigationView).push(page)
 
     def _set_sorting_function(self) -> None:
