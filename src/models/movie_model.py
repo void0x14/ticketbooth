@@ -237,26 +237,101 @@ class MovieModel(GObject.GObject):
 
     def _compute_badge_color(self, path: str) -> bool:
         """
-        Computes whether the badge should use light or dark text based on poster corner brightness.
+        Poster'ın sağ üst köşesinin parlaklığına göre badge rengini hesaplar.
+        
+        MANTIK: Poster'ın köşesi koyuysa → açık renk badge kullan (okunabilirlik için)
+                Poster'ın köşesi açıksa → koyu renk badge kullan
         
         Args:
-            path (str): relative path to the poster image
+            path (str): Poster dosyasının göreceli yolu (örn: "/abc123.jpg")
             
         Returns:
-            bool: True if light text should be used (dark background), False otherwise
+            bool: True = açık renk badge kullan (koyu arka plan)
+                  False = koyu renk badge kullan (açık arka plan)
         """
+        
+        # Varsayılan değer: koyu badge (False)
+        # Eğer bir hata olursa bu değer döner
         color_light = False
+        
+        # TRY bloğu: Dosya açma işlemi başarısız olabilir
+        # Örnek hatalar: dosya yok, bozuk resim, izin hatası
         try:
+            # WITH STATEMENT (Context Manager):
+            # ════════════════════════════════════════════════════════════════
+            # "with" kullandığımızda Python şunu garanti eder:
+            # 1. Blok başında: Image.open() çalışır, dosya açılır
+            # 2. Blok sonunda: Otomatik olarak im.__exit__() çağrılır → dosya kapanır
+            # 3. HATA OLSA BİLE dosya kapanır (finally gibi davranır)
+            # 
+            # ESKİ KOD (HATALI):
+            #   im = Image.open(...)  ← Dosya açık kalıyordu, asla kapanmıyordu
+            #
+            # YENİ KOD (DOĞRU):
+            #   with Image.open(...) as im:  ← Blok bitince otomatik kapanır
+            # ════════════════════════════════════════════════════════════════
             with Image.open(Path(f'{shared.poster_dir}/{path}')) as im:
+                
+                # BOX: Kırpılacak bölgenin koordinatları
+                # Format: (sol, üst, sağ, alt)
+                # ════════════════════════════════════════════════════════════
+                # im.size[0] = resmin genişliği (piksel)
+                # im.size[1] = resmin yüksekliği (piksel)
+                # 
+                # Örnek: 500x750 piksel bir poster için:
+                # box = (500-175, 0, 500, 175) = (325, 0, 500, 175)
+                # Bu, sağ üst köşeden 175x175 piksellik bir kare alır
+                # ════════════════════════════════════════════════════════════
                 box = (im.size[0]-175, 0, im.size[0], 175)
+                
+                # CROP: Resmin belirtilen bölgesini kırp
+                # Bu işlem YENİ bir Image objesi oluşturur (region)
+                # ÖNEMLİ: Bu da bellekte yer kaplar ve kapatılmalı!
                 region = im.crop(box)
+                
+                # İÇ TRY-FINALLY: region objesinin temizliği için
+                # Median hesaplama sırasında hata olsa bile region kapatılmalı
                 try:
+                    # IMAGESTAT: PIL'in istatistik modülü
+                    # .median = her renk kanalı (R, G, B) için ortanca değer
+                    # Örnek sonuç: [128, 130, 125] (R=128, G=130, B=125)
                     median = ImageStat.Stat(region).median
+                    
+                    # PARLAKLIK HESABI:
+                    # ════════════════════════════════════════════════════════
+                    # sum(median) = R + G + B (örn: 128+130+125 = 383)
+                    # 
+                    # Eğer sum < 3 * 128 (384) ise → resim karanlık
+                    # Eğer sum >= 384 ise → resim aydınlık
+                    #
+                    # 128 = 8-bit renk aralığının ortası (0-255)
+                    # 3 kanal × 128 = 384 = "ortalama parlaklık" eşiği
+                    # ════════════════════════════════════════════════════════
                     if sum(median) < 3 * 128:
+                        # Koyu arka plan tespit edildi → açık renk badge kullan
                         color_light = True
+                        
                 finally:
+                    # REGION.CLOSE(): Kırpılmış bölgenin belleğini serbest bırak
+                    # ════════════════════════════════════════════════════════
+                    # im.crop() yeni bir Image objesi oluşturur
+                    # Bu obje de dosya handle'ı tutabilir (özellikle büyük resimlerde)
+                    # finally bloğu: Hata olsa bile bu satır MUTLAKA çalışır
+                    # ════════════════════════════════════════════════════════
                     region.close()
+                    
+            # WITH bloğu bitti → im otomatik olarak kapatıldı (im.close() çağrıldı)
+            
         except (OSError, IOError):
-            # If image cannot be opened, default to dark badge
+            # HATA YAKALAMA:
+            # ════════════════════════════════════════════════════════════════
+            # OSError: Dosya bulunamadı, disk hatası, izin sorunu
+            # IOError: Bozuk resim dosyası, okunamayan format
+            # 
+            # pass = Hiçbir şey yapma, varsayılan değeri (color_light=False) döndür
+            # Kullanıcı deneyimi: Uygulama çökmek yerine koyu badge gösterir
+            # ════════════════════════════════════════════════════════════════
             pass
+        
+        # Hesaplanan değeri döndür
         return color_light
