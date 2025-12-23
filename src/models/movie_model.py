@@ -236,12 +236,27 @@ class MovieModel(GObject.GObject):
             return f'resource://{shared.PREFIX}/blank_poster.jpg', False
 
     def _compute_badge_color(self, path: str) -> bool:
+        """
+        Computes whether the badge should use light or dark text based on poster corner brightness.
+        
+        Args:
+            path (str): relative path to the poster image
+            
+        Returns:
+            bool: True if light text should be used (dark background), False otherwise
+        """
         color_light = False
-        im = Image.open(Path(f'{shared.poster_dir}/{path}'))
-        box = (im.size[0]-175, 0, im.size[0], 175)
-        region = im.crop(box)
-        median = ImageStat.Stat(region).median
-        if sum(median) < 3 * 128:
-            color_light = True
-
+        try:
+            with Image.open(Path(f'{shared.poster_dir}/{path}')) as im:
+                box = (im.size[0]-175, 0, im.size[0], 175)
+                region = im.crop(box)
+                try:
+                    median = ImageStat.Stat(region).median
+                    if sum(median) < 3 * 128:
+                        color_light = True
+                finally:
+                    region.close()
+        except (OSError, IOError):
+            # If image cannot be opened, default to dark badge
+            pass
         return color_light
