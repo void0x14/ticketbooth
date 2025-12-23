@@ -388,6 +388,17 @@ class ContentView(Adw.Bin):
         self._title_lbl.set_label(_("Search results") if shared.schema.get_boolean(
             'search-enabled') else _("Your Watchlist"))
 
-        self.refresh_view()
+        # =============================================================================
+        # 🔧 PERFORMANS DÜZELTMESI
+        # =============================================================================
+        # ESKİ KOD (KALDRILDI):
+        # self.refresh_view()
+        #
+        # NEDEN KALDIRILDI?
+        # - Her harf yazıldığında refresh_view() çağrılıyordu
+        # - Bu tüm SeriesModel'leri yeniden oluşturuyordu
+        # - 1453 içerik × her harf = çok fazla obje oluşturma!
+        # - Sadece filter fonksiyonunu güncellemek yeterli
+        # =============================================================================
 
         self._set_filter_function()

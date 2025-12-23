@@ -103,7 +103,21 @@ class DetailsView(Adw.NavigationPage):
         local.set_recent_change_status(self.content.id, False, type(    # type: ignore
             content) is MovieModel)  # reset recent_change since it was clicked on
 
-        self.content_view.refresh_view()
+        # =============================================================================
+        # 🔧 PERFORMANS DÜZELTMESI
+        # =============================================================================
+        # ESKİ KOD (KALDRILDI):
+        # self.content_view.refresh_view()
+        #
+        # NEDEN KALDIRILDI?
+        # - refresh_view() tüm içerikleri (971 film + 482 dizi) yeniden yüklüyor
+        # - Her SeriesModel oluşturulurken SeasonModel ve EpisodeModel'ler de oluşuyor
+        # - Bu = her show detayına girişte ~24,000 obje yeniden oluşturulur!
+        # - recent_change bayrağını güncellemek için tüm listeyi yenilemeye gerek yok
+        # 
+        # ALTERNATIF: Sadece tek poster'ın badge'ini güncelle (ileride yapılabilir)
+        # =============================================================================
+        
         self.set_title(self.content.title)  # type: ignore
         self._view_stack.set_visible_child_name('loading')
 
