@@ -392,14 +392,24 @@ class LocalProvider:
 
     @staticmethod
     def compute_badge_color(poster_path: Path) -> bool:
-        im = Image.open(poster_path)
-        box = (im.size[0]-175, 0, im.size[0], 175)
-        region = im.crop(box)
-        median = ImageStat.Stat(region).median
-        if sum(median) < 3 * 128:
-            return True
-        else:
-            return False
+        """
+        Computes badge color based on poster corner brightness.
+        Returns True for light badge (dark background), False otherwise.
+        """
+        color_light = False
+        try:
+            with Image.open(poster_path) as im:
+                box = (im.size[0]-175, 0, im.size[0], 175)
+                region = im.crop(box)
+                try:
+                    median = ImageStat.Stat(region).median
+                    if sum(median) < 3 * 128:
+                        color_light = True
+                finally:
+                    region.close()
+        except (OSError, IOError):
+            pass
+        return color_light
 
     @staticmethod
     def create_languages_table() -> None:
