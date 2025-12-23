@@ -114,6 +114,15 @@ class DetailsView(Adw.NavigationPage):
 
         self._populate_data()
 
+        # =============================================================================
+        # 🔧 MEMORY LEAK DÜZELTMESI
+        # =============================================================================
+        # Sayfa ekrandan kaldırıldığında (geri tuşuna basıldığında) temizleme yap
+        # 'unmap' sinyali: Widget görünür olmaktan çıktığında tetiklenir
+        # Bu sinyal sayesinde kullanılmayan objeleri temizleyebiliriz
+        # =============================================================================
+        self.connect('unmap', self._on_unmap)
+
     @Gtk.Template.Callback()
     def _on_breakpoint_applied(self, breakpoint: Adw.Breakpoint) -> None:
         """
@@ -147,6 +156,73 @@ class DetailsView(Adw.NavigationPage):
         self.mobile = False
         if type(self.content) is SeriesModel:
             self._build_seasons_group()
+
+    def _on_unmap(self, widget: Gtk.Widget) -> None:
+        """
+        Sayfa ekrandan kaldırıldığında çağrılır (geri tuşuna basıldığında).
+        
+        =============================================================================
+        🔧 MEMORY LEAK DÜZELTMESI
+        =============================================================================
+        
+        PROBLEM NE?
+        ------------
+        - Kullanıcı bir diziye tıkladığında SeriesModel oluşturuluyor
+        - SeriesModel içinde SeasonModel'ler var
+        - SeasonModel'ler içinde EpisodeModel'ler var
+        - Kullanıcı geri döndüğünde bu objeler bellekte kalıyor!
+        - Çünkü self.content hala onlara "referans" tutuyor
+        
+        ÇÖZÜM NE?
+        ---------
+        - Referansları None yaparak Python Garbage Collector'ın
+          bu objeleri temizlemesini sağlıyoruz
+        - self.content = None → GC: "Artık kimse bu objeyi kullanmıyor, silebilirim!"
+        
+        REFERANS NEDİR?
+        ----------------
+        - Referans = Bir objeye işaret eden "ok" veya "adres"
+        - Python'da her değişken aslında bir referanstır
+        - GC, hiçbir referans kalmayan objeleri temizler
+        
+        =============================================================================
+        
+        Args:
+            widget (Gtk.Widget): Bu sayfa widget'ı (DetailsView)
+        
+        Returns:
+            None
+        """
+        
+        # İçerik var mı kontrol et
+        # hasattr: "Bu objenin şu özelliği var mı?" diye sorar
+        if hasattr(self, 'content') and self.content is not None:
+            
+            # Eğer içerik bir SeriesModel ise (dizi ise)
+            if type(self.content) is SeriesModel:
+                
+                # Sezonlar var mı kontrol et
+                if hasattr(self.content, 'seasons') and self.content.seasons is not None:
+                    
+                    # Her sezon için bölüm referanslarını temizle
+                    # Bu iç içe döngü: Önce sezonları gez, sonra her sezonun bölümlerini temizle
+                    for season in self.content.seasons:
+                        if hasattr(season, 'episodes') and season.episodes is not None:
+                            # Bölüm listesini None yap
+                            # Böylece EpisodeModel'lere referans kalmaz
+                            season.episodes = None
+                    
+                    # Sezon listesini None yap
+                    # Böylece SeasonModel'lere referans kalmaz
+                    self.content.seasons = None
+            
+            # Ana içerik referansını None yap
+            # Böylece SeriesModel veya MovieModel'e referans kalmaz
+            # Python GC artık tüm bu objeleri temizleyebilir!
+            self.content = None
+            
+            # Log mesajı: Temizleme yapıldığını bildir
+            logging.debug('[memory] Content references cleared for garbage collection')
 
     def _populate_data(self) -> None:
         """

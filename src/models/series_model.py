@@ -80,13 +80,85 @@ class SeriesModel(GObject.GObject):
     recent_change = GObject.Property(type=bool, default=False)
     release_date = GObject.Property(type=str, default='')
     seasons_number = GObject.Property(type=int, default=0)
-    seasons = GObject.Property(type=object)
+    # =============================================================================
+    # 🔧 LAZY LOADING DEĞİŞİKLİĞİ
+    # =============================================================================
+    # ESKİ: seasons = GObject.Property(type=object)
+    # YENİ: _seasons private değişken, seasons property getter ile
+    # 
+    # NEDEN LAZY LOADING?
+    # - Kullanıcının 482 dizisi var
+    # - Her dizi ortalama 5 sezon, 50 bölüm içerir
+    # - Başlangıçta tümünü yüklemek = 24,000+ obje = YAVAS + ÇOK RAM
+    # - Lazy loading = Sadece görüntülenen yükle = HIZLI + AZ RAM
+    # =============================================================================
+    _seasons = None  # Private değişken: Sezon listesi (başta boş)
+    _seasons_loaded = False  # Flag: Sezonlar yüklendi mi?
+    _seasons_from_api = False  # Flag: TMDB'den mi geldi?
     soon_release = GObject.Property(type=bool, default=False)
     status = GObject.Property(type=str, default='')
     tagline = GObject.Property(type=str, default='')
     title = GObject.Property(type=str, default='')
     watched = GObject.Property(type=bool, default=False)
     notes = GObject.Property(type=str, default='')
+
+    @property
+    def seasons(self):
+        """
+        Sezon listesini döndürür (Lazy Loading ile).
+        
+        =============================================================================
+        LAZY LOADING NASIL ÇALIŞIR?
+        =============================================================================
+        
+        1. İLK ERİŞİM:
+           - _seasons_loaded = False ise
+           - Veritabanından yükle (get_all_seasons)
+           - _seasons'a kaydet
+           - _seasons_loaded = True yap
+        
+        2. SONRAKİ ERİŞİMLER:
+           - _seasons_loaded = True
+           - Direkt _seasons'dan döndür (veritabanına gitmez!)
+        
+        Python'da @property dekoratörü:
+        - Fonksiyonu değişken gibi kullanmamızı sağlar
+        - dizi.seasons yazınca bu fonksiyon çalışır
+        - Parantez gerekmez!
+        
+        Returns:
+            List[SeasonModel]: Sezon listesi
+        """
+        # Eğer TMDB'den geldiyse, zaten yüklendi, direkt döndür
+        if self._seasons_from_api:
+            return self._seasons
+        
+        # Henüz yüklenmediyse, şimdi yükle (lazy loading)
+        if not self._seasons_loaded:
+            # Veritabanından sezonları yükle
+            # local modülünü burada import ediyoruz (circular import'dan kaçınmak için)
+            from ..providers import local_provider as local
+            self._seasons = local.LocalProvider.get_all_seasons(self.id)
+            self._seasons_loaded = True
+        
+        return self._seasons
+    
+    @seasons.setter
+    def seasons(self, value):
+        """
+        Sezon listesini ayarlar.
+        
+        Bu setter şu durumlarda kullanılır:
+        - TMDB'den yeni dizi eklenirken (_parse_seasons sonucu)
+        - Manuel dizi düznlenirken
+        - Cache temizleme sırasında (value = None)
+        
+        Args:
+            value: Yeni sezon listesi veya None
+        """
+        self._seasons = value
+        # Eğer değer atandıysa, yüklendi sayılır
+        self._seasons_loaded = value is not None
 
     def __init__(self, d=None, t=None):
         super().__init__()
@@ -118,6 +190,11 @@ class SeriesModel(GObject.GObject):
             self.recent_change = False
             self.release_date = d['first_air_date']
             self.seasons_number = d['number_of_seasons']
+            # =============================================================================
+            # TMDB'den gelen sezonları hemen yükle (yeni dizi ekleniyor)
+            # Lazy loading kullanmıyoruz çünkü TMDB'den tüm bilgi geldi
+            # =============================================================================
+            self._seasons_from_api = True  # TMDB'den geldi işareti
             self.seasons = self._parse_seasons(d['seasons'])
             self.status = d['status']
             self.tagline = d['tagline']
@@ -161,11 +238,22 @@ class SeriesModel(GObject.GObject):
             self.title = t["title"]  # type: ignore
             self.watched = t["watched"]  # type: ignore
 
-            if len(t) == 28:    # type: ignore # TODO: increase this number every time a new field is added
+            # =============================================================================
+            # 🔧 LAZY LOADING - Veritabanından yükleme
+            # =============================================================================
+            # ESKİ KOD (HEMEN YÜKLİYORDU - YAVAS):
+            # self.seasons = local.LocalProvider.get_all_seasons(self.id)
+            #
+            # YENİ KOD (LAZY - HIZLI):
+            # Sezonları yüklemiyoruz! _seasons ve _seasons_loaded default olarak
+            # None ve False. Kullanıcı seasons property'sine eriştiğinde
+            # otomatik olarak yüklenecek (@property getter sayesinde)
+            #
+            # Eğer t["seasons"] varsa (len 28), direkt ata
+            # =============================================================================
+            if len(t) == 28:    # type: ignore
                 self.seasons = t["seasons"]  # type: ignore
-            else:
-                self.seasons = local.LocalProvider.get_all_seasons(
-                    self.id)  # type: ignore
+            # else durumunda bir şey yapmıyoruz - lazy loading devreye girecek
                 
             self.notes = t["notes"]  # type: ignore
 
