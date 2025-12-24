@@ -242,6 +242,28 @@ class MainView(Adw.Bin):
 
         for serie in series:
 
+            # =============================================================================
+            # 🔧 FIX: serie.last_air_date None olabilir
+            # =============================================================================
+            # TMDB bazen last_air_date için null döndürür (henüz yayınlanmamış diziler vs.)
+            # Bu durumda strptime() crash verir: TypeError
+            # Çözüm: Tarihi olmayan diziler için sadece veriyi güncelle, karşılaştırma yapma
+            # =============================================================================
+            if not serie.last_air_date or not serie.last_air_date.strip():
+                # TMDB'den yeni veri al
+                new_serie = SeriesModel(tmdb.get_serie(serie.id))
+                
+                # Yayından kalkma kontrolü (tarih gerektirmez)
+                if serie.in_production == 1 and new_serie.in_production == 0:
+                    local.set_recent_change_status(serie.id, True)
+                    out_of_production_series.append(new_serie)
+                    local.set_notification_list_status(serie.id, False)
+                
+                # Veriyi güncelle
+                serie = local.get_series_by_id(serie.id)
+                local.update_series(serie, new_serie)
+                continue
+
             last_air_date = datetime.strptime(serie.last_air_date, '%Y-%m-%d')
 
             # Get the latest info for the series from TMDB
