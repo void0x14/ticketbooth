@@ -1,24 +1,32 @@
 # Active Context - Ticketbooth
 
 ## Şu An Üzerinde Çalışılan
-**GERİ DÖNÜLDÜ - 062e0ba commit'ine**
+**Bug Fix Tamamlandı** - TypeError ve AttributeError düzeltildi
 
-## Mevcut Durum
-Çalışan versiyon: commit 062e0ba
+## Mevcut Durum (24 Aralık 2025)
+Çalışan versiyon: commit d3d2908
+
+### Düzeltilen Hatalar:
+1. **TypeError: strptime() None** → `last_air_date` null check eklendi
+2. **AttributeError: NoneType has no id** → `unmap` → `unrealize` sinyali
+
+### Çalışan Özellikler:
+- ✅ Mark as Watched çalışıyor
+- ✅ Arama çalışıyor  
+- ✅ Show detayları açılıyor
+- ✅ TypeError artık oluşmuyor
+
+### Performans (062e0ba'dan beri):
 - RAM: 1.4 GB → 838 MB (%40 azalma)
-- Arama: Çalışıyor
-- Mark as watched: Çalışıyor
-- Show detayları: Çalışıyor
-
-## Öğrenilen Dersler
-1. **Domino etkisi**: Basit bir değişiklik bile zincirleme sorunlara yol açabilir
-2. **Adım adım test**: Her değişiklikten sonra TÜM özellikleri test etmeli
-3. **Plan onayı**: Değişiklik yapmadan ÖNCE plan yapıp kullanıcıya onaylatmalı
-4. **Class vs Instance attribute**: Python'da ciddi bug kaynağı!
+- 3 show sonrası: 3.1 GB → 860 MB (%72 azalma)
 
 ## Kalan Sorunlar (İLERİDE ÇÖZÜLECEK)
-- Tab geçişi yavaş (~10s, 1.9GB)  
+- Tab geçişi yavaş (~10s, 1.9GB) - Global cache gerekiyor
 - Geri dönme butonu biraz yavaş
-- Yeni show ekleme RAM artışı
 
-Bu sorunlar için daha detaylı planlama ve ince eleme gerekiyor.
+## Son Commit'ler
+```
+d3d2908 fix: handle None last_air_date and use unrealize signal
+5b6fbe1 fix: handle None last_air_date in notification list update (part 1)
+062e0ba perf: fix memory leak with lazy loading and cache cleanup
+```
