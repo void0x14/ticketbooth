@@ -132,10 +132,17 @@ class DetailsView(Adw.NavigationPage):
         # 🔧 MEMORY LEAK DÜZELTMESI
         # =============================================================================
         # Sayfa ekrandan kaldırıldığında (geri tuşuna basıldığında) temizleme yap
-        # 'unmap' sinyali: Widget görünür olmaktan çıktığında tetiklenir
-        # Bu sinyal sayesinde kullanılmayan objeleri temizleyebiliriz
+        # 
+        # NEDEN 'unrealize' kullanıyoruz, 'unmap' değil?
+        # - 'unmap': Widget gizlenince, parent gizlenince, VEYA reparent olunca tetiklenir
+        # - ExpanderRow açılırken iç widget'lar reparent olur → unmap tetiklenir!
+        # - Bu da self.content = None yapar ve "Mark as Watched" çalışmaz
+        # 
+        # - 'unrealize': Widget gerçekten UI'dan tamamen kaldırıldığında tetiklenir
+        # - NavigationPage geri gidildiğinde unrealize olur
+        # - ExpanderRow açılırken unrealize OLMAZ
         # =============================================================================
-        self.connect('unmap', self._on_unmap)
+        self.connect('unrealize', self._on_unmap)
 
     @Gtk.Template.Callback()
     def _on_breakpoint_applied(self, breakpoint: Adw.Breakpoint) -> None:

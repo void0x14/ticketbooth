@@ -268,6 +268,24 @@ class MainView(Adw.Bin):
 
             # Get the latest info for the series from TMDB
             new_serie = SeriesModel(tmdb.get_serie(serie.id))
+            
+            # =============================================================================
+            # 🔧 FIX: new_serie.last_air_date de None olabilir
+            # =============================================================================
+            # TMDB API'den yeni çekilen dizi için de last_air_date null dönebilir
+            # Kanıt: TMDB API dokümantasyonu + SeriesModel satır 174 kontrol yok
+            # =============================================================================
+            if not new_serie.last_air_date or not new_serie.last_air_date.strip():
+                # Yayından kalkma kontrolü (tarih gerektirmez)
+                if serie.in_production == 1 and new_serie.in_production == 0:
+                    local.set_recent_change_status(serie.id, True)
+                    out_of_production_series.append(new_serie)
+                    local.set_notification_list_status(serie.id, False)
+                # Veriyi güncelle
+                serie = local.get_series_by_id(serie.id)
+                local.update_series(serie, new_serie)
+                continue
+            
             new_last_air_date = datetime.strptime(
                 new_serie.last_air_date, '%Y-%m-%d')
             if new_serie.next_air_date != '':
