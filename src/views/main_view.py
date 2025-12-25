@@ -16,7 +16,7 @@ from ..models.movie_model import MovieModel
 from ..models.series_model import SeriesModel
 from ..providers.local_provider import LocalProvider as local
 from ..providers.tmdb_provider import TMDBProvider as tmdb
-from ..views.content_view import ContentView
+from ..views.content_grid_view import ContentGridView
 from ..widgets.theme_switcher import ThemeSwitcher
 
 
@@ -52,13 +52,13 @@ class MainView(Adw.Bin):
         super().__init__()
         self.app = window.app
 
-        self._tab_stack.add_titled_with_icon(ContentView(movie_view=True),
+        self._tab_stack.add_titled_with_icon(ContentGridView(movie_view=True),
                                              'movies',
                                              C_('Category', 'Movies'),
                                              'movies'
                                              )
 
-        self._tab_stack.add_titled_with_icon(ContentView(movie_view=False),
+        self._tab_stack.add_titled_with_icon(ContentGridView(movie_view=False),
                                              'series',
                                              C_('Category', 'TV Series'),
                                              'series'

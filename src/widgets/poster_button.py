@@ -2,6 +2,14 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+"""
+PosterButton - Widget for displaying movie/series poster in grid views.
+
+Supports widget recycling for Gtk.GridView:
+- update_content(): Update widget with new model data
+- reset_state(): Clear state before recycling
+"""
+
 from gi.repository import Gio, GObject, Gtk
 from pathlib import Path
 from .. import shared  # type: ignore
@@ -21,7 +29,8 @@ class PosterButton(Gtk.Box):
         poster_path (str): content's poster uri
 
     Methods:
-        None
+        update_content(): Update widget for new model (recycling)
+        reset_state(): Clear state before recycling
 
     Signals:
         clicked(content: MovieModel or SeriesModel): emited when the user clicks on the widget
@@ -53,12 +62,36 @@ class PosterButton(Gtk.Box):
         'clicked': (GObject.SIGNAL_RUN_FIRST, None, (object,)),
     }
 
-    def __init__(self, content: MovieModel | SeriesModel):
+    def __init__(self, content: MovieModel | SeriesModel | None = None):
         super().__init__()
+        
+        # Initialize state variables
+        self.activate_notification = False
+        self.badge_color_light = False
+        self.new_release = False
+        self.soon_release = False
+        self.recent_change = False
+        
+        # If content provided, update immediately
+        if content is not None:
+            self.update_content(content)
+
+    def update_content(self, content: MovieModel | SeriesModel) -> None:
+        """
+        Update widget with new model data.
+        Called by GridView's bind callback for widget recycling.
+        """
+        # First reset any previous state
+        self.reset_state()
+        
+        # Store content reference
+        self.content = content
+        
+        # Update properties from model
         self.activate_notification = content.activate_notification
         self.title = content.title
         self.badge_color_light = content.color
-        self.year = content.release_date[0:4] if content.release_date else None
+        self.year = content.release_date[0:4] if content.release_date else ''
         self.tmdb_id = content.id
         self.poster_path = content.poster_path
         self.watched = content.watched
@@ -66,25 +99,42 @@ class PosterButton(Gtk.Box):
         self.new_release = content.new_release
         self.soon_release = content.soon_release
         self.recent_change = content.recent_change
-        self.content = content
+        
+        # Apply visual state
+        self._apply_visual_state()
 
-    @Gtk.Template.Callback('_on_map')
-    def _on_map(self, user_data: object | None) -> None:
+    def reset_state(self) -> None:
         """
-        Callback for the 'map' signal.
-        Sets images and hides release year label if not present.
-
-        Args:
-            user_data (object or None): data passed to the callback
-
-        Returns:
-            None
+        Reset widget state before recycling.
+        Called by GridView's unbind callback.
         """
+        # Clear content reference
+        self.content = None
+        
+        # Reset properties
+        self.title = ''
+        self.year = ''
+        self.status = ''
+        self.tmdb_id = ''
+        self.poster_path = ''
+        self.watched = False
+        self.activate_notification = False
+        self.badge_color_light = False
+        self.new_release = False
+        self.soon_release = False
+        self.recent_change = False
+        
+        # Reset visual state
+        self._reset_visual_state()
 
-
-        self._picture.set_file(Gio.File.new_for_uri(self.poster_path))
+    def _apply_visual_state(self) -> None:
+        """Apply visual properties based on current content."""
+        # Set poster image
+        if self.poster_path:
+            self._picture.set_file(Gio.File.new_for_uri(self.poster_path))
         self._spinner.set_visible(False)
-
+        
+        # Handle badges
         badge_visible = False
         if self.activate_notification:
             if self.recent_change:
@@ -105,12 +155,20 @@ class PosterButton(Gtk.Box):
                     self._soon_release_badge.add_css_class("light")
                 else:
                     self._soon_release_badge.add_css_class("dark")
-
-            
-        if not self.year:
+        
+        # Year label
+        if self.year:
+            self._year_lbl.set_visible(True)
+        else:
             self._year_lbl.set_visible(False)
-        if self.status == '':
+        
+        # Status label
+        if self.status:
+            self._status_lbl.set_visible(True)
+        else:
             self._status_lbl.set_visible(False)
+        
+        # Watched badge
         if self.watched and not badge_visible:
             self._watched_badge.set_visible(True)
             if self.badge_color_light:
@@ -118,6 +176,44 @@ class PosterButton(Gtk.Box):
             else:
                 self._watched_badge.add_css_class("dark")
 
+    def _reset_visual_state(self) -> None:
+        """Reset all visual state for recycling."""
+        # Clear image
+        self._picture.set_file(None)
+        self._spinner.set_visible(True)
+        
+        # Reset badges
+        self._new_release_badge.set_visible(False)
+        self._soon_release_badge.set_visible(False)
+        self._watched_badge.set_visible(False)
+        
+        # Remove css classes
+        self._poster_box.remove_css_class("pulse")
+        self._picture.remove_css_class("shadow")
+        self._new_release_badge.remove_css_class("light")
+        self._new_release_badge.remove_css_class("dark")
+        self._soon_release_badge.remove_css_class("light")
+        self._soon_release_badge.remove_css_class("dark")
+        self._watched_badge.remove_css_class("light")
+        self._watched_badge.remove_css_class("dark")
+        
+        # Reset labels visibility
+        self._year_lbl.set_visible(True)
+        self._status_lbl.set_visible(True)
+
+    @Gtk.Template.Callback('_on_map')
+    def _on_map(self, user_data: object | None) -> None:
+        """
+        Callback for the 'map' signal.
+        For GridView recycling, visual state is set in update_content().
+        This is kept for backward compatibility with FlowBox.
+        """
+        # Only apply if content exists and not using GridView recycling
+        if self.content and self.poster_path:
+            self._apply_visual_state()
+
     @Gtk.Template.Callback('_on_poster_btn_clicked')
     def _on_poster_btn_clicked(self, user_data: object | None) -> None:
-        self.emit('clicked', self.content)
+        if self.content:
+            self.emit('clicked', self.content)
+

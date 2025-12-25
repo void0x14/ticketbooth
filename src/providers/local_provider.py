@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import functools
 import logging
 import os
 import shutil
@@ -667,6 +668,7 @@ class LocalProvider:
             return LocalProvider.add_series(id)
 
     @staticmethod
+    @functools.lru_cache(maxsize=256)
     def get_language_by_code(iso_code: str) -> LanguageModel | None:
         """
         Retrieves a language from the db via its iso_639_1 code.
@@ -739,6 +741,27 @@ class LocalProvider:
                 return movies
             else:
                 logging.debug(f'[db] Get all movies: {[]}')
+                return []
+
+    @staticmethod
+    def get_all_movies_raw():
+        """
+        Retrieves all movies from the db as raw dictionaries.
+        Does NOT create MovieModel objects - for chunked/GridView loading.
+
+        Returns:
+            List of dicts (sqlite3.Row converted) or empty list
+        """
+
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT * FROM movies;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql).fetchall()
+            if result:
+                logging.debug(f'[db] Get all movies raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get all movies raw: []')
                 return []
 
     @staticmethod
@@ -909,6 +932,27 @@ class LocalProvider:
                 return series
             else:
                 logging.debug(f'[db] Get all tv series: {[]}')
+                return []
+
+    @staticmethod
+    def get_all_series_raw():
+        """
+        Retrieves all series from the db as raw dictionaries.
+        Does NOT create SeriesModel objects - for chunked/GridView loading.
+
+        Returns:
+            List of dicts (sqlite3.Row converted) or empty list
+        """
+
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT * FROM series;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql).fetchall()
+            if result:
+                logging.debug(f'[db] Get all series raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get all series raw: []')
                 return []
 
     @staticmethod
