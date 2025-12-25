@@ -30,57 +30,40 @@
 - **Dosya:** `details_page.py`
 
 ### Round 3: Geri Dönme Butonu Analizi (24 Aralık 2025)
-
 **Sonuç: GTK4 Kısıtlaması - Scope Dışı**
+- Dynamic pages pop'ta destroy ediliyor (libadwaita davranışı)
+- Static pages: 1400+ içerik için uygun değil
 
-- Eleme testi: unrealize callback → NEDEN DEĞİL
-- Derinlemesine araştırma: Dynamic pages pop'ta destroy ediliyor (libadwaita dokümantasyonu)
-- Static pages: Ticketbooth için uygun değil (1400+ içerik)
-- Cairo renderer: Hız yok + RAM artışı + kasma
+### Round 4: Tab Geçişi Optimizasyonu (25 Aralık 2025 - fd053b2) ✅
+- **Sorun:** Tab geçişleri yavaş (~28s ilk, ~5s sonraki). `Adw.ViewStack` widget'ları korumasına rağmen, her geçişte `refresh_view()` çağrılıp tüm widgetlar silinip yeniden oluşturuluyordu.
+- **Çözüm:** `Gtk.GridView` + `Widget Recycling` implementasyonu (`fd053b2`).
+- **Teknik Detay (Architecture):**
+  - Eski yapı (`FlowBox` benzeri `Box` yapısı) $O(N)$ maliyetindeydi. Her tab geçişinde 1400+ widget `destroy` edilip baştan `create` ediliyordu.
+  - Yeni yapı: `Gtk.GridView` ve `Gtk.SignalListItemFactory` kullanılarak **Widget Recycling** (Android'deki `RecyclerView` veya Java FX'teki `ListView` mantığı) getirildi.
+  - Sadece ekranda görünen widgetlar bellekte tutulur, kaydırıldıkça modeller widgetlara "bind" edilir. Bu, tab geçişi maliyetini $O(N)$'den $O(Ekran kapasitesi)$ seviyesine indirdi.
+- **Sonuç:** Hızlı tab geçişleri ve ciddi RAM tasarrufu.
+
+### Round 5: Spinner Fix (25 Aralık 2025) ✅
+- **Sorun:** `AttributeError: 'Spinner' object has no attribute 'start'`
+- **Kök Neden:** `Adw.Spinner` ≠ `Gtk.Spinner`
+  - `Adw.Spinner` (libadwaita 1.6+): `start()`, `stop()`, `spinning` property YOK
+  - Davranış: Görünür olduğunda otomatik döner
+- **Çözüm:** `start()`/`stop()` çağrıları kaldırıldı, sadece `set_visible()` kullanılıyor
+- **Kaynak:** [Adw.Spinner Docs](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/main/class.Spinner.html)
 
 ## Yapılacak 📋
-- [ ] Tab geçişi performansı (AÇIK SORUN - Çözüm bulunamadı)
+Şu an aktif sorun yok.
 
-## Devam Eden Araştırma: Tab Geçişi (24 Aralık 2025)
-
-### Sorun
-- Movies → TV Series: İlk geçiş ~28s, sonrakiler ~5s
-- TV Series → Movies: ~5s
-
-### Denenen Çözümler (Başarısız)
-1. **Smart Refresh (Signature Karşılaştırma):**
-   - `LocalProvider.get_content_signature()` eklendi
-   - `ContentView.refresh_view()` içinde signature karşılaştırması
-   - **Sonuç:** Çalışmadı - süreler aynı kaldı
-
-2. **Diff Update & Async Loading:**
-   - `_children_map` ile widget takibi
-   - `_update_content()` ile diff mantığı
-   - `GLib.idle_add()` ile async widget oluşturma
-   - **Sonuç:** Çalışmadı - posterler akarak yüklenmedi, süreler aynı
-
-3. **Tab geçişinde refresh devre dışı:**
-   - `_check_needs_refresh` içinde refresh_view comment out
-   - **Sonuç:** UI bozuldu
-
-### Kök Neden (Henüz Çözülemedi)
-- `refresh_view()` her tab geçişinde tüm widget'ları siliyor
-- `Adw.ViewStack` widget'ları korumasına rağmen, kod manuel olarak siliyor
-- Neden Diff/Async çalışmadı belirsiz
-
-### Sonraki Adım
-- Gemini ile daha kapsamlı araştırma yapılacak
+## Kalan Sorunlar (İLERİDE ÇÖZÜLECEK)
+- **Spinner Animasyonu:** `Adw.Spinner` görünür ama dönmüyor (Main thread block? Libadwaita bug?)
+- **UX Flicker:** Yeni içerik eklenirken "Loading content" overlay tüm ekranı kaplayıp posterleri gizliyor (Aggressive refresh?)
 
 ## Bilinen Kısıtlamalar (Çözülemez)
 1. **Geri dönme butonu yavaşlığı**: GTK4/libadwaita tasarlanmış davranışı
-   - Dynamic pages pop'ta destroy ediliyor
-   - Karmaşık widget hierarchy destroy maliyeti
 
 ## Öğrenilen Dersler
-1. **Domino etkisi**: Basit değişiklik bile zincirleme sorunlara yol açabilir
-2. **Adım adım test**: Her değişiklikten sonra TÜM özellikleri test et
-3. **Plan onayı**: Değişiklik yapmadan ÖNCE plan yapıp kullanıcıya onaylat
-4. **GTK Sinyalleri**: `unmap` vs `unrealize` farkını bil
-5. **TMDB API**: `last_air_date` null dönebilir - her zaman null check yap
-6. **libadwaita**: Dynamic pages pop'ta destroy ediliyor - performans kısıtlaması
-7. **Tab Geçişi**: Widget silip yeniden oluşturma çok maliyetli - diff mantığı teorik olarak doğru ama uygulamada sorunlar çıktı
+1. **API Araştırması:** Kod yazmadan ÖNCE resmi dökümantasyonu kontrol et
+2. **Adw vs Gtk:** libadwaita widget'ları farklı API'lere sahip olabilir
+3. **Widget Recycling:** GridView ile performans büyük ölçüde artar
+4. **GTK Sinyalleri:** `unmap` vs `unrealize` farkını bil
+5. **TMDB API:** `last_air_date` null dönebilir - her zaman null check yap

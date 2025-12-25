@@ -178,7 +178,7 @@ class PosterButton(Gtk.Box):
 
     def _reset_visual_state(self) -> None:
         """Reset all visual state for recycling."""
-        # Clear image
+        # Clear image and show spinner (Adw.Spinner auto-spins when visible)
         self._picture.set_file(None)
         self._spinner.set_visible(True)
         
