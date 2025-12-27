@@ -265,12 +265,11 @@ class ContentGridView(Adw.Bin):
             logging.debug(f"[ContentGridView] Item activated: {model.title}")
             shared.schema.set_boolean('search-enabled', False)
             
-            if self.movie_view:
-                page = DetailsView(movie=model, t='movie', first_run=False)
-            else:
-                page = DetailsView(movie=model, t='series', first_run=False)
+            # DetailsView expects (content, content_view) - same as content_view.py:347
+            page = DetailsView(model, self)
+            page.connect('deleted', lambda *args: self.refresh_view())
             
-            # Push to NavigationView (same pattern as content_view.py:355)
+            # Push to NavigationView
             nav_view = self.get_ancestor(Adw.NavigationView)
             if nav_view:
                 nav_view.push(page)
@@ -287,12 +286,11 @@ class ContentGridView(Adw.Bin):
             logging.debug(f"[ContentGridView] Child clicked: {content.title}")
             shared.schema.set_boolean('search-enabled', False)
             
-            if self.movie_view:
-                page = DetailsView(movie=content, t='movie', first_run=False)
-            else:
-                page = DetailsView(movie=content, t='series', first_run=False)
+            # DetailsView expects (content, content_view) - same as content_view.py:347
+            page = DetailsView(content, self)
+            page.connect('deleted', lambda *args: self.refresh_view())
             
-            # Push to NavigationView (same pattern as content_view.py:355)
+            # Push to NavigationView
             nav_view = self.get_ancestor(Adw.NavigationView)
             if nav_view:
                 nav_view.push(page)

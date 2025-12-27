@@ -74,9 +74,10 @@
 
 ### Round 7: GridView Click Fix (27 Aralık 2025) ✅
 - **Sorun:** Posterlere tıklandığında detay sayfası açılmıyordu.
-- **Neden:** `PosterButton` click event'i yakalıyor, `GridView.activate` sinyali tetiklenmiyor.
-- **Çözüm:** `_on_factory_bind` içinde `PosterButton.clicked` sinyali bağlandı.
-- **Commit:** `3567c4f`
+- **Kök Neden 1:** `PosterButton.clicked` sinyali `GridView.activate` yerine bağlanmalıydı.
+- **Kök Neden 2:** `window.get_application().add_navigation_page()` yöntemi yoktu.
+- **Çözüm:** `self.get_ancestor(Adw.NavigationView).push(page)` kullanıldı.
+- **Commit:** `7ae7d85`
 
 ## Bilinen Kısıtlamalar (Çözülemez)
 1. **Geri dönme butonu yavaşlığı**: GTK4/libadwaita tasarlanmış davranışı
