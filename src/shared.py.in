@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import gi
+gi.require_version('Gdk', '4.0')
 from gi.repository import Gdk, Gio, GLib
 from pathlib import Path
 import logging

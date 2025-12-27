@@ -76,11 +76,31 @@
 - **Sorun:** Posterlere tıklandığında detay sayfası açılmıyordu.
 - **Kök Neden 1:** `PosterButton.clicked` sinyali `GridView.activate` yerine bağlanmalıydı.
 - **Kök Neden 2:** `window.get_application().add_navigation_page()` yöntemi yoktu.
-- **Çözüm:** `self.get_ancestor(Adw.NavigationView).push(page)` kullanıldı.
-- **Commit:** `7ae7d85`
+- **Kök Neden 3:** `DetailsView(movie=model, t=...)` yanlış parametre kullanımı.
+- **Çözüm:** `DetailsView(model, self)` + `page.connect('deleted', ...)` kullanıldı.
+- **Commit:** `192c012`
+
+### Round 8: g_list_store_splice Race Condition Fix (27 Aralık 2025) ✅
+- **Sorun:** `g_list_store_splice: assertion 'position + n_removals <= n_items' failed`
+- **Kök Neden:** `refresh_view()` çağrıldığında `_store.remove_all()` yapılıyor ama arka planda çalışan `_load_next_chunk` hala boşaltılmış store'a yazmaya çalışıyordu.
+- **Çözüm:** `GLib.timeout_add` source ID takibi (`_load_source_id`) ve `refresh_view`'da `GLib.source_remove()` ile iptal.
+- **Dosya:** `content_grid_view.py`
+
+### Round 9: Scroll Performance Fixes (27 Aralık 2025) ✅
+- **Sorun 1:** Drag scroll jitter - imleç ile sürüklerken ileri-geri zıplama
+- **Sorun 2:** Yavaş wheel scroll - fiziksel fare scroll'u gecikmeli
+- **Sorun 3:** Reverse scroll delay - aşağı-yukarı yön değişiminde takılma  
+- **Kök Neden:** GridView görünürken `splice()` çağrılıyor → layout recomputation
+- **Çözüm 1:** `kinetic_scrolling=False` eklendi (`0c58136`)
+- **Çözüm 2:** `reset_state()` çağrısı `update_content()`'tan kaldırıldı
+- **Çözüm 3:** GridView visibility `_finalize_loading()`'e taşındı - tüm modeller yüklendikten sonra göster (`207766d`)
+- **Kaynaklar:** GTK4 Docs - GListStore.splice(), SignalListItemFactory lifecycle
 
 ## Bilinen Kısıtlamalar (Çözülemez)
 1. **Geri dönme butonu yavaşlığı**: GTK4/libadwaita tasarlanmış davranışı
+
+## Kalan Performans İyileştirmeleri (İLERİDE)
+1. **Scrollbar fast drag takılması**: `GtkPicture.set_file()` senkron yükleme yapıyor. GTK4 Docs async `GdkTexture` önerir ama karmaşık refactoring gerektirir.
 
 ## Öğrenilen Dersler
 1. **API Araştırması:** Kod yazmadan ÖNCE resmi dökümantasyonu kontrol et
@@ -88,3 +108,4 @@
 3. **Widget Recycling:** GridView ile performans büyük ölçüde artar
 4. **GTK Sinyalleri:** `unmap` vs `unrealize` farkını bil
 5. **TMDB API:** `last_air_date` null dönebilir - her zaman null check yap
+6. **Fish Shell Git:** Multi-line commit için her paragraf ayrı `-m` flag gerektirir

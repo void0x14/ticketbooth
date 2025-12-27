@@ -95,10 +95,11 @@ class PosterButton(Gtk.Box):
         """
         Update widget with new model data.
         Called by GridView's bind callback for widget recycling.
-        """
-        # First reset any previous state
-        self.reset_state()
         
+        NOT: reset_state() burada ÇAĞRILMIYOR çünkü GTK4 factory lifecycle'ına
+        göre unbind zaten bind'dan önce çalışıyor ve reset orada yapılıyor.
+        Kaynak: https://docs.gtk.org/gtk4/class.SignalListItemFactory.html
+        """
         # Store content reference
         self.content = content
         

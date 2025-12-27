@@ -60,6 +60,7 @@ class ContentGridView(Adw.Bin):
         self._content_loaded = False
         self._pending_raw = []
         self._load_index = 0
+        self._load_source_id = None  # Track async load task for cancellation
         
         # ══════════════════════════════════════════════════════════════
         # UI SETUP
@@ -92,10 +93,14 @@ class ContentGridView(Adw.Bin):
         self._stack.add_named(empty_page, 'empty')
         
         # Filled page with GridView
+        # KINETIC SCROLLING DEVRE DIŞI: GTK4 GridView + kinetic scrolling
+        # kombinasyonu jitter'a neden oluyor (GNOME GitLab issue raporları).
+        # Kaynak: https://docs.gtk.org/gtk4/class.ScrolledWindow.html
         scrolled = Gtk.ScrolledWindow(
             hscrollbar_policy=Gtk.PolicyType.NEVER,
             vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
-            vexpand=True
+            vexpand=True,
+            kinetic_scrolling=False
         )
         
         # ══════════════════════════════════════════════════════════════
@@ -215,7 +220,8 @@ class ContentGridView(Adw.Bin):
         
         self._load_index = 0
         # Start chunked model creation (models only, widgets created by factory)
-        GLib.timeout_add(8, self._load_next_chunk)
+        # RACE CONDITION FIX: Store source ID to allow cancellation if refresh_view is called
+        self._load_source_id = GLib.timeout_add(8, self._load_next_chunk)
         
         return False
 
@@ -227,9 +233,9 @@ class ContentGridView(Adw.Bin):
             self._finalize_loading()
             return False
         
-        # Show grid on first chunk
-        if self._load_index == 0:
-            self._stack.set_visible_child_name('filled')
+        # KALDIRILDI: Erken visible yapmak scroll jitter'a neden oluyordu
+        # GridView artık _finalize_loading()'de görünür yapılacak
+        # Kaynak: GTK4 Docs - "Add data to ListStore before GridView is visible"
         
         end_index = min(self._load_index + CHUNK_SIZE, len(self._pending_raw))
         
@@ -253,6 +259,11 @@ class ContentGridView(Adw.Bin):
         """Called when all models are loaded."""
         logging.info(f"[ContentGridView] Load complete: {len(self._pending_raw)} items in store")
         self._pending_raw = []  # Free memory
+        self._load_source_id = None  # Clear ID - loading complete
+        
+        # TÜM modeller yüklendikten SONRA GridView'ı göster
+        # Bu, scroll sırasında splice çağrılmasını önler (GTK4 Docs önerisi)
+        self._stack.set_visible_child_name('filled')
 
     # ══════════════════════════════════════════════════════════════════════
     # EVENT HANDLERS
@@ -297,6 +308,12 @@ class ContentGridView(Adw.Bin):
 
     def refresh_view(self) -> None:
         """Refresh content by reloading from database."""
+        # RACE CONDITION FIX: Cancel any pending load task BEFORE clearing store
+        # Otherwise _load_next_chunk may try to splice at invalid indices
+        if self._load_source_id:
+            GLib.source_remove(self._load_source_id)
+            self._load_source_id = None
+        
         self._store.remove_all()
         self._content_loaded = False
         self._stack.set_visible_child_name('loading')
