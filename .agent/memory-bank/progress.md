@@ -72,6 +72,12 @@
 - **Spinner Animasyonu:** `Adw.Spinner` görünür ama dönmüyor (Main thread block? Libadwaita bug?)
 - **UX Flicker:** Yeni içerik eklenirken "Loading content" overlay tüm ekranı kaplayıp posterleri gizliyor (Aggressive refresh?)
 
+### Round 7: GridView Click Fix (27 Aralık 2025) ✅
+- **Sorun:** Posterlere tıklandığında detay sayfası açılmıyordu.
+- **Neden:** `PosterButton` click event'i yakalıyor, `GridView.activate` sinyali tetiklenmiyor.
+- **Çözüm:** `_on_factory_bind` içinde `PosterButton.clicked` sinyali bağlandı.
+- **Commit:** `3567c4f`
+
 ## Bilinen Kısıtlamalar (Çözülemez)
 1. **Geri dönme butonu yavaşlığı**: GTK4/libadwaita tasarlanmış davranışı
 

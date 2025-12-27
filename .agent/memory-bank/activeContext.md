@@ -7,7 +7,7 @@
 - ✅ **Test:** Uygulama hatasız çalışıyor
 
 ## Son Durum
-Çalışan versiyon: commit 76a9dbf
+Çalışan versiyon: commit 3567c4f (GridView Click Fix)
 
 ### Tamamlanan Fixler:
 1. **TypeError Fix** ✅ - `strptime()` None argüman hatası
