@@ -1,36 +1,34 @@
 # Active Context - Ticketbooth
 
 ## Şu An Üzerinde Çalışılan
-**25 Aralık 2025 - Tamamlandı**
-- ✅ **Spinner Fix:** `Adw.Spinner` API düzeltmesi uygulandı
-- ✅ **Tab Geçişi:** Çözüldü (GridView + widget recycling)
-- ✅ **Test:** Uygulama hatasız çalışıyor
+**27 Aralık 2025 - Tamamlandı (Round 11)**
+- ✅ **Double Page Push:** `ContentGridView` debounce ile çözüldü.
+- ✅ **Log Errors:** `IntegrityError` ve `PIL Error` çözüldü.
+- ✅ **Critical Crash:** `SearchResultRow` `Gtk.Box` yapısına geçirilerek focus hatası çözüldü.
+- ✅ **Loading Overlay:** Silent refresh ile UX flicker çözüldü.
 
 ## Son Durum
-Çalışan versiyon: commit 3567c4f (GridView Click Fix)
+Çalışan versiyon: commit `df5520b` (UX Fixes & Critical Patch)
 
 ### Tamamlanan Fixler:
 1. **TypeError Fix** ✅ - `strptime()` None argüman hatası
-2. **AttributeError Fix** ✅ - `unmap` → `unrealize` sinyali
-3. **Geri Dönme Butonu** ✅ - GTK4 kısıtlaması olarak kabul edildi
-4. **Tab Geçişi** ✅ - GridView implementasyonu ile çözüldü
-5. **Spinner Fix** ✅ - `Adw.Spinner` API düzeltmesi
+2. **Tab Geçişi** ✅ - GridView implementasyonu
+3. **Spinner Fix** ✅ - `Adw.Spinner` API düzeltmesi
+4. **Scroll Performance** ✅ - Kinetic scrolling devre dışı, pre-loading
+5. **Race Conditions** ✅ - ListStore splice assertion hatası çözüldü
+6. **Double Push & Criticals** ✅ - UI Kararlılığı sağlandı
 
 ### Çalışan Özellikler:
 - ✅ Uygulama açılışta crash olmuyor
-- ✅ Tab geçişleri hızlı
-- ✅ Mark as Watched çalışıyor
-- ✅ Arama çalışıyor
-- ✅ Show detayları açılıyor
-
-### Kabul Edilen Kısıtlamalar:
-- Geri dönme butonu yavaşlığı → GTK4/libadwaita tasarlanmış davranışı
+- ✅ Tab geçişleri ve Kaydırma (Scroll) akıcı
+- ✅ Arama ve İçerik Ekleme (Hatasız)
+- ✅ Poster tıklama (Tek detay sayfası)
 
 ## Son Commit'ler
 ```
-76a9dbf fix: Adw.Spinner API usage and update memory bank items
-a9d7e96 feat: transition to Gtk.GridView for optimized tab switching
-54c4cb3 chore: Agent aktif bağlam ve ilerleme kayıtları güncellendi
-ae89bb4 docs: update memory bank before back button test
-d3d2908 fix: handle None last_air_date and use unrealize signal
+df5520b fix(ux): Resolve Double Push, Log Errors, and GTK Critical Crash
+1eae5c5 fix(ux): Remove aggressive refresh and fix null last_episode_to_air
+207766d fix(perf): Optimize GridView loading and visibility logic
+0c58136 fix(perf): Disable kinetic scrolling for ScrolledWindow
+192c012 fix(ui): Correctly handle item activation in ContentGridView
 ```

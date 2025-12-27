@@ -40,10 +40,16 @@ def seasons(self):
     return self._seasons
 ```
 
-## refresh_view() Problemi
-**Kötü**: Her çağrıda tüm modeller yeniden oluşturuluyor
-**Nerelerde çağrılır**:
-- ~~details_page.py __init__~~ (KALDIRILDI ✅)
-- ~~content_view.py arama~~ (KALDIRILDI ✅)
-- main_view.py tab geçişi (TODO)
-- content_view.py separate-watched değişimi
+## refresh_view() Problemi ve Silent Refresh Çözümü
+**Kötü**: `win.refresh()` tüm arayüzü "Loading content..." overlay'i ile kilitler ve modelleri sıfırdan oluşturur.
+**Çözüm (Silent Refresh)**: Arka planda veri eklenirken `show_loading=False` parametresi ile overlay gösterilmez. Kullanıcı arayüzü kullanılabilir kalır.
+**Kullanım**:
+- `SearchResultRow`: İçerik eklendikten sonra ana sayfayı agresif (`win.refresh`) yenilemez.
+- `ContentGridView`: Sadece veri değiştiğinde `splice` ile güncelleme yapar.
+
+## Widget Recycling Pattern (Gtk.GridView)
+Eski `Box`/`FlowBox` yapısı tüm elemanları bellekte tutarken, yeni `Gtk.GridView` sadece ekranda görünenleri oluşturur.
+- **Factory**: `Gtk.SignalListItemFactory`
+- **Bind**: Model verisini widget'a bağlar (ucuz işlem).
+- **Unbind**: Widget'ı temizler, tekrar kullanıma hazırlar.
+- **Scroll**: `kinetic_scrolling=False` ile performans optimize edildi.

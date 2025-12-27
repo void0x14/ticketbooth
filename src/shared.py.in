@@ -7,7 +7,7 @@ gi.require_version('Gdk', '4.0')
 from gi.repository import Gdk, Gio, GLib
 from pathlib import Path
 import logging
-from .logging.session_file_handler import SessionFileHandler
+from .app_logging.session_file_handler import SessionFileHandler
 import faulthandler
 import os
 

@@ -69,8 +69,7 @@
   - `tests/test_business_logic.py` - İş mantığı testleri
 
 ## Kalan Sorunlar (İLERİDE ÇÖZÜLECEK)
-- **Spinner Animasyonu:** `Adw.Spinner` görünür ama dönmüyor (Main thread block? Libadwaita bug?)
-- **UX Flicker:** Yeni içerik eklenirken "Loading content" overlay tüm ekranı kaplayıp posterleri gizliyor (Aggressive refresh?)
+(Liste Boş)
 
 ### Round 7: GridView Click Fix (27 Aralık 2025) ✅
 - **Sorun:** Posterlere tıklandığında detay sayfası açılmıyordu.
@@ -96,10 +95,10 @@
 - **Çözüm 3:** GridView visibility `_finalize_loading()`'e taşındı - tüm modeller yüklendikten sonra göster (`207766d`)
 - **Kaynaklar:** GTK4 Docs - GListStore.splice(), SignalListItemFactory lifecycle
 
-### Round 10: Silent Refresh Fix (27 Aralık 2025) - BAŞARISIZ
+### Round 10: Silent Refresh Fix (27 Aralık 2025) - KISMEN BAŞARISIZ
 - **Sorun:** Show eklerken "Loading content..." overlay görünüyordu
 - **İlk Çözüm:** `show_loading=False` parametresi eklendi
-- **Sonuç:** Overlay gitti ama store boşaltıldığı için arka plan boş kaldı
+- **Sonuç:** Overlay gitti ama store boşaltıldığı için arka plan boş kaldı (Round 11'de çözüldü)
 - **Commit:** `2d3c6ff`
 
 ### Round 11: Aggressive Refresh Removal & Critical Fixes (27 Aralık 2025) ✅
@@ -108,14 +107,14 @@
 - **Sorun 3:** Poster'a hızlı/çift tıklayınca detay sayfası iki kez açılıyor
 - **Sorun 4:** Loglarda `UNIQUE constraint failed`, `UnidentifiedImageError` ve `Gtk-CRITICAL` hataları
 - **Çözüm:** 
-  - `win.refresh` kaldırıldı, silent refresh yapıldı
+  - `win.refresh` kaldırıldı, silent refresh yapıldı (Commit `1eae5c5`)
   - `ContentGridView` debounce (1sn)
   - `IntegrityError` ve `PIL` error handling
-  - `gtk_list_box_row_grab_focus` hatası için buton disable edilmeden önce focus `root.set_focus(None)` ile tamamen temizlendi.
-- **Commit:** `1eae5c5`, `c266ff0`, `6027b9b`, `2b2f66e`
+  - `Gtk-CRITICAL`: `SearchResultRow` `Gtk.ListBoxRow`'dan `Gtk.Box`'a çevrildi.
+- **Commit:** `1eae5c5`, `df5520b`
 
 ## Learned Lessons
-1. **GTK4 Focus & ListBox:** `Gtk.ListBoxRow` focus yönetimi hassastır. Bir child widget (`sensitive=False`) focus kaybederse, focus parent row'a geçmeye çalışır. Eğer bu sırada widget tree stabil değilse (veya async işlemler varsa), `box != NULL` assertion hatası oluşabilir. En güvenli yol, işlem yapmadan önce focus'u global olarak (`root.set_focus(None)`) temizlemektir.
+1. **GTK4 ListBox vs ListView:** `Gtk.ListBoxRow` SADECE `Gtk.ListBox` içinde kullanılmalıdır. `Gtk.ListView` kullanıyorsanız (model-based), row widget'ı `Gtk.Box` veya `Adw.Bin` olmalıdır. Aksi takdirde focus yönetimi sırasında `box != NULL` assertion hataları alınır çünkü row bir ListBox parent bulamaz.
 2. **Flatpak Build Caching:** kod değişiklikleri bazen Flatpak build'ine yansımaz. Kritik fixlerde mutlaka `.flatpak-builder` ve `build-dir` klasörlerini manuel silmek (`rm -rf`) ve clean build almak gerekir.
 
 ## Çözülmüş Eski Kısıtlamalar

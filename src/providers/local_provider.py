@@ -776,9 +776,71 @@ class LocalProvider:
             else:
                 logging.debug(f'[db] Get all movies raw: []')
                 return []
+    @staticmethod
+    def get_recent_movies_raw(limit: int = 10):
+        """
+        Retrieves the most recent movies from the db as raw dictionaries.
+        
+        Args:
+            limit (int): Number of items to retrieve.
+
+        Returns:
+            List of dicts.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            # Use rowid to ensure LIFO order even if dates are identical
+            sql = """SELECT * FROM movies ORDER BY rowid DESC LIMIT ?;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql, (limit,)).fetchall()
+            if result:
+                logging.debug(f'[db] Get recent movies raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get recent movies raw: []')
+                return []
 
     @staticmethod
-    def mark_watched_movie(id: int, watched: bool) -> int | None:
+    def get_total_movie_count() -> int:
+        """
+        Returns the total number of movies in the database.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT COUNT(*) FROM movies;"""
+            result = connection.cursor().execute(sql).fetchone()
+            return result[0] if result else 0
+
+    @staticmethod
+    def get_recent_series_raw(limit: int = 10):
+        """
+        Retrieves the most recent series from the db as raw dictionaries.
+        
+        Args:
+            limit (int): Number of items to retrieve.
+
+        Returns:
+            List of dicts.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT * FROM series ORDER BY rowid DESC LIMIT ?;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql, (limit,)).fetchall()
+            if result:
+                logging.debug(f'[db] Get recent series raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get recent series raw: []')
+                return []
+
+    @staticmethod
+    def get_total_series_count() -> int:
+        """
+        Returns the total number of series in the database.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT COUNT(*) FROM series;"""
+            result = connection.cursor().execute(sql).fetchone()
+            return result[0] if result else 0
+
         """
         Sets the watched flag on the movie with the provided id.
 

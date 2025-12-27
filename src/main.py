@@ -22,6 +22,7 @@ from gettext import gettext as _
 from gettext import pgettext as C_
 from typing import Callable
 from datetime import datetime 
+import threading
 
 from gi.repository import Adw, Gio, GObject, Gtk, GLib
 

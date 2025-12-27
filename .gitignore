@@ -40,3 +40,4 @@ testsprite_tests/
 .pytest_cache/
 .tests/
 *.mkv
+.agent/rules/persona.md

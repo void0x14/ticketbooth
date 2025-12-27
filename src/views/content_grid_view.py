@@ -14,6 +14,7 @@ instead of 973+ widgets. This dramatically improves:
 
 import logging
 from gettext import gettext as _
+import threading
 
 from gi.repository import Adw, Gio, GLib, GObject, Gtk
 
@@ -79,7 +80,7 @@ class ContentGridView(Adw.Bin):
         loading_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, 
                               halign=Gtk.Align.CENTER, 
                               valign=Gtk.Align.CENTER)
-        loading_spinner = Gtk.Spinner(spinning=True, width_request=32, height_request=32)
+        loading_spinner = Adw.Spinner(width_request=32, height_request=32)
         loading_label = Gtk.Label(label=_("Loading content..."))
         loading_box.append(loading_spinner)
         loading_box.append(loading_label)
@@ -200,71 +201,100 @@ class ContentGridView(Adw.Bin):
         """Called when view becomes visible. Start loading if needed."""
         if not self._content_loaded:
             self._content_loaded = True
-            GLib.idle_add(self._start_loading)
+            # Call directly to reduce initial delay (was idle_add)
+            self._start_loading()
 
     def _start_loading(self) -> bool:
-        """Fetch raw data and start chunked model creation."""
-        logging.info(f"[ContentGridView] Starting load for {'movies' if self.movie_view else 'series'}")
+        """Spawn thread to fetch raw data (prevents main thread freeze)."""
+        logging.info(f"[ContentGridView] Starting async load for {'movies' if self.movie_view else 'series'}")
         
-        # Fetch raw data (fast - no model creation)
-        if self.movie_view:
-            self._pending_raw = local.LocalProvider.get_all_movies_raw() or []
-        else:
-            self._pending_raw = local.LocalProvider.get_all_series_raw() or []
+        # Disable refresh while loading
+        if self._load_source_id:
+             GLib.source_remove(self._load_source_id)
         
-        if not self._pending_raw:
+        # Start background thread
+        thread = threading.Thread(target=self._fetch_data_thread)
+        thread.daemon = True
+        thread.start()
+        
+        return False  # Stop idle_add if called from there
+
+    def _fetch_data_thread(self):
+        """Executed in background thread: Fetch raw data AND create models."""
+        try:
+            total_count = 0
+            if self.movie_view:
+                if self.dashboard_mode:
+                    data = local.LocalProvider.get_recent_movies_raw(limit=10) or []
+                    total_count = local.LocalProvider.get_total_movie_count()
+                else:
+                    data = local.LocalProvider.get_all_movies_raw() or []
+                    
+                models = [MovieModel(t=item) for item in data]
+            else:
+                if self.dashboard_mode:
+                    data = local.LocalProvider.get_recent_series_raw(limit=10) or []
+                    total_count = local.LocalProvider.get_total_series_count()
+                else:
+                    data = local.LocalProvider.get_all_series_raw() or []
+                    
+                models = [SeriesModel(t=item) for item in data]
+            
+            # Models ready, send to chunked loader
+            GLib.idle_add(self._on_models_ready, models, total_count)
+            
+        except Exception as e:
+            logging.error(f"[ContentGridView] Thread error: {e}")
+            GLib.idle_add(self._on_models_ready, [], 0)
+
+    def _on_models_ready(self, models: list, total_count: int = 0) -> bool:
+        """Executed on main thread: Start adding models in chunks."""
+        if not models:
             self._stack.set_visible_child_name('empty')
-            logging.info("[ContentGridView] No content found")
             return False
-        
-        logging.info(f"[ContentGridView] Fetched {len(self._pending_raw)} raw items")
-        
+            
+        self._pending_models = models
         self._load_index = 0
-        # Start chunked model creation (models only, widgets created by factory)
-        # RACE CONDITION FIX: Store source ID to allow cancellation if refresh_view is called
-        self._load_source_id = GLib.timeout_add(8, self._load_next_chunk)
         
+        # Update Dashboard Button with Count
+        if self.dashboard_mode and hasattr(self, 'show_all_btn'):
+            label = _("Show All ({})").format(total_count)
+            self.show_all_btn.set_label(label)
+
+        # Start chunked insertion
+        # Interval: 8ms (approx 120fps attempts, will settle to max GUI speed)
+        self._load_source_id = GLib.timeout_add(8, self._add_models_chunk)
         return False
 
-    def _load_next_chunk(self) -> bool:
-        """Create models in chunks and add to store."""
-        CHUNK_SIZE = 50  # Models are lightweight, can do more per chunk
+    def _add_models_chunk(self) -> bool:
+        """Add a small chunk of models to the store to keep UI responsive."""
+        # Chunk Size 20: 
+        # 1400 items / 20 = 70 chunks. 
+        # If operations take ~30ms per chunk, total load ~2.1s.
+        # Keeping it small allows spinner animation frames in between.
+        CHUNK_SIZE = 20
         
-        if self._load_index >= len(self._pending_raw):
+        if self._load_index >= len(self._pending_models):
             self._finalize_loading()
             return False
+            
+        end_index = min(self._load_index + CHUNK_SIZE, len(self._pending_models))
+        chunk = self._pending_models[self._load_index:end_index]
         
-        # KALDIRILDI: Erken visible yapmak scroll jitter'a neden oluyordu
-        # GridView artık _finalize_loading()'de görünür yapılacak
-        # Kaynak: GTK4 Docs - "Add data to ListStore before GridView is visible"
-        
-        end_index = min(self._load_index + CHUNK_SIZE, len(self._pending_raw))
-        
-        # Create models and add to store
-        models_to_add = []
-        for i in range(self._load_index, end_index):
-            raw = self._pending_raw[i]
-            if self.movie_view:
-                model = MovieModel(t=raw)
-            else:
-                model = SeriesModel(t=raw)
-            models_to_add.append(model)
-        
-        # Batch insert using splice (more efficient)
-        self._store.splice(self._load_index, 0, models_to_add)
-        
+        self._store.splice(self._load_index, 0, chunk)
         self._load_index = end_index
+        
         return True
 
     def _finalize_loading(self) -> None:
         """Called when all models are loaded."""
-        logging.info(f"[ContentGridView] Load complete: {len(self._pending_raw)} items in store")
-        self._pending_raw = []  # Free memory
-        self._load_source_id = None  # Clear ID - loading complete
+        logging.info(f"[ContentGridView] Load complete: {len(self._pending_models)} items added")
+        self._pending_models = []
+        self._load_source_id = None
         
-        # TÜM modeller yüklendikten SONRA GridView'ı göster
-        # Bu, scroll sırasında splice çağrılmasını önler (GTK4 Docs önerisi)
         self._stack.set_visible_child_name('filled')
+
+
 
     # ══════════════════════════════════════════════════════════════════════
     # EVENT HANDLERS

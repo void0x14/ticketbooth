@@ -52,13 +52,25 @@ class MainView(Adw.Bin):
         super().__init__()
         self.app = window.app
 
-        self._tab_stack.add_titled_with_icon(ContentGridView(movie_view=True),
+        # Movies Tab (Navigation Controller)
+        self.movies_nav = Adw.NavigationView()
+        self.movies_dash = ContentGridView(movie_view=True, dashboard_mode=True)
+        self.movies_dash.connect('show-all', self._on_show_all_movies)
+        self.movies_nav.add(self.movies_dash)
+        
+        self._tab_stack.add_titled_with_icon(self.movies_nav,
                                              'movies',
                                              C_('Category', 'Movies'),
                                              'movies'
                                              )
 
-        self._tab_stack.add_titled_with_icon(ContentGridView(movie_view=False),
+        # Series Tab (Navigation Controller)
+        self.series_nav = Adw.NavigationView()
+        self.series_dash = ContentGridView(movie_view=False, dashboard_mode=True)
+        self.series_dash.connect('show-all', self._on_show_all_series)
+        self.series_nav.add(self.series_dash)
+
+        self._tab_stack.add_titled_with_icon(self.series_nav,
                                              'series',
                                              C_('Category', 'TV Series'),
                                              'series'
@@ -94,13 +106,31 @@ class MainView(Adw.Bin):
             None
         """
         if self._tab_stack.get_visible_child_name() == 'movies' and self._needs_refresh == 'movies':
-            self._tab_stack.get_child_by_name('movies').refresh_view()
+            self._refresh_nav_view(self.movies_nav)
             logging.info('Refreshed movies tab')
             self._needs_refresh = ''
         elif self._tab_stack.get_visible_child_name() == 'series' and self._needs_refresh == 'series':
-            self._tab_stack.get_child_by_name('series').refresh_view()
+            self._refresh_nav_view(self.series_nav)
             logging.info('Refreshed TV Series tab')
             self._needs_refresh = ''
+
+    def _refresh_nav_view(self, nav_view: Adw.NavigationView) -> None:
+        """Helper to refresh the currently visible page in a NavView."""
+        page = nav_view.get_visible_page()
+        if page:
+            view = page.get_child()
+            if hasattr(view, 'refresh_view'):
+                view.refresh_view()
+
+    def _on_show_all_movies(self, view):
+        """Transition to Full Movie List."""
+        full_view = ContentGridView(movie_view=True, dashboard_mode=False)
+        self.movies_nav.push(full_view)
+
+    def _on_show_all_series(self, view):
+        """Transition to Full Series List."""
+        full_view = ContentGridView(movie_view=False, dashboard_mode=False)
+        self.series_nav.push(full_view)
 
     @Gtk.Template.Callback('_on_map')
     def _on_map(self, user_data: object | None) -> None:
@@ -496,11 +526,11 @@ class MainView(Adw.Bin):
         """
 
         if self._tab_stack.get_visible_child_name() == 'movies':
-            self._tab_stack.get_child_by_name('movies').refresh_view(show_loading)
+            self._refresh_nav_view(self.movies_nav)
             logging.info('Refreshed movies tab')
             self._needs_refresh = 'series'
         else:
-            self._tab_stack.get_child_by_name('series').refresh_view(show_loading)
+            self._refresh_nav_view(self.series_nav)
             logging.info('Refreshed TV series tab')
             self._needs_refresh = 'movies'
 
