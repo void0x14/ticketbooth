@@ -270,9 +270,10 @@ class ContentGridView(Adw.Bin):
             else:
                 page = DetailsView(movie=model, t='series', first_run=False)
             
-            window = self.get_ancestor(Gtk.Window)
-            if window:
-                window.get_application().add_navigation_page(page)
+            # Push to NavigationView (same pattern as content_view.py:355)
+            nav_view = self.get_ancestor(Adw.NavigationView)
+            if nav_view:
+                nav_view.push(page)
 
     def _on_child_clicked(self, widget: Gtk.Widget, content: object) -> None:
         """
@@ -291,9 +292,10 @@ class ContentGridView(Adw.Bin):
             else:
                 page = DetailsView(movie=content, t='series', first_run=False)
             
-            window = self.get_ancestor(Gtk.Window)
-            if window:
-                window.get_application().add_navigation_page(page)
+            # Push to NavigationView (same pattern as content_view.py:355)
+            nav_view = self.get_ancestor(Adw.NavigationView)
+            if nav_view:
+                nav_view.push(page)
 
     def refresh_view(self) -> None:
         """Refresh content by reloading from database."""
