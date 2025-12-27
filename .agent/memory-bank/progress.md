@@ -96,6 +96,13 @@
 - **Çözüm 3:** GridView visibility `_finalize_loading()`'e taşındı - tüm modeller yüklendikten sonra göster (`207766d`)
 - **Kaynaklar:** GTK4 Docs - GListStore.splice(), SignalListItemFactory lifecycle
 
+### Round 10: Silent Refresh Fix (27 Aralık 2025) ✅
+- **Sorun:** Show eklerken veya "Already in watchlist" basınca "Loading content..." overlay görünüyor
+- **Kök Neden:** `win.refresh` action her seferinde full GridView refresh tetikliyordu
+- **Çözüm:** `refresh_view(show_loading=False)` parametresi eklendi, arka planda sessiz güncelleme
+- **Dosyalar:** `content_grid_view.py`, `main_view.py`, `window.py`
+- **Commit:** `2d3c6ff`
+
 ## Çözülmüş Eski Kısıtlamalar
 
 ### Geri Dönme Butonu Yavaşlığı (Artık Hızlı) ✅

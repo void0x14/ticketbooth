@@ -171,8 +171,12 @@ class SeriesModel(GObject.GObject):
             self.genres = self._parse_genres(api_dict=d['genres'])
             self.id = d['id']
             self.in_production = d['in_production']
-            self.last_air_date = d['last_air_date']
-            self.last_episode_number = f"{d['last_episode_to_air']['season_number']}.{d['last_episode_to_air']['episode_number']}"
+            self.last_air_date = d['last_air_date'] if d['last_air_date'] else ""
+            # NULL CHECK: TMDB bazen last_episode_to_air null döndürür
+            if d.get('last_episode_to_air'):
+                self.last_episode_number = f"{d['last_episode_to_air']['season_number']}.{d['last_episode_to_air']['episode_number']}"
+            else:
+                self.last_episode_number = ""
             self.manual = False
             self.new_release = False
             next_episode_to_air = d['next_episode_to_air']

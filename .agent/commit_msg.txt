@@ -1,9 +1,10 @@
-fix(ux): Silent refresh to prevent Loading Content overlay during add
+fix(ux): Remove aggressive refresh and fix null last_episode_to_air
 
-- content_grid_view.py: Add show_loading parameter to refresh_view()
-- main_view.py: Pass show_loading to ContentGridView.refresh_view()
-- window.py: Use show_loading=False in win.refresh action
+- search_result_row.py: Remove win.refresh call from _on_add_done
+  This was causing dialog freeze and background "Loading content..."
+  
+- series_model.py: Add null check for last_episode_to_air
+  TMDB sometimes returns null, causing TypeError
 
-Root cause: Every content add triggered full GridView refresh with
-loading overlay, causing visual stutter. Now refreshes silently
-in background without showing "Loading content..." overlay.
+Content will refresh when user returns to main view via existing
+_check_needs_refresh mechanism.

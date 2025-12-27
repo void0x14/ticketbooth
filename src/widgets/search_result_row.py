@@ -193,13 +193,10 @@ class SearchResultRow(Gtk.ListBoxRow):
         self._add_btn.set_icon_name('check-plain')
         self._add_spinner.set_visible(False)
         
-        # Try getting root window and refreshing. If root is gone, use application instance
-        if self.get_root():
-            self.get_root().activate_action('win.refresh', None)
-        else:
-            app = Gio.Application.get_default()
-            if app:
-                app.props.active_window.activate_action('win.refresh')
+        # KALDIRILDI: win.refresh çağrısı
+        # Neden: 1400+ model yeniden yüklenmesi gereksiz ve dialog'u donduruyor
+        # İçerik zaten veritabanına eklendi, kullanıcı ana ekrana
+        # döndüğünde _check_needs_refresh mekanizması ile görecek
         
         activity.end()
 
