@@ -17,16 +17,17 @@ flatpak-builder --user --install --force-clean build-dir me.iepure.Ticketbooth.D
 flatpak run --user me.iepure.Ticketbooth.Devel
 ```
 
-## Kritik Dosyalar
-| Dosya | Rol |
-|-------|-----|
-| `src/models/series_model.py` | Dizi veri modeli |
-| `src/models/season_model.py` | Sezon veri modeli |
-| `src/models/episode_model.py` | Bölüm veri modeli |
-| `src/pages/details_page.py` | Show detay sayfası |
-| `src/views/content_view.py` | Ana içerik görünümü |
-| `src/views/main_view.py` | Ana pencere |
-| `src/providers/local_provider.py` | Veritabanı işlemleri |
+## Kritik Dosyalar ve Öğretici Satırlar
+Bu projenin mimarisini ve atılan adımları anlamak için hazırlanan özel kılavuz: 
+👉 [ticketbooth-ogretici.md](file:///home/ulactube/Documents/ticketbooth/.agent/ticketbooth-ogretici.md)
+
+| Dosya | Rol | Önemli Bilgi |
+|-------|-----|--------------|
+| `src/models/series_model.py` | Dizi veri modeli | Lazy Loading mimarisi burada. |
+| `src/pages/details_page.py` | Show detay sayfası | Memory Leak (unrealize) fixi burada. |
+| `src/views/content_grid_view.py` | Ana içerik görünümü | GridView & Virtualization (Recycling) burada. |
+| `src/providers/local_provider.py` | Veritabanı işlemleri | SQLite şeması ve migration burada. |
+| `src/views/main_view.py` | Ana pencere | API hata yönetimi ve Tab kontrolü burada. |
 
 ## GObject Property Sistemi
 ```python

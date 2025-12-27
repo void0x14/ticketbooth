@@ -24,6 +24,19 @@ from ..models.series_model import SeriesModel
 from ..providers.tmdb_provider import TMDBProvider as tmdb
 
 
+# =============================================================================
+# 🔧 VERİ SAĞLAYICI (LOCAL PROVIDER)
+# =============================================================================
+# Bu sınıf, uygulamanın SQLite veritabanı ile olan tüm iletişimini yönetir.
+#
+# NEDEN SQLITE?
+# - Yerel veri saklama için endüstri standardıdır. Tek dosyadır, taşınabilirdir.
+#
+# MİMARİ MANTIK:
+# 1. create_tables: Uygulama açılırken tabloların varlığı kontrol edilir.
+# 2. update_series_table: Veritabanı şeması (sütunlar) güncellenir (Migration).
+# 3. @staticmethod: Sınıf objesi oluşturmadan doğrudan fonksiyon gibi çağrılır.
+# =============================================================================
 class LocalProvider:
     """
     This class provides methods to interface with the local db.

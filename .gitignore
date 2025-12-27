@@ -30,3 +30,12 @@ repo/
 build/
 .flatpak-builder/
 data.json
+
+# Local Knowledge Base (Non-Git)
+.agent/ticketbooth-ogretici.md
+
+# Test Environment
+.venv/
+testsprite_tests/
+.pytest_cache/
+.tests/

@@ -26,6 +26,20 @@ from ..pages.details_page import DetailsView
 from ..widgets.poster_button import PosterButton
 
 
+# =============================================================================
+# 🔧 İÇERİK IZGARASI (CONTENT GRID VIEW) - GridView & Virtualization
+# =============================================================================
+# Bu sınıf, 1400+ içeriği performanstan ödün vermeden ekranda gösteren kısımdır.
+#
+# KRİTİK TEKNOLOJİ: VIRTUALIZATION (SANALLAŞTIRMA)
+# - Sadece ekranda o an görünen ~20-30 poster için widget oluşturulur.
+# - Scroll yaptıkça, ekrandan çıkan widget "unbind" edilir, yeni giren veriyle
+#   "bind" edilerek tekrar kullanılır.
+#
+# BİLEŞENLER:
+# 1. Gio.ListStore: Modelleri (saf veriyi) tutan liste.
+# 2. Gtk.SignalListItemFactory: Widget oluşturma ve veri bağlama (bind) yöneticisi.
+# =============================================================================
 class ContentGridView(Adw.Bin):
     """
     High-performance content view using Gtk.GridView with widget recycling.
@@ -139,21 +153,37 @@ class ContentGridView(Adw.Bin):
         """
         Called when a recycled widget needs to show new data.
         Updates the PosterButton with the current model's data.
+        
+        KRİTİK: PosterButton kendi click event'ini yakalıyor ve GridView'a
+        balonlaşmasını (bubble up) engelliyor. Bu yüzden 'clicked' sinyalini
+        burada manuel olarak bağlayıp dinliyoruz.
         """
         btn = list_item.get_child()
         model = list_item.get_item()
         
         if btn and model:
             btn.update_content(model)
+            # Connect explicit click signal from PosterButton
+            # Bu sinyal, GridView'un 'activate' sinyali yerine kullanılacak
+            btn.connect('clicked', self._on_child_clicked)
 
     def _on_factory_unbind(self, factory: Gtk.SignalListItemFactory,
                            list_item: Gtk.ListItem) -> None:
         """
         Called when widget is about to be recycled.
         Clean up any bindings to prepare for reuse.
+        
+        ÖNEMLİ: Sinyali disconnect etmezsek, widget recycle edildiğinde
+        eski verilere referans veren handler'lar birikir (memory leak + wrong data).
         """
         btn = list_item.get_child()
         if btn:
+            # Disconnect clicked signal before recycling to prevent accumulation
+            try:
+                btn.disconnect_by_func(self._on_child_clicked)
+            except TypeError:
+                # Signal was not connected (first run or already disconnected)
+                pass
             btn.reset_state()
 
     # ══════════════════════════════════════════════════════════════════════
@@ -239,6 +269,27 @@ class ContentGridView(Adw.Bin):
                 page = DetailsView(movie=model, t='movie', first_run=False)
             else:
                 page = DetailsView(movie=model, t='series', first_run=False)
+            
+            window = self.get_ancestor(Gtk.Window)
+            if window:
+                window.get_application().add_navigation_page(page)
+
+    def _on_child_clicked(self, widget: Gtk.Widget, content: object) -> None:
+        """
+        Handle click from PosterButton's 'clicked' signal.
+        
+        Bu metod, PosterButton tıklandığında çağrılır. GridView'un
+        native 'activate' sinyali yerine bunu kullanıyoruz çünkü
+        PosterButton içindeki GtkButton click event'ini yutuyordu.
+        """
+        if content:
+            logging.debug(f"[ContentGridView] Child clicked: {content.title}")
+            shared.schema.set_boolean('search-enabled', False)
+            
+            if self.movie_view:
+                page = DetailsView(movie=content, t='movie', first_run=False)
+            else:
+                page = DetailsView(movie=content, t='series', first_run=False)
             
             window = self.get_ancestor(Gtk.Window)
             if window:

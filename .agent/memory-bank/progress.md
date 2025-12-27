@@ -43,7 +43,7 @@
   - Sadece ekranda görünen widgetlar bellekte tutulur, kaydırıldıkça modeller widgetlara "bind" edilir. Bu, tab geçişi maliyetini $O(N)$'den $O(Ekran kapasitesi)$ seviyesine indirdi.
 - **Sonuç:** Hızlı tab geçişleri ve ciddi RAM tasarrufu.
 
-### Round 5: Spinner Fix (25 Aralık 2025) ✅
+### Round 5: Spinner Fix (25 Aralık 2025 - 76a9dbf) ✅
 - **Sorun:** `AttributeError: 'Spinner' object has no attribute 'start'`
 - **Kök Neden:** `Adw.Spinner` ≠ `Gtk.Spinner`
   - `Adw.Spinner` (libadwaita 1.6+): `start()`, `stop()`, `spinning` property YOK
@@ -53,6 +53,20 @@
 
 ## Yapılacak 📋
 Şu an aktif sorun yok.
+
+### Round 6: Security Test Suite (27 Aralık 2025) ✅
+- **Hedef:** Input validation, persistence ve business logic testleri
+- **Otomasyon:** pytest ile 38 test oluşturuldu
+- **Kapsam:**
+  - T01-T04: Input validation (SQL Injection, Unicode, Rapid Fire)
+  - T05-T07: Database persistence (CRUD, Cascade Delete)
+  - T11-T12: Business logic (TMDB Mapping, Duplicate Prevention)
+- **Sonuç:** 38/38 test başarılı ✅
+- **Dosyalar:**
+  - `tests/TEST_PLAN.md` - Kapsamlı test planı
+  - `tests/test_input_validation.py` - Güvenlik testleri
+  - `tests/test_persistence.py` - Veritabanı testleri
+  - `tests/test_business_logic.py` - İş mantığı testleri
 
 ## Kalan Sorunlar (İLERİDE ÇÖZÜLECEK)
 - **Spinner Animasyonu:** `Adw.Spinner` görünür ama dönmüyor (Main thread block? Libadwaita bug?)

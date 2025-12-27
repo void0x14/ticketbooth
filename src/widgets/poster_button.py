@@ -18,6 +18,21 @@ from ..models.series_model import SeriesModel
 
 
 @Gtk.Template(resource_path=shared.PREFIX + '/ui/widgets/poster_button.ui')
+# =============================================================================
+# 🔧 POSTER BUTONU (POSTER BUTTON) - Geri Dönüşüm İşçisi
+# =============================================================================
+# Bu widget, ana ekrandaki her bir film/dizi karesidir.
+# GridView'un "Recycling" (Geri Dönüşüm) mekanizmasının en önemli parçasıdır.
+#
+# NEDEN ÖNEMLİ?
+# - Her scroll yaptığında yeni buton OLUŞTURULMAZ.
+# - update_content() metodu ile mevcut butonun içindeki veriler (başlık, resim)
+#   sadece değiştirilir. Bu sayede işlemci yorulmaz, RAM şişmez.
+#
+# KRİTİK METODLAR:
+# 1. update_content: Yeni film verisini butona giydirir.
+# 2. reset_state: Butonu eski verilerden temizler (yeni veri gelmeden önce).
+# =============================================================================
 class PosterButton(Gtk.Box):
     """
     Widget shown in the main view with poster, title, and release year.

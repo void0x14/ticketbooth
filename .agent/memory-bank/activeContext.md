@@ -7,7 +7,7 @@
 - ✅ **Test:** Uygulama hatasız çalışıyor
 
 ## Son Durum
-Çalışan versiyon: commit a9d7e96
+Çalışan versiyon: commit 76a9dbf
 
 ### Tamamlanan Fixler:
 1. **TypeError Fix** ✅ - `strptime()` None argüman hatası
@@ -28,6 +28,7 @@
 
 ## Son Commit'ler
 ```
+76a9dbf fix: Adw.Spinner API usage and update memory bank items
 a9d7e96 feat: transition to Gtk.GridView for optimized tab switching
 54c4cb3 chore: Agent aktif bağlam ve ilerleme kayıtları güncellendi
 ae89bb4 docs: update memory bank before back button test
