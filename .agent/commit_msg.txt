@@ -1,0 +1,9 @@
+fix(ux): Silent refresh to prevent Loading Content overlay during add
+
+- content_grid_view.py: Add show_loading parameter to refresh_view()
+- main_view.py: Pass show_loading to ContentGridView.refresh_view()
+- window.py: Use show_loading=False in win.refresh action
+
+Root cause: Every content add triggered full GridView refresh with
+loading overlay, causing visual stutter. Now refreshes silently
+in background without showing "Loading content..." overlay.

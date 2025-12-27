@@ -96,8 +96,13 @@
 - **Çözüm 3:** GridView visibility `_finalize_loading()`'e taşındı - tüm modeller yüklendikten sonra göster (`207766d`)
 - **Kaynaklar:** GTK4 Docs - GListStore.splice(), SignalListItemFactory lifecycle
 
-## Bilinen Kısıtlamalar (Çözülemez)
-1. **Geri dönme butonu yavaşlığı**: GTK4/libadwaita tasarlanmış davranışı
+## Çözülmüş Eski Kısıtlamalar
+
+### Geri Dönme Butonu Yavaşlığı (Artık Hızlı) ✅
+- **Eski Durum:** Pop/push işlemleri yavaştı
+- **Kök Neden:** FlowBox benzeri yapı 1400+ widget oluşturuyordu
+- **Çözüm (Dolaylı):** GridView migrasyonu (Round 4) widget sayısını ~25'e düşürdü
+- **Kaynak:** GNOME Docs - "GtkFlowBox does not implement virtualization"
 
 ## Kalan Performans İyileştirmeleri (İLERİDE)
 1. **Scrollbar fast drag takılması**: `GtkPicture.set_file()` senkron yükleme yapıyor. GTK4 Docs async `GdkTexture` önerir ama karmaşık refactoring gerektirir.
@@ -109,3 +114,4 @@
 4. **GTK Sinyalleri:** `unmap` vs `unrealize` farkını bil
 5. **TMDB API:** `last_air_date` null dönebilir - her zaman null check yap
 6. **Fish Shell Git:** Multi-line commit için her paragraf ayrı `-m` flag gerektirir
+7. **Virtualization Etkisi:** GridView migrasyonu geri dönme butonu yavaşlığını da dolaylı olarak çözdü

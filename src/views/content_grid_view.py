@@ -306,8 +306,12 @@ class ContentGridView(Adw.Bin):
             if nav_view:
                 nav_view.push(page)
 
-    def refresh_view(self) -> None:
-        """Refresh content by reloading from database."""
+    def refresh_view(self, show_loading: bool = True) -> None:
+        """Refresh content by reloading from database.
+        
+        Args:
+            show_loading: If False, don't show loading overlay (for silent updates)
+        """
         # RACE CONDITION FIX: Cancel any pending load task BEFORE clearing store
         # Otherwise _load_next_chunk may try to splice at invalid indices
         if self._load_source_id:
@@ -316,5 +320,10 @@ class ContentGridView(Adw.Bin):
         
         self._store.remove_all()
         self._content_loaded = False
-        self._stack.set_visible_child_name('loading')
+        
+        # SILENT REFRESH: Overlay gösterme, arka planda yükle
+        # Bu, show ekleme sırasında "Loading content..." görünmesini önler
+        if show_loading:
+            self._stack.set_visible_child_name('loading')
+        
         GLib.idle_add(self._start_loading)

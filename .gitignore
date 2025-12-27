@@ -39,3 +39,4 @@ data.json
 testsprite_tests/
 .pytest_cache/
 .tests/
+*.mkv

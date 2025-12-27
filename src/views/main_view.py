@@ -484,23 +484,23 @@ class MainView(Adw.Bin):
         logging.info('Automatic notification list update done')
         activity.end()
 
-    def refresh(self) -> None:
+    def refresh(self, show_loading: bool = True) -> None:
         """
         Refreshes the visible window.
 
         Args:
-            None
+            show_loading: If False, don't show loading overlay (for silent updates)
 
         Returns:
             None
         """
 
         if self._tab_stack.get_visible_child_name() == 'movies':
-            self._tab_stack.get_child_by_name('movies').refresh_view()
+            self._tab_stack.get_child_by_name('movies').refresh_view(show_loading)
             logging.info('Refreshed movies tab')
             self._needs_refresh = 'series'
         else:
-            self._tab_stack.get_child_by_name('series').refresh_view()
+            self._tab_stack.get_child_by_name('series').refresh_view(show_loading)
             logging.info('Refreshed TV series tab')
             self._needs_refresh = 'movies'
 
