@@ -61,6 +61,7 @@ class ContentGridView(Adw.Bin):
         self._pending_raw = []
         self._load_index = 0
         self._load_source_id = None  # Track async load task for cancellation
+        self._last_click_time = 0  # FIX: Debounce için zaman damgası
         
         # ══════════════════════════════════════════════════════════════
         # UI SETUP
@@ -294,6 +295,14 @@ class ContentGridView(Adw.Bin):
         PosterButton içindeki GtkButton click event'ini yutuyordu.
         """
         if content:
+            # DEBOUNCE: Çift tıklamayı ve hızlı ardışık tıklamaları önle
+            # 1 saniye (1,000,000 mikrosaniye) bekleme süresi
+            current_time = GLib.get_monotonic_time()
+            if (current_time - self._last_click_time) < 1000000:
+                logging.debug("[ContentGridView] Click ignored (debounce)")
+                return
+            self._last_click_time = current_time
+
             logging.debug(f"[ContentGridView] Child clicked: {content.title}")
             shared.schema.set_boolean('search-enabled', False)
             

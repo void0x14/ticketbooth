@@ -1,10 +1,6 @@
-fix(ux): Remove aggressive refresh and fix null last_episode_to_air
+fix(ui): Migrate SearchResultRow to Gtk.Box to fix ListBox assertion crash
 
-- search_result_row.py: Remove win.refresh call from _on_add_done
-  This was causing dialog freeze and background "Loading content..."
-  
-- series_model.py: Add null check for last_episode_to_air
-  TMDB sometimes returns null, causing TypeError
-
-Content will refresh when user returns to main view via existing
-_check_needs_refresh mechanism.
+- Changed SearchResultRow inheritance from Gtk.ListBoxRow to Gtk.Box.
+- Updated UI template (BLP) to use Box as root.
+- Removed activatable property which is invalid for Box.
+- This resolves "gtk_list_box_row_grab_focus: assertion 'box != NULL' failed" caused by using ListBoxRow inside GtkListView.

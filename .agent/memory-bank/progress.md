@@ -96,12 +96,27 @@
 - **Çözüm 3:** GridView visibility `_finalize_loading()`'e taşındı - tüm modeller yüklendikten sonra göster (`207766d`)
 - **Kaynaklar:** GTK4 Docs - GListStore.splice(), SignalListItemFactory lifecycle
 
-### Round 10: Silent Refresh Fix (27 Aralık 2025) ✅
-- **Sorun:** Show eklerken veya "Already in watchlist" basınca "Loading content..." overlay görünüyor
-- **Kök Neden:** `win.refresh` action her seferinde full GridView refresh tetikliyordu
-- **Çözüm:** `refresh_view(show_loading=False)` parametresi eklendi, arka planda sessiz güncelleme
-- **Dosyalar:** `content_grid_view.py`, `main_view.py`, `window.py`
+### Round 10: Silent Refresh Fix (27 Aralık 2025) - BAŞARISIZ
+- **Sorun:** Show eklerken "Loading content..." overlay görünüyordu
+- **İlk Çözüm:** `show_loading=False` parametresi eklendi
+- **Sonuç:** Overlay gitti ama store boşaltıldığı için arka plan boş kaldı
 - **Commit:** `2d3c6ff`
+
+### Round 11: Aggressive Refresh Removal & Critical Fixes (27 Aralık 2025) ✅
+- **Sorun 1:** Arama dialog'u açıkken arka plan boş/gri
+- **Sorun 2:** Show eklenirken dialog donuyor
+- **Sorun 3:** Poster'a hızlı/çift tıklayınca detay sayfası iki kez açılıyor
+- **Sorun 4:** Loglarda `UNIQUE constraint failed`, `UnidentifiedImageError` ve `Gtk-CRITICAL` hataları
+- **Çözüm:** 
+  - `win.refresh` kaldırıldı, silent refresh yapıldı
+  - `ContentGridView` debounce (1sn)
+  - `IntegrityError` ve `PIL` error handling
+  - `gtk_list_box_row_grab_focus` hatası için buton disable edilmeden önce focus `root.set_focus(None)` ile tamamen temizlendi.
+- **Commit:** `1eae5c5`, `c266ff0`, `6027b9b`, `2b2f66e`
+
+## Learned Lessons
+1. **GTK4 Focus & ListBox:** `Gtk.ListBoxRow` focus yönetimi hassastır. Bir child widget (`sensitive=False`) focus kaybederse, focus parent row'a geçmeye çalışır. Eğer bu sırada widget tree stabil değilse (veya async işlemler varsa), `box != NULL` assertion hatası oluşabilir. En güvenli yol, işlem yapmadan önce focus'u global olarak (`root.set_focus(None)`) temizlemektir.
+2. **Flatpak Build Caching:** kod değişiklikleri bazen Flatpak build'ine yansımaz. Kritik fixlerde mutlaka `.flatpak-builder` ve `build-dir` klasörlerini manuel silmek (`rm -rf`) ve clean build almak gerekir.
 
 ## Çözülmüş Eski Kısıtlamalar
 
