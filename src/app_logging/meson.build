@@ -3,15 +3,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
-viewsdir = join_paths(pkgdatadir, 'src/views')
+loggingdir = join_paths(pkgdatadir, 'src/app_logging')
 
 sources = [
   '__init__.py',
-  'main_view.py',
-  'first_run_view.py',
-  'db_update_view.py',
-  'content_view.py',
-  'content_grid_view.py',
+  'session_file_handler.py',
 ]
 
-install_data(sources, install_dir: viewsdir)
+install_data(sources, install_dir: loggingdir)

@@ -16,7 +16,7 @@ from ..models.movie_model import MovieModel
 from ..models.series_model import SeriesModel
 from ..providers.local_provider import LocalProvider as local
 from ..providers.tmdb_provider import TMDBProvider as tmdb
-from ..views.content_view import ContentView
+from ..views.content_grid_view import ContentGridView
 from ..widgets.theme_switcher import ThemeSwitcher
 
 
@@ -52,13 +52,29 @@ class MainView(Adw.Bin):
         super().__init__()
         self.app = window.app
 
-        self._tab_stack.add_titled_with_icon(ContentView(movie_view=True),
+        # Movies Tab (Navigation Controller)
+        self.movies_nav = Adw.NavigationView()
+        self.movies_dash = ContentGridView(movie_view=True, dashboard_mode=True)
+        self.movies_dash.connect('show-all', self._on_show_all_movies)
+        # Wrap in NavigationPage (required by Adw.NavigationView API)
+        movies_page = Adw.NavigationPage(child=self.movies_dash, title=C_('Category', 'Movies'))
+        self.movies_nav.push(movies_page)
+        
+        self._tab_stack.add_titled_with_icon(self.movies_nav,
                                              'movies',
                                              C_('Category', 'Movies'),
                                              'movies'
                                              )
 
-        self._tab_stack.add_titled_with_icon(ContentView(movie_view=False),
+        # Series Tab (Navigation Controller)
+        self.series_nav = Adw.NavigationView()
+        self.series_dash = ContentGridView(movie_view=False, dashboard_mode=True)
+        self.series_dash.connect('show-all', self._on_show_all_series)
+        # Wrap in NavigationPage (required by Adw.NavigationView API)
+        series_page = Adw.NavigationPage(child=self.series_dash, title=C_('Category', 'TV Series'))
+        self.series_nav.push(series_page)
+
+        self._tab_stack.add_titled_with_icon(self.series_nav,
                                              'series',
                                              C_('Category', 'TV Series'),
                                              'series'
@@ -94,13 +110,35 @@ class MainView(Adw.Bin):
             None
         """
         if self._tab_stack.get_visible_child_name() == 'movies' and self._needs_refresh == 'movies':
-            self._tab_stack.get_child_by_name('movies').refresh_view()
+            self._refresh_nav_view(self.movies_nav)
             logging.info('Refreshed movies tab')
             self._needs_refresh = ''
         elif self._tab_stack.get_visible_child_name() == 'series' and self._needs_refresh == 'series':
-            self._tab_stack.get_child_by_name('series').refresh_view()
+            self._refresh_nav_view(self.series_nav)
             logging.info('Refreshed TV Series tab')
             self._needs_refresh = ''
+
+    def _refresh_nav_view(self, nav_view: Adw.NavigationView) -> None:
+        """Helper to refresh the currently visible page in a NavView."""
+        page = nav_view.get_visible_page()
+        if page:
+            view = page.get_child()
+            if hasattr(view, 'refresh_view'):
+                view.refresh_view()
+
+    def _on_show_all_movies(self, view, data=None):
+        """Transition to Full Movie List."""
+        full_view = ContentGridView(movie_view=True, dashboard_mode=False)
+        # Wrap in NavigationPage for proper back button support
+        full_page = Adw.NavigationPage(child=full_view, title=_("All Movies"))
+        self.movies_nav.push(full_page)
+
+    def _on_show_all_series(self, view, data=None):
+        """Transition to Full Series List."""
+        full_view = ContentGridView(movie_view=False, dashboard_mode=False)
+        # Wrap in NavigationPage for proper back button support
+        full_page = Adw.NavigationPage(child=full_view, title=_("All TV Series"))
+        self.series_nav.push(full_page)
 
     @Gtk.Template.Callback('_on_map')
     def _on_map(self, user_data: object | None) -> None:
@@ -242,10 +280,50 @@ class MainView(Adw.Bin):
 
         for serie in series:
 
+            # =============================================================================
+            # 🔧 FIX: serie.last_air_date None olabilir
+            # =============================================================================
+            # TMDB bazen last_air_date için null döndürür (henüz yayınlanmamış diziler vs.)
+            # Bu durumda strptime() crash verir: TypeError
+            # Çözüm: Tarihi olmayan diziler için sadece veriyi güncelle, karşılaştırma yapma
+            # =============================================================================
+            if not serie.last_air_date or not serie.last_air_date.strip():
+                # TMDB'den yeni veri al
+                new_serie = SeriesModel(tmdb.get_serie(serie.id))
+                
+                # Yayından kalkma kontrolü (tarih gerektirmez)
+                if serie.in_production == 1 and new_serie.in_production == 0:
+                    local.set_recent_change_status(serie.id, True)
+                    out_of_production_series.append(new_serie)
+                    local.set_notification_list_status(serie.id, False)
+                
+                # Veriyi güncelle
+                serie = local.get_series_by_id(serie.id)
+                local.update_series(serie, new_serie)
+                continue
+
             last_air_date = datetime.strptime(serie.last_air_date, '%Y-%m-%d')
 
             # Get the latest info for the series from TMDB
             new_serie = SeriesModel(tmdb.get_serie(serie.id))
+            
+            # =============================================================================
+            # 🔧 FIX: new_serie.last_air_date de None olabilir
+            # =============================================================================
+            # TMDB API'den yeni çekilen dizi için de last_air_date null dönebilir
+            # Kanıt: TMDB API dokümantasyonu + SeriesModel satır 174 kontrol yok
+            # =============================================================================
+            if not new_serie.last_air_date or not new_serie.last_air_date.strip():
+                # Yayından kalkma kontrolü (tarih gerektirmez)
+                if serie.in_production == 1 and new_serie.in_production == 0:
+                    local.set_recent_change_status(serie.id, True)
+                    out_of_production_series.append(new_serie)
+                    local.set_notification_list_status(serie.id, False)
+                # Veriyi güncelle
+                serie = local.get_series_by_id(serie.id)
+                local.update_series(serie, new_serie)
+                continue
+            
             new_last_air_date = datetime.strptime(
                 new_serie.last_air_date, '%Y-%m-%d')
             if new_serie.next_air_date != '':
@@ -444,23 +522,23 @@ class MainView(Adw.Bin):
         logging.info('Automatic notification list update done')
         activity.end()
 
-    def refresh(self) -> None:
+    def refresh(self, show_loading: bool = True) -> None:
         """
         Refreshes the visible window.
 
         Args:
-            None
+            show_loading: If False, don't show loading overlay (for silent updates)
 
         Returns:
             None
         """
 
         if self._tab_stack.get_visible_child_name() == 'movies':
-            self._tab_stack.get_child_by_name('movies').refresh_view()
+            self._refresh_nav_view(self.movies_nav)
             logging.info('Refreshed movies tab')
             self._needs_refresh = 'series'
         else:
-            self._tab_stack.get_child_by_name('series').refresh_view()
+            self._refresh_nav_view(self.series_nav)
             logging.info('Refreshed TV series tab')
             self._needs_refresh = 'movies'
 
