@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+import functools
 import logging
 import os
 import shutil
@@ -23,6 +24,19 @@ from ..models.series_model import SeriesModel
 from ..providers.tmdb_provider import TMDBProvider as tmdb
 
 
+# =============================================================================
+# 🔧 VERİ SAĞLAYICI (LOCAL PROVIDER)
+# =============================================================================
+# Bu sınıf, uygulamanın SQLite veritabanı ile olan tüm iletişimini yönetir.
+#
+# NEDEN SQLITE?
+# - Yerel veri saklama için endüstri standardıdır. Tek dosyadır, taşınabilirdir.
+#
+# MİMARİ MANTIK:
+# 1. create_tables: Uygulama açılırken tabloların varlığı kontrol edilir.
+# 2. update_series_table: Veritabanı şeması (sütunlar) güncellenir (Migration).
+# 3. @staticmethod: Sınıf objesi oluşturmadan doğrudan fonksiyon gibi çağrılır.
+# =============================================================================
 class LocalProvider:
     """
     This class provides methods to interface with the local db.
@@ -392,14 +406,24 @@ class LocalProvider:
 
     @staticmethod
     def compute_badge_color(poster_path: Path) -> bool:
-        im = Image.open(poster_path)
-        box = (im.size[0]-175, 0, im.size[0], 175)
-        region = im.crop(box)
-        median = ImageStat.Stat(region).median
-        if sum(median) < 3 * 128:
-            return True
-        else:
-            return False
+        """
+        Computes badge color based on poster corner brightness.
+        Returns True for light badge (dark background), False otherwise.
+        """
+        color_light = False
+        try:
+            with Image.open(poster_path) as im:
+                box = (im.size[0]-175, 0, im.size[0], 175)
+                region = im.crop(box)
+                try:
+                    median = ImageStat.Stat(region).median
+                    if sum(median) < 3 * 128:
+                        color_light = True
+                finally:
+                    region.close()
+        except (OSError, IOError):
+            pass
+        return color_light
 
     @staticmethod
     def create_languages_table() -> None:
@@ -657,6 +681,7 @@ class LocalProvider:
             return LocalProvider.add_series(id)
 
     @staticmethod
+    @functools.lru_cache(maxsize=256)
     def get_language_by_code(iso_code: str) -> LanguageModel | None:
         """
         Retrieves a language from the db via its iso_639_1 code.
@@ -732,7 +757,90 @@ class LocalProvider:
                 return []
 
     @staticmethod
-    def mark_watched_movie(id: int, watched: bool) -> int | None:
+    def get_all_movies_raw():
+        """
+        Retrieves all movies from the db as raw dictionaries.
+        Does NOT create MovieModel objects - for chunked/GridView loading.
+
+        Returns:
+            List of dicts (sqlite3.Row converted) or empty list
+        """
+
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT * FROM movies;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql).fetchall()
+            if result:
+                logging.debug(f'[db] Get all movies raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get all movies raw: []')
+                return []
+    @staticmethod
+    def get_recent_movies_raw(limit: int = 10):
+        """
+        Retrieves the most recent movies from the db as raw dictionaries.
+        
+        Args:
+            limit (int): Number of items to retrieve.
+
+        Returns:
+            List of dicts.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            # Use rowid to ensure LIFO order even if dates are identical
+            sql = """SELECT * FROM movies ORDER BY rowid DESC LIMIT ?;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql, (limit,)).fetchall()
+            if result:
+                logging.debug(f'[db] Get recent movies raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get recent movies raw: []')
+                return []
+
+    @staticmethod
+    def get_total_movie_count() -> int:
+        """
+        Returns the total number of movies in the database.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT COUNT(*) FROM movies;"""
+            result = connection.cursor().execute(sql).fetchone()
+            return result[0] if result else 0
+
+    @staticmethod
+    def get_recent_series_raw(limit: int = 10):
+        """
+        Retrieves the most recent series from the db as raw dictionaries.
+        
+        Args:
+            limit (int): Number of items to retrieve.
+
+        Returns:
+            List of dicts.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT * FROM series ORDER BY rowid DESC LIMIT ?;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql, (limit,)).fetchall()
+            if result:
+                logging.debug(f'[db] Get recent series raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get recent series raw: []')
+                return []
+
+    @staticmethod
+    def get_total_series_count() -> int:
+        """
+        Returns the total number of series in the database.
+        """
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT COUNT(*) FROM series;"""
+            result = connection.cursor().execute(sql).fetchone()
+            return result[0] if result else 0
+
         """
         Sets the watched flag on the movie with the provided id.
 
@@ -899,6 +1007,27 @@ class LocalProvider:
                 return series
             else:
                 logging.debug(f'[db] Get all tv series: {[]}')
+                return []
+
+    @staticmethod
+    def get_all_series_raw():
+        """
+        Retrieves all series from the db as raw dictionaries.
+        Does NOT create SeriesModel objects - for chunked/GridView loading.
+
+        Returns:
+            List of dicts (sqlite3.Row converted) or empty list
+        """
+
+        with sqlite3.connect(shared.db) as connection:
+            sql = """SELECT * FROM series;"""
+            connection.row_factory = sqlite3.Row
+            result = connection.cursor().execute(sql).fetchall()
+            if result:
+                logging.debug(f'[db] Get all series raw: {len(result)} items')
+                return [dict(row) for row in result]
+            else:
+                logging.debug(f'[db] Get all series raw: []')
                 return []
 
     @staticmethod
