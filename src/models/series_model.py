@@ -80,13 +80,85 @@ class SeriesModel(GObject.GObject):
     recent_change = GObject.Property(type=bool, default=False)
     release_date = GObject.Property(type=str, default='')
     seasons_number = GObject.Property(type=int, default=0)
-    seasons = GObject.Property(type=object)
+    # =============================================================================
+    # 🔧 LAZY LOADING DEĞİŞİKLİĞİ
+    # =============================================================================
+    # ESKİ: seasons = GObject.Property(type=object)
+    # YENİ: _seasons private değişken, seasons property getter ile
+    # 
+    # NEDEN LAZY LOADING?
+    # - Kullanıcının 482 dizisi var
+    # - Her dizi ortalama 5 sezon, 50 bölüm içerir
+    # - Başlangıçta tümünü yüklemek = 24,000+ obje = YAVAS + ÇOK RAM
+    # - Lazy loading = Sadece görüntülenen yükle = HIZLI + AZ RAM
+    # =============================================================================
+    _seasons = None  # Private değişken: Sezon listesi (başta boş)
+    _seasons_loaded = False  # Flag: Sezonlar yüklendi mi?
+    _seasons_from_api = False  # Flag: TMDB'den mi geldi?
     soon_release = GObject.Property(type=bool, default=False)
     status = GObject.Property(type=str, default='')
     tagline = GObject.Property(type=str, default='')
     title = GObject.Property(type=str, default='')
     watched = GObject.Property(type=bool, default=False)
     notes = GObject.Property(type=str, default='')
+
+    @property
+    def seasons(self):
+        """
+        Sezon listesini döndürür (Lazy Loading ile).
+        
+        =============================================================================
+        LAZY LOADING NASIL ÇALIŞIR?
+        =============================================================================
+        
+        1. İLK ERİŞİM:
+           - _seasons_loaded = False ise
+           - Veritabanından yükle (get_all_seasons)
+           - _seasons'a kaydet
+           - _seasons_loaded = True yap
+        
+        2. SONRAKİ ERİŞİMLER:
+           - _seasons_loaded = True
+           - Direkt _seasons'dan döndür (veritabanına gitmez!)
+        
+        Python'da @property dekoratörü:
+        - Fonksiyonu değişken gibi kullanmamızı sağlar
+        - dizi.seasons yazınca bu fonksiyon çalışır
+        - Parantez gerekmez!
+        
+        Returns:
+            List[SeasonModel]: Sezon listesi
+        """
+        # Eğer TMDB'den geldiyse, zaten yüklendi, direkt döndür
+        if self._seasons_from_api:
+            return self._seasons
+        
+        # Henüz yüklenmediyse, şimdi yükle (lazy loading)
+        if not self._seasons_loaded:
+            # Veritabanından sezonları yükle
+            # local modülünü burada import ediyoruz (circular import'dan kaçınmak için)
+            from ..providers import local_provider as local
+            self._seasons = local.LocalProvider.get_all_seasons(self.id)
+            self._seasons_loaded = True
+        
+        return self._seasons
+    
+    @seasons.setter
+    def seasons(self, value):
+        """
+        Sezon listesini ayarlar.
+        
+        Bu setter şu durumlarda kullanılır:
+        - TMDB'den yeni dizi eklenirken (_parse_seasons sonucu)
+        - Manuel dizi düznlenirken
+        - Cache temizleme sırasında (value = None)
+        
+        Args:
+            value: Yeni sezon listesi veya None
+        """
+        self._seasons = value
+        # Eğer değer atandıysa, yüklendi sayılır
+        self._seasons_loaded = value is not None
 
     def __init__(self, d=None, t=None):
         super().__init__()
@@ -99,8 +171,12 @@ class SeriesModel(GObject.GObject):
             self.genres = self._parse_genres(api_dict=d['genres'])
             self.id = d['id']
             self.in_production = d['in_production']
-            self.last_air_date = d['last_air_date']
-            self.last_episode_number = f"{d['last_episode_to_air']['season_number']}.{d['last_episode_to_air']['episode_number']}"
+            self.last_air_date = d['last_air_date'] if d['last_air_date'] else ""
+            # NULL CHECK: TMDB bazen last_episode_to_air null döndürür
+            if d.get('last_episode_to_air'):
+                self.last_episode_number = f"{d['last_episode_to_air']['season_number']}.{d['last_episode_to_air']['episode_number']}"
+            else:
+                self.last_episode_number = ""
             self.manual = False
             self.new_release = False
             next_episode_to_air = d['next_episode_to_air']
@@ -118,6 +194,11 @@ class SeriesModel(GObject.GObject):
             self.recent_change = False
             self.release_date = d['first_air_date']
             self.seasons_number = d['number_of_seasons']
+            # =============================================================================
+            # TMDB'den gelen sezonları hemen yükle (yeni dizi ekleniyor)
+            # Lazy loading kullanmıyoruz çünkü TMDB'den tüm bilgi geldi
+            # =============================================================================
+            self._seasons_from_api = True  # TMDB'den geldi işareti
             self.seasons = self._parse_seasons(d['seasons'])
             self.status = d['status']
             self.tagline = d['tagline']
@@ -161,11 +242,22 @@ class SeriesModel(GObject.GObject):
             self.title = t["title"]  # type: ignore
             self.watched = t["watched"]  # type: ignore
 
-            if len(t) == 28:    # type: ignore # TODO: increase this number every time a new field is added
+            # =============================================================================
+            # 🔧 LAZY LOADING - Veritabanından yükleme
+            # =============================================================================
+            # ESKİ KOD (HEMEN YÜKLİYORDU - YAVAS):
+            # self.seasons = local.LocalProvider.get_all_seasons(self.id)
+            #
+            # YENİ KOD (LAZY - HIZLI):
+            # Sezonları yüklemiyoruz! _seasons ve _seasons_loaded default olarak
+            # None ve False. Kullanıcı seasons property'sine eriştiğinde
+            # otomatik olarak yüklenecek (@property getter sayesinde)
+            #
+            # Eğer t["seasons"] varsa (len 28), direkt ata
+            # =============================================================================
+            if len(t) == 28:    # type: ignore
                 self.seasons = t["seasons"]  # type: ignore
-            else:
-                self.seasons = local.LocalProvider.get_all_seasons(
-                    self.id)  # type: ignore
+            # else durumunda bir şey yapmıyoruz - lazy loading devreye girecek
                 
             self.notes = t["notes"]  # type: ignore
 
@@ -307,12 +399,102 @@ class SeriesModel(GObject.GObject):
             return f'resource://{shared.PREFIX}/blank_poster.jpg', False
 
     def _compute_badge_color(self, path: str) -> bool:
+        """
+        Poster'ın sağ üst köşesinin parlaklığına göre badge rengini hesaplar.
+        
+        MANTIK: Poster'ın köşesi koyuysa → açık renk badge kullan (okunabilirlik için)
+                Poster'ın köşesi açıksa → koyu renk badge kullan
+        
+        Args:
+            path (str): Poster dosyasının göreceli yolu (örn: "/abc123.jpg")
+            
+        Returns:
+            bool: True = açık renk badge kullan (koyu arka plan)
+                  False = koyu renk badge kullan (açık arka plan)
+        """
+        
+        # Varsayılan değer: koyu badge (False)
+        # Eğer bir hata olursa bu değer döner
         color_light = False
-        im = Image.open(Path(f'{shared.poster_dir}/{path}'))
-        box = (im.size[0]-175, 0, im.size[0], 175)
-        region = im.crop(box)
-        median = ImageStat.Stat(region).median
-        if sum(median) < 3 * 128:
-            color_light = True
-
+        
+        # TRY bloğu: Dosya açma işlemi başarısız olabilir
+        # Örnek hatalar: dosya yok, bozuk resim, izin hatası
+        try:
+            # WITH STATEMENT (Context Manager):
+            # ════════════════════════════════════════════════════════════════
+            # "with" kullandığımızda Python şunu garanti eder:
+            # 1. Blok başında: Image.open() çalışır, dosya açılır
+            # 2. Blok sonunda: Otomatik olarak im.__exit__() çağrılır → dosya kapanır
+            # 3. HATA OLSA BİLE dosya kapanır (finally gibi davranır)
+            # 
+            # ESKİ KOD (HATALI):
+            #   im = Image.open(...)  ← Dosya açık kalıyordu, asla kapanmıyordu
+            #
+            # YENİ KOD (DOĞRU):
+            #   with Image.open(...) as im:  ← Blok bitince otomatik kapanır
+            # ════════════════════════════════════════════════════════════════
+            with Image.open(Path(f'{shared.poster_dir}/{path}')) as im:
+                
+                # BOX: Kırpılacak bölgenin koordinatları
+                # Format: (sol, üst, sağ, alt)
+                # ════════════════════════════════════════════════════════════
+                # im.size[0] = resmin genişliği (piksel)
+                # im.size[1] = resmin yüksekliği (piksel)
+                # 
+                # Örnek: 500x750 piksel bir poster için:
+                # box = (500-175, 0, 500, 175) = (325, 0, 500, 175)
+                # Bu, sağ üst köşeden 175x175 piksellik bir kare alır
+                # ════════════════════════════════════════════════════════════
+                box = (im.size[0]-175, 0, im.size[0], 175)
+                
+                # CROP: Resmin belirtilen bölgesini kırp
+                # Bu işlem YENİ bir Image objesi oluşturur (region)
+                # ÖNEMLİ: Bu da bellekte yer kaplar ve kapatılmalı!
+                region = im.crop(box)
+                
+                # İÇ TRY-FINALLY: region objesinin temizliği için
+                # Median hesaplama sırasında hata olsa bile region kapatılmalı
+                try:
+                    # IMAGESTAT: PIL'in istatistik modülü
+                    # .median = her renk kanalı (R, G, B) için ortanca değer
+                    # Örnek sonuç: [128, 130, 125] (R=128, G=130, B=125)
+                    median = ImageStat.Stat(region).median
+                    
+                    # PARLAKLIK HESABI:
+                    # ════════════════════════════════════════════════════════
+                    # sum(median) = R + G + B (örn: 128+130+125 = 383)
+                    # 
+                    # Eğer sum < 3 * 128 (384) ise → resim karanlık
+                    # Eğer sum >= 384 ise → resim aydınlık
+                    #
+                    # 128 = 8-bit renk aralığının ortası (0-255)
+                    # 3 kanal × 128 = 384 = "ortalama parlaklık" eşiği
+                    # ════════════════════════════════════════════════════════
+                    if sum(median) < 3 * 128:
+                        # Koyu arka plan tespit edildi → açık renk badge kullan
+                        color_light = True
+                        
+                finally:
+                    # REGION.CLOSE(): Kırpılmış bölgenin belleğini serbest bırak
+                    # ════════════════════════════════════════════════════════
+                    # im.crop() yeni bir Image objesi oluşturur
+                    # Bu obje de dosya handle'ı tutabilir (özellikle büyük resimlerde)
+                    # finally bloğu: Hata olsa bile bu satır MUTLAKA çalışır
+                    # ════════════════════════════════════════════════════════
+                    region.close()
+                    
+            # WITH bloğu bitti → im otomatik olarak kapatıldı (im.close() çağrıldı)
+            
+        except (OSError, IOError):
+            # HATA YAKALAMA:
+            # ════════════════════════════════════════════════════════════════
+            # OSError: Dosya bulunamadı, disk hatası, izin sorunu
+            # IOError: Bozuk resim dosyası, okunamayan format
+            # 
+            # pass = Hiçbir şey yapma, varsayılan değeri (color_light=False) döndür
+            # Kullanıcı deneyimi: Uygulama çökmek yerine koyu badge gösterir
+            # ════════════════════════════════════════════════════════════════
+            pass
+        
+        # Hesaplanan değeri döndür
         return color_light

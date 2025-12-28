@@ -40,7 +40,22 @@ class SeasonModel(GObject.GObject):
 
     __gtype_name__ = 'SeasonModel'
 
-    episodes = GObject.Property(type=object)
+    # =============================================================================
+    # 🔧 LAZY LOADING DEĞİŞİKLİĞİ - EPISODES
+    # =============================================================================
+    # ESKİ: episodes = GObject.Property(type=object)
+    # YENİ: _episodes private değişken, episodes property getter ile
+    # 
+    # NEDEN?
+    # - Her sezon ortalama 10-20 bölüm içerir
+    # - 482 dizi × 5 sezon × 10 bölüm = ~24,000 EpisodeModel
+    # - Hepsini başta yüklemek çok yavaş ve RAM tüketen
+    # - Lazy loading: Sadece gerektiğinde yükle
+    # =============================================================================
+    _episodes = None  # Private: Bölüm listesi
+    _episodes_loaded = False  # Flag: Yüklendi mi?
+    _episodes_from_api = False  # Flag: TMDB'den mi geldi?
+
     episodes_number = GObject.Property(type=int, default=0)
     id = GObject.Property(type=str, default='')
     number = GObject.Property(type=int, default=0)
@@ -48,6 +63,42 @@ class SeasonModel(GObject.GObject):
     poster_path = GObject.Property(type=str, default='')
     show_id = GObject.Property(type=str, default='')
     title = GObject.Property(type=str, default='')
+
+    @property
+    def episodes(self):
+        """
+        Bölüm listesini döndürür (Lazy Loading ile).
+        
+        @property dekoratörü sayesinde:
+        - sezon.episodes yazmak bu fonksiyonu çalıştırır
+        - Parantez gerekmez, değişken gibi kullanılır
+        
+        Returns:
+            List[EpisodeModel]: Bölüm listesi
+        """
+        # TMDB'den geldiyse direkt döndür
+        if self._episodes_from_api:
+            return self._episodes
+        
+        # Henüz yüklenmediyse, şimdi yükle
+        if not self._episodes_loaded:
+            from ..providers import local_provider as local
+            self._episodes = local.LocalProvider.get_season_episodes(
+                self.show_id, self.number)
+            self._episodes_loaded = True
+        
+        return self._episodes
+    
+    @episodes.setter
+    def episodes(self, value):
+        """
+        Bölüm listesini ayarlar.
+        
+        Args:
+            value: Yeni bölüm listesi veya None
+        """
+        self._episodes = value
+        self._episodes_loaded = value is not None
 
     def __eq__(self, other) -> bool:
         """
@@ -86,6 +137,10 @@ class SeasonModel(GObject.GObject):
             self.title = d['name']
             self.show_id = show_id
 
+            # =============================================================================
+            # TMDB'den gelen bölümleri hemen yükle (yeni sezon ekleniyor)
+            # =============================================================================
+            self._episodes_from_api = True
             self.episodes = self._parse_episodes(
                 tmdb.TMDBProvider.get_season_episodes(show_id, self.number))
         else:
@@ -97,11 +152,15 @@ class SeasonModel(GObject.GObject):
             self.title = t[5]  # type: ignore
             self.show_id = t[6]  # type: ignore
 
+            # =============================================================================
+            # 🔧 LAZY LOADING - Veritabanından yükleme
+            # =============================================================================
+            # ESKİ: self.episodes = local.LocalProvider.get_season_episodes(...)
+            # YENİ: Yüklemiyoruz, @property getter'a bırakıyoruz
+            # =============================================================================
             if len(t) == 8:  # type: ignore
                 self.episodes = t[7]    # type: ignore
-            else:
-                self.episodes = local.LocalProvider.get_season_episodes(
-                    self.show_id, self.number)  # type: ignore
+            # else: Lazy loading - ilk erişimde yüklenecek
 
     def _download_poster(self, show_id: int, path: str) -> str:
         """
