@@ -47,3 +47,9 @@ handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)
 logging.getLogger().addHandler(handler)
 
 log_files = None
+
+# =============================================================================
+# TEXTURE_CACHE: Gdk.Texture nesnelerini bellekte tutarak yeniden yüklemeyi önler
+# Kullanım: poster_button.py içinde async image loading için
+# =============================================================================
+TEXTURE_CACHE = {}

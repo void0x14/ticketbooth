@@ -15,6 +15,7 @@ Async Image Loading:
 - Prevents scrollbar jitter during fast drag
 """
 
+import logging
 import threading
 from gi.repository import Gdk, Gio, GLib, GObject, Gtk
 from pathlib import Path
@@ -161,19 +162,40 @@ class PosterButton(Gtk.Box):
         self._reset_visual_state()
 
     def _apply_visual_state(self) -> None:
-        """Apply visual properties based on current content."""
-        # Set poster image (async for file://, sync for resource://)
+        """
+        Apply visual properties based on current content.
+        
+        5-Layer Verification:
+        - Layer 5 (Logic): Spinner visibility is managed per load type:
+          - Sync (resource://): Hide spinner immediately after set_resource.
+          - Async (file://): Keep spinner visible; callbacks will hide it.
+          - No path: Hide spinner.
+        """
+        logging.info(f"[PosterButton] Applying visual state for: {self.title}, Path: {self.poster_path}")
+        
+        # ═══════════════════════════════════════════════════════════════════════
+        # POSTER LOADING LOGIC (LAYER 5: CORRECT SPINNER STATE)
+        # ═══════════════════════════════════════════════════════════════════════
         if self.poster_path:
             if self.poster_path.startswith('resource://'):
-                # Resource paths are in-memory, sync is fast
+                # SYNC: Resource scheme -> In-memory, loads instantly
                 resource_path = self.poster_path.replace('resource://', '')
                 self._picture.set_resource(resource_path)
+                # SYNC LOAD COMPLETE: Hide spinner now
+                self._spinner.set_visible(False)
             else:
-                # File paths: load async to prevent jitter
+                # ASYNC: File scheme or plain path -> Threaded load
+                # Spinner will be shown by _load_image_async
+                # Spinner will be hidden by _set_texture_main or _on_load_error
                 self._load_image_async(self.poster_path)
-        self._spinner.set_visible(False)
+                # DO NOT HIDE SPINNER HERE! Async callback will do it.
+        else:
+            # NO PATH: Nothing to load, hide spinner
+            self._spinner.set_visible(False)
         
-        # Handle badges
+        # ═══════════════════════════════════════════════════════════════════════
+        # BADGE LOGIC
+        # ═══════════════════════════════════════════════════════════════════════
         badge_visible = False
         if self.activate_notification:
             if self.recent_change:
@@ -196,16 +218,10 @@ class PosterButton(Gtk.Box):
                     self._soon_release_badge.add_css_class("dark")
         
         # Year label
-        if self.year:
-            self._year_lbl.set_visible(True)
-        else:
-            self._year_lbl.set_visible(False)
+        self._year_lbl.set_visible(bool(self.year))
         
         # Status label
-        if self.status:
-            self._status_lbl.set_visible(True)
-        else:
-            self._status_lbl.set_visible(False)
+        self._status_lbl.set_visible(bool(self.status))
         
         # Watched badge
         if self.watched and not badge_visible:
@@ -215,8 +231,9 @@ class PosterButton(Gtk.Box):
             else:
                 self._watched_badge.add_css_class("dark")
 
+
     def _load_image_async(self, uri: str) -> None:
-        """Asenkron resim yükleme: Cache ve ThreadPool kullanarak güvenli yükleme."""
+        """Asenkron resim yükleme: Hata ayıklama logları ile birlikte."""
         self._load_id += 1
         current_id = self._load_id
         
@@ -224,35 +241,60 @@ class PosterButton(Gtk.Box):
         if uri in shared.TEXTURE_CACHE:
             self._picture.set_paintable(shared.TEXTURE_CACHE[uri])
             self._spinner.set_visible(False)
-            self._spinner.stop()
             return
 
-        # 2. Spinner'ı başlat ve göster
+        # 2. Spinner'ı başlat
         self._spinner.set_visible(True)
-        self._spinner.start()
 
-        # Path conversion
-        path = uri[7:] if uri.startswith('file://') else uri
-        
-        # 3. Doğrudan Pool'a gönder (Debounce kaldırıldı - Race condition engellendi)
-        shared.IMAGE_EXECUTOR.submit(self._load_in_worker, path, uri, current_id)
+        def load_thread():
+            # Check if button was recycled immediately
+            if self._load_id != current_id:
+                return
 
-    def _load_in_worker(self, path: str, uri: str, load_id: int):
-        """Worker thread içinde resmi işle."""
-        try:
-            texture = Gdk.Texture.new_from_filename(path)
-            # Cache'e ekle
-            shared.TEXTURE_CACHE[uri] = texture
-            # UI için main thread'e döngüsü
-            GLib.idle_add(self._set_texture_main, texture, load_id)
-        except Exception:
-            # Hata durumunda spinner'ı kapatmamız lazım ki sonsuz dönmesin
-            GLib.idle_add(self._on_load_error, load_id)
+            try:
+                logging.debug(f"[PosterButton] Loading: {uri}")
+                
+                # Check for file:// protocol and strip it to use new_for_path
+                # This avoids any URI encoding ambiguity (spaces etc)
+                if uri.startswith('file://'):
+                    clean_path = uri[7:] # strip file://
+                    # Verify existence before hitting Gdk
+                    path_obj = Path(clean_path)
+                    if not path_obj.exists():
+                        raise FileNotFoundError(f"File not found: {clean_path}")
+                        
+                    file = Gio.File.new_for_path(clean_path)
+                elif uri.startswith('resource://'):
+                    file = Gio.File.new_for_uri(uri)
+                else:
+                    # Fallback for plain paths (just in case)
+                    file = Gio.File.new_for_path(uri)
+                
+                # Load texture (thread-safe in GTK4)
+                texture = Gdk.Texture.new_from_file(file)
+                
+                # Cache success
+                shared.TEXTURE_CACHE[uri] = texture
+                logging.debug(f"[PosterButton] Loaded: {uri}")
+                
+                # Update UI
+                GLib.idle_add(self._set_texture_main, texture, current_id)
+            except Exception as e:
+                logging.error(f"[PosterButton] Error loading {uri}: {e}")
+                GLib.idle_add(self._on_load_error, current_id)
+
+        # Threading is safe for Gdk.Texture.new_from_file
+        thread = threading.Thread(target=load_thread, daemon=True)
+        thread.start()
 
     def _on_load_error(self, load_id: int) -> bool:
         if load_id == self._load_id:
             self._spinner.set_visible(False)
-            self._spinner.stop()
+            # Fallback to blank poster on error
+            try:
+                self._picture.set_resource(f"{shared.PREFIX}/blank_poster.jpg")
+            except Exception:
+                pass # fail silently if resource missing
         return False
 
     def _set_texture_main(self, texture: Gdk.Texture, load_id: int) -> bool:
@@ -260,13 +302,12 @@ class PosterButton(Gtk.Box):
         if load_id == self._load_id:
             self._picture.set_paintable(texture)
             self._spinner.set_visible(False)
-            self._spinner.stop()
         return False
 
 
     def _reset_visual_state(self) -> None:
         """Reset all visual state for recycling."""
-        # Clear image and show spinner (Adw.Spinner auto-spins when visible)
+        # Clear image and show spinner
         self._picture.set_file(None)
         self._spinner.set_visible(True)
         
