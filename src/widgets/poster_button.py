@@ -26,19 +26,19 @@ from ..models.series_model import SeriesModel
 
 @Gtk.Template(resource_path=shared.PREFIX + '/ui/widgets/poster_button.ui')
 # =============================================================================
-# 🔧 POSTER BUTONU (POSTER BUTTON) - Geri Dönüşüm İşçisi
+# POSTER BUTTON - Widget Recycling Worker
 # =============================================================================
-# Bu widget, ana ekrandaki her bir film/dizi karesidir.
-# GridView'un "Recycling" (Geri Dönüşüm) mekanizmasının en önemli parçasıdır.
+# This widget represents each movie/series card on the main screen.
+# It is the most important part of GridView's "Recycling" mechanism.
 #
-# NEDEN ÖNEMLİ?
-# - Her scroll yaptığında yeni buton OLUŞTURULMAZ.
-# - update_content() metodu ile mevcut butonun içindeki veriler (başlık, resim)
-#   sadece değiştirilir. Bu sayede işlemci yorulmaz, RAM şişmez.
+# WHY IS IT IMPORTANT?
+# - A new button is NOT created on each scroll.
+# - The update_content() method only changes the data (title, image)
+#   inside the existing button. This saves CPU and prevents RAM bloat.
 #
-# KRİTİK METODLAR:
-# 1. update_content: Yeni film verisini butona giydirir.
-# 2. reset_state: Butonu eski verilerden temizler (yeni veri gelmeden önce).
+# CRITICAL METHODS:
+# 1. update_content: Binds new movie data to the button.
+# 2. reset_state: Clears the button from old data (before new data arrives).
 # =============================================================================
 class PosterButton(Gtk.Box):
     """
@@ -97,9 +97,8 @@ class PosterButton(Gtk.Box):
         # Async image loading cancellation token
         self._load_id = 0
         
-        # Jitter Fix: Sadece dikey yüksekliği sabitleyerek GridView'un 
-        # tahmin (estimation) mekanizmasını devre dışı bırakıyoruz. 
-        # Genişlik (-1) otomatik kalarak UI responsivity'sini korur.
+        # Jitter Fix: By fixing only the vertical height, we disable GridView's
+        # estimation mechanism. Width (-1) remains automatic to preserve UI responsivity.
         self.set_size_request(-1, 315)
         
         # If content provided, update immediately
@@ -111,9 +110,9 @@ class PosterButton(Gtk.Box):
         Update widget with new model data.
         Called by GridView's bind callback for widget recycling.
         
-        NOT: reset_state() burada ÇAĞRILMIYOR çünkü GTK4 factory lifecycle'ına
-        göre unbind zaten bind'dan önce çalışıyor ve reset orada yapılıyor.
-        Kaynak: https://docs.gtk.org/gtk4/class.SignalListItemFactory.html
+        NOTE: reset_state() is NOT called here because according to GTK4 factory
+        lifecycle, unbind already runs before bind and reset happens there.
+        Reference: https://docs.gtk.org/gtk4/class.SignalListItemFactory.html
         """
         # Store content reference
         self.content = content
@@ -233,17 +232,17 @@ class PosterButton(Gtk.Box):
 
 
     def _load_image_async(self, uri: str) -> None:
-        """Asenkron resim yükleme: Hata ayıklama logları ile birlikte."""
+        """Async image loading with debug logs."""
         self._load_id += 1
         current_id = self._load_id
         
-        # 1. Kontrol: Cache'de var mı?
+        # 1. Check: Is it in cache?
         if uri in shared.TEXTURE_CACHE:
             self._picture.set_paintable(shared.TEXTURE_CACHE[uri])
             self._spinner.set_visible(False)
             return
 
-        # 2. Spinner'ı başlat
+        # 2. Start the spinner
         self._spinner.set_visible(True)
 
         def load_thread():
@@ -298,7 +297,7 @@ class PosterButton(Gtk.Box):
         return False
 
     def _set_texture_main(self, texture: Gdk.Texture, load_id: int) -> bool:
-        """UI güncelleme ve spinner durdurma."""
+        """Update UI and stop spinner."""
         if load_id == self._load_id:
             self._picture.set_paintable(texture)
             self._spinner.set_visible(False)

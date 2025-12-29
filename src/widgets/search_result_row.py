@@ -200,10 +200,10 @@ class SearchResultRow(Gtk.Box):
         self._add_btn.set_icon_name('check-plain')
         self._add_spinner.set_visible(False)
         
-        # KALDIRILDI: win.refresh çağrısı
-        # Neden: 1400+ model yeniden yüklenmesi gereksiz ve dialog'u donduruyor
-        # İçerik zaten veritabanına eklendi, kullanıcı ana ekrana
-        # döndüğünde _check_needs_refresh mekanizması ile görecek
+        # REMOVED: win.refresh call
+        # Reason: Re-loading 1400+ models is unnecessary and freezes the dialog.
+        # Content is already in DB, the _check_needs_refresh mechanism will 
+        # handle it when the user returns to the main screen.
         
         activity.end()
 

@@ -41,20 +41,20 @@ class SeasonModel(GObject.GObject):
     __gtype_name__ = 'SeasonModel'
 
     # =============================================================================
-    # 🔧 LAZY LOADING DEĞİŞİKLİĞİ - EPISODES
+    # LAZY LOADING CHANGE - EPISODES
     # =============================================================================
-    # ESKİ: episodes = GObject.Property(type=object)
-    # YENİ: _episodes private değişken, episodes property getter ile
+    # OLD: episodes = GObject.Property(type=object)
+    # NEW: _episodes private variable, episodes property via getter
     # 
-    # NEDEN?
-    # - Her sezon ortalama 10-20 bölüm içerir
-    # - 482 dizi × 5 sezon × 10 bölüm = ~24,000 EpisodeModel
-    # - Hepsini başta yüklemek çok yavaş ve RAM tüketen
-    # - Lazy loading: Sadece gerektiğinde yükle
+    # WHY?
+    # - Each season contains average 10-20 episodes
+    # - 482 series × 5 seasons × 10 episodes = ~24,000 EpisodeModel
+    # - Loading all at startup is very slow and RAM consuming
+    # - Lazy loading: Only load when needed
     # =============================================================================
-    _episodes = None  # Private: Bölüm listesi
-    _episodes_loaded = False  # Flag: Yüklendi mi?
-    _episodes_from_api = False  # Flag: TMDB'den mi geldi?
+    _episodes = None  # Private: Episode list
+    _episodes_loaded = False  # Flag: Loaded?
+    _episodes_from_api = False  # Flag: From TMDB?
 
     episodes_number = GObject.Property(type=int, default=0)
     id = GObject.Property(type=str, default='')
@@ -67,20 +67,20 @@ class SeasonModel(GObject.GObject):
     @property
     def episodes(self):
         """
-        Bölüm listesini döndürür (Lazy Loading ile).
+        Returns episode list (with Lazy Loading).
         
-        @property dekoratörü sayesinde:
-        - sezon.episodes yazmak bu fonksiyonu çalıştırır
-        - Parantez gerekmez, değişken gibi kullanılır
+        Thanks to @property decorator:
+        - Writing season.episodes runs this function
+        - No parentheses needed, used like a variable
         
         Returns:
-            List[EpisodeModel]: Bölüm listesi
+            List[EpisodeModel]: Episode list
         """
-        # TMDB'den geldiyse direkt döndür
+        # If from TMDB, return directly
         if self._episodes_from_api:
             return self._episodes
         
-        # Henüz yüklenmediyse, şimdi yükle
+        # If not loaded yet, load now
         if not self._episodes_loaded:
             from ..providers import local_provider as local
             self._episodes = local.LocalProvider.get_season_episodes(
@@ -92,10 +92,10 @@ class SeasonModel(GObject.GObject):
     @episodes.setter
     def episodes(self, value):
         """
-        Bölüm listesini ayarlar.
+        Sets the episode list.
         
         Args:
-            value: Yeni bölüm listesi veya None
+            value: New episode list or None
         """
         self._episodes = value
         self._episodes_loaded = value is not None
@@ -138,7 +138,7 @@ class SeasonModel(GObject.GObject):
             self.show_id = show_id
 
             # =============================================================================
-            # TMDB'den gelen bölümleri hemen yükle (yeni sezon ekleniyor)
+            # Load episodes from TMDB immediately (new season is being added)
             # =============================================================================
             self._episodes_from_api = True
             self.episodes = self._parse_episodes(
@@ -153,14 +153,14 @@ class SeasonModel(GObject.GObject):
             self.show_id = t[6]  # type: ignore
 
             # =============================================================================
-            # 🔧 LAZY LOADING - Veritabanından yükleme
+            # LAZY LOADING - Loading from database
             # =============================================================================
-            # ESKİ: self.episodes = local.LocalProvider.get_season_episodes(...)
-            # YENİ: Yüklemiyoruz, @property getter'a bırakıyoruz
+            # OLD: self.episodes = local.LocalProvider.get_season_episodes(...)
+            # NEW: Not loading, leaving it to @property getter
             # =============================================================================
             if len(t) == 8:  # type: ignore
                 self.episodes = t[7]    # type: ignore
-            # else: Lazy loading - ilk erişimde yüklenecek
+            # else: Lazy loading - will be loaded on first access
 
     def _download_poster(self, show_id: int, path: str) -> str:
         """

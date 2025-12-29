@@ -498,16 +498,16 @@ class ContentView(Adw.Bin):
             'search-enabled') else _("Your Watchlist"))
 
         # =============================================================================
-        # 🔧 PERFORMANS DÜZELTMESI
+        # PERFORMANCE FIX
         # =============================================================================
-        # ESKİ KOD (KALDRILDI):
+        # OLD CODE (REMOVED):
         # self.refresh_view()
         #
-        # NEDEN KALDIRILDI?
-        # - Her harf yazıldığında refresh_view() çağrılıyordu
-        # - Bu tüm SeriesModel'leri yeniden oluşturuyordu
-        # - 1453 içerik × her harf = çok fazla obje oluşturma!
-        # - Sadece filter fonksiyonunu güncellemek yeterli
+        # WHY WAS IT REMOVED?
+        # - refresh_view() was called on every typed character
+        # - This recreated all SeriesModels
+        # - 1453 content × every character = too many object creations!
+        # - Just updating the filter function is sufficient
         # =============================================================================
 
         self._set_filter_function()

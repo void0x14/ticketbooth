@@ -98,8 +98,8 @@ class TicketboothWindow(Adw.ApplicationWindow):
         """
 
         logging.info('Refresh requested')
-        # SILENT REFRESH: İçerik eklenirken "Loading content..." overlay gösterme
-        # Bu, arama sonucu ekleme sırasındaki görsel takılmayı önler
+        # SILENT REFRESH: Don't show "Loading content..." overlay when adding content
+        # This prevents visual stuttering during search result addition
         source._win_stack.get_child_by_name('main').refresh(show_loading=False)
 
     def _update_background_indicator(self, new_state: None, source: Gtk.Widget) -> None:

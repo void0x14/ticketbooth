@@ -28,18 +28,18 @@ from ..widgets.poster_button import PosterButton
 
 
 # =============================================================================
-# 🔧 İÇERİK IZGARASI (CONTENT GRID VIEW) - GridView & Virtualization
+# CONTENT GRID VIEW - GridView & Virtualization
 # =============================================================================
-# Bu sınıf, 1400+ içeriği performanstan ödün vermeden ekranda gösteren kısımdır.
+# This class displays 1400+ content items on screen without performance penalty.
 #
-# KRİTİK TEKNOLOJİ: VIRTUALIZATION (SANALLAŞTIRMA)
-# - Sadece ekranda o an görünen ~20-30 poster için widget oluşturulur.
-# - Scroll yaptıkça, ekrandan çıkan widget "unbind" edilir, yeni giren veriyle
-#   "bind" edilerek tekrar kullanılır.
+# CRITICAL TECHNOLOGY: VIRTUALIZATION
+# - Widgets are created only for the ~20-30 posters currently visible on screen.
+# - As you scroll, widgets leaving the screen are "unbound" and reused by
+#   being "bound" to new data.
 #
-# BİLEŞENLER:
-# 1. Gio.ListStore: Modelleri (saf veriyi) tutan liste.
-# 2. Gtk.SignalListItemFactory: Widget oluşturma ve veri bağlama (bind) yöneticisi.
+# COMPONENTS:
+# 1. Gio.ListStore: Holds the models (pure data).
+# 2. Gtk.SignalListItemFactory: Manages widget creation and data binding.
 # =============================================================================
 class ContentGridView(Adw.Bin):
     """
@@ -67,7 +67,7 @@ class ContentGridView(Adw.Bin):
         self._pending_raw = []
         self._load_index = 0
         self._load_source_id = None  # Track async load task for cancellation
-        self._last_click_time = 0  # FIX: Debounce için zaman damgası
+        self._last_click_time = 0  # FIX: Timestamp for debounce
         
         # ══════════════════════════════════════════════════════════════
         # UI SETUP
@@ -100,9 +100,9 @@ class ContentGridView(Adw.Bin):
         self._stack.add_named(empty_page, 'empty')
         
         # Filled page with GridView
-        # KINETIC SCROLLING DEVRE DIŞI: GTK4 GridView + kinetic scrolling
-        # kombinasyonu jitter'a neden oluyor (GNOME GitLab issue raporları).
-        # Kaynak: https://docs.gtk.org/gtk4/class.ScrolledWindow.html
+        # KINETIC SCROLLING DISABLED: GTK4 GridView + kinetic scrolling
+        # combination causes jitter (GNOME GitLab issue reports).
+        # Reference: https://docs.gtk.org/gtk4/class.ScrolledWindow.html
         scrolled = Gtk.ScrolledWindow(
             hscrollbar_policy=Gtk.PolicyType.NEVER,
             vscrollbar_policy=Gtk.PolicyType.AUTOMATIC,
@@ -167,6 +167,7 @@ class ContentGridView(Adw.Bin):
         """
         btn = PosterButton(content=None)  # Empty widget
         list_item.set_child(btn)
+        logging.info("[ContentGridView] Factory setup: Created PosterButton")
 
     def _on_factory_bind(self, factory: Gtk.SignalListItemFactory,
                          list_item: Gtk.ListItem) -> None:
@@ -174,17 +175,18 @@ class ContentGridView(Adw.Bin):
         Called when a recycled widget needs to show new data.
         Updates the PosterButton with the current model's data.
         
-        KRİTİK: PosterButton kendi click event'ini yakalıyor ve GridView'a
-        balonlaşmasını (bubble up) engelliyor. Bu yüzden 'clicked' sinyalini
-        burada manuel olarak bağlayıp dinliyoruz.
+        CRITICAL: PosterButton captures its own click event and prevents
+        bubbling up to GridView. That's why we manually connect and listen
+        to the 'clicked' signal here.
         """
         btn = list_item.get_child()
         model = list_item.get_item()
         
         if btn and model:
+            logging.info(f"[ContentGridView] Factory bind: Binding model '{model.title}' to widget")
             btn.update_content(model)
             # Connect explicit click signal from PosterButton
-            # Bu sinyal, GridView'un 'activate' sinyali yerine kullanılacak
+            # This signal will be used instead of GridView's 'activate' signal
             btn.connect('clicked', self._on_child_clicked)
 
     def _on_factory_unbind(self, factory: Gtk.SignalListItemFactory,
@@ -193,8 +195,8 @@ class ContentGridView(Adw.Bin):
         Called when widget is about to be recycled.
         Clean up any bindings to prepare for reuse.
         
-        ÖNEMLİ: Sinyali disconnect etmezsek, widget recycle edildiğinde
-        eski verilere referans veren handler'lar birikir (memory leak + wrong data).
+        IMPORTANT: If we don't disconnect the signal, when the widget is recycled,
+        handlers referencing old data will accumulate (memory leak + wrong data).
         """
         btn = list_item.get_child()
         if btn:
@@ -334,13 +336,13 @@ class ContentGridView(Adw.Bin):
         """
         Handle click from PosterButton's 'clicked' signal.
         
-        Bu metod, PosterButton tıklandığında çağrılır. GridView'un
-        native 'activate' sinyali yerine bunu kullanıyoruz çünkü
-        PosterButton içindeki GtkButton click event'ini yutuyordu.
+        This method is called when PosterButton is clicked. We use this
+        instead of GridView's native 'activate' signal because
+        the GtkButton inside PosterButton was swallowing the click event.
         """
         if content:
-            # DEBOUNCE: Çift tıklamayı ve hızlı ardışık tıklamaları önle
-            # 1 saniye (1,000,000 mikrosaniye) bekleme süresi
+            # DEBOUNCE: Prevent double-clicks and rapid consecutive clicks
+            # 1 second (1,000,000 microseconds) wait period
             current_time = GLib.get_monotonic_time()
             if (current_time - self._last_click_time) < 1000000:
                 logging.debug("[ContentGridView] Click ignored (debounce)")
@@ -375,8 +377,8 @@ class ContentGridView(Adw.Bin):
         self._store.remove_all()
         self._content_loaded = False
         
-        # SILENT REFRESH: Overlay gösterme, arka planda yükle
-        # Bu, show ekleme sırasında "Loading content..." görünmesini önler
+        # SILENT REFRESH: Don't show overlay, load in background
+        # This prevents "Loading content..." from appearing during show add
         if show_loading:
             self._stack.set_visible_child_name('loading')
         

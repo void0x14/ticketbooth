@@ -25,17 +25,17 @@ from ..providers.tmdb_provider import TMDBProvider as tmdb
 
 
 # =============================================================================
-# 🔧 VERİ SAĞLAYICI (LOCAL PROVIDER)
+# DATA PROVIDER (LOCAL PROVIDER)
 # =============================================================================
-# Bu sınıf, uygulamanın SQLite veritabanı ile olan tüm iletişimini yönetir.
+# This class manages all communication between the application and SQLite database.
 #
-# NEDEN SQLITE?
-# - Yerel veri saklama için endüstri standardıdır. Tek dosyadır, taşınabilirdir.
+# WHY SQLITE?
+# - Industry standard for local data storage. Single file, portable.
 #
-# MİMARİ MANTIK:
-# 1. create_tables: Uygulama açılırken tabloların varlığı kontrol edilir.
-# 2. update_series_table: Veritabanı şeması (sütunlar) güncellenir (Migration).
-# 3. @staticmethod: Sınıf objesi oluşturmadan doğrudan fonksiyon gibi çağrılır.
+# ARCHITECTURAL LOGIC:
+# 1. create_tables: Table existence is checked when app starts.
+# 2. update_series_table: Database schema (columns) is updated (Migration).
+# 3. @staticmethod: Called directly like a function without creating class instance.
 # =============================================================================
 class LocalProvider:
     """
@@ -1772,13 +1772,20 @@ class LocalProvider:
                         if movie_dict['poster_path'].startswith('file://'):
                             poster_path = movie_dict['poster_path'][7:]
                             if Path(poster_path).exists():
-                                relative_path = str(Path(poster_path)).split('data/')[-1]
-                                archive.write(poster_path, f"images/{relative_path}")
+                                try:
+                                    relative_path = Path(poster_path).relative_to(shared.data_dir)
+                                    archive.write(poster_path, f"images/{relative_path}")
+                                except ValueError:
+                                    pass
+                                    
                         if movie_dict['backdrop_path'].startswith('file://'):
                             backdrop_path = movie_dict['backdrop_path'][7:]
                             if Path(backdrop_path).exists():
-                                relative_path = str(Path(backdrop_path)).split('data/')[-1]
-                                archive.write(backdrop_path, f"images/{relative_path}")
+                                try:
+                                    relative_path = Path(backdrop_path).relative_to(shared.data_dir)
+                                    archive.write(backdrop_path, f"images/{relative_path}")
+                                except ValueError:
+                                    pass
                         data['movies'].append(movie_dict)
 
                     # Export series and related data
@@ -1790,13 +1797,20 @@ class LocalProvider:
                         if serie_dict['poster_path'].startswith('file://'):
                             poster_path = serie_dict['poster_path'][7:]
                             if Path(poster_path).exists():
-                                relative_path = str(Path(poster_path)).split('data/')[-1]
-                                archive.write(poster_path, f"images/{relative_path}")
+                                try:
+                                    relative_path = Path(poster_path).relative_to(shared.data_dir)
+                                    archive.write(poster_path, f"images/{relative_path}")
+                                except ValueError:
+                                    pass
+                                    
                         if serie_dict['backdrop_path'].startswith('file://'):
                             backdrop_path = serie_dict['backdrop_path'][7:]
                             if Path(backdrop_path).exists():
-                                relative_path = str(Path(backdrop_path)).split('data/')[-1]
-                                archive.write(backdrop_path, f"images/{relative_path}")
+                                try:
+                                    relative_path = Path(backdrop_path).relative_to(shared.data_dir)
+                                    archive.write(backdrop_path, f"images/{relative_path}")
+                                except ValueError:
+                                    pass
                         
                         # Add seasons
                         seasons = connection.execute('SELECT * FROM seasons WHERE show_id = ?', 
@@ -1880,14 +1894,30 @@ class LocalProvider:
                     for movie in data['movies']:
                         # Handle movie images
                         if movie['poster_path'].startswith('file://'):
-                            poster_filename = Path(movie['poster_path'][7:]).name
-                            relative_path = str(Path(movie['poster_path'][7:])).split('data/')[-1]
-                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
-                            target_dir.mkdir(parents=True, exist_ok=True)
+                            # SECURE PATH HANDLING
+                            raw_path = movie['poster_path'][7:]
                             
-                            with archive.open(f"images/{relative_path}") as source, \
-                                open(target_dir / poster_filename, 'wb') as target:
-                                shutil.copyfileobj(source, target)
+                            # We expect the path to be relative to data_dir in a portable backup
+                            # Logic: Find the subfolder (poster, background, etc)
+                            if 'poster' in raw_path:
+                                rel_path = 'poster/' + raw_path.split('poster/')[-1]
+                            elif 'background' in raw_path:
+                                rel_path = 'background/' + raw_path.split('background/')[-1]
+                            else:
+                                rel_path = Path(raw_path).name # Fallback to just filename
+                                
+                            if '..' in rel_path or rel_path.startswith('/'):
+                                continue
+                                
+                            target_file = shared.data_dir / rel_path
+                            target_file.parent.mkdir(parents=True, exist_ok=True)
+                            
+                            try:
+                                with archive.open(f"images/{rel_path}") as source, \
+                                     open(target_file, 'wb') as target:
+                                    shutil.copyfileobj(source, target)
+                            except KeyError:
+                                logging.warning(f"Image {rel_path} not found in archive")
                                 
                         if movie['backdrop_path'].startswith('file://'):
                             backdrop_filename = Path(movie['backdrop_path'][7:]).name
@@ -1922,14 +1952,19 @@ class LocalProvider:
                         
                         # Handle series images
                         if serie['poster_path'].startswith('file://'):
-                            poster_filename = Path(serie['poster_path'][7:]).name
-                            relative_path = str(Path(serie['poster_path'][7:])).split('data/')[-1]
-                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
-                            target_dir.mkdir(parents=True, exist_ok=True)
-                            
-                            with archive.open(f"images/{relative_path}") as source, \
-                                open(target_dir / poster_filename, 'wb') as target:
-                                shutil.copyfileobj(source, target)
+                            raw_path = serie['poster_path'][7:]
+                            if 'data/' in raw_path:
+                                relative_path_str = raw_path.split('data/')[-1]
+                                relative_path = Path(relative_path_str)
+                                if relative_path.is_absolute() or '..' in relative_path_str:
+                                    continue
+                                    
+                                target_file = shared.data_dir / relative_path
+                                target_file.parent.mkdir(parents=True, exist_ok=True)
+                                
+                                with archive.open(f"images/{relative_path_str}") as source, \
+                                     open(target_file, 'wb') as target:
+                                    shutil.copyfileobj(source, target)
                                 
                         if serie['backdrop_path'].startswith('file://'):
                             backdrop_filename = Path(serie['backdrop_path'][7:]).name

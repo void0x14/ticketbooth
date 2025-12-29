@@ -112,7 +112,7 @@ class EpisodeModel(GObject.GObject):
             return f'resource://{shared.PREFIX}/blank_still.jpg'
         except (UnidentifiedImageError, OSError):
             logging.error(f"Failed to identify image for {self.title}, using blank substitute.")
-            # Bozuk dosyayı silmeye çalış
+            # Try to delete the corrupt file
             try:
                 os.remove(f'{shared.series_dir}/{self.show_id}/{self.season_number}{path}')
             except OSError:

@@ -281,23 +281,23 @@ class MainView(Adw.Bin):
         for serie in series:
 
             # =============================================================================
-            # 🔧 FIX: serie.last_air_date None olabilir
+            # FIX: serie.last_air_date can be None
             # =============================================================================
-            # TMDB bazen last_air_date için null döndürür (henüz yayınlanmamış diziler vs.)
-            # Bu durumda strptime() crash verir: TypeError
-            # Çözüm: Tarihi olmayan diziler için sadece veriyi güncelle, karşılaştırma yapma
+            # TMDB sometimes returns null for last_air_date (unreleased series etc.)
+            # In this case strptime() will crash: TypeError
+            # Solution: For series without dates, just update data, skip comparison
             # =============================================================================
             if not serie.last_air_date or not serie.last_air_date.strip():
-                # TMDB'den yeni veri al
+                # Get new data from TMDB
                 new_serie = SeriesModel(tmdb.get_serie(serie.id))
                 
-                # Yayından kalkma kontrolü (tarih gerektirmez)
+                # Production end check (doesn't require date)
                 if serie.in_production == 1 and new_serie.in_production == 0:
                     local.set_recent_change_status(serie.id, True)
                     out_of_production_series.append(new_serie)
                     local.set_notification_list_status(serie.id, False)
                 
-                # Veriyi güncelle
+                # Update data
                 serie = local.get_series_by_id(serie.id)
                 local.update_series(serie, new_serie)
                 continue
@@ -308,18 +308,18 @@ class MainView(Adw.Bin):
             new_serie = SeriesModel(tmdb.get_serie(serie.id))
             
             # =============================================================================
-            # 🔧 FIX: new_serie.last_air_date de None olabilir
+            # FIX: new_serie.last_air_date can also be None
             # =============================================================================
-            # TMDB API'den yeni çekilen dizi için de last_air_date null dönebilir
-            # Kanıt: TMDB API dokümantasyonu + SeriesModel satır 174 kontrol yok
+            # Series newly fetched from TMDB API can also have null last_air_date
+            # Evidence: TMDB API documentation + SeriesModel line 174 has no check
             # =============================================================================
             if not new_serie.last_air_date or not new_serie.last_air_date.strip():
-                # Yayından kalkma kontrolü (tarih gerektirmez)
+                # Production end check (doesn't require date)
                 if serie.in_production == 1 and new_serie.in_production == 0:
                     local.set_recent_change_status(serie.id, True)
                     out_of_production_series.append(new_serie)
                     local.set_notification_list_status(serie.id, False)
-                # Veriyi güncelle
+                # Update data
                 serie = local.get_series_by_id(serie.id)
                 local.update_series(serie, new_serie)
                 continue
@@ -344,7 +344,7 @@ class MainView(Adw.Bin):
                 new_release_series_span = datetime.now() - new_last_air_date
 
             # Check if the next air date is set to soon (7 days in the future)
-            if datetime.now() + timedelta(days=7) > new_next_air_date:
+            if datetime.now() + timedelta(days=shared.SOON_RELEASE_THRESHOLD_SERIES) > new_next_air_date:
                 local.set_soon_release_status(serie.id, True)
                 # if we also detect a considerable amount of time bewteen epsidoe notify user that the series has new releases coming soon.
                 # 3 weeks are chosen to include the new streaming release model of two chunks a month apart but not spam the user for weekly or bi-weekly releases
@@ -382,7 +382,7 @@ class MainView(Adw.Bin):
                 if not movie.new_release:  # if new_release was not set send a notification
                     new_release_movies_span = datetime.now() - release_date
                     new_release_movies.append(new_movie)
-            elif release_date < datetime.now() + timedelta(days=14):
+            elif release_date < datetime.now() + timedelta(days=shared.SOON_RELEASE_THRESHOLD_MOVIE):
                 local.set_recent_change_status(movie.id, True, movie=True)
                 local.set_soon_release_status(movie.id, True, movie=True)
                 if not movie.soon_release:  # if soon_release was not set send a notification
