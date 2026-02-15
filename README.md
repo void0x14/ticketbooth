@@ -1,12 +1,12 @@
 <div align="center">
-  <h1><img src="./data/icons/hicolor/scalable/apps/me.iepure.Ticketbooth.svg" height="64" alt="Ticket Booth Icon"/><br>Ticket Booth (Enhanced)</h1>
-  <h4>Keep track of your favorite shows - Maintained & Refactored</h4>
+  <h1><img src="./data/icons/hicolor/scalable/apps/me.iepure.Ticketbooth.svg" height="64" alt="Ticket Booth Icon"/><br>Ticket Booth</h1>
+  <h4>Keep track of your favorite shows - Professional & Maintained Edition</h4>
 </div>
 
-> [!IMPORTANT]
-> **Active Maintenance Fork:** This repository is an enhanced version of the original Ticket Booth. 
-> It includes critical architectural fixes, performance optimizations (Widget Recycling), 
-> and resolved dependency conflicts (Logging namespace) that are currently pending in the upstream.
+> [!TIP]
+> **Independent Maintenance:** This is the primary, actively maintained version of Ticket Booth. 
+> It features critical architectural fixes, performance optimizations (Widget Recycling), 
+> and resolved dependency conflicts that are not present in original builds.
 
 <div align="center">
   <a href="https://github.com/void0x14/ticketbooth/actions" title="Build Flatpak status">
@@ -19,21 +19,20 @@
     <img src="https://stopthemingmy.app/badge.svg" alt="Please do not theme this app"/>
   </a>
   <br />
-  <a href="#enhanced-features">Key Improvements</a> ·
+  <a href="#features">Features</a> ·
   <a href="#install">Install</a> ·
   <a href="#contribute">Contribute</a> ·
   <a href="#license">License</a>
 </div>
 
-## Enhanced Features (by void0x14)
+## Key Improvements (by void0x14)
 
-In addition to core functionalities, this fork introduces:
+Unlike the original codebase, this version provides:
 
-* **Modernized Architecture:** Standardized codebase to English and refactored for better maintainability.
-* **Memory Efficiency:** Implemented **Widget Recycling** in `ContentGridView` to prevent memory leaks during heavy scrolling.
-* **Logging Fix:** Resolved the critical `logging` namespace conflict that shadowed Python's standard library.
-* **Security:** Audited and enforced parameterized SQL queries to prevent potential injection.
-* **UI Fluidity:** Integrated chunked data loading for a smoother experience with large libraries.
+* **Modernized Architecture:** Fully refactored and standardized in English for global development.
+* **Memory Efficiency:** Integrated **Widget Recycling** in `ContentGridView` to ensure fluid performance.
+* **Stable Logging:** Fixed the critical namespace collisions that affected Python's standard library.
+* **Security First:** Audited SQL queries with full parameterization.
 
 ## Core Features
 
@@ -43,19 +42,19 @@ Ticket Booth allows you to build your watchlist of movies and TV Shows, keep tra
 
 ## Install
 
-Builds from the main branch are available as artifacts on the [Actions page](https://github.com/void0x14/ticketbooth/actions).\
+Builds are available as artifacts on the [Actions page](https://github.com/void0x14/ticketbooth/actions).\
 To build from source, see [Building](./CONTRIBUTING.md#building).
 
 ## Contribute
 
-Since this is an active development fork, issues and pull requests are welcome here! If you've found a bug or have a feature request that is ignored in the upstream, feel free to open an issue in this repository.
+Issues and pull requests are welcome! This repository is the active development home for Ticket Booth.
 
 See [Contributing](./CONTRIBUTING.md) to learn more.
 
 ## License
 
-Copyright (C) 2023-2025 Alessandro Iepure
-Copyright (C) 2026 void0x14 (Fork Maintenance)
+Original Work Copyright (C) 2023-2025 Alessandro Iepure  
+Maintenance & Enhancements Copyright (C) 2026 void0x14
 
 This application comes with absolutely no warranty. See the GNU General Public
 License, version 3 or later for details. A [copy of the license](./LICENSES/GPL-3.0-or-later.txt)
