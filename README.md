@@ -15,11 +15,15 @@
   <a href="./LICENSES/GPL-3.0-or-later.txt" title="GPL-3 License">
     <img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg" alt="GPL 3 License">
   </a>
+  <a href="https://hosted.weblate.org/engage/ticket-booth/">
+    <img src="https://hosted.weblate.org/widget/ticket-booth/svg-badge.svg" alt="Translation status" />
+  </a>
   <a href="https://stopthemingmy.app" title="Please do not theme this app">
     <img src="https://stopthemingmy.app/badge.svg" alt="Please do not theme this app"/>
   </a>
   <br />
   <a href="#features">Features</a> ·
+  <a href="#screenshots">Screenshots</a> ·
   <a href="#install">Install</a> ·
   <a href="#contribute">Contribute</a> ·
   <a href="#license">License</a>
@@ -29,10 +33,10 @@
 
 Unlike the original codebase, this version provides:
 
-* **Modernized Architecture:** Fully refactored and standardized in English for global development.
-* **Memory Efficiency:** Integrated **Widget Recycling** in `ContentGridView` to ensure fluid performance.
-* **Stable Logging:** Fixed the critical namespace collisions that affected Python's standard library.
-* **Security First:** Audited SQL queries with full parameterization.
+* 🏗️ **Modernized Architecture:** Fully refactored and standardized in English for global development.
+* ♻️ **Memory Efficiency:** Integrated **Widget Recycling** in `ContentGridView` to ensure fluid performance.
+* 🪵 **Stable Logging:** Fixed critical namespace collisions affecting Python's standard library.
+* 🔒 **Security First:** Audited SQL queries with full parameterization.
 
 ## Core Features
 
@@ -40,7 +44,21 @@ Ticket Booth allows you to build your watchlist of movies and TV Shows, keep tra
 
 *Ticket Booth does not allow you to watch or download content. This app uses the TMDB API but is not endorsed or certified by TMDB.*
 
+## Screenshots
+
+<div align="center">
+  <img src="./data/appstream/new1.png" width="400" />
+  <img src="./data/appstream/new2.png" width="400" />
+  <br />
+  <img src="./data/appstream/new3.png" width="400" />
+  <img src="./data/appstream/new4.png" width="400" />
+</div>
+
 ## Install
+
+<a href='https://flathub.org/apps/me.iepure.Ticketbooth'>
+  <img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/>
+</a>
 
 Builds are available as artifacts on the [Actions page](https://github.com/void0x14/ticketbooth/actions).\
 To build from source, see [Building](./CONTRIBUTING.md#building).
@@ -48,6 +66,11 @@ To build from source, see [Building](./CONTRIBUTING.md#building).
 ## Contribute
 
 Issues and pull requests are welcome! This repository is the active development home for Ticket Booth.
+
+This project is translated via [Weblate](https://hosted.weblate.org/engage/ticket-booth/). \
+<a href="https://hosted.weblate.org/engage/ticket-booth/">
+  <img src="https://hosted.weblate.org/widget/ticket-booth/horizontal-auto.svg" alt="Translation status" />
+</a>
 
 See [Contributing](./CONTRIBUTING.md) to learn more.
 
