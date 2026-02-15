@@ -5,7 +5,7 @@
 - **UI Framework**: Gtk / Libadwaita (intended for GNOME/Linux)
 - **Data Source**: TMDB API
 - **Build System**: Meson
-- **Packaging**: Flatpak (Application ID: `me.iepure.Ticketbooth`)
+- **Packaging**: Flatpak (Application ID: `io.github.void0x14.Ticketbooth`)
 - **Database**: SQLite (using parameterized queries)
 
 ## Key Technical Decisions

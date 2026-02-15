@@ -1,5 +1,5 @@
 <div align="center">
-  <h1><img src="./data/icons/hicolor/scalable/apps/me.iepure.Ticketbooth.svg" height="64" alt="Ticket Booth Icon"/><br>Ticket Booth</h1>
+  <h1><img src="./data/icons/hicolor/scalable/apps/io.github.void0x14.Ticketbooth.svg" height="64" alt="Ticket Booth Icon"/><br>Ticket Booth</h1>
   <h4>Keep track of your favorite shows - Professional & Maintained Edition</h4>
 </div>
 
@@ -56,7 +56,7 @@ Ticket Booth allows you to build your watchlist of movies and TV Shows, keep tra
 
 ## Install
 
-<a href='https://flathub.org/apps/me.iepure.Ticketbooth'>
+<a href='https://flathub.org/apps/io.github.void0x14.Ticketbooth'>
   <img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/>
 </a>
 

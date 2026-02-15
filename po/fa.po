@@ -19,105 +19,105 @@ msgstr ""
 "X-Generator: Weblate 5.13-dev\n"
 
 #. TRANSLATORS: do not translate
-#: data/me.iepure.Ticketbooth.desktop.in:8
+#: data/io.github.void0x14.Ticketbooth.desktop.in:8
 msgid "@app_name@"
 msgstr "گیشه"
 
-#: data/me.iepure.Ticketbooth.desktop.in:14
+#: data/io.github.void0x14.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
 "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;Ticket;Booth;فیلم;سریال;نمایش;تلویزیون;سینما;انیمه;باجه;بلیت;"
 ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:15
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
 msgstr "پهنای پنجره"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:19
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
 msgstr "بلندای پنجره"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:23
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
 msgstr "پنجره بیشینه شد"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:31
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
 msgstr "زبانهٔ فعّال"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:35
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
 msgstr "مشخّص می‌کند که آیا کاره برای نخستین بار اجرا می‌شود یا نه"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:39
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the database needs an update"
 msgstr "مشخّص می‌کند که آیا پایگاه داده نیاز به به‌روز رسانی دارد یا نه"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:43
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
 msgstr "مشخّص می‌کند که آیا کاره داده‌های لازم را گرفته یا نه"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:57
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:57
 msgid "View sorting style"
 msgstr "دیدن سبک مرتّب سازی"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:61
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
 msgstr "جدا کردن محتوای دیده شده از دیده نشده"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:65
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
 msgstr "نهفتن محتوای دیده شده"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:71
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:71
 msgid "Search bar visibility"
 msgstr "نمایانی نوار جست‌وجو"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:82
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:82
 msgid "Search mode"
 msgstr "حالت جست‌وجو"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:86
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
 msgstr "پرس‌وجوی جست‌وجو"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:98
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
 msgstr "طرخوارهٔ رنگ کاره"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:102
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:102
 msgid "Language used by TMDB results"
 msgstr "زبان استفاده شده برای نتیجه‌های TMDB"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:115
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:115
 msgid "Frequency to check for new data on TMDB"
 msgstr "بسامد بررسی داده‌های جدید روی TMDB"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:119
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:119
 msgid "Last autoupdate date"
 msgstr "آخرین داده‌های به‌روز شدهٔ خودکار"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:123
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:123
 msgid "Last notification autoupdate date"
 msgstr "تاریخ آخرین به‌روز رسانی خودکار آگاهی"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:127
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:127
 msgid "Clear cache on exit"
 msgstr "پاک سازی انباره در خروج"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:131
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
 msgstr "استفاده از کلید TMDB کاربر"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:135
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
 msgstr "کلید TMDB کاربر"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
 msgstr "نگه داشتن آمار نمایش‌های محبوبتان"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:20
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
@@ -125,7 +125,7 @@ msgstr ""
 "گیشه می‌گذارد سیاههٔ پخشتان از فیلم‌ها و سریال‌ها را ساخته، عنوانین تماشا شده را "
 "ردیابی کرده و اطّلاعاتی دربارهٔ جدیدترین ارائه‌ها بیابید."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:22
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:22
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
@@ -133,19 +133,19 @@ msgstr ""
 "گیشه نمی‌گذارد محتوا را دیده یا بار بگیرید. این کاره از میانای برنامه‌نویسی "
 "TMDB استفاده می‌کند؛ ولی از سویش توصیه نمی‌شود."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:44
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
 msgstr "کتابخانهٔ فیلم"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:48
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:48
 msgid "Movie Details"
 msgstr "جزییات فیلم"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:52
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:52
 msgid "TV Series Library"
 msgstr "کتابخانهٔ سریال‌ها"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:56
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:56
 msgid "TV Series Details"
 msgstr "جزییات سریال"
 

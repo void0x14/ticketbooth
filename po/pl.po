@@ -21,106 +21,106 @@ msgstr ""
 "X-Generator: Weblate 5.2\n"
 
 #. TRANSLATORS: do not translate
-#: data/me.iepure.Ticketbooth.desktop.in:8
+#: data/io.github.void0x14.Ticketbooth.desktop.in:8
 msgid "@app_name@"
 msgstr "@app_name@"
 
-#: data/me.iepure.Ticketbooth.desktop.in:14
+#: data/io.github.void0x14.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:15
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
 msgstr "Szerokość okna"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:19
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
 msgstr "Wysokość okna"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:23
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
 msgstr "Okno zmaksymalizowane"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:31
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
 msgstr "Aktywna karta"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:35
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
 msgstr "Określa, czy aplikacja jest uruchamiana po raz pierwszy"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:39
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:39
 #, fuzzy
 msgid "Specifies if the database needs an update"
 msgstr "Określa, czy aplikacja pobrała niezbędne dane"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:43
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
 msgstr "Określa, czy aplikacja pobrała niezbędne dane"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:57
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:57
 msgid "View sorting style"
 msgstr "Zobacz styl sortowania"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:61
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:65
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:71
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:71
 msgid "Search bar visibility"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:82
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:82
 #, fuzzy
 msgid "Search mode"
 msgstr "Szukaj po tytule"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:86
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:98
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
 msgstr "Schemat kolorystyczny aplikacji"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:102
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:102
 msgid "Language used by TMDB results"
 msgstr "Język rezultatów z TMDB"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:115
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:115
 msgid "Frequency to check for new data on TMDB"
 msgstr "Częstotliwość sprawdzania TMDB pod kątem nowych danych"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:119
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:119
 msgid "Last autoupdate date"
 msgstr "Data najnowszej automatycznej aktualizacji"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:123
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:123
 #, fuzzy
 msgid "Last notification autoupdate date"
 msgstr "Data najnowszej automatycznej aktualizacji"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:127
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:127
 msgid "Clear cache on exit"
 msgstr "Wyczyść ciasteczka przy wyłączaniu aplikacji"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:131
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:135
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
 msgstr "Śledź swoje ulubione programy"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:20
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
@@ -129,7 +129,7 @@ msgstr ""
 "obejrzenia, jak również śledzić na bieżąco postępy w oglądanych tytułach i "
 "znajdywać informacje o nowościach."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:22
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:22
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
@@ -138,21 +138,21 @@ msgstr ""
 "Aplikacja korzysta z TMDB API, ale nie jest wspierana ani w żaden sposób "
 "powiązana z TMDB."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:44
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
 msgstr ""
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:48
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:48
 #, fuzzy
 msgid "Movie Details"
 msgstr "Filmy"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:52
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:52
 #, fuzzy
 msgid "TV Series Library"
 msgstr "Seriale"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:56
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:56
 #, fuzzy
 msgid "TV Series Details"
 msgstr "Seriale"

@@ -1,7 +1,7 @@
 # Progress
 
 ## Completed
-- [x] Initial project setup (upstream: `aleiepure/ticketbooth`)
+- [x] Initial project setup (upstream: `void0x14/ticketbooth`)
 - [x] Enhanced features (Widget Recycling, Logging fix, Security audit)
 - [x] Modernized architecture & translation to English
 - [x] Migration to standalone repository `void0x14/ticketbooth`

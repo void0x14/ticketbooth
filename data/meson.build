@@ -4,7 +4,7 @@
 
 desktop_file = i18n.merge_file(
         input: configure_file(
-          input: 'me.iepure.Ticketbooth.desktop.in',
+          input: 'io.github.void0x14.Ticketbooth.desktop.in',
           output: app_id + '.desktop.in',
           configuration: conf
         ),
@@ -22,7 +22,7 @@ endif
 
 appstream_file = i18n.merge_file(
         input: configure_file(
-          input: 'me.iepure.Ticketbooth.metainfo.xml.in',
+          input: 'io.github.void0x14.Ticketbooth.metainfo.xml.in',
           output: app_id + '.metainfo.xml.in',
           configuration: conf
         ),
@@ -39,7 +39,7 @@ endif
 
 install_data(
   configure_file(
-    input: 'me.iepure.Ticketbooth.gschema.xml.in',
+    input: 'io.github.void0x14.Ticketbooth.gschema.xml.in',
     output: app_id + '.gschema.xml',
     configuration: conf
   ),

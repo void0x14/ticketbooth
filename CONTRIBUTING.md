@@ -25,20 +25,20 @@ This project is translated via [Weblate](https://hosted.weblate.org/engage/ticke
 The quickest and easiest way
 
 1. Install GNOME Builder.
-2. Click "Clone Repository" with https://github.com/aleiepure/ticketbooth.git as the URL.
+2. Click "Clone Repository" with https://github.com/void0x14/ticketbooth.git as the URL.
 3. Click on the build button (hammer) at the top.
 
 ### Flatpak builder and other IDEs
 
 ```shell
-git clone https://github.com/aleiepure/ticketbooth
-flatpak-builder --repo=/path/to/repo/dir --force-clean --user /path/to/build/dir me.iepure.Ticketbooth.Devel.json
+git clone https://github.com/void0x14/ticketbooth
+flatpak-builder --repo=/path/to/repo/dir --force-clean --user /path/to/build/dir io.github.void0x14.Ticketbooth.Devel.json
 flatpak remote-add --user ticketbooth ticketbooth --no-gpg-verify
-flatpak install --user ticketbooth me.iepure.Ticketbooth.Devel
+flatpak install --user ticketbooth io.github.void0x14.Ticketbooth.Devel
 ```
 
 Then run with
 
 ```shell
-flatpak run --user me.iepure.Ticketbooth.Devel
+flatpak run --user io.github.void0x14.Ticketbooth.Devel
 ```

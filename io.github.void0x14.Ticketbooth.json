@@ -1,5 +1,5 @@
 {
-  "id": "me.iepure.Ticketbooth.Devel",
+  "id": "io.github.void0x14.Ticketbooth.Devel",
   "runtime": "org.gnome.Platform",
   "runtime-version": "49",
   "sdk": "org.gnome.Sdk",

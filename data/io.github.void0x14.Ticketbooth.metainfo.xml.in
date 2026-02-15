@@ -13,8 +13,8 @@ SPDX-License-Identifier: CC0-1.0
 	<name translate="no">Ticket Booth</name>
 	<launchable type="desktop-id">@app_id@.desktop</launchable>
 	<summary>Keep track of your favorite shows</summary>
-	<developer id="me.iepure">
-		<name translate="no">Alessandro Iepure</name>
+	<developer id="io.github.void0x14">
+		<name translate="no">void0x14</name>
 	</developer>
 	<description>
 		<p>Ticket Booth allows you to build your watchlist of movies and TV Shows, keep track of
@@ -22,10 +22,10 @@ SPDX-License-Identifier: CC0-1.0
 		<p> Ticket Booth does not allow you to watch or download content. This app uses the TMDB API
 			but is not endorsed or certified by TMDB.</p>
 	</description>
-	<url type="homepage">https://github.com/aleiepure/ticketbooth</url>
-	<url type="bugtracker">https://github.com/aleiepure/ticketbooth/issues</url>
-	<url type="vcs-browser">https://github.com/aleiepure/ticketbooth</url>
-	<url type="contribute">https://github.com/aleiepure/ticketbooth/blob/main/CONTRIBUTING.md</url>
+	<url type="homepage">https://github.com/void0x14/ticketbooth</url>
+	<url type="bugtracker">https://github.com/void0x14/ticketbooth/issues</url>
+	<url type="vcs-browser">https://github.com/void0x14/ticketbooth</url>
+	<url type="contribute">https://github.com/void0x14/ticketbooth/blob/main/CONTRIBUTING.md</url>
 	<branding>
 		<color type="primary" scheme_preference="light">#e28dad</color>
 		<color type="primary" scheme_preference="dark">#9e4768</color>
@@ -40,23 +40,23 @@ SPDX-License-Identifier: CC0-1.0
 	</requires>
 	<screenshots>
 		<screenshot type="default">
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new1.png</image>
+			<image>https://raw.githubusercontent.com/void0x14/ticketbooth/main/data/appstream/new1.png</image>
 			<caption translate="no">Movie Library</caption>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new2.png</image>
+			<image>https://raw.githubusercontent.com/void0x14/ticketbooth/main/data/appstream/new2.png</image>
 			<caption translate="no">Movie Details</caption>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new3.png</image>
+			<image>https://raw.githubusercontent.com/void0x14/ticketbooth/main/data/appstream/new3.png</image>
 			<caption translate="no">TV Series Library</caption>
 		</screenshot>
 		<screenshot>
-			<image>https://raw.githubusercontent.com/aleiepure/ticketbooth/main/data/appstream/new4.png</image>
+			<image>https://raw.githubusercontent.com/void0x14/ticketbooth/main/data/appstream/new4.png</image>
 			<caption translate="no">TV Series Details</caption>
 		</screenshot>
 	</screenshots>
-	<translation type="gettext">me.iepure.ticketbooth</translation>
+	<translation type="gettext">io.github.void0x14.ticketbooth</translation>
 	<content_rating type="oars-1.1" />
 	<releases>
 		<release version="1.2.0" date="2025-05-11">

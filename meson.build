@@ -14,8 +14,8 @@ gnome = import('gnome')
 # Debug info
 if get_option('prerelease')
   name_suffix = ' (Development snapshot)'
-  app_id = 'me.iepure.Ticketbooth.Devel'
-  prefix = '/me/iepure/Ticketbooth/Devel'
+  app_id = 'io.github.void0x14.Ticketbooth.Devel'
+  prefix = '/io/github/void0x14/Ticketbooth/Devel'
 
   git = find_program('git', required : false)
   if git.found()
@@ -30,8 +30,8 @@ if get_option('prerelease')
 
 else
   name_suffix = ''
-  app_id = 'me.iepure.Ticketbooth'
-  prefix = '/me/iepure/Ticketbooth'
+  app_id = 'io.github.void0x14.Ticketbooth'
+  prefix = '/io/github/void0x14/Ticketbooth'
   version_number = meson.project_version()
 endif
 

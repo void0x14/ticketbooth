@@ -19,104 +19,104 @@ msgstr ""
 "X-Generator: Weblate 5.13-dev\n"
 
 #. TRANSLATORS: do not translate
-#: data/me.iepure.Ticketbooth.desktop.in:8
+#: data/io.github.void0x14.Ticketbooth.desktop.in:8
 msgid "@app_name@"
 msgstr "@app_name@"
 
-#: data/me.iepure.Ticketbooth.desktop.in:14
+#: data/io.github.void0x14.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
 "திரைப்படங்கள்; படங்கள்; நிகழ்ச்சிகள்; டிவி; தொடர்; அனிம்; வாட்ச்; பட்டியல்; நூலகம்;"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:15
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
 msgstr "சாளர அகலம்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:19
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
 msgstr "விண்டர் உயரம்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:23
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
 msgstr "சாளரம் அதிகரிக்கப்பட்டது"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:31
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
 msgstr "செயலில் உள்ள தாவல்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:35
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
 msgstr "பயன்பாடு முதல் முறையாக இயக்கப்பட்டதா என்பதைக் குறிப்பிடுகிறது"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:39
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the database needs an update"
 msgstr "தரவுத்தளத்திற்கு புதுப்பிப்பு தேவைப்பட்டால் குறிப்பிடுகிறது"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:43
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
 msgstr "பயன்பாடு தேவையான தரவை பதிவிறக்கம் செய்தால் குறிப்பிடுகிறது"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:57
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:57
 msgid "View sorting style"
 msgstr "வரிசையாக்க பாணியைக் காண்க"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:61
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
 msgstr "கவனிக்காத உள்ளடக்கத்தை தனித்தனியாகப் பார்த்தது"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:65
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
 msgstr "பார்த்த உள்ளடக்கத்தை மறைக்கவும்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:71
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:71
 msgid "Search bar visibility"
 msgstr "தேடல் பார் தெரிவுநிலை"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:82
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:82
 msgid "Search mode"
 msgstr "தேடல் பயன்முறை"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:86
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
 msgstr "தேடல் வினவல்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:98
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
 msgstr "பயன்பாட்டு வண்ணத் திட்டம்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:102
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:102
 msgid "Language used by TMDB results"
 msgstr "TMDB முடிவுகள் பயன்படுத்தும் மொழி"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:115
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:115
 msgid "Frequency to check for new data on TMDB"
 msgstr "TMDB இல் புதிய தரவை சரிபார்க்க அதிர்வெண்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:119
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:119
 msgid "Last autoupdate date"
 msgstr "கடைசி தன்னியக்க தேதி"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:123
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:123
 msgid "Last notification autoupdate date"
 msgstr "கடைசி அறிவிப்பு ஆட்டோப்டேட் தேதி"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:127
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:127
 msgid "Clear cache on exit"
 msgstr "வெளியேறும்போது கேச் அழிக்கவும்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:131
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
 msgstr "பயனரின் TMDB விசையைப் பயன்படுத்தவும்"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:135
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
 msgstr "பயனரின் TMDB விசை"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
 msgstr "உங்களுக்கு பிடித்த நிகழ்ச்சிகளைக் கண்காணிக்கவும்"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:20
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
@@ -125,7 +125,7 @@ msgstr ""
 "பார்த்த தலைப்புகளைக் கண்காணிக்கவும், அண்மைக் கால வெளியீடுகளைப் பற்றிய தகவல்களைக் கண்டறியவும் "
 "டிக்கெட் பூத் உங்களை அனுமதிக்கிறது."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:22
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:22
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
@@ -134,19 +134,19 @@ msgstr ""
 "பயன்பாடு TMDB பநிஇ ஐப் பயன்படுத்துகிறது, ஆனால் இது TMDB ஆல் அங்கீகரிக்கப்படவில்லை அல்லது "
 "சான்றளிக்கப்படவில்லை."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:44
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
 msgstr "திரைப்பட நூலகம்"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:48
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:48
 msgid "Movie Details"
 msgstr "திரைப்பட தகவல்கள்"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:52
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:52
 msgid "TV Series Library"
 msgstr "தொலைக்காட்சி தொடர் நூலகம்"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:56
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:56
 msgid "TV Series Details"
 msgstr "தொலைக்காட்சி தொடர் தகவல்கள்"
 

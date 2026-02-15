@@ -23,105 +23,105 @@ msgstr ""
 "X-Generator: Weblate 5.13-dev\n"
 
 #. TRANSLATORS: do not translate
-#: data/me.iepure.Ticketbooth.desktop.in:8
+#: data/io.github.void0x14.Ticketbooth.desktop.in:8
 msgid "@app_name@"
 msgstr "@app_name@"
 
-#: data/me.iepure.Ticketbooth.desktop.in:14
+#: data/io.github.void0x14.Ticketbooth.desktop.in:14
 msgid "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;"
 msgstr ""
 "Movies;Films;Shows;TV;Series;Anime;Watch;List;Library;кіно;фільми;шоу;вистави;телесеріали;серіали;аніме;анімє;тв;список;перегляду;бібліотека;дивився;"
 ""
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:15
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:15
 msgid "Window width"
 msgstr "Ширина вікна"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:19
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:19
 msgid "Window height"
 msgstr "Висота вікна"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:23
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:23
 msgid "Window maximized"
 msgstr "Вікно розгорнуто"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:31
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:31
 msgid "Active tab"
 msgstr "Активна вкладка"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:35
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:35
 msgid "Specifies if the app is run for the first time"
 msgstr "Вказує, чи запускається програма вперше"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:39
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:39
 msgid "Specifies if the database needs an update"
 msgstr "Вказує, чи потрібно оновити базу даних"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:43
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:43
 msgid "Specifies if the app downloaded the required data"
 msgstr "Вказує, чи завантажив додаток усі потрібні дані"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:57
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:57
 msgid "View sorting style"
 msgstr "Переглянути стиль сортування"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:61
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:61
 msgid "Separate watched content from unwatched"
 msgstr "Відокремлювати переглянуте від не переглянутого"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:65
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:65
 msgid "Hide watched content"
 msgstr "Ховати переглянуте"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:71
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:71
 msgid "Search bar visibility"
 msgstr "Видимість панелі пошуку"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:82
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:82
 msgid "Search mode"
 msgstr "Режим пошуку"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:86
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:86
 msgid "Search query"
 msgstr "Запити пошуку"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:98
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:98
 msgid "App color scheme"
 msgstr "Стиль додатку"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:102
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:102
 msgid "Language used by TMDB results"
 msgstr "Мова, що використовується в результатах TMDB"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:115
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:115
 msgid "Frequency to check for new data on TMDB"
 msgstr "Частота перевірки нових даних у TMDB"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:119
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:119
 msgid "Last autoupdate date"
 msgstr "Дата останнього автооновлення"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:123
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:123
 msgid "Last notification autoupdate date"
 msgstr "Дата останнього сповіщення автооновлення"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:127
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:127
 msgid "Clear cache on exit"
 msgstr "Видаляти кеш при виході"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:131
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:131
 msgid "Use the user's TMDB key"
 msgstr "Використовувати ключ користувача TMDB"
 
-#: data/me.iepure.Ticketbooth.gschema.xml.in:135
+#: data/io.github.void0x14.Ticketbooth.gschema.xml.in:135
 msgid "User's TMDB key"
 msgstr "Ключ користувача TMDB"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:15 src/ui/about_dialog.blp:10
 msgid "Keep track of your favorite shows"
 msgstr "Відстежуйте ваші улюблені шоу"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:20
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:20
 msgid ""
 "Ticket Booth allows you to build your watchlist of movies and TV Shows, keep "
 "track of watched titles, and find information about the latest releases."
@@ -130,7 +130,7 @@ msgstr ""
 "перегляду, відстежувати переглянуті стрічки та знаходити інформацію про "
 "найновіші випуски."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:22
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:22
 msgid ""
 "Ticket Booth does not allow you to watch or download content. This app uses "
 "the TMDB API but is not endorsed or certified by TMDB."
@@ -138,19 +138,19 @@ msgstr ""
 "Ticket Booth не дозволяє переглядати або завантажувати контент. Цей додаток "
 "використовує API TMDB, але не схвалений і не сертифікований TMDB."
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:44
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:44
 msgid "Movie Library"
 msgstr "Бібліотека фільмів"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:48
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:48
 msgid "Movie Details"
 msgstr "Подробиці про фільм"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:52
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:52
 msgid "TV Series Library"
 msgstr "Бібліотека телесеріалів"
 
-#: data/me.iepure.Ticketbooth.metainfo.xml.in:56
+#: data/io.github.void0x14.Ticketbooth.metainfo.xml.in:56
 msgid "TV Series Details"
 msgstr "Подробиці про телесеріал"
 
