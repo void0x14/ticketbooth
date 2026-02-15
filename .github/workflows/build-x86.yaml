@@ -15,5 +15,5 @@ jobs:
     - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: ticketbooth-devel.flatpak
-        manifest-path: io.github.void0x14.Ticketbooth.json
+        manifest-path: io.github.void0x14.Ticketbooth.Devel.json
         cache-key: flatpak-builder-${{ github.sha }}
