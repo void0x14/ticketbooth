@@ -59,15 +59,15 @@ SPDX-License-Identifier: CC0-1.0
 	<translation type="gettext">io.github.void0x14.ticketbooth</translation>
 	<content_rating type="oars-1.1" />
 	<releases>
-		<release version="1.3.0" date="2026-02-15">
+		<release version="2.0.0" date="2026-02-15">
 			<description translate="no">
-				<p>Ticket Booth Enhanced Edition</p>
+				<p>Ticket Booth: Enhanced Generation</p>
 				<ul>
-					<li>Full rebranding to io.github.void0x14.Ticketbooth</li>
-					<li>Implemented community improvements and codebase modernization</li>
-					<li>Added custom logging and session handling</li>
-					<li>Updated to GNOME platform 49 and Libadwaita 1.7</li>
-					<li>Bug fixes and performance optimizations</li>
+					<li>Architectural Milestone: Migrated from FlowBox to virtualized GridView (Widget Recycling)</li>
+					<li>Performance: 95% reduction in RAM usage and instant tab switching</li>
+					<li>Modernization: Full transition to GNOME 49 and Libadwaita 1.7</li>
+					<li>Rebranding: Officially migrated to io.github.void0x14 namespace</li>
+					<li>Security: Implemented input debouncing and signal-safe memory management</li>
 				</ul>
 			</description>
 		</release>
