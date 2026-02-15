@@ -36,19 +36,38 @@ This project is not just a fork; it is a **Declaration of Sovereignty**. We are 
 > **"We do not build apps; we build ecosystems."**
 
 ### 🌑 Phase 1: The Hardening (Current Focus)
-*Reforging the core to be unbreakable and lightweight.*
+*Reforging the core to be unbreakable and autonomous.*
 
-- [ ] **Zero Dependency Doctrine:** Systematically removing heavy external libraries (`requests`, `Pillow`) in favor of Python Standard Library and native GNOME libs.
-  - *Goal:* `<100MB` RAM usage and a bulletproof, "Black Box" codebase.
-- [ ] **Surgical Logic:** Rewriting the entire network and image processing stack for maximum speed and minimal footprint.
+- [ ] **Sovereign Dependency Doctrine:** Instead of relying on upstream packages, we will **Vendor and Hard-Fork** superior libraries (like `requests`) to strip telemetry, fix vulnerabilities, and integrate them directly into our codebase.
+  - *Goal:* A bulletproof, "Black Box" codebase with zero external supply-chain risks.
+- [ ] **Surgical Logic:** Rewriting the network and image processing stack for maximum speed, security, and control.
 - [ ] **UI/Logic Decoupling:** Separating the interface from the brain, paving the way for "Headless" and "Neural" modes.
 
-### 🔗 Phase 2: The Network (Project LIFE)
+### 🔗 Phase 2: The Network
 *Establishing the backbone of a universal media system.*
 
 - [ ] **Custom API Engine:** Bypassing generic wrappers to gain direct, granular control over metadata fetching.
 - [ ] **Smart Routing:** Implementing intelligent networking to ensure access to data even in "restrictive" network environments.
 - [ ] **Shadow Architecture:** Preparing the internal database to handle complex, decentralized data structures beyond simple lists.
+
+### 📱 Phase 3: Expansion (The Mobile Front)
+*Taking the empire to every screen.*
+
+- [ ] **Android & iOS Port:** Bringing the verified "Void Experience" to mobile.
+  - *Strategy:* A unified logic core with a native, responsive UI.
+- [ ] **Dynamic Feature Delivery:** A next-gen configuration system allowing specific features and "capabilities" to be enabled remotely without app store updates.
+- [ ] **Cloud-Agnostic Sync:** Sync your library across devices using your own storage, not ours.
+
+### 🔓 Phase 4: God Mode (The Ultimate Vision)
+*Total freedom and user control.*
+
+- [ ] **The "Void" Plugin System:** A powerful, open-ended engine allowing users to extend functionality limits.
+  - *Capability:* Users can load "Community Add-ons" to fetch content from *any* source they choose. We provide the engine; you choose the fuel.
+- [ ] **Data Liberation:** Complete ownership of your data with advanced export/import tools.
+- [ ] **System Integration:** Deep integration with the OS to make Ticket Booth feel like a native extension of your digital life.
+
+---
+*Note: This roadmap is a living document. The "Empire" is built one commit at a time.*
 
 ### 📱 Phase 3: Expansion (The Mobile Front)
 *Taking the empire to every screen.*
