@@ -68,7 +68,7 @@ SPDX-License-Identifier: CC0-1.0
 					<li>Sorting now functions correctly when separating watched and unwatched content</li>
 					<li>Improved notification toggle appearance</li>
 					<li>Dialogs now appear after completing import or export</li>
-					<li>Updated to GNOME platform 48</li>
+					<li>Updated to GNOME platform 49</li>
 					<li>UI uses new libadwaita 1.7 widgets</li>
 					<li>Updated translations</li>
 				</ul>
