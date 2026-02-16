@@ -5,6 +5,7 @@
 # Copyright 2020 Manuel Genovés
 # Copyright 2022 Mufeed Ali
 # Copyright 2022 Rafael Mardojai CM
+# Maintenance & Enhancements Copyright (C) 2026 void0x14
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Code modified from Apostrophe

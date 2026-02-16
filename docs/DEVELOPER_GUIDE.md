@@ -1,5 +1,11 @@
 # Ticketbooth Developer Guide
 
+<!--
+Maintenance & Enhancements Copyright (C) 2026 void0x14
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 > Architecture documentation for contributors and maintainers.
 
 ---

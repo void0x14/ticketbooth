@@ -1,5 +1,12 @@
 # Contributing
 
+<!--
+Copyright (C) 2023 Alessandro Iepure
+Maintenance & Enhancements Copyright (C) 2026 void0x14
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 Ticket Booth is a Linux app built with Python using the GTK4 toolkit and libadwaita. The only officially supported packaging format is Flatpak.
 
 ## Code

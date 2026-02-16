@@ -1,6 +1,7 @@
 # session_file_handler.py
 #
 # Copyright 2023 Geoffrey Coulaud
+# Maintenance & Enhancements Copyright (C) 2026 void0x14
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
