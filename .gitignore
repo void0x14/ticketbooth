@@ -19,8 +19,8 @@ _build/
 .env
 
 # Flatpak bundles
-me.iepure.Ticketbooth.flatpak
-me.iepure.Ticketbooth.Devel.flatpak
+io.github.void0x14.Ticketbooth.flatpak
+io.github.void0x14.Ticketbooth.Devel.flatpak
 
 /subprojects/blueprint-compiler
 data.json
