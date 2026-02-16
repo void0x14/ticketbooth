@@ -327,11 +327,17 @@ class ContentGridView(Adw.Bin):
             page = DetailsView(model, self)
             page.connect('deleted', lambda *args: self.refresh_view())
             
-            # Push to NavigationView (wrap in NavigationPage)
-            nav_view = self.get_ancestor(Adw.NavigationView)
-            if nav_view:
+            # Get the inner navigation view (the one inside the tab)
+            inner_nav = self.get_ancestor(Adw.NavigationView)
+            if inner_nav:
+                # Try to find the outer navigation view (main window level)
+                # This prevents the double header bar issue by pushing to the 
+                # root navigation controller instead of the nested one.
+                outer_nav = inner_nav.get_ancestor(Adw.NavigationView)
+                target_nav = outer_nav if outer_nav else inner_nav
+                
                 nav_page = Adw.NavigationPage(child=page, title=model.title)
-                nav_view.push(nav_page)
+                target_nav.push(nav_page)
 
     def _on_child_clicked(self, widget: Gtk.Widget, content: object) -> None:
         """
@@ -357,11 +363,15 @@ class ContentGridView(Adw.Bin):
             page = DetailsView(content, self)
             page.connect('deleted', lambda *args: self.refresh_view())
             
-            # Push to NavigationView (wrap in NavigationPage)
-            nav_view = self.get_ancestor(Adw.NavigationView)
-            if nav_view:
+            # Get the inner navigation view (the one inside the tab)
+            inner_nav = self.get_ancestor(Adw.NavigationView)
+            if inner_nav:
+                # Try to find the outer navigation view (main window level)
+                outer_nav = inner_nav.get_ancestor(Adw.NavigationView)
+                target_nav = outer_nav if outer_nav else inner_nav
+                
                 nav_page = Adw.NavigationPage(child=page, title=content.title)
-                nav_view.push(nav_page)
+                target_nav.push(nav_page)
 
     def refresh_view(self, show_loading: bool = True) -> None:
         """Refresh content by reloading from database.

@@ -352,8 +352,12 @@ class ContentView(Adw.Bin):
         vadjustment = self._scrolled_window.get_vadjustment()
         self._saved_scroll_value = vadjustment.get_value()
         
-        # Push the details page onto the navigation stack
-        self.get_ancestor(Adw.NavigationView).push(page)
+        # Fix: Traverse to outer NavigationView to avoid double header bar
+        inner_nav = self.get_ancestor(Adw.NavigationView)
+        if inner_nav:
+            outer_nav = inner_nav.get_ancestor(Adw.NavigationView)
+            target_nav = outer_nav or inner_nav
+            target_nav.push(page)
 
     def _set_sorting_function(self) -> None:
         """
