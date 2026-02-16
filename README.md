@@ -95,6 +95,8 @@ Ticket Booth allows you to build your watchlist of movies and TV Shows, keep tra
 
 ## Install
 
+> **Note:** Ticket Booth is currently pending submission to Flathub. The link below will be active once approved.
+
 <a href='https://flathub.org/apps/io.github.void0x14.Ticketbooth'>
   <img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/>
 </a>
