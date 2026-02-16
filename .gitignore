@@ -1,5 +1,5 @@
 # Copyright (C) 2023 Alessandro Iepure
-#
+# Maintenance & Enhancements Copyright (C) 2026 void0x14
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # IDE folders
@@ -31,15 +31,10 @@ build/
 .flatpak-builder/
 data.json
 
-# Local Knowledge Base (Non-Git)
-.agent/
-
 # Test Environment
 .venv/
-testsprite_tests/
 .pytest_cache/
 .tests/
-*.mkv
 
 # Python cache
 __pycache__/
