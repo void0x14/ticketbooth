@@ -42,6 +42,8 @@ This project is not just a fork; it is a **Declaration of Sovereignty**. We are 
   - *Goal:* A bulletproof, "Black Box" codebase with zero external supply-chain risks.
 - [ ] **Surgical Logic:** Rewriting the network and image processing stack for maximum speed, security, and control.
 - [ ] **UI/Logic Decoupling:** Separating the interface from the brain, paving the way for "Headless" and "Neural" modes.
+- [ ] **Navigation Architecture Repair:** Investigating and resolving the "Double Header Bar" anomaly.
+  - *Status:* Researching rational, low-coupling solutions (Signals vs. Traversal) to ensure architectural purity.
 
 ### 🔗 Phase 2: The Network
 *Establishing the backbone of a universal media system.*
@@ -69,24 +71,11 @@ This project is not just a fork; it is a **Declaration of Sovereignty**. We are 
 ---
 *Note: This roadmap is a living document. The "Empire" is built one commit at a time.*
 
-### 📱 Phase 3: Expansion (The Mobile Front)
-*Taking the empire to every screen.*
+## � Known Issues & Active Investigations
+*Transparency regarding current codebase status.*
 
-- [ ] **Android & iOS Port:** Bringing the verified "Void Experience" to mobile.
-  - *Strategy:* A unified logic core with a native, responsive UI.
-- [ ] **Dynamic Feature Delivery:** A next-gen configuration system allowing specific features and "capabilities" to be enabled remotely without app store updates.
-- [ ] **Cloud-Agnostic Sync:** Sync your library across devices using your own storage, not ours.
-
-### 🔓 Phase 4: God Mode (The Ultimate Vision)
-*Total freedom and user control.*
-
-- [ ] **The "Void" Plugin System:** A powerful, open-ended engine allowing users to extend functionality limits.
-  - *Capability:* Users can load "Community Add-ons" to fetch content from *any* source they choose. We provide the engine; you choose the fuel.
-- [ ] **Data Liberation:** Complete ownership of your data with advanced export/import tools.
-- [ ] **System Integration:** Deep integration with the OS to make Ticket Booth feel like a native extension of your digital life.
-
----
-*Note: This roadmap is a living document. The "Empire" is built one commit at a time.*
+*   **Double Header Bar in Details View:** Users may observe two header bars when constructing the navigation stack for show details.
+    *   *Action:* We are currently analyzing the widget hierarchy to implement a permanent architectural fix (refactoring towards signal-driven navigation).
 
 ## Core Features
 
@@ -105,6 +94,8 @@ Ticket Booth allows you to build your watchlist of movies and TV Shows, keep tra
 </div>
 
 ## Install
+
+> **Note:** Ticket Booth is currently pending submission to Flathub. The link below will be active once approved.
 
 <a href='https://flathub.org/apps/io.github.void0x14.Ticketbooth'>
   <img width='240' alt='Download on Flathub' src='https://dl.flathub.org/assets/badges/flathub-badge-en.png'/>
