@@ -43,3 +43,6 @@ __pycache__/
 
 # Meson generated files
 src/shared.py
+
+# IDE config
+pyrightconfig.json
