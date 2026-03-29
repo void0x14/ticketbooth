@@ -11,6 +11,7 @@ import sqlite3
 import zipfile
 import shutil
 import json
+import re
 from typing import List, Dict, Any
 from pathlib import Path
 from PIL import Image, ImageStat
@@ -1745,6 +1746,28 @@ class LocalProvider:
         return result.lastrowid
 
     @staticmethod
+    def _is_safe_path_component(component: str | int) -> bool:
+        """
+        Checks if a single path component is safe (no traversal, not absolute, no separators).
+        """
+        s = str(component)
+        if not s or '..' in s or '/' in s or '\\' in s:
+            return False
+        # Allow only alphanumeric, underscores, dashes, dots
+        return bool(re.match(r'^[\w\.\-]+$', s))
+
+    @staticmethod
+    def _is_safe_relative_path(path: str | Path) -> bool:
+        """
+        Checks if a relative path is safe (no traversal, not absolute).
+        """
+        s = str(path)
+        if not s or '..' in s or s.startswith('/') or s.startswith('\\'):
+            return False
+        # Allow alphanumeric, underscores, dashes, dots and directory separators
+        return bool(re.match(r'^[\w\.\-/]+$', s))
+
+    @staticmethod
     def export_data(export_path: Path) -> bool:
         """
         Exports all database content and associated images to a zip file.
@@ -1923,12 +1946,16 @@ class LocalProvider:
                         if movie['backdrop_path'].startswith('file://'):
                             backdrop_filename = Path(movie['backdrop_path'][7:]).name
                             relative_path = str(Path(movie['backdrop_path'][7:])).split('data/')[-1]
-                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
-                            target_dir.mkdir(parents=True, exist_ok=True)
                             
-                            with archive.open(f"images/{relative_path}") as source, \
-                                open(target_dir / backdrop_filename, 'wb') as target:
-                                shutil.copyfileobj(source, target)
+                            if not LocalProvider._is_safe_relative_path(Path(relative_path).parent):
+                                logging.warning(f"Unsafe backdrop path: {relative_path}")
+                            else:
+                                target_dir = Path(shared.data_dir) / Path(relative_path).parent
+                                target_dir.mkdir(parents=True, exist_ok=True)
+
+                                with archive.open(f"images/{relative_path}") as source, \
+                                    open(target_dir / backdrop_filename, 'wb') as target:
+                                    shutil.copyfileobj(source, target)
 
                         # Delete existing movie if present
                         cursor = connection.cursor()
@@ -1970,12 +1997,16 @@ class LocalProvider:
                         if serie['backdrop_path'].startswith('file://'):
                             backdrop_filename = Path(serie['backdrop_path'][7:]).name
                             relative_path = str(Path(serie['backdrop_path'][7:])).split('data/')[-1]
-                            target_dir = Path(shared.data_dir) / Path(relative_path).parent
-                            target_dir.mkdir(parents=True, exist_ok=True)
                             
-                            with archive.open(f"images/{relative_path}") as source, \
-                                open(target_dir / backdrop_filename, 'wb') as target:
-                                shutil.copyfileobj(source, target)
+                            if not LocalProvider._is_safe_relative_path(Path(relative_path).parent):
+                                logging.warning(f"Unsafe backdrop path: {relative_path}")
+                            else:
+                                target_dir = Path(shared.data_dir) / Path(relative_path).parent
+                                target_dir.mkdir(parents=True, exist_ok=True)
+
+                                with archive.open(f"images/{relative_path}") as source, \
+                                    open(target_dir / backdrop_filename, 'wb') as target:
+                                    shutil.copyfileobj(source, target)
 
                         # Delete existing series if present
                         connection.execute('PRAGMA foreign_keys = ON;')
@@ -2010,13 +2041,17 @@ class LocalProvider:
                             # Handle season images
                             if season['poster_path'].startswith('file://'):
                                 poster_filename = Path(season['poster_path'][7:]).name
-                                target_dir = Path(shared.series_dir) / series_id / str(season['number'])
-                                target_dir.mkdir(parents=True, exist_ok=True)
-                                
-                                image_path = f"images/series/{series_id}/{season['number']}/{poster_filename}"
-                                with archive.open(image_path) as source, \
-                                    open(target_dir / poster_filename, 'wb') as target:
-                                    shutil.copyfileobj(source, target)
+                                if not (LocalProvider._is_safe_path_component(series_id) and
+                                        LocalProvider._is_safe_path_component(season['number'])):
+                                    logging.warning(f"Unsafe series or season id/number: {series_id}/{season['number']}")
+                                else:
+                                    target_dir = Path(shared.series_dir) / series_id / str(season['number'])
+                                    target_dir.mkdir(parents=True, exist_ok=True)
+
+                                    image_path = f"images/series/{series_id}/{season['number']}/{poster_filename}"
+                                    with archive.open(image_path) as source, \
+                                        open(target_dir / poster_filename, 'wb') as target:
+                                        shutil.copyfileobj(source, target)
 
                             # Handle manual season IDs
                             if season['id'].startswith('M-'):
@@ -2033,13 +2068,17 @@ class LocalProvider:
                                 # Handle episode images
                                 if episode['still_path'].startswith('file://'):
                                     still_filename = Path(episode['still_path'][7:]).name
-                                    target_dir = Path(shared.series_dir) / series_id / str(season['number'])
-                                    target_dir.mkdir(parents=True, exist_ok=True)
-                                    
-                                    image_path = f"images/series/{series_id}/{season['number']}/{still_filename}"
-                                    with archive.open(image_path) as source, \
-                                        open(target_dir / still_filename, 'wb') as target:
-                                        shutil.copyfileobj(source, target)
+                                    if not (LocalProvider._is_safe_path_component(series_id) and
+                                            LocalProvider._is_safe_path_component(season['number'])):
+                                        logging.warning(f"Unsafe series or season id/number: {series_id}/{season['number']}")
+                                    else:
+                                        target_dir = Path(shared.series_dir) / series_id / str(season['number'])
+                                        target_dir.mkdir(parents=True, exist_ok=True)
+
+                                        image_path = f"images/series/{series_id}/{season['number']}/{still_filename}"
+                                        with archive.open(image_path) as source, \
+                                            open(target_dir / still_filename, 'wb') as target:
+                                            shutil.copyfileobj(source, target)
 
                                 # Handle manual episode IDs
                                 if episode['id'].startswith('M-'):
