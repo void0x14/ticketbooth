@@ -432,42 +432,41 @@ class ContentView(Adw.Bin):
         """
                     
         if shared.schema.get_boolean('search-enabled'):
-            if shared.schema.get_string('search-mode') == 'title':
+            search_mode = shared.schema.get_string('search-mode')
+            search_query = shared.schema.get_string('search-query').lower()
+
+            if search_mode == 'title':
                 self._flow_box.set_filter_func(
                     lambda child,
                     user_data: (
-                        shared.schema.get_string(
-                            'search-query').lower() in child.get_child().content.title.lower()
+                        search_query in child.get_child().content.title.lower()
                     ),
                     None)
-            elif shared.schema.get_string('search-mode') == 'genre':
+            elif search_mode == 'genre':
+                search_query_title = search_query.title()
                 self._flow_box.set_filter_func(
                     lambda child, user_data: (
                         any(
-                            shared.schema.get_string(
-                                'search-query').title() in genre
+                            search_query_title in genre
                             for genre in child.get_child().content.genres)
                     ),
                     None)
-            elif shared.schema.get_string('search-mode') == 'overview':
+            elif search_mode == 'overview':
                 self._flow_box.set_filter_func(
                     lambda child, user_data: (
-                        shared.schema.get_string(
-                            'search-query').lower() in child.get_child().content.overview.lower()
+                        search_query in child.get_child().content.overview.lower()
                     ),
                     None)
-            elif shared.schema.get_string('search-mode') == 'notes':
+            elif search_mode == 'notes':
                 self._flow_box.set_filter_func(
                     lambda child, user_data: (
-                        shared.schema.get_string(
-                            'search-query').lower() in child.get_child().content.notes.lower()
+                        search_query in child.get_child().content.notes.lower()
                     ),
                     None)
-            elif shared.schema.get_string('search-mode') == 'tmdb-id':
+            elif search_mode == 'tmdb-id':
                 self._flow_box.set_filter_func(
                     lambda child, user_data: (
-                        shared.schema.get_string(
-                            'search-query').lower() in child.get_child().content.id.lower()
+                        search_query in child.get_child().content.id.lower()
                     ),
                     None)
             self._flow_box.invalidate_filter()
